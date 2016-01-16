@@ -34,8 +34,8 @@ class ApiController extends Controller {
         $contents = curl_exec ($ch);
         $result = json_decode($contents);
 
-        //dd($result,$ch);
-        echo $result;
+        dd($result,$ch);
+      
 
         curl_close ($ch);
 	}
@@ -73,8 +73,8 @@ class ApiController extends Controller {
 
         $data = json_decode($data);
 
-        //dd($data,$ch);
-        echo $result;
+        dd($data,$ch);
+        
         curl_close($ch);
 	}
 
