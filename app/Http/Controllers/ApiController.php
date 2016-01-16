@@ -85,8 +85,10 @@ class ApiController extends Controller {
 	 * @return Response
 	 */
 	public function testAjax()
-	{
-		return response()->json('connected..',200);
+	{	
+		$data = ['connection' => ' success', 'some data' => 'some awesome data'];
+		$data = json_encode($data);
+		return response()->json($data,200);
 	}
 
 	/**
