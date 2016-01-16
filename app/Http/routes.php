@@ -27,3 +27,4 @@ Route::post('test/foursquare','ApiController@post_foursquare');
 Route::post('test/rome2rio','ApiController@post_rome2rio');
 
 Route::get('test/api/dump', ['middleware' => 'cors', 'uses' => 'ApiController@testAjax']);
+
