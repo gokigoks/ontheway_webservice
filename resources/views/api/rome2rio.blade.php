@@ -1,8 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<h3>rome 2 rio</h3>
+
 <div class="form">
+	<h3>rome 2 rio</h3>
 	<form class="form-horizontal" role="form" method="POST" action="{{ url('/test/rome2rio') }}">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="form-group">
