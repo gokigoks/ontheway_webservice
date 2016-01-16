@@ -50,6 +50,7 @@ class ApiController extends Controller {
 		return view('api.rome2rio');
 	}
 
+
 	public function post_rome2rio(Request $request)
 	{
 		/**
@@ -83,9 +84,9 @@ class ApiController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function testAjax()
 	{
-		//
+		return response()->json('connected..',200);
 	}
 
 	/**

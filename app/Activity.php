@@ -6,4 +6,9 @@ class Activity extends Model {
 
 	//
 
+	public function day()
+	{
+		return $this->BelongsTo('App\Day');
+	}
+
 }
