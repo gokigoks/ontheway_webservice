@@ -12,9 +12,20 @@ class CreateInterestSpotTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('interest_spot', function(Blueprint $table)
+		Schema::create('interest_spot', function(Blueprint $table)
 		{
-			//
+			$table->integer('spot_id')->unsigned();
+			$table->integer('interest_id')->unsigned();
+
+			$table->foreign('spot_id')
+			->references('id')
+			->on('spots')
+			->onDelete('cascade');
+
+			$table->foreign('interest_id')
+			->references('id')
+			->on('interests')
+			->onDelete('cascade');
 		});
 	}
 

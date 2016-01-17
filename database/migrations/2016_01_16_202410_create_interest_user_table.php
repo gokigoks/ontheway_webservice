@@ -12,7 +12,7 @@ class CreateInterestUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('interest_user', function(Blueprint $table)
+		Schema::create('interest_user', function(Blueprint $table)
 		{
 			$table->integer('user_id')->unsigned();
 			$table->integer('interest_id')->unsigned();

@@ -12,9 +12,20 @@ class CreateStopTransportTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('stop_transport', function(Blueprint $table)
+		Schema::create('stop_transport', function(Blueprint $table)
 		{
-			//
+			$table->integer('stop_id')->unsigned();
+			$table->integer('transport_id')->unsigned();
+
+			$table->foreign('stop_id')
+			->references('id')
+			->on('stops')
+			->onDelete('cascade');
+
+			$table->foreign('transport_id')
+			->references('id')
+			->on('transports')
+			->onDelete('cascade');
 		});
 	}
 

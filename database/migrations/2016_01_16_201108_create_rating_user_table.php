@@ -12,7 +12,7 @@ class CreateRatingUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('rating_user', function(Blueprint $table)
+		Schema::create('rating_user', function(Blueprint $table)
 		{
 			$table->increments('id');	
 			$table->integer('user_id')->unsigned();

@@ -12,7 +12,7 @@ class CreateIterinaryUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('iterinary_user', function(Blueprint $table)
+		Schema::create('iterinary_user', function(Blueprint $table)
 		{	
 			$table->integer('user_id')->unsigned();
 			$table->integer('iterinary_id')->unsigned();
