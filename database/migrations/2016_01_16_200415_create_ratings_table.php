@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivitiesTable extends Migration {
+class CreateRatingsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,11 @@ class CreateActivitiesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('activities', function(Blueprint $table)
+		Schema::create('ratings', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->time('start_time');
-			$table->time('end_time');
-			$table->enum('type',array('spot','eat','transport'));
+			$table->enum('value',array(1,2,3,4,5));
+			$table->enum('type',array('eat','spot','hotel','transport'));
 			$table->timestamps();
 		});
 	}
@@ -29,7 +28,7 @@ class CreateActivitiesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('activities');
+		Schema::drop('ratings');
 	}
 
 }

@@ -11,4 +11,9 @@ class Activity extends Model {
 		return $this->BelongsTo('App\Day');
 	}
 
+	public function eats()
+	{
+		return $this->hasMany('App\Eats');
+	}
+
 }

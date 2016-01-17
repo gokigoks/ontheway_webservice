@@ -12,6 +12,9 @@ class ApiController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+	
+
 	public function get_foursquare()
 	{
 		return view('api.foursquare');

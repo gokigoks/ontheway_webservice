@@ -28,3 +28,25 @@ Route::post('test/rome2rio','ApiController@post_rome2rio');
 
 Route::get('test/api/dump', ['middleware' => 'cors', 'uses' => 'ApiController@testAjax']);
 
+Route::group(['middleware' => 'cors'], function(){
+
+
+    // Authentication routes...
+    // Route::post('auth/login', function(){ 
+    
+    //     return response()->json('hello',200);
+    
+    // });
+    //Route::get('auth/login', 'Auth\AuthController@getLogin');
+    Route::post('auth/login', 'Auth\AuthController@postLogin');
+    Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+    // Registration routes...
+    Route::get('auth/register', 'Auth\AuthController@getRegister');
+    Route::post('auth/register', 'Auth\AuthController@postRegister');
+    // password route
+    Route::get('user/login','SessionController@getLogin');
+    Route::post('user/login','SessionController@doLogin');
+
+
+});
