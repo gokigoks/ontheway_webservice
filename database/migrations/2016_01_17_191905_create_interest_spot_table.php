@@ -16,7 +16,7 @@ class CreateInterestSpotTable extends Migration {
 		{
 			$table->integer('spot_id')->unsigned();
 			$table->integer('interest_id')->unsigned();
-
+			
 			$table->foreign('spot_id')
 			->references('id')
 			->on('spots')
