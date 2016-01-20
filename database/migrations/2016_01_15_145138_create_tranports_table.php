@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTranportsTable extends Migration {
+class CreateTransportsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateTranportsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tranports', function(Blueprint $table)
+		Schema::create('transports', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('origin');
