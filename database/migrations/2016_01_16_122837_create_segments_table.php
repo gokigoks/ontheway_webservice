@@ -20,7 +20,7 @@ class CreateSegmentsTable extends Migration {
 			$table->integer('price');
 			$table->integer('distance');
 			$table->integer('duration');
-			$table->enum('mode'), array('train','walk','ferry','plane','taxi'));
+			$table->enum('mode', array('train','walk','ferry','plane','taxi'));
 			$table->timestamps();
 		});
 	}
