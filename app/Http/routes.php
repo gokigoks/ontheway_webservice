@@ -36,8 +36,10 @@ Route::post('login', ['middleware' => 'cors', function()
     $credentials = array(
         'email' => Input::get('email'), 
         'password' => Input::get('password'),
-        
+            
     );
+
+    return response()->json($credentials,200);
 
     if (Auth::attempt( $credentials ))
     {   
