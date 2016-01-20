@@ -28,6 +28,8 @@ Route::post('test/rome2rio','ApiController@post_rome2rio');
 
 Route::get('test/api/dump', ['middleware' => 'cors', 'uses' => 'ApiController@testAjax']);
 
+Route::get('test/api/users',['middleware' => 'cors', 'ApiConrtoller@get_users']);
+
 Route::post('login?token=gokigoks', ['middleware' => 'cors', function()
 {   
     

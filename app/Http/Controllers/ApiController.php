@@ -13,7 +13,10 @@ class ApiController extends Controller {
 	 * @return Response
 	 */
 
-	
+	public function get_users()
+	{
+		return response()->json(json_encode(App\User::all()),200);
+	}
 
 	public function get_foursquare()
 	{
