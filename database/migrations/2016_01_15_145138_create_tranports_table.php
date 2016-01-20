@@ -15,7 +15,9 @@ class CreateTranportsTable extends Migration {
 		Schema::create('tranports', function(Blueprint $table)
 		{
 			$table->increments('id');
-			
+			$table->string('origin');
+			$table->string('destination');
+			$table->string('tips',200)->nullable();
 			$table->timestamps();
 		});
 	}
