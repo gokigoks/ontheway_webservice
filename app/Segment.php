@@ -6,4 +6,9 @@ class Segment extends Model {
 
 	//
 	protected $table = 'segments';
+
+	public function stops()
+	{
+		return $this->hasMany('App\Stop');
+	}
 }
