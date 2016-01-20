@@ -30,7 +30,7 @@ Route::get('test/api/dump', ['middleware' => 'cors', 'uses' => 'ApiController@te
 
 Route::get('test/api/users',['middleware' => 'cors', 'ApiConrtoller@get_users']);
 
-Route::post('login', ['middleware' => 'cors', function()
+Route::post('login', ['middleware' => 'cors', 'uses' => function()
 {       
         
     $credentials = array(
@@ -39,7 +39,7 @@ Route::post('login', ['middleware' => 'cors', function()
             
     );
 
-    
+
     if (Auth::attempt( $credentials ))
     {   
         $user_object = json_encode(Auth::user());
