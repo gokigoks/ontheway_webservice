@@ -21,6 +21,11 @@ class CreateActivitiesTable extends Migration {
 			$table->enum('type',array('spot','eat','transport'));
 			$table->integer('type_id')->unsigned();
 			$table->timestamps();
+
+			$table->foreign('day_id')
+			->references('id')
+			->on('days')
+			->onDelete('cascade');
 		});
 	}
 

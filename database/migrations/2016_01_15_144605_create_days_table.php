@@ -18,6 +18,11 @@ class CreateDaysTable extends Migration {
 			$table->integer('iterinary_id')->unsigned();
 			$table->integer('day_no')->unsigned();
 			$table->timestamps();
+
+			$table->foreign('iterinary_id')
+			->references('id')
+			->on('iterinaries')
+			->onDelete('cascade');
 		});
 	}
 

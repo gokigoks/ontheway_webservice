@@ -9,4 +9,8 @@ class Day extends Model {
 		return $this->belongsTo('App\Iterinary');
 	}
 
+	public function activities()
+	{
+		return $this->hasMany('App\Activities');
+	}
 }

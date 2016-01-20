@@ -16,5 +16,9 @@ class Iterinary extends Model {
 		return $this->belongsToMany('App\User');
 	}
 
+	public function days()
+	{
+		return $this->hasMany('App\Day');
+	}
 	
 }

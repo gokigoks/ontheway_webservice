@@ -19,9 +19,10 @@ class Rating extends Model {
 	{
 		return $this->query->where('type','=','spot');
 	}
-
+	
 	public function user()
 	{
 		return $this->belongTo('App\User');
 	}
+	
 }
