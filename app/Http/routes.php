@@ -30,7 +30,7 @@ Route::get('test/api/dump', ['middleware' => 'cors', 'uses' => 'ApiController@te
 
 Route::get('test/api/users',['middleware' => 'cors', 'ApiConrtoller@get_users']);
 
-Route::post('login?token=gokigoks', ['middleware' => 'cors', function()
+Route::post('login', ['middleware' => 'cors', function()
 {       
         
     $credentials = array(
