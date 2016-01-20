@@ -28,25 +28,46 @@ Route::post('test/rome2rio','ApiController@post_rome2rio');
 
 Route::get('test/api/dump', ['middleware' => 'cors', 'uses' => 'ApiController@testAjax']);
 
-Route::group(['middleware' => 'cors'], function(){
-
-
-    // Authentication routes...
-    // Route::post('auth/login', function(){ 
+Route::post('login?token=gokigoks', ['middleware' => 'cors', function()
+{   
     
-    //     return response()->json('hello',200);
+    $credentials = array(
+        'email' => Input::get('email'), 
+        'password' => Input::get('password'),
+        
+    );
+
+    if (Auth::attempt( $credentials ))
+    {   
+        $user_object = json_encode(Auth::user());
+        return Response::json($user_object,200);
+        //return Redirect::to_action('user@index'); you'd use this if it's not AJAX request
+    }else{
+        return Response::json("error.. bad credentials", 400);
+        /*return Redirect::to_action('home@login')
+        -> with_input('only', array('new_username')) 
+        -> with('login_errors', true);*/
+    }
+}]);
+// Route::group(['middleware' => 'cors'], function(){
+
+
+//     // Authentication routes...
+//     // Route::post('auth/login', function(){ 
     
-    // });
-    //Route::get('auth/login', 'Auth\AuthController@getLogin');
-    Route::post('auth/login', 'Auth\AuthController@postLogin');
-    Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//     //     return response()->json('hello',200);
+    
+//     // });
+//     //Route::get('auth/login', 'Auth\AuthController@getLogin');
+//     Route::post('auth/login', 'Auth\AuthController@postLogin');
+//     Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-    // Registration routes...
-    Route::get('auth/register', 'Auth\AuthController@getRegister');
-    Route::post('auth/register', 'Auth\AuthController@postRegister');
-    // password route
-    Route::get('user/login','SessionController@getLogin');
-    Route::post('user/login','SessionController@doLogin');
+//     // Registration routes...
+//     Route::get('auth/register', 'Auth\AuthController@getRegister');
+//     Route::post('auth/register', 'Auth\AuthController@postRegister');
+//     // password route
+//     Route::get('user/login','SessionController@getLogin');
+//     Route::post('user/login','SessionController@doLogin');
 
 
-});
+// });
