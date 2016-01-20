@@ -18,6 +18,13 @@ class ApiController extends Controller {
 		return response()->json(json_encode(App\User::all()),200);
 	}
 
+
+	public function get_hotels()
+	{
+		return response()->json('success',200);
+	}
+
+
 	public function get_foursquare()
 	{
 		return view('api.foursquare');

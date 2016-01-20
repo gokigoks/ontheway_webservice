@@ -73,3 +73,10 @@ Route::post('login?token=gokigoks', ['middleware' => 'cors', function()
 
 
 // });
+
+/*
+*   API SERVICE ROUTES
+*
+**/
+
+Route::get('get/hotels', 'ApiController@get_hotels');
