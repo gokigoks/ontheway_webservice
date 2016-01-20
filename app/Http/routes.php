@@ -39,8 +39,7 @@ Route::post('login', ['middleware' => 'cors', function()
             
     );
 
-    return response()->json($credentials,200);
-
+    
     if (Auth::attempt( $credentials ))
     {   
         $user_object = json_encode(Auth::user());
