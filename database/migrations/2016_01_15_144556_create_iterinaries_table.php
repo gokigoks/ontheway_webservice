@@ -15,6 +15,7 @@ class CreateIterinariesTable extends Migration {
 		Schema::create('iterinaries', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->time('start_time');
 			$table->timestamps();
 		});
 	}
