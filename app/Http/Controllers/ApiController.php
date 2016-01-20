@@ -24,6 +24,9 @@ class ApiController extends Controller {
 		return response()->json('success',200);
 	}
 
+	public function login(){
+		return response()->json('success',200);
+	}
 
 	public function get_foursquare()
 	{
