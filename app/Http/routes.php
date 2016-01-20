@@ -80,3 +80,9 @@ Route::post('login?token=gokigoks', ['middleware' => 'cors', function()
 **/
 
 Route::get('get/hotels', 'ApiController@get_hotels');
+
+Route::get('pingServer',function(){
+
+    return response()->json('server up',200);
+
+});
