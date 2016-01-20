@@ -15,7 +15,7 @@ class CreateActivitiesTable extends Migration {
 		Schema::create('activities', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('day_id');
+			$table->integer('day_id')->unsigned();
 			$table->time('start_time');
 			$table->time('end_time');
 			$table->enum('type',array('spot','eat','transport'));
