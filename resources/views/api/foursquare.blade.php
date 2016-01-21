@@ -9,7 +9,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label">area</label>
 			<div class="col-md-6">
-				<input type="text" class="form-control" name="origin" value="{{ old('origin') }}">
+				<input type="text" class="form-control" name="area" value="{{ old('area') }}">
 			</div>
 		</div>
 						
