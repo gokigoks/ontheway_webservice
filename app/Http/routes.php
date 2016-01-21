@@ -92,6 +92,15 @@ Route::get('pingServer',['middleware' => 'cors', function(){
 
 }]);
 
+Route::post('pingServer',['middleware' => 'cors', function(){
+    /*
+    *   This is a test route
+    *
+    **/
+    return response()->json('server up',200);
+
+}]);
+
 Route::group(['prefix'=>'api'], function(){
     
     header('Access-Control-Allow-Origin' , '*');         
