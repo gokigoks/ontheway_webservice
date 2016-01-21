@@ -12,6 +12,13 @@ class CreateIterinaryUserTable extends Migration {
 	 */
 	public function up()
 	{	
+		/**
+		 * NAA DRE ANG START DATE UG STATUS SA TRIP
+		 * @param type 'iterinary_user' 
+		 * @param function(Blueprint $table 
+		 * @return type
+		 */
+
 		Schema::create('iterinary_user', function(Blueprint $table)
 		{	
 			$table->integer('user_id')->unsigned();

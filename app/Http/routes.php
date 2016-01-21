@@ -101,7 +101,7 @@ Route::post('pingServer',['middleware' => 'cors', function(){
 
 }]);
 
-Route::group(['prefix'=>'api'], function(){
+Route::group(['prefix'=>'api', 'middleware' => 'cors'], function(){
     
     header('Access-Control-Allow-Origin' , '*');         
     header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');

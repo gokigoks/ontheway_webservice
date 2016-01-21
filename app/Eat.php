@@ -8,7 +8,7 @@ class Eat extends Model {
 
 
 	public function activity(){
-		
+		return $this->belongsToMany('App\Activity');
 	}
-
+	
 }

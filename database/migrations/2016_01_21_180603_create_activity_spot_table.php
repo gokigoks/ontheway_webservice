@@ -14,8 +14,18 @@ class CreateActivitySpotTable extends Migration {
 	{
 		Schema::create('activity_spot', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
+			$table->integer('activity_id')->unsigned();
+			$table->integer('spot_id')->unsigned();
+			
+			$table->foreign('activity_id')
+			->references('id')
+			->on('activities')
+			->onDelete('cascade');
+
+			$table->foreign('spot_id')
+			->references('id')
+			->on('spots')
+			->onDelete('cascade');
 		});
 	}
 

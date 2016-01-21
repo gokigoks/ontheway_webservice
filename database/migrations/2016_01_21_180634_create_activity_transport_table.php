@@ -14,8 +14,18 @@ class CreateActivityTransportTable extends Migration {
 	{
 		Schema::create('activity_transport', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
+			$table->integer('activity_id')->unsigned();
+			$table->integer('transport_id')->unsigned();
+			
+			$table->foreign('activity_id')
+			->references('id')
+			->on('activities')
+			->onDelete('cascade');
+
+			$table->foreign('transport_id')
+			->references('id')
+			->on('transports')
+			->onDelete('cascade');
 		});
 	}
 
