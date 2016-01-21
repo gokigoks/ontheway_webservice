@@ -95,6 +95,8 @@ Route::get('pingServer',['middleware' => 'cors', function(){
 Route::group(['prefix'=>'api', 'middleware' => 'cors'], function(){
     Route::group(['prefix'=>'rome2rio'], function(){
         Route::post('search', 'ApiController@post_rome2rio');
+
+        Route::get('search', 'ApiController@get_rome2rio');
     });
     Route::group(['prefix'=>'foursquare'], function(){
         Route::post('search', 'ApiController@post_foursquare');
