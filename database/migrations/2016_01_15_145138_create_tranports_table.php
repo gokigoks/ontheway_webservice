@@ -29,7 +29,7 @@ class CreateTransportsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tranports');
+		Schema::drop('transports');
 	}
 
 }
