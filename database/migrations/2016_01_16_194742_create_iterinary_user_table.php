@@ -11,12 +11,13 @@ class CreateIterinaryUserTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{	
 		Schema::create('iterinary_user', function(Blueprint $table)
 		{	
 			$table->integer('user_id')->unsigned();
 			$table->integer('iterinary_id')->unsigned();
 			$table->dateTime('start_date');
+			$table->enum('status',array('planned','doing','done'));
 			$table->timestamps();
 
 			$table->foreign('user_id')

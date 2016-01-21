@@ -15,6 +15,8 @@ class CreateSegmentsTable extends Migration {
 		Schema::create('segments', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('origin_name');
+			$table->string('destination_name');
 			$table->string('segment_origin');
 			$table->string('segment_destination');
 			$table->integer('price');

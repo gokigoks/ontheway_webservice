@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller {
 
+	
+	
 	/**
-	 * Display a foursquare api call json response
-	 *
-	 * @return Response
+	 * get user function
+	 * 
+	 * @return json response
 	 */
 
 	public function get_users()
@@ -18,7 +20,12 @@ class ApiController extends Controller {
 		return response()->json(json_encode(App\User::all()),200);
 	}
 
-
+	/**
+	 * Get Hotels
+	 * 
+	 * @return hotel collection from database
+	 */	
+	
 	public function get_hotels()
 	{
 		return response()->json('success',200);
@@ -37,6 +44,7 @@ class ApiController extends Controller {
 	{	
 
 		$area = $request['area'];
+
 		$ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://api.foursquare.com/v2/venues/explore?near='.$area.'&oauth_token=1MZTZYIARGVDAGDQAHOVESDUR3P4OFZA2ABTIBESMJNNJM0T&v=20160106');
 
@@ -101,7 +109,8 @@ class ApiController extends Controller {
 	 * @return Response
 	 */
 	public function testAjax()
-	{	$input = \Request::input('token');
+	{	
+		$input = \Request::input('token');
 		$data = ['connection' => ' success', 'some data' => $input];
 		$data = json_encode($data);
 		return response()->json($data,200);

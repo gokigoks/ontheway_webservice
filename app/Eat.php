@@ -6,4 +6,9 @@ class Eat extends Model {
 
 	protected $table = 'eats';
 
+
+	public function activity(){
+		
+	}
+
 }

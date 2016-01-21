@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDaysTable extends Migration {
+class CreateStopTransportTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,17 +12,17 @@ class CreateDaysTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('days', function(Blueprint $table)
+		Schema::table('stop_transport', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->integer('iterinary_id')->unsigned();			
-			$table->integer('day_no')->unsigned();
-			$table->timestamps();
+			$table->integer('stop_id');
+			$table->integer('transport_id');
 
-			$table->foreign('iterinary_id')
+			$table->foreign('stop_id')
 			->references('id')
-			->on('iterinaries')
+			->on('stops')
 			->onDelete('cascade');
+
+
 		});
 	}
 
@@ -33,7 +33,10 @@ class CreateDaysTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('days');
+		Schema::table('stop_transport', function(Blueprint $table)
+		{
+			//
+		});
 	}
 
 }

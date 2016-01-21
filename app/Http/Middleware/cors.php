@@ -29,7 +29,7 @@ class cors {
                 ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With')
                 ->header('Access-Control-Max-Age', '28800');
         }
-
+        
         return response()->json('error connecting..', 403);
 	}
 

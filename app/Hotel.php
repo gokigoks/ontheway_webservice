@@ -6,6 +6,10 @@ class Hotel extends Model {
 
 	//
 	protected $table = 'hotels';
+	/**
+	 * $table  = database table name
+	 * @return type
+	 */
 
 	public function activity()
 	{

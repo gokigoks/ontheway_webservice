@@ -31,15 +31,13 @@ Route::get('test/api/dump', ['middleware' => 'cors', 'uses' => 'ApiController@te
 Route::get('test/api/users',['middleware' => 'cors', 'ApiConrtoller@get_users']);
 
 
-Route::post('login/user', ['middleware' => 'cors', 'uses' => 'ApiController@login']);
 
 Route::post('login', ['middleware' => 'cors', 'uses' => function()
 {       
         
     $credentials = array(
         'email' => Input::get('email'), 
-        'password' => Input::get('password'),
-            
+        'password' => Input::get('password'),            
     );
 
 
