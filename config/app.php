@@ -135,10 +135,12 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		
 
 		/*
 		 * Application Service Providers...
 		 */
+		'App\Providers\Rome2RioDataProvider',
 		'App\Providers\AppServiceProvider',
 		'App\Providers\BusServiceProvider',
 		'App\Providers\ConfigServiceProvider',

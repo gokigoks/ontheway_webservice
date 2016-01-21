@@ -20,7 +20,7 @@ class Rome2RioData
 
     }
 
-    public function getData()
+    public static function getData()
     {
         echo $this->data;
     }

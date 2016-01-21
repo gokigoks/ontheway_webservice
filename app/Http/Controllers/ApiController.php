@@ -97,7 +97,11 @@ class ApiController extends Controller {
         $data = curl_exec($ch);
 
         $data = json_decode($data);
-
+        // start debug
+        $helper = new \Rome2RioData($data);
+        $routes = $helper->getRoutes(1);
+        dd($routes);
+        //end debug
         return response()->json($data,200);
         dd($data,$ch);
         

@@ -117,3 +117,8 @@ Route::group(['prefix'=>'api', 'middleware' => 'cors'], function(){
         Route::post('search', 'ApiController@post_foursquare');
     });
 });
+
+Route::get('helperfile',function(){
+    $helper = \Rome2RioData::getData();
+
+});
