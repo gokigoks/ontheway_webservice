@@ -17,7 +17,7 @@ class CreateStopsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('kind');
-			$table->string('city');
+			$table->string('city')->nullable();
 			$table->string('pos');
 			$table->string('tips',200)->nullable();
 			$table->string('timezone');

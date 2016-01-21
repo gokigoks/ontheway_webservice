@@ -54,7 +54,7 @@ class ApiController extends Controller {
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-
+        
         $contents = curl_exec ($ch);
         $result = json_decode($contents);
 
