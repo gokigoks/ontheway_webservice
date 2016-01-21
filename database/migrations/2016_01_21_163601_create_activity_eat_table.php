@@ -12,7 +12,7 @@ class CreateActivityEatTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('activity_eat', function(Blueprint $table)
+		Schema::create('activity_eat', function(Blueprint $table)
 		{
 			$table->integer('activity_id')->unsigned();
 			$table->integer('eat_id')->unsigned();
@@ -36,10 +36,7 @@ class CreateActivityEatTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('activity_eat', function(Blueprint $table)
-		{
-			//
-		});
+		Schema::drop('activity_eat');
 	}
 
 }
