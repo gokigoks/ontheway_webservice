@@ -92,7 +92,13 @@ Route::get('pingServer',['middleware' => 'cors', function(){
 
 }]);
 
-Route::group(['prefix'=>'api', 'middleware' => 'cors'], function(){
+Route::group(['prefix'=>'api'], function(){
+    
+    header('Access-Control-Allow-Origin' , '*');         
+    header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
+    header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
+    header('Access-Control-Max-Age', '28800');
+
     Route::group(['prefix'=>'rome2rio'], function(){
         Route::post('search', 'ApiController@post_rome2rio');
 
