@@ -15,7 +15,7 @@ class CreateStopsTable extends Migration {
 		Schema::create('stops', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name')
+			$table->string('name');
 			$table->string('kind');
 			$table->string('city');
 			$table->string('pos');
