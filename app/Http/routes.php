@@ -92,11 +92,11 @@ Route::get('pingServer',['middleware' => 'cors', function(){
 
 }]);
 
-Route::group(['prefix'=>'api'],function(){
-Route::group(['prefix'=>'rome2rio'], function(){
-    Route::post('search', 'ApiController@post_rome2rio');
-});
-Route::group(['prefix'=>'foursquare'], function(){
-    Route::post('search', 'ApiController@post_foursquare');
-});
+Route::group(['prefix'=>'api', 'middleware' => 'cors'], function(){
+    Route::group(['prefix'=>'rome2rio'], function(){
+        Route::post('search', 'ApiController@post_rome2rio');
+    });
+    Route::group(['prefix'=>'foursquare'], function(){
+        Route::post('search', 'ApiController@post_foursquare');
+    });
 });
