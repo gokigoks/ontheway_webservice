@@ -97,14 +97,9 @@ class ApiController extends Controller {
         $data = curl_exec($ch);
 
         $data = json_decode($data);
-        // start debug
-        $helper = new \Rome2RioData($data);
-        $routes = $helper->getRoutes(1);
-        dd($routes);
-        //end debug
-        return response()->json($data,200);
-        dd($data,$ch);
         
+        return response()->json($data,200);
+                
         curl_close($ch);
 	}
 
@@ -119,6 +114,39 @@ class ApiController extends Controller {
 		$data = ['connection' => ' success', 'some data' => $input];
 		$data = json_encode($data);
 		return response()->json($data,200);
+	}
+
+	public function test_helper(Request $request)
+	{
+		/**
+         * $origin and $destination pwede ra e static
+         * tang tanga lang ang parameter na $request
+         */
+        $origin = $request['origin'];
+        $destination  = $request['destination'];
+        /**
+         * $url = API url
+         * kani ray ilisi earl
+         */
+        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $data = curl_exec($ch);
+
+        $data = json_decode($data);
+        // start debug
+        $routes = \Rome2RioData::getRoutes($data,1);    	
+    	$segments = \Rome2RioData::getSegments($routes);
+        dd($segments);
+        //end debug
+        return response()->json($data,200);
+        dd($data,$ch);
+        
+        curl_close($ch);
 	}
 
 	/**
