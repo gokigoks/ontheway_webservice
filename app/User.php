@@ -35,7 +35,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function iterinaries()
 	{
-		return $this->hasMany('App\Iterinary');
+		return $this->belongsToMany('App\Iterinary');
 	}
 	/**
 	 * user interest relationships
@@ -46,4 +46,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Interest');
 	}
 
+	
 }

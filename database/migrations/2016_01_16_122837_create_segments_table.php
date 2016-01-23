@@ -15,6 +15,7 @@ class CreateSegmentsTable extends Migration {
 		Schema::create('segments', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('route_id')->unsigned();
 			$table->string('origin_name');
 			$table->string('destination_name');
 			$table->string('segment_origin');
@@ -24,6 +25,11 @@ class CreateSegmentsTable extends Migration {
 			$table->integer('duration');
 			$table->string('mode');
 			$table->timestamps();
+
+			$table->foreign('route_id')
+			->references('id')
+			->on('routes')
+			->onDelete('cascade');
 		});
 	}
 

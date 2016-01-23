@@ -38,10 +38,7 @@ class CreateRatingUserTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('rating_user', function(Blueprint $table)
-		{
-			//
-		});
+		Schema::drop('rating_user');
 	}
 
 }

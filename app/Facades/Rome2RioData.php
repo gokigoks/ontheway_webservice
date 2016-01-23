@@ -43,7 +43,7 @@ class Rome2RioData extends Facade
     		return $data->routes;
     	}
     }
-    
+
     /**
      * Get Segments Function
      * @param index object | default NULL
@@ -80,9 +80,16 @@ class Rome2RioData extends Facade
     		//eturn $data->indicativePrice->nativePrice;
     	}
     	if(property_exists($data, 'nativePrice'))
-    }
-		
+    	{
+    		return $data->nativePrice;
+    	}
+    	if()
 
+    }
+
+	public static function 
+		
+	
 
     public function getStops()
     {		

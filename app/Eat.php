@@ -8,7 +8,12 @@ class Eat extends Model {
 
 
 	public function activity(){
-		return $this->belongsToMany('App\Activity');
+		return $this->morphMany('App\Activity','typable');
 	}
 	
+	public function ratings()
+	{
+		return $this->morphMany('App\Rating','ratingable')
+	}
+
 }

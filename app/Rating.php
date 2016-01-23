@@ -5,19 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 class Rating extends Model {
 
 	//
-	public function eats()
+	public function ratingable()
 	{
-		return $this->query->where('type','=','eat');
-	}
-
-	public function hotels()
-	{
-		return $this->query->where('type','=','hotel');
-	}
-
-	public function spots()
-	{
-		return $this->query->where('type','=','spot');
+		return $this->morphTo();
 	}
 	
 	public function user()

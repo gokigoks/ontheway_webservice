@@ -16,7 +16,7 @@ class CreateIterinaryUserTable extends Migration {
 		 * NAA DRE ANG START DATE UG STATUS SA TRIP
 		 * @param type 'iterinary_user' 
 		 * @param function(Blueprint $table 
-		 * @return type
+		 * @return void
 		 */
 
 		Schema::create('iterinary_user', function(Blueprint $table)

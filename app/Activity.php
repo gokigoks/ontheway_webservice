@@ -12,12 +12,12 @@ class Activity extends Model {
 	 */
 	public function day()
 	{
-		return $this->hasMany('App\Day');
+		return $this->belongsTo('App\Day');
 	}
 
-	public function eats()
+	public function typable()
 	{
-		return $this->hasMany('App\Eats');
+		return $this->morphTo();
 	}
 
 }

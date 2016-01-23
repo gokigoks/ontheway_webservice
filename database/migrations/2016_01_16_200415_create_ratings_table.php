@@ -17,9 +17,10 @@ class CreateRatingsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->enum('value',array(1,2,3,4,5));
-			$table->enum('type',array('eat','spot','hotel','transport'));
-			$table->integer('type_id')->unsigned();
+			$table->integer('ratingable_id')->unsigned();
+			$table->string('ratingable_type');
 			$table->timestamps();
+			
 			$table->foreign('user_id')
 			->references('id')
 			->on('users')

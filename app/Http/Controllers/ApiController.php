@@ -20,6 +20,13 @@ class ApiController extends Controller {
 		return response()->json(json_encode(App\User::all()),200);
 	}
 
+	public function foursquare()
+	{
+		$data = \App\Facades\FourSquareData::getData();
+
+		dd($data);
+	}
+
 	/**
 	 * Get Hotels
 	 * 
@@ -97,7 +104,7 @@ class ApiController extends Controller {
         $data = curl_exec($ch);
 
         $data = json_decode($data);
-        
+        dd($data,$ch);
         return response()->json($data,200);
                 
         curl_close($ch);
@@ -116,7 +123,12 @@ class ApiController extends Controller {
 		return response()->json($data,200);
 	}
 
-	public function test_helper(Request $request)
+	/**
+	 * test helper file with rome2rio dataset
+	 * @param Request $request 
+	 * @return json response status 200
+	 */
+	public function test_rome2rio_helper(Request $request)
 	{
 		/**
          * $origin and $destination pwede ra e static
@@ -148,6 +160,8 @@ class ApiController extends Controller {
         
         curl_close($ch);
 	}
+
+	
 
 	/**
 	 * Display the specified resource.

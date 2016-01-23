@@ -13,7 +13,7 @@ class Hotel extends Model {
 
 	public function activity()
 	{
-		$this->belongsTo('App\Activity');
+		$this->morphMany('App\Activity','typable');
 	}
 
 			

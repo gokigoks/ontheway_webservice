@@ -140,6 +140,7 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
+		'App\Providers\FourSquareDataServiceProvider',
 		'App\Providers\Rome2RioDataProvider',
 		'App\Providers\AppServiceProvider',
 		'App\Providers\BusServiceProvider',
@@ -195,6 +196,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Rome2RioData' => 'App\Facades\Rome2RioData',
+		'FourSquareData' => 'App\Facades\FourSquareData',
 
 	],
 

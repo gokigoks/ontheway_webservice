@@ -18,10 +18,20 @@ class CreateActivitiesTable extends Migration {
 			$table->integer('day_id')->unsigned();
 			$table->time('start_time');
 			$table->time('end_time');
-			$table->enum('type',array('spot','eat','transport'));
-			$table->integer('type_id')->unsigned();
-			$table->timestamps();
 
+			/**
+			 * required for morph to many
+			 * 
+			 * */
+			$table->string('typable_type');
+			$table->integer('typable_id')->unsigned();
+			/**
+			 * syntax : to get activity type
+			 *  $activity->typable 
+			 * 
+			**/
+			$table->timestamps();
+			
 			$table->foreign('day_id')
 			->references('id')
 			->on('days')

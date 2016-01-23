@@ -120,4 +120,9 @@ Route::group(['prefix'=>'api', 'middleware' => 'cors'], function(){
 /*
 *   test helper classes
 */
-Route::get('helperfile','ApiController@test_helper');
+Route::get('helperfile/rome2rio', 'ApiController@test_rome2rio_helper');
+Route::get('helperfile/foursquare', 'ApiController@foursquare');
+
+
+//
+Route::get('populate/rome2rio/routes','TestController@populateRoutes');

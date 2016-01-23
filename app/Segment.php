@@ -11,4 +11,8 @@ class Segment extends Model {
 	{
 		return $this->hasMany('App\Stop');
 	}
+
+	public function route(){
+		return $this->belongsTo('App\Route');
+	}
 }
