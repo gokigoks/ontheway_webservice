@@ -32,7 +32,7 @@ class FourSquareData extends Facade
 
     public static function getNearest($area)
     {   
-        
+
     }
 
     public static function getWithLongLat($pos)
@@ -40,6 +40,7 @@ class FourSquareData extends Facade
 
     }   
 
+    
 
 
 }

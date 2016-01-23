@@ -17,8 +17,19 @@ class CreateTranportsTable extends Migration {
 			$table->increments('id');
 			$table->string('origin');
 			$table->string('destination');
+			$table->integer('route_id')->unsigned()->nullable();
 			$table->string('tips',200)->nullable();
 			$table->timestamps();
+
+			
+		});
+
+		Schema::table('iterinaries', function($table)
+		{
+		   $table->foreign('transport_id')
+			->references('id')
+			->on('transports')
+			->onDelete('cascade');
 		});
 	}
 

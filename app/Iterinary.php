@@ -11,6 +11,15 @@ class Iterinary extends Model {
 
 	protected $table = 'iterinaries';
 
+	/**
+	 * Mass assignable model property
+	 * 
+	 * @var Array
+	 */
+	protected $fillable = ['transport_id', 'pax','origin','destination'];
+
+
+	//
 	public function user()
 	{
 		return $this->belongsToMany('App\User');
@@ -19,6 +28,11 @@ class Iterinary extends Model {
 	public function days()
 	{
 		return $this->hasMany('App\Day');
+	}
+	
+	public function transport()
+	{
+		return $this->hasOne('App\Transport');
 	}
 	
 }

@@ -16,15 +16,18 @@ class CreateSegmentsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('route_id')->unsigned();
+			$table->integer('sequence')->unsigned();
 			$table->string('origin_name');
 			$table->string('destination_name');
-			$table->string('segment_origin');
-			$table->string('segment_destination');
+			$table->string('origin_pos');
+			$table->string('destination_pos');
 			$table->integer('price');
 			$table->integer('distance');
 			$table->integer('duration');
 			$table->string('mode');
 			$table->timestamps();
+
+			$table->unique(array('route_id','sequence'));
 
 			$table->foreign('route_id')
 			->references('id')

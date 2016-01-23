@@ -15,10 +15,13 @@ class CreateIterinariesTable extends Migration {
 		Schema::create('iterinaries', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('pax');
 			$table->string('destination');
 			$table->string('origin');
+			$table->integer('pax');			
+			$table->integer('transport_id')->unsigned()->nullable();
 			$table->timestamps();
+
+			
 		});
 	}
 

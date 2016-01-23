@@ -19,6 +19,8 @@ class CreateDaysTable extends Migration {
 			$table->integer('day_no')->unsigned();
 			$table->timestamps();
 
+			$table->unique(array('iterinary_id','day_no'));
+
 			$table->foreign('iterinary_id')
 			->references('id')
 			->on('iterinaries')

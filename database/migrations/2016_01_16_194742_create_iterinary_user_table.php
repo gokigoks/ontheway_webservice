@@ -23,10 +23,11 @@ class CreateIterinaryUserTable extends Migration {
 		{	
 			$table->integer('user_id')->unsigned();
 			$table->integer('iterinary_id')->unsigned();
+			$table->integer('travel_id')->unsigned();
 			$table->dateTime('start_date');
 			$table->enum('status',array('planned','doing','done'));
 			$table->timestamps();
-
+			
 			$table->foreign('user_id')
 			->references('id')
 			->on('users')
