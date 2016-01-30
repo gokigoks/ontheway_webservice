@@ -162,9 +162,9 @@ Route::get('gmaps/getairport',function(){
 });
 
 
-Route::get('api/recomendee/getrecommend','RecommenderController@get_recommendation');
-Route::get('api/addspots','RecommenderController@get_recommendation');
-Route::get('api/getrecommend','RecommenderController@get_recommendation');
+Route::get('api/recomendee/getrecommend','RecommenderController@get_recommend');
+Route::get('api/addspots','RecommenderController@add_spots');
+Route::get('api/getrecommend','RecommenderController@get_recommend');
 
 
 
