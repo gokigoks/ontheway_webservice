@@ -12,7 +12,7 @@ class RecommenderController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getrecommend(Request $request)
+	public function get_recommend(Request $request)
 	{	
 		json_encode($request);
 		return response()->json($request,'200');
