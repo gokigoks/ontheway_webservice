@@ -25,7 +25,7 @@ class RecommenderController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return response()->json('success',200);
 	}
 
 	/**
