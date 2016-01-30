@@ -1,8 +1,17 @@
 #!/bin/bash
-# This deploy hook gets executed after dependencies are resolved and the
-# build hook has been run but before the application has been started back
-# up again.  This script gets executed directly, so it could be python, php,
-# ruby, etc.
+
+# The pre_start_cartridge and pre_stop_cartridge hooks are *SOURCED*
+# immediately before (re)starting or stopping the specified cartridge.
+# They are able to make any desired environment variable changes as
+# well as other adjustments to the application environment.
+
+# The post_start_cartridge and post_stop_cartridge hooks are executed
+# immediately after (re)starting or stopping the specified cartridge.
+
+# Exercise caution when adding commands to these hooks.  They can
+# prevent your application from stopping cleanly or starting at all.
+# Application start and stop is subject to different timeouts
+# throughout the system.
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
@@ -61,32 +70,3 @@ else
     set_env_var 'DB_DRIVER' $DB_DRIVER $OPENSHIFT_HOMEDIR/.env/user_vars
   fi
 fi
-
-echo 1>&2
-echo "Migrating storage and log directories..." 1>&2
-echo 1>&2
-# If this is initial installation, copy the default storage directory
-# from official Laravel installation and remove the log directory
-#
-if [ ! -d ${OPENSHIFT_DATA_DIR}storage ]; then
-  mv ${OPENSHIFT_REPO_DIR}storage ${OPENSHIFT_DATA_DIR}storage
-  rm -rf ${OPENSHIFT_DATA_DIR}storage/logs
-fi
-
-# Create symlink to new storage directory location
-ln -sf ${OPENSHIFT_DATA_DIR}storage   ${OPENSHIFT_REPO_DIR}storage
-
-# Create a symlink to the new log directory location
-ln -sf ${OPENSHIFT_LOG_DIR}   ${OPENSHIFT_DATA_DIR}storage/logs
-
-# Use repository .env
-if [  -f ${OPENSHIFT_REPO_DIR}.openshift/.env ]; then
-  cp -f ${OPENSHIFT_REPO_DIR}.openshift/.env ${OPENSHIFT_REPO_DIR}/.env
-fi
-
-echo 1>&2
-echo "Running 'php artisan migrate --force'..." 1>&2
-echo 1>&2
-pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-php artisan migrate --force
-popd > /dev/null
