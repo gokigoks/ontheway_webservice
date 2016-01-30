@@ -32,4 +32,45 @@ class Segment extends Model {
 	public function route(){
 		return $this->belongsTo('App\Route');
 	}
+
+	public function flight_iterinaries()
+	{
+		if($this->attributes['mode'] == "flight")
+		{
+			return $this->hasMany('App\FlightIterinary');
+		}
+		else
+		{
+			return "no flights";
+		}
+	}
+
+	/**
+	 * this model has different associated models depending on 
+	 * mode property of current object
+	 * 
+	 * @return Related Model
+	 */
+	public function hops(){
+		/**
+		 *	Access the current model's attributes and check the mode
+		 *  for the current Segment and returns an appropriate relationship
+		 * 
+		 * 
+		 * @param   $paramname description
+		 */
+		if($this->attributes['mode'] == 'bus'){
+
+			return $this->hasMany('App\BusHop');
+		}
+		if($this->attributes['mode'] == 'ferry')
+		{
+			return $this->hasMany('App\FerryHop');
+		}
+		if($this->attributes['mode'] == 'train');
+		{
+			return $this->hasMany('App\TrainHop');
+		}
+
+	}
 }

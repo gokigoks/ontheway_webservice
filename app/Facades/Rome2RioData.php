@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Facade;
 class Rome2RioData extends Facade
 {	
 	protected $data;
-    //protected static function getFacadeAccessor() { return 'Rome2RioData'; }
+    protected static function getFacadeAccessor() { return 'Rome2RioData'; }
 
 	public function __construct($data){
 		$this->data = $data;
@@ -66,28 +66,80 @@ class Rome2RioData extends Facade
     }
 
     /**
-     * strip price from rome2rio dataset
-     * @param type $data rome2rio json response object
-     * @param type|null $index 
-     * @return type
+     * purpose ani nga function kay pra ma kuha ang price
+     * most objects in rome2rio has indicative price sub array
+     * get native price if existing or get price then multiply by USD value.
+     * @return integer
      */
     public static function getRome2RioPrice($data, $index = null)
-    {
+    {   
     	if(property_exists($data, 'indicativePrice'))
     	{	
+            ///////////
     		$price = $data->indicativePrice;	
-    		return (property_exists($price, 'nativePrice') ? $data->nativePrice : ($data->price * 42);
+    		return (property_exists($price, 'nativePrice')) ? "datanativePrice" : ($price->currency == "USD" ? $price->price * 42 : $price);
     		//eturn $data->indicativePrice->nativePrice;
     	}
     	if(property_exists($data, 'nativePrice'))
     	{
     		return $data->nativePrice;
     	}
-    	if()
+    	
 
     }
 
-	public static function 
+	public static function call($o = null,$d = null)
+    {
+
+        $origin = ($o!=null) ? $o :'cebu' ;
+
+        $destination  = ($d!=null) ? $d :'manila' ;
+
+        /**
+         * $url = API urls
+         * kani ray ilisi earl
+         */
+        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $data = curl_exec($ch);
+
+        $data = json_decode($data);
+
+
+        //close
+        curl_close($ch);
+       
+        return $data;                    
+
+    }
+
+    public static function convertToFlightSegment($route,$segment){
+
+       foreach ($route->stops as $stop) {
+
+           if(property_exists($stop, 'code'))
+           {   
+               //checks if this stop code matches the origin code
+               if($stop->code == $segment->sCode)
+               {   //then adds the property to the segment
+                   $segment->sPos = $stop->pos;
+                   $segment->sName = $stop->name;
+               }
+               if($stop->code == $segment->tCode)
+               {
+                   $segment->tPos = $stop->pos;
+                   $segment->tName = $stop->name;
+               }
+           }            
+       }
+       //new segment
+       return $segment;
+    }
 		
 	
 

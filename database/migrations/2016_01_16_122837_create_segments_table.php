@@ -22,11 +22,12 @@ class CreateSegmentsTable extends Migration {
 			$table->string('origin_pos');
 			$table->string('destination_pos');
 			$table->integer('price');
+			$table->string('path')->nullable();
 			$table->integer('distance');
 			$table->integer('duration');
 			$table->string('mode');
 			$table->timestamps();
-
+			
 			$table->unique(array('route_id','sequence'));
 
 			$table->foreign('route_id')
@@ -42,8 +43,8 @@ class CreateSegmentsTable extends Migration {
 	 * @return void
 	 */
 	public function down()
-	{
+	{	
 		Schema::drop('segments');
-	}
-
+	}	
+		
 }

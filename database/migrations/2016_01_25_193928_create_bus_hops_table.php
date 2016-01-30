@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFlightIterinariesTable extends Migration {
+class CreateBusHopsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,14 +11,23 @@ class CreateFlightIterinariesTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{ 
-		Schema::create('flight_iterinaries', function(Blueprint $table)
+	{
+		Schema::create('bus_hops', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('segment_id')->unsigned();
-			$table->integer('days')->nullable();
+			$table->string('sName')->nullable();
+			$table->string('tName')->nullable();
+			$table->string('sPos')->nullable();
+			$table->string('tPos')->nullabe();
+			$table->integer('frequency')->nullable();
+			$table->integer('duration');
 			$table->integer('price');
+			$table->string('agency')->nullable();
+		
+
 			$table->timestamps();
+
 
 			$table->foreign('segment_id')
 			->references('id')
@@ -34,7 +43,7 @@ class CreateFlightIterinariesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('flight_iterinaries');
+		Schema::drop('bus_hops');
 	}
 
 }

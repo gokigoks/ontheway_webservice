@@ -19,6 +19,6 @@ class Interests extends Model {
 		return $this->belongsToMany('App\User');
 	}
 
-
+	
 
 }

@@ -11,6 +11,7 @@ class Transport extends Model {
 	 */
 	protected $table = 'transports';
 
+	
 
 	public function routes()
 	{	
@@ -27,7 +28,7 @@ class Transport extends Model {
 
 	}
 
-	
+
 	public function iterinary()
 	{
 		return $this->belongsTo('App\Iterinary');

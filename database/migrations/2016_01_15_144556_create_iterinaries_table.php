@@ -16,12 +16,16 @@ class CreateIterinariesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('destination');
-			$table->string('origin');
-			$table->integer('pax');			
-			$table->integer('transport_id')->unsigned()->nullable();
+			$table->string('origin');	
+			$table->integer('creator_id')->unsigned(); // reference original creator of iterinary
+			$table->integer('route_id')->unsigned()->nullable();
 			$table->timestamps();
 
-			
+
+			$table->foreign('creator_id')
+			->references('id')
+			->on('users')
+			->onDelete('cascade');
 		});
 	}
 

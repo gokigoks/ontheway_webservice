@@ -14,14 +14,19 @@ class Route extends Model {
 	 * 
 	 */
 	protected $fillable = ['name' ,'distance', 'duration', 'price'];
-
+	
 	public function segments()
 	{
-		return $this->hasMany('App\Segments');
+		return $this->hasMany('App\Segment');
 	}
 
 	public function transport()
 	{
 		return $this->belongsTo('App\Transport');
+	}
+
+	public function iterinary()
+	{
+		return $this->belongsTo('App\Iterinary');
 	}
 }

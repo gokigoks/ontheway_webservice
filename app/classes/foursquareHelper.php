@@ -17,7 +17,7 @@ class FourSquareData
      */
     public function __construct()
     {
-
+        
     }
 
     public static function getData()

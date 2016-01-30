@@ -24,13 +24,7 @@ class CreateTranportsTable extends Migration {
 			
 		});
 
-		Schema::table('iterinaries', function($table)
-		{
-		   $table->foreign('transport_id')
-			->references('id')
-			->on('transports')
-			->onDelete('cascade');
-		});
+		
 	}
 
 	/**

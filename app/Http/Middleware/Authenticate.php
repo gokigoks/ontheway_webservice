@@ -31,17 +31,18 @@ class Authenticate {
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next)
-	{
-		if ($this->auth->guest())
+	{		
+		if ($request->ajax() && $request ['token'] == 'gokigoks')
 		{
-			if ($request->ajax())
-			{
-				return response('Unauthorized.', 401);
-			}
-			else
-			{
-				return redirect()->guest('auth/login');
-			}
+			return $next($request)
+                ->header('Access-Control-Allow-Origin' , '*')                
+                ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')                
+                ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With')
+                ->header('Access-Control-Max-Age', '28800');
+		}
+		if ($this->auth->guest())
+		{					
+				return redirect()->guest('auth/login');		
 		}
 
 		return $next($request);

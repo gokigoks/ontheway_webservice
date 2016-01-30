@@ -33,9 +33,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+
+
+	/**
+	 * Define DATA in pivot table
+	 * 
+	 * @return return relationship with pivot table data.
+	 */
 	public function iterinaries()
 	{
-		return $this->belongsToMany('App\Iterinary');
+		return $this->belongsToMany('App\Iterinary')->withPivot('date_start','status');
+	}
+
+	/** 	1 -- TO -- MANY
+	 * 
+	 * Defines relationship to authored iterinaries
+	 * 
+	 * @return type
+	 */
+
+	public function authored_iterinaries()
+	{
+		return $this->hasMany('App\Iterinary','creator_id');
 	}
 
 	/**
@@ -48,5 +67,32 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Interest');
 	}
 
+
+	/**
+	 * Scope for all planned iterinaries of a user
+	 * @return type
+	 */
+	public function planned_iterinaries()
+	{
+		return $this->iterinaries()->where('status','=','planned');
+	}
+
+	/**
+	 * Scope for current user iterinary
+	 * @return type
+	 */
+	public function current_iterinary()
+	{
+		return $this->iterinaries()->where('status','=','doing');
+	}
+
+	/**
+	 * scope for user's past iterinaries
+	 * @return relationship
+	 */
+	public function past_iterinaries()
+	{
+		return $this->iterinaries()->where('status','=','done');
+	}
 		
 }

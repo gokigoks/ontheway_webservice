@@ -30,6 +30,11 @@ class Activity extends Model {
 		return $this->belongsTo('App\Day');
 	}
 
+	/**
+	 * Define Morphing Relationship
+	 * @param uses typable_type and typable_id
+	 * @return Morphed Relationship
+	 */
 	public function typable()
 	{
 		return $this->morphTo();

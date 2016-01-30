@@ -9,6 +9,7 @@
 		"nesbot/carbon": "~1.14"
 	},
 	"require-dev": {
+		"fzaninotto/faker": "v1.3.0",
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1"
 	},

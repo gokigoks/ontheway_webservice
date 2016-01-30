@@ -20,9 +20,17 @@ class CreateRoutesTable extends Migration {
 			$table->integer('duration');
 			$table->integer('price');			
 			$table->timestamps();
-		});
+			});
 
 		Schema::table('transports', function($table)
+		{
+		   $table->foreign('route_id')
+			->references('id')
+			->on('routes')
+			->onDelete('cascade');
+		});
+
+		Schema::table('iterinaries', function($table)
 		{
 		   $table->foreign('route_id')
 			->references('id')

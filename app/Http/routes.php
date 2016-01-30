@@ -19,20 +19,35 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::group(['middleware' => 'auth'], function(){
 
-Route::get('test/foursquare','ApiController@get_foursquare');
-Route::get('test/rome2rio','ApiController@get_rome2rio');
+    Route::get('test/foursquare','ApiController@get_foursquare');
+    Route::get('test/rome2rio','ApiController@get_rome2rio');
 
-Route::post('test/foursquare','ApiController@post_foursquare');
-Route::post('test/rome2rio','ApiController@post_rome2rio');
+    Route::post('test/foursquare','ApiController@post_foursquare');
+    Route::post('test/rome2rio','ApiController@post_rome2rio');
 
-Route::get('test/api/dump', ['middleware' => 'cors', 'uses' => 'ApiController@testAjax']);
+    Route::get('test/api/dump', 'ApiController@testAjax');
 
-Route::get('test/api/users',['middleware' => 'cors', 'ApiConrtoller@get_users']);
+    Route::get('test/api/users', 'ApiController@get_users');
+});
 
 
+Route::get('user/logout', ['middleware' => 'cors', 'uses' => function()
+{
 
-Route::post('login', ['middleware' => 'cors', 'uses' => function()
+   if(Auth::check()){
+        Auth::logout();
+        return response()->json('user logged out..',200);
+   }
+   else
+   {
+        return response()->json('user wasnt even logged in, dummy!',401);
+   }
+   
+}]);
+
+Route::post('user/login', ['middleware' => 'cors', 'uses' => function()
 {       
         
     $credentials = array(
@@ -45,36 +60,16 @@ Route::post('login', ['middleware' => 'cors', 'uses' => function()
     {   
         $user_object = json_encode(Auth::user());
         return Response::json($user_object,200);
-        //return Redirect::to_action('user@index'); you'd use this if it's not AJAX request
-    }else{
-        return Response::json("error.. bad credentials", 400);
-        /*return Redirect::to_action('home@login')
-        -> with_input('only', array('new_username')) 
-        -> with('login_errors', true);*/
+        
     }
+    else{
+        
+        return Response::json("error.. bad credentials", 400);
+       
+    }
+
 }]);
-// Route::group(['middleware' => 'cors'], function(){
 
-
-//     // Authentication routes...
-//     // Route::post('auth/login', function(){ 
-    
-//     //     return response()->json('hello',200);
-    
-//     // });
-//     //Route::get('auth/login', 'Auth\AuthController@getLogin');
-//     Route::post('auth/login', 'Auth\AuthController@postLogin');
-//     Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-//     // Registration routes...
-//     Route::get('auth/register', 'Auth\AuthController@getRegister');
-//     Route::post('auth/register', 'Auth\AuthController@postRegister');
-//     // password route
-//     Route::get('user/login','SessionController@getLogin');
-//     Route::post('user/login','SessionController@doLogin');
-
-
-// });
 
 /*
 *   API SERVICE ROUTES
@@ -96,8 +91,14 @@ Route::post('pingServer',['middleware' => 'cors', function(){
     /*
     *   This is a test route
     *
-    **/
-    return response()->json('server up',200);
+    **/ 
+
+    $credentials = array(
+        'email' => Input::get('email'), 
+        'password' => Input::get('password'),            
+    );
+
+    return response()->json($credentials,200);
 
 }]);
 
@@ -126,3 +127,70 @@ Route::get('helperfile/foursquare', 'ApiController@foursquare');
 
 //
 Route::get('populate/rome2rio/routes','TestController@populateRoutes');
+
+
+//test route for getting airport long lat using area codes
+Route::get('rome2rio/autocomplete', function()
+{
+    $url = "http://free.rome2rio.com/api/1.2/json.Autocomplete?key=&query=";
+});
+
+Route::get('gmaps/getairport',function(){
+
+    //http://maps.googleapis.com/maps/api/geocode/json?address=airport%20Dubai&sensor=false
+
+        $origin = 'CEB';
+        $destination  = 'MNL';
+        /**
+         * $url = API url
+         * kani ray ilisi earl
+         */
+        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $data = curl_exec($ch);
+
+        $data = json_decode($data);
+        dd($data,$ch);
+        return response()->json($data,200);
+                
+        curl_close($ch);
+});
+
+
+Route::get('api/getrecommend','RecommenderController@get_recommendation');
+
+
+
+Route::get('rome2rio', function(){
+
+    $url = 'http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=Cebu&dName=Manila';
+    $content = file_get_contents($url);
+    $json = json_decode($content, true);
+
+    dd($json);
+});
+
+use Illuminate\Database\Seeder;
+use App\Spot;
+use Faker as Faker;
+
+Route::get('test/seed', function(){
+    DB::table('spots')->delete();
+        $faker = Faker\Factory::create();
+
+        for($i=0; $i<5;$i++){
+            $spot = new Spot;
+          $spot->place_name = $faker->streetName;
+          $spot->pos = $faker->latitude.",".$faker->longitude;
+          $spot->price = $faker->randomNumber(2);
+          $spot->tips = $faker->text(20);
+          $spot->save();
+      }
+});
+
+Route::post('user/iterinary','IterinaryController@create');

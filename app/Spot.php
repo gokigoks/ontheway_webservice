@@ -19,7 +19,7 @@ class Spot extends Model {
 	 * 
 	 * @return Array
 	 */
-	protected $fillable = ['place_name', 'pos', 'price', 'tips']
+	protected $fillable = ['place_name', 'pos', 'price', 'tips'];
 
 	public function activity(){
 		$this->morphMany('App\Activity','typable');

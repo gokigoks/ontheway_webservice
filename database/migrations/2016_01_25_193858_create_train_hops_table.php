@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHopsTable extends Migration {
+class CreateTrainHopsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,20 +12,20 @@ class CreateHopsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('hops', function(Blueprint $table)
+		Schema::create('train_hops', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('segment_id')->unsigned();
-			$table->string('source_area_code')->nullable();
 			$table->string('url')->nullable();
-			$table->string('target_area_code')->nullable();
-			$table->string('source_terminal')->nullable();
-			$table->string('target_terminal')->nullabe();
-			$table->string('sTime');
-			$table->string('tTime');
-			$table->string('flight_no')->nullable();
-			$table->string('airline_code')->nullable();
-			$table->integer('duration');
+			$table->string('sName')->nullable();
+			$table->string('tName')->nullable();
+			$table->string('sPos')->nullable();
+			$table->string('tPos')->nullabe();
+			$table->string('duration')->nullable();
+			$table->integer('price')->nullable();
+			$table->integer('frequency')->nullable();
+			$table->string('train_agency')->nullable();			
+		
 
 			$table->timestamps();
 
@@ -44,7 +44,7 @@ class CreateHopsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('hops');
+		Schema::drop('train_hops');
 	}
 
 }

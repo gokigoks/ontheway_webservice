@@ -18,6 +18,7 @@ class Day extends Model {
 	 */
 	protected $fillable = ['iterinary_id','day_no'];
 
+	
 	public function iterinary()
 	{
 		return $this->belongsTo('App\Iterinary');

@@ -12,6 +12,7 @@ class Rating extends Model {
 	protected $table = 'ratings';
 
 	protected $fillable = ['user_id', 'value', 'ratingable_id', 'ratingable_type'];
+	
 	//
 	public function ratingable()
 	{
