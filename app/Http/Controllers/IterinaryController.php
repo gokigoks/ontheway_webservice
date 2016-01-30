@@ -13,9 +13,36 @@ class IterinaryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function new(Request $request) 
 	{
-		//
+		$credentials = array(
+        'email' => Input::get('email'), 
+        'password' => Input::get('password'),            
+    	);
+
+    	$user_id = Input::get('user_id');
+    	$user = App\User::find($user_id);
+    	$withRoute = Input::get('withRoute');
+    	$origin = Input::get('origin');
+    	$destination = Input::get('destination');
+    	$iterinary = new Iterinary();
+    	$iterinary->creator_id = $user_id;
+    	$iterinary->origin = $origin;
+    	$iterinary->destination = $destination;
+    	$iterinary->save();
+    	
+
+    	if($iterinary->users()->save($user))
+    	{	
+    		if($)
+    		return response()->json('success',200);	
+    	}
+    	else
+    	{
+    		return response()->json('error saving',401);
+    	}
+    	
+
 	}
 
 	/**
@@ -23,30 +50,62 @@ class IterinaryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function get_planned()
 	{
-		
+		$user_id = Input::get('user_id');
+		$user = App\User::find($user_id);
+		$data = $user->planned_iterinaries()->get();
+		if($data->isEmpty())
+		{
+			return response()->json('empty',404);
+		}
+		else
+		{
+			return response()->json($data,200);
+		}
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Get past iterinaries
 	 *
 	 * @return Response
 	 */
-	public function store()
+
+	public function get_past()
 	{
-		//
+		$user_id = Input::get('user_id');
+		$user = App\User::find($user_id);
+		$data = $user->past_iterinaries()->get();
+		if($data->isEmpty())
+		{
+			return response()->json('empty',404);
+		}
+		else
+		{
+			return response()->json($data,200);
+		}
+
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Get current iterinary
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function get_current($id)
 	{
-		//
+		$user_id = Input::get('user_id');
+		$user = App\User::find($user_id);
+		$data = $user->current_iterinaries()->get();
+		if($data->isEmpty())
+		{
+			return response()->json('empty',404);
+		}
+		else
+		{
+			return response()->json($data,200);
+		}		
 	}
 
 	/**

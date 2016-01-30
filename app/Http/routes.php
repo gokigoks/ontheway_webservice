@@ -201,3 +201,12 @@ Route::get('user/iterinary/{id}','IterinaryController@getIterinary');
 Route::get('api/recomendee/getrecommend', ['middleware' => 'cors', 'uses' => 'RecommenderController@get_recommend']);
 Route::get('api/addspots',['middleware' => 'cors', 'uses' => 'RecommenderController@add_spots']);
 Route::get('api/getrecommend',['middleware' => 'cors', 'uses' => 'RecommenderController@get_recommend']);
+
+
+// ITERINARIES
+Route::post('api/iterinary/new',['middleware' => 'cors', 'uses' => 'IterinaryController@new']);
+Route::get('api/iterinary/planned',['middleware' => 'cors', 'uses' => 'IterinaryController@get_planned']);
+Route::get('api/iterinary/current',['middleware' => 'cors', 'uses' => 'IterinaryController@get_current']);
+Route::get('api/iterinary/past',['middleware' => 'cors', 'uses' => 'IterinaryController@get_past']);
+// END ITERINARIES
+

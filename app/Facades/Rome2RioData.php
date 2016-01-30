@@ -50,17 +50,19 @@ class Rome2RioData extends Facade
      * @return Object
      */
     public static function getSegments($data,$index = null)
-    {
-    	if(property_exists($data, 'segments') || $index != null)
+    {   
+    	if(isset($data->segments) && $index != null)
     	{	//dd('has segments');
     		return $data->segments[$index];
     	}
-    	if(!property_exists($data, 'segments') || $index )
+    	if(isset($data->segments) && $index == null)
     	{
     		return $data->segments;
     	}
     	else
     	{	//dd('nosegments');
+
+            dd($data->segments,$index);
     		return "error.. no segments";
     	}
     }

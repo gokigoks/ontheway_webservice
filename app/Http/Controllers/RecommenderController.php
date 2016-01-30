@@ -15,6 +15,38 @@ class RecommenderController extends Controller {
 	public function get_recommend(Request $request)
 	{	
 		$data = \Input::all();
+
+		/**
+         * $origin and $destination pwede ra e static
+         * tang tanga lang ang parameter na $request
+         */
+        $origin = \Input::get('origin');
+        $destination = \Input::get('destination');
+        /**
+         * $url = API url
+         * kani ray ilisi earl
+         */
+        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $data = curl_exec($ch);
+
+        $data = json_decode($data);
+        // start debug
+        $routes = \Rome2RioData::getRoutes($data,1);    	
+    	$segments = \Rome2RioData::getSegments($routes));
+        
+
+        //end debug
+        return response()->json($segments,200);
+        dd($data,$ch);
+        
+        curl_close($ch);
+
 		return response()->json([$request->all(),$data],'200');
 	}
 
