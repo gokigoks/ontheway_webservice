@@ -162,9 +162,6 @@ Route::get('gmaps/getairport',function(){
 });
 
 
-Route::get('api/recomendee/getrecommend','RecommenderController@get_recommend');
-Route::get('api/addspots','RecommenderController@add_spots');
-Route::get('api/getrecommend','RecommenderController@get_recommend');
 
 
 
@@ -200,3 +197,7 @@ Route::post('user/iterinary','IterinaryController@create');
 
 Route::get('user/iterinary/{id}','IterinaryController@getIterinary');
 
+
+Route::get('api/recomendee/getrecommend', ['middleware' => 'cors', 'uses' => 'RecommenderController@get_recommend']);
+Route::get('api/addspots',['middleware' => 'cors', 'uses' => 'RecommenderController@add_spots']);
+Route::get('api/getrecommend',['middleware' => 'cors', 'uses' => 'RecommenderController@get_recommend']);
