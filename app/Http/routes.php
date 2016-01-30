@@ -168,6 +168,7 @@ Route::get('api/getrecommend','RecommenderController@get_recommend');
 
 
 
+
 Route::get('rome2rio', function(){
 
     $url = 'http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=Cebu&dName=Manila';
@@ -196,3 +197,6 @@ Route::get('test/seed', function(){
 });
 
 Route::post('user/iterinary','IterinaryController@create');
+
+Route::get('user/iterinary/{id}','IterinaryController@getIterinary');
+

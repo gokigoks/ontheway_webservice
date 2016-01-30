@@ -24,7 +24,7 @@ class Activity extends Model {
 	 * 1 to many
 	 * @return relationship
 	 */
-
+	
 	public function day()
 	{
 		return $this->belongsTo('App\Day');
