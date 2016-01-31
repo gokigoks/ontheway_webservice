@@ -9,9 +9,9 @@ namespace App\Classes;
  */
 
 
-class FourSquareData
+class FoursquareHelper
 {
-    protected $data = "rome 2 rio data";
+    protected $data = "foursquare data";
     /**
      * Rome2RioData constructor.
      */
@@ -22,7 +22,7 @@ class FourSquareData
 
     public static function getData()
     {
-        echo $this->data;
+        echo 'hello';
     }
 
 

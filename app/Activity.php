@@ -24,7 +24,7 @@ class Activity extends Model {
 	 * 1 to many
 	 * @return relationship
 	 */
-	
+
 	public function day()
 	{
 		return $this->belongsTo('App\Day');
@@ -40,4 +40,7 @@ class Activity extends Model {
 		return $this->morphTo();
 	}
 
+	public function stop(){
+		return $this->belongsTo('App\Stop');
+	}	
 }

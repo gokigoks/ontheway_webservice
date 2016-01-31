@@ -142,12 +142,12 @@ return [
 		 */
 		'App\Providers\FourSquareDataServiceProvider',
 		'App\Providers\Rome2RioDataProvider',
+		
 		'App\Providers\AppServiceProvider',
 		'App\Providers\BusServiceProvider',
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-
 	],
 
 	/*
@@ -197,6 +197,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Rome2RioData' => 'App\Facades\Rome2RioData',
 		'FourSquareData' => 'App\Facades\FourSquareData',
+		
 
 	],
 

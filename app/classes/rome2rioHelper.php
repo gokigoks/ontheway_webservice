@@ -15,7 +15,8 @@ class Rome2RioData
     /**
      * Rome2RioData constructor.
      */
-     public static function getData(){
+    
+    public static function getData(){
         dd('data?');
     }
     /**

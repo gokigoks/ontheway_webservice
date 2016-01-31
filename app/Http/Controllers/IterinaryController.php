@@ -34,7 +34,10 @@ class IterinaryController extends Controller {
 
     	if($iterinary->users()->save($user))
     	{	
-    		if($)
+    		if($withRoute == true)
+    		{
+    			$route = new App\Route;
+    		}
     		return response()->json('success',200);	
     	}
     	else

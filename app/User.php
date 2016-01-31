@@ -56,7 +56,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return $this->hasMany('App\Iterinary','creator_id');
 	}
-
 	/**
 	 * user interest relationships
 	 * @return relationship

@@ -14,13 +14,11 @@ class Rome2RioData extends Facade
 	protected $data;
     protected static function getFacadeAccessor() { return 'Rome2RioData'; }
 
-	public function __construct($data){
-		$this->data = $data;
-	}
-
-    public static function getData(){
-    	dd('data?');
+	public static function getData(){
+        dd('data?');
     }
+
+        
     /**
      * get routes function
      * @param type|null $index 

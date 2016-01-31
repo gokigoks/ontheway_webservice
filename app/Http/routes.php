@@ -190,7 +190,7 @@ Route::get('test/seed', function(){
           $spot->price = $faker->randomNumber(2);
           $spot->tips = $faker->text(20);
           $spot->save();
-      }
+        }
 });
 
 Route::post('user/iterinary','IterinaryController@create');
@@ -210,3 +210,21 @@ Route::get('api/iterinary/current',['middleware' => 'cors', 'uses' => 'Iterinary
 Route::get('api/iterinary/past',['middleware' => 'cors', 'uses' => 'IterinaryController@get_past']);
 // END ITERINARIES
 
+// SPOTS
+Route::get('api/spots','SpotController@get');
+Route::post('api/spots/new','SpotController@new');
+// END SPOTS
+
+// Route
+Route::post('api/activity/new','ActivityController@new');
+// END ROUTE
+
+//Route::get('api/hotels','')
+
+Route::get('geolocationhelper',function(){
+    $longlat = "12.4221,38.9888";
+    
+    $data =  App\Classes\Geolocationhelper::parseLongLat($longlat);
+
+    dd($data);
+});
