@@ -16,9 +16,6 @@ class Rome2RioData
      * Rome2RioData constructor.
      */
     
-    public static function getData(){
-        dd('data?');
-    }
     /**
      * get routes function
      * @param type|null $index 
@@ -108,7 +105,7 @@ class Rome2RioData
 
         $data = json_decode($data);
 
-
+        
         //close
         curl_close($ch);
        

@@ -223,8 +223,15 @@ Route::post('api/activity/new','ActivityController@new');
 
 Route::get('geolocationhelper',function(){
     $longlat = "12.4221,38.9888";
-    
-    $data =  App\Classes\Geolocationhelper::parseLongLat($longlat);
-
-    dd($data);
+    $path = 'a}pwAwgraVcAZgDvD?V|BvG?bBm@z@sPrKuCrCiBvCyCfH~RjFnBZzGbBxB?vDgBnB?f@^dA?tEgBZk@]_DcB_BgACsEfCi@fD}BbB{Br@aAC{^kJwGrP[rAql@v@eAVoPvECbATnLSKgI?gSnAk^kW]OE{B';
+    //$data =  App\Classes\Geolocationhelper::parseLongLat($longlat);
+    // $data = App\Classes\Geolocationhelper::decode($path);
+    // $asd = App\Classes\Geolocationhelper::pair($data);
+    // $newpath = App\Classes\GeolocationHelper::encode($asd);
+    $rome2riodata = \Rome2RioData::call();
+    $airports = App\Classes\GeolocationHelper::getAirportLongLat($rome2riodata);
+    dd($airports);
 });
+
+
+

@@ -50,6 +50,17 @@ class GeolocationHelper extends Facade
 
     }   
 
+    public static function Flatten($array)
+    {
+        $flatten = array();
+        array_walk_recursive(
+            $array, // @codeCoverageIgnore
+            function ($current) use (&$flatten) {
+                $flatten[] = $current;
+            }
+        );
+        return $flatten;
+    }
     
 
 
