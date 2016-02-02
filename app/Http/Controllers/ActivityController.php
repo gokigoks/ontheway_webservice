@@ -12,7 +12,7 @@ class ActivityController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function new()
 	{
 		//
 	}

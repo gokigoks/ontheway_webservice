@@ -3,6 +3,7 @@
 namespace App\Classes;
 
 
+use Carbon;
 /**
  * Class Rome2RioData
  * @package app\classes
@@ -127,8 +128,6 @@ class GeolocationHelper
                 $array[$key] = self::parseLongLat($airport->pos);               
 
             }
-
-
 
         }
 

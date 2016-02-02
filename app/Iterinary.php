@@ -16,7 +16,7 @@ class Iterinary extends Model {
 	 * 
 	 * @var Array
 	 */
-	protected $fillable = ['transport_id', 'pax','origin','destination'];
+	protected $fillable = ['route_id', 'pax','origin','destination'];
 	
 
 	/** 1 -- TO -- MANY
@@ -53,7 +53,7 @@ class Iterinary extends Model {
 
 	public function route()
 	{
-		return $this->belongsTo('App\Route');
+		return $this->hasOne('App\Route');
 	}
 	
 	public function scopePlanned($query)

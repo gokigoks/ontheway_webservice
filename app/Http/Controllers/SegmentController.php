@@ -12,9 +12,9 @@ class SegmentController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getAll()
 	{
-		//
+		
 	}
 
 	/**
@@ -22,7 +22,7 @@ class SegmentController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function addNew()
 	{
 		//
 	}
@@ -32,7 +32,7 @@ class SegmentController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function endNew()
 	{
 		//
 	}

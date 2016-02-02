@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+	<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ class StopController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function get()
+	public function addStop()
 	{
 		//
 	}
@@ -22,7 +22,7 @@ class StopController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function new()
+	public function getStops()
 	{
 		//
 	}

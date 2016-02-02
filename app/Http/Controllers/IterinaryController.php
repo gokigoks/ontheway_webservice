@@ -53,7 +53,7 @@ class IterinaryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function get_planned()
+	public function getPlanned()
 	{
 		$user_id = Input::get('user_id');
 		$user = App\User::find($user_id);
@@ -74,7 +74,7 @@ class IterinaryController extends Controller {
 	 * @return Response
 	 */
 
-	public function get_past()
+	public function getPast()
 	{
 		$user_id = Input::get('user_id');
 		$user = App\User::find($user_id);
@@ -96,7 +96,7 @@ class IterinaryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function get_current($id)
+	public function getCurrent($id)
 	{
 		$user_id = Input::get('user_id');
 		$user = App\User::find($user_id);
@@ -117,7 +117,7 @@ class IterinaryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function addSpot()
 	{
 		//
 	}

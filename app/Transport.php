@@ -34,5 +34,4 @@ class Transport extends Model {
 		return $this->belongsTo('App\Iterinary');
 	}
 
-
 }

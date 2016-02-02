@@ -109,7 +109,7 @@ class Rome2RioData extends Facade
         $data = curl_exec($ch);
 
         $data = json_decode($data);
-
+        dd('dre ko gikanl');
 
         //close
         curl_close($ch);

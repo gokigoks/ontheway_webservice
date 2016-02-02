@@ -2,14 +2,15 @@
 
 namespace App\Classes;
 
-
+use Carbon;
+use Cache;
 /**
  * Class Rome2RioData
  * @package app\classes
  */
 
 
-class Rome2RioData
+class Rome2rioHelper
 {
     protected $data = "rome 2 rio data";
     /**
@@ -80,35 +81,50 @@ class Rome2RioData
             return $data->nativePrice;
         }
         
-
     }
 
     public static function call($o = null,$d = null)
-    {
-
+    {   
+        //default for testing    
         $origin = ($o!=null) ? $o :'cebu' ;
-
         $destination  = ($d!=null) ? $d :'manila' ;
+        //
 
-        /**
-         * $url = API urls
-         * kani ray ilisi earl
-         */
-        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
 
-        $ch = curl_init($url);
+        if(self::checkForCachedQuery($origin,$destination))
+        {   
+            $origin = str_replace(" ", "-", $origin);
+            $destination = str_replace(" ", "-", $destination);
+            $key = $origin.",".$destination;
+            $data = Cache::get($key);
+            $data->fromCache = true;
+            //dd('from cache');
+        }
+        else
+        {
 
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $data = curl_exec($ch);
+            /**
+             * $url = API urls
+             * kani ray ilisi earl
+             */
+            $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
 
-        $data = json_decode($data);
+            $ch = curl_init($url);
 
-        
-        //close
-        curl_close($ch);
-       
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $data = curl_exec($ch);
+
+            $data = json_decode($data);
+            $data->fromCache = false;
+            //dd('not from cache');
+            self::cacheRequest($origin,$destination,$data);
+            
+            //close
+            curl_close($ch);
+        }
+
         return $data;                    
 
     }
@@ -138,13 +154,38 @@ class Rome2RioData
         
     
 
-    public function getStops()
-    {       
+    public static function cacheRequest($origin,$destination,$data)
+    {   
+        $origin = str_replace(" ", "-", $origin);
+        $destination = str_replace(" ", "-", $destination);
+        $key = $origin.",".$destination;
+
+        if(Cache::has($key)){
+
+        }
+        else
+        {   
+            $expiresAt = Carbon::now()->addHours(2);
+
+            cache::add($key,$data,$expiresAt);
+        }
 
     }
 
-    public function save($type){
+    public static function checkForCachedQuery($origin,$destination)
+    {
+        $origin = str_replace(" ", "-", $origin);
+        $destination = str_replace(" ", "-", $destination);
+        $key = $origin.",".$destination;
 
+        if(Cache::has($key))
+        {   
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 

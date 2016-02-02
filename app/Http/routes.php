@@ -48,26 +48,20 @@ Route::get('user/logout', ['middleware' => 'cors', 'uses' => function()
 }]);
 
 Route::post('user/login', ['middleware' => 'cors', 'uses' => function()
-{       
-        
+{           
     $credentials = array(
         'email' => Input::get('email'), 
         'password' => Input::get('password'),            
     );
 
-
     if (Auth::attempt( $credentials ))
     {   
         $user_object = json_encode(Auth::user());
-        return Response::json($user_object,200);
-        
+        return Response::json($user_object,200);        
     }
-    else{
-        
-        return Response::json("error.. bad credentials", 400);
-       
+    else{        
+        return Response::json("error.. bad credentials", 400);    
     }
-
 }]);
 
 
@@ -205,22 +199,25 @@ Route::get('api/getrecommend',['middleware' => 'cors', 'uses' => 'RecommenderCon
 
 // ITERINARIES
 Route::post('api/iterinary/new',['middleware' => 'cors', 'uses' => 'IterinaryController@new']);
-Route::get('api/iterinary/planned',['middleware' => 'cors', 'uses' => 'IterinaryController@get_planned']);
-Route::get('api/iterinary/current',['middleware' => 'cors', 'uses' => 'IterinaryController@get_current']);
-Route::get('api/iterinary/past',['middleware' => 'cors', 'uses' => 'IterinaryController@get_past']);
+Route::get('api/iterinary/planned',['middleware' => 'cors', 'uses' => 'IterinaryController@getPlanned']);
+Route::get('api/iterinary/current',['middleware' => 'cors', 'uses' => 'IterinaryController@getCurrent']);
+Route::post('api/iterinary/addspot',['middleware' => 'cors', 'uses' => 'IterinaryController@addSpot']);
+Route::get('api/iterinary/past',['middleware' => 'cors', 'uses' => 'IterinaryController@getPast']);
 // END ITERINARIES
 
 // SPOTS
 Route::get('api/spots','SpotController@get');
-Route::post('api/spots/new','SpotController@new');
+Route::post('api/spots/add','SpotController@new');
 // END SPOTS
 
 // Route
-Route::post('api/activity/new','ActivityController@new');
+Route::post('api/iterinary/activity/new','ActivityController@new');
+Route::post('api/iterinary/activity/get',['middleware' => 'cors', 'uses' => 'ActivityController@get']);
 // END ROUTE
 
 //Route::get('api/hotels','')
 
+// --   GEOLOCATION ROUTES -- //
 Route::get('geolocationhelper',function(){
     $longlat = "12.4221,38.9888";
     $path = 'a}pwAwgraVcAZgDvD?V|BvG?bBm@z@sPrKuCrCiBvCyCfH~RjFnBZzGbBxB?vDgBnB?f@^dA?tEgBZk@]_DcB_BgACsEfCi@fD}BbB{Br@aAC{^kJwGrP[rAql@v@eAVoPvECbATnLSKgI?gSnAk^kW]OE{B';
@@ -233,5 +230,24 @@ Route::get('geolocationhelper',function(){
     dd($airports);
 });
 
+// --   END GEOLOCATION ROUTES -- //
 
+// -- FOURSQUARE ROUTES -- //
+Route::get('testcache',function(){
+    $data  = \App\Classes\Rome2rioHelper::call();
+    //Cache::add('cebu,manila',$data,20);
+    dd($data);
+});
 
+//
+
+//  --  SEGMENT ROUTES -- //
+Route::get('api/iterinary/segments/all',['middleware' => 'cors', 'uses' => 'SegmentController@getAll']);
+Route::post('api/iterinary/segments/addnew',['middleware' => 'cors', 'uses' => 'SegmentController@addNew']);
+Route::post('api/iterinary/segments/endnew',['middleware' => 'cors', 'uses' => 'SegmentController@endNew']);
+
+//  -- END SEGMENT ROUTES -- //
+
+//  -- STOPS ROUTES -- //
+Route::get('api/iterinary/stops/get')
+//  -- END STOP ROUTES -- //

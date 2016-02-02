@@ -13,13 +13,14 @@ class Route extends Model {
 	 * @var Array
 	 * 
 	 */
+	
 	protected $fillable = ['name' ,'distance', 'duration', 'price'];
 	
 	public function segments()
 	{
 		return $this->hasMany('App\Segment');
 	}
-
+	
 	public function transport()
 	{
 		return $this->belongsTo('App\Transport');
