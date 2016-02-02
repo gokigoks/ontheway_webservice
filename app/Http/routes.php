@@ -155,11 +155,6 @@ Route::get('gmaps/getairport',function(){
         curl_close($ch);
 });
 
-
-
-
-
-
 Route::get('rome2rio', function(){
 
     $url = 'http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=Cebu&dName=Manila';
@@ -249,5 +244,6 @@ Route::post('api/iterinary/segments/endnew',['middleware' => 'cors', 'uses' => '
 //  -- END SEGMENT ROUTES -- //
 
 //  -- STOPS ROUTES -- //
-Route::get('api/iterinary/stops/get')
+Route::get('api/iterinary/stops/get',['middleware' => 'cors', 'uses' => 'IterinaryController@getStops']);
+Route::post('api/iterinary/stops/add',['middleware' => 'cors', 'uses' => 'SegmentController@addStop']);
 //  -- END STOP ROUTES -- //
