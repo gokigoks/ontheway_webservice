@@ -27,7 +27,7 @@ class Stop extends Model {
 	{
 		return $this->belongsToMany('App\Segment');
 	}
-
+	
 	public function activities()
 	{
 		return $this->belongsToMany('App\Activity');

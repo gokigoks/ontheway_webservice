@@ -2,8 +2,9 @@
 
 namespace App\Classes;
 
-use Carbon;
+use Carbon\Carbon;
 use Cache;
+use App\Classes\GeolocationHelper as Geohelper;
 /**
  * Class Rome2RioData
  * @package app\classes
@@ -73,7 +74,7 @@ class Rome2rioHelper
         {   
             ///////////
             $price = $data->indicativePrice;    
-            return (property_exists($price, 'nativePrice')) ? "datanativePrice" : ($price->price * 42);
+            return (property_exists($price, 'nativePrice')) ? "nativePrice" : ($price->price * 42);
             //eturn $data->indicativePrice->nativePrice;
         }
         if(property_exists($data, 'nativePrice'))
@@ -129,25 +130,10 @@ class Rome2rioHelper
 
     }
 
+
     public static function convertToFlightSegment($route,$segment){
 
-       foreach ($route->stops as $stop) {
-
-           if(property_exists($stop, 'code'))
-           {   
-               //checks if this stop code matches the origin code
-               if($stop->code == $segment->sCode)
-               {   //then adds the property to the segment
-                   $segment->sPos = $stop->pos;
-                   $segment->sName = $stop->name;
-               }
-               if($stop->code == $segment->tCode)
-               {
-                   $segment->tPos = $stop->pos;
-                   $segment->tName = $stop->name;
-               }
-           }            
-       }
+       
        //new segment
        return $segment;
     }
@@ -188,6 +174,17 @@ class Rome2rioHelper
         }
     }
 
+    public static function getFlightPath($origin,$destination)
+    {
+        $array = [];
+        $path = "";
+        $array[0] = Geohelper::parseLongLat($origin); 
+        $array[1] = Geohelper::parseLongLat($destination);
+
+        $path = Geohelper::encode($array);
+
+        return $path;
+    }
 
 }
 ?>

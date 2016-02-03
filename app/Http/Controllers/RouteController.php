@@ -32,9 +32,14 @@ class RouteController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$route = new Route;
+		$route->name = $request['name'];
+		$route->distance = $request['distance'];
+		$route->duration = $request['duration'];
+		$route->price = $request['price'];
+		$route->save();
 	}
 
 	/**
@@ -45,7 +50,8 @@ class RouteController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$data = Route::all();
+		return response()->json(json_encode($data));
 	}
 
 	/**

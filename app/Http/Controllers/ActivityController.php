@@ -17,12 +17,12 @@ class ActivityController extends Controller {
 		//
 	}
 
-	/**
+	/**s
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function get()
 	{
 		//
 	}
@@ -34,7 +34,12 @@ class ActivityController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$activity = new Activity;
+		$activity->day_id = $request['day_id'];
+		$activity->start_time = $request['start_time'];
+		$activity->end_time = $request['typable_type'];
+		$activity->typable_id = $request['typable_id'];
+		$activity->save();
 	}
 
 	/**
@@ -45,7 +50,8 @@ class ActivityController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$data = Activity::all();
+		return response()->json(json_encode($data));
 	}
 
 	/**

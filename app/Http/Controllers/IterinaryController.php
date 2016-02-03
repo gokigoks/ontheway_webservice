@@ -119,7 +119,7 @@ class IterinaryController extends Controller {
 	 */
 	public function addSpot()
 	{
-		//
+		$iterinary_id = 
 	}
 
 	/**
@@ -128,9 +128,10 @@ class IterinaryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function show($id)
 	{
-		//
+		$data = Iterinary::all();
+		return response()->json(json_encode($data));
 	}
 
 	/**
@@ -139,9 +140,13 @@ class IterinaryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function store(Request $request)
 	{
-		//
+		$ite = new Iterinary;
+		$ite->destination = $request['destination'];
+		$ite->origin = $request['origin'];
+		$ite->route_id = $request['route_id'];
+		$ite->save();
 	}
 
 }

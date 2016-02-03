@@ -34,7 +34,19 @@ class HopController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$hop = new Hop;
+		$hop->segment_id = $request['segment_id'];
+		$hop->source_area_code = $request['source_area_code'];
+		$hop->url = $request['url'];
+		$hop->target_area_code = $request['target_area_code'];
+		$hop->source_terminal = $request['source_terminal'];
+		$hop->target_terminal = $request['target_terminal'];
+		$hop->sTime = $request['sTime'];
+		$hop->tTime = $request['tTime'];
+		$hop->flight_no = $request['flight_no'];
+		$hop->airline_code = $request['airline_code'];
+		$hop->duration = $request['duration'];
+		$hop->save();
 	}
 
 	/**
@@ -45,7 +57,8 @@ class HopController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$data = Hop::all();
+		return response()->json(json_encode($data));
 	}
 
 	/**

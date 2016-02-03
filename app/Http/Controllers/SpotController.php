@@ -77,6 +77,7 @@ class SpotController extends Controller {
 		$iterinary = App\Iterinary::find($iterinary_id);
 
 		$new_spot = new Spot();
+		$new
 	}
 
 	/**
@@ -84,9 +85,14 @@ class SpotController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$spot = new Spot;
+		$spot->place_name = $request['place_name'];
+		$spot->pos = $request['pos'];
+		$spot->price = $request['price'];
+		$spot->tips = $request['tips'];
+		$spot->save();
 	}
 
 	/**
@@ -97,7 +103,8 @@ class SpotController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$data = Spot::all();
+		return response()->json(json_encode($data));
 	}
 
 	/**

@@ -14,7 +14,26 @@ class StopController extends Controller {
 	 */
 	public function addStop()
 	{
-		//
+		$segment_id = Input::get('segment_id');
+		$segment = App\segment::find($iterinary_id);
+
+		$stop = new App\Stop;
+		$stop->name = Input::get('name');
+		$stop->kind = Input::get('kind');
+		$stop->city = Input::get('city');
+		$stop->pos = Input::get('pos');
+		$stop->tips = Input::get('tips');
+		$stop->region_code = Input::get('region_code');
+
+		if($segment->stops()->save($stop))
+		{
+			return response()->json('success',200);
+		}
+		else
+		{
+			return response()->json('failed',500);
+		}
+
 	}
 
 	/**
@@ -32,9 +51,17 @@ class StopController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$stop =  new Stop;
+		$stop->name = $request['stop'];
+		$stop->kind = $request['kind'];
+		$stop->city = $request['city'];
+		$stop->pos = $request['pos'];
+		$stop->tips = $request['tips'];
+		$stop->timezone = $request['timezone'];
+		$stop->region_code = $request['region_code'];
+		$stop->save();
 	}
 
 	/**
@@ -45,7 +72,8 @@ class StopController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$data = Stop::all();
+		return response()->json(json_encode($data));
 	}
 
 	/**

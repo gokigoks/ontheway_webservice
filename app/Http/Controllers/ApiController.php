@@ -16,7 +16,7 @@ class ApiController extends Controller {
 	 */
 
 	public function get_users()
-	{
+	{	
 		return response()->json(json_encode(App\User::all()),200);
 	}
 

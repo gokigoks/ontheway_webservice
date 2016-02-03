@@ -3,7 +3,7 @@
 /*
 |--------------------------------------------------------------------------
 | Application Routes
-|--------------------------------------------------------------------------
+-|--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for an application.
 | It's a breeze. Simply tell Laravel the URIs it should respond to
@@ -120,7 +120,6 @@ Route::get('helperfile/foursquare', 'ApiController@foursquare');
 
 
 //
-Route::get('populate/rome2rio/routes','TestController@populateRoutes');
 
 
 //test route for getting airport long lat using area codes
@@ -191,7 +190,6 @@ Route::get('api/recomendee/getrecommend', ['middleware' => 'cors', 'uses' => 'Re
 Route::get('api/addspots',['middleware' => 'cors', 'uses' => 'RecommenderController@add_spots']);
 Route::get('api/getrecommend',['middleware' => 'cors', 'uses' => 'RecommenderController@get_recommend']);
 
-
 // ITERINARIES
 Route::post('api/iterinary/new',['middleware' => 'cors', 'uses' => 'IterinaryController@new']);
 Route::get('api/iterinary/planned',['middleware' => 'cors', 'uses' => 'IterinaryController@getPlanned']);
@@ -233,7 +231,6 @@ Route::get('testcache',function(){
     //Cache::add('cebu,manila',$data,20);
     dd($data);
 });
-
 //
 
 //  --  SEGMENT ROUTES -- //
@@ -247,3 +244,11 @@ Route::post('api/iterinary/segments/endnew',['middleware' => 'cors', 'uses' => '
 Route::get('api/iterinary/stops/get',['middleware' => 'cors', 'uses' => 'IterinaryController@getStops']);
 Route::post('api/iterinary/stops/add',['middleware' => 'cors', 'uses' => 'SegmentController@addStop']);
 //  -- END STOP ROUTES -- //
+
+//  -- POPULATE TABLES -- //
+
+Route::get('populate/routes','TestController@populateRoutes');
+
+//  -- END -- //
+
+

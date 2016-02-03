@@ -43,9 +43,20 @@ class SegmentController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function store(Request $request)
 	{
-		//
+		$segment = new Segment;
+		$segment->route_id = $request['route_id'];
+		$segment->sequence = $request['sequence'];
+		$segment->origin_name = $request['origin_name'];
+		$segment->destination_name = $request['destination_name'];
+		$segment->origin_pos = $request['origin_pos'];
+		$segment->destination_pos['destination_pos'];
+		$segment->price = $request['price'];
+		$segment->path = (property_exists($request, "path")) ? $request['path'] : "";
+		$segment->distance = $request['distance'];
+		$segment->mode  = $request['mode'];
+		$segment->save();
 	}
 
 	/**
@@ -54,9 +65,11 @@ class SegmentController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function show($id)
 	{
-		//
+		$data = Segment::all();
+
+		return response()->json(json_encode($data));
 	}
 
 	/**
