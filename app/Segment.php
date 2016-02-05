@@ -15,13 +15,15 @@ class Segment extends Model {
 	 * origin_pos           - compressed long lat of origin
 	 * destination_name     - name of the destination place
 	 * destination_pos		- compressed long lat of destination
+	 * sCode                - Area code of origin (used in flights segment)
+	 * tCode 				- Area code of destination (used in flights segment)
 	 * price 				- price for segment
 	 * distance             - distance between origin and destination
 	 * duration 			- duration for the travel segment
 	 * mode 				- mode of transportation for this segment
 	 * @var Array
 	 */
-	protected $fillable = ['route_id','sequence','origin_name','origin_pos','destination_name', 'destination_pos','price','distance','duration','mode'];
+	protected $fillable = ['route_id','sequence','origin_name','origin_pos','destination_name', 'sCode', 'tCode', 'destination_pos','price','distance','duration','mode'];
 
 
 	public function stops()

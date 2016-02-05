@@ -1,0 +1,42 @@
+-------------- tested routes ---------------
+
+plot/iterinary/new :
+	required input
+		->user_id
+plot/iterinary/end 
+api/iterinary/addspot
+
+api/iterinary/planned  (get request)
+	required input
+		->user_id
+api/iterinary/current  (get request) 
+	required input
+		->user_id
+api/iterinary/past  (get request)
+	required input
+		->user_id
+
+Geolocation :
+	api/geolocation/pathToPath (post request)
+		required input
+			->first_path (string)
+			->second_path (string)
+
+	api/geolocation/pointToPath (post request)
+		required input
+			->path (string)
+			->points (array)
+	api/geolocation/encode  (post request)
+		required input
+			->points(array) NOTE:ignore quotes
+
+	api/geolocation/decode  (post request)
+		required input
+			->path(string)
+
+//contributor
+
+plot/iterinary/new   post(id, origin, destination,(budget,pax//kung kailangan na))
+plot/iterinary/end   post(id, ratings, price or budget)
+plot/iterinary/activity/addactivity   post(id, place_name, type)
+plot/iterinary/activity/endactivity   post(id, ratings, price, tips)

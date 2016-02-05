@@ -29,8 +29,9 @@ class TestController extends Controller {
 	 * @return Response
 	 */
 	public function populateRoutes()
-	{
-		$data = Helper::call();
+	{	
+		
+		$data = Helper::call('bacolod','singapore');
 		$airports = [];
 		$user_id = Input::get('user_id');
 		$contributor = User::find($user_id);
@@ -60,6 +61,12 @@ class TestController extends Controller {
 			foreach ($route->segments as $segment) {
 
 				$new_segment = new Segment();
+
+				if($segment->kind == "flight")
+				{
+					$segment = Helper::convertToFlightSegment($segment,$data);
+				}
+
 				$new_segment->mode = (!isset($segment->subkind)) ? $segment->kind : $segment->subkind;
 				$new_segment->sequence = $i;
 				$new_segment->origin_name = (!isset($segment->sName))? "" : $segment->sName;
@@ -71,9 +78,26 @@ class TestController extends Controller {
 				$new_segment->distance = $segment->distance;
 				$new_segment->duration = $segment->duration;
 				
-
-
 				$new_route->segments()->save($new_segment);
+
+				// if(isset($segment->stops))
+				// {	
+				// 	foreach ($segment->stops as $stop) {
+
+				// 		$new_stop = new Stop();
+				// 		$new_stop->name = $stop->name;
+				// 		$new_stop->pos = $stop->pos;
+				// 		$new_stop->kind = $stop->kind;
+				// 		$new_stop->city = "";						
+				// 		$new_stop->tips = "";
+				// 		$new_stop->timezone = (!isset($stop->timeZone))? "" : $stop->timeZone;
+						
+				// 		$segment->
+				// 	}
+						 
+
+				// }
+
 				$i++;
 			}		
 

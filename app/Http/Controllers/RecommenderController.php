@@ -51,13 +51,25 @@ class RecommenderController extends Controller {
 	}
 
 	/**
+	 * get trip recommendatinos
+	 * @param $segment current segment
+	 * @param $user model
+	 * @return Response
+	 */
+	public function getTripRecommendations()
+	{
+		
+	}
+
+
+	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function getStopRecommendations()
 	{
-		return response()->json('success',200);
+		
 	}
 
 	/**

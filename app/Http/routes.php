@@ -181,22 +181,48 @@ Route::get('test/seed', function(){
         }
 });
 
+// Home Page Controllers
+
+Route::get('user/iterinary','IterinaryController@getIterinaries');
+
 Route::post('user/iterinary','IterinaryController@create');
 
-Route::get('user/iterinary/{id}','IterinaryController@getIterinary');
+Route::get('user/iterinary/{id}','IterinaryController@showIterinary');
 
 
 Route::get('api/recomendee/getrecommend', ['middleware' => 'cors', 'uses' => 'RecommenderController@get_recommend']);
 Route::get('api/addspots',['middleware' => 'cors', 'uses' => 'RecommenderController@add_spots']);
 Route::get('api/getrecommend',['middleware' => 'cors', 'uses' => 'RecommenderController@get_recommend']);
 
-// ITERINARIES
-Route::post('api/iterinary/new',['middleware' => 'cors', 'uses' => 'IterinaryController@new']);
-Route::get('api/iterinary/planned',['middleware' => 'cors', 'uses' => 'IterinaryController@getPlanned']);
-Route::get('api/iterinary/current',['middleware' => 'cors', 'uses' => 'IterinaryController@getCurrent']);
+// Geolocation end points
+Route::post('api/geolocation/encode','GeolocationController@encode');
+Route::post('api/geolocation/decode','GeolocationController@decode');
+Route::post('api/geolocation/pointsToPath','GeolocationController@addPointsToPath');
+Route::post('api/geolocation/pathToPath','GeolocationController@addPathToPath');
+//
+
+// CONTRIBUTOR ITERINARIESadd
+Route::post('plot/iterinary/new',['middleware' => 'cors', 'uses' => 'IterinaryController@newIterinary']);
+Route::post('plot/iterinary/end',['midtdleware' => 'cors', 'uses' => 'IterinaryController@end']);
 Route::post('api/iterinary/addspot',['middleware' => 'cors', 'uses' => 'IterinaryController@addSpot']);
+// END CONTRIBUTOR  ITERINARIES
+
+// Recomendee Iterinaries
+Route::get('api/iterinary/planned',['middleware' => 'cors', 'uses' => 'IterinaryController@getPlanned']);
 Route::get('api/iterinary/past',['middleware' => 'cors', 'uses' => 'IterinaryController@getPast']);
-// END ITERINARIES
+Route::get('api/iterinary/current',['middleware' => 'cors', 'uses' => 'IterinaryController@getCurrent']);
+// End Recomendee Iterinaries
+
+/**
+*    Recommendation Controllers
+* 
+* @uses  App\Http\Controllers\RecommenderController
+* @example   description
+**/
+Route::get('api/iterinary/','RecommenderController@getTripRecommendation');
+Route::get('api/spots/','RecommenderController@getSpotRecommendation');
+//  End Recommendation 
+
 
 // SPOTS
 Route::get('api/spots','SpotController@get');
@@ -235,6 +261,7 @@ Route::get('testcache',function(){
 
 //  --  SEGMENT ROUTES -- //
 Route::get('api/iterinary/segments/all',['middleware' => 'cors', 'uses' => 'SegmentController@getAll']);
+Route::get('api/iterinary/segments/show',['middleware' => 'cors', 'uses' => 'SegmentController@showSegment']);
 Route::post('api/iterinary/segments/addnew',['middleware' => 'cors', 'uses' => 'SegmentController@addNew']);
 Route::post('api/iterinary/segments/endnew',['middleware' => 'cors', 'uses' => 'SegmentController@endNew']);
 
@@ -247,8 +274,9 @@ Route::post('api/iterinary/stops/add',['middleware' => 'cors', 'uses' => 'Segmen
 
 //  -- POPULATE TABLES -- //
 
-Route::get('populate/routes','TestController@populateRoutes');
+Route::get('populate/routes',['middleware' => 'cors', 'uses' => 'TestController@populateRoutes']);
 
 //  -- END -- //
+
 
 

@@ -31,7 +31,7 @@ class GeolocationHelper
     public static function parseLongLat($data)
     {            
             list($long, $lat) = explode(",", $data);
-            $array = ['long' => $long,'lat' => $lat];
+            $array = [$long,$lat];
         return $array;
     }
     
@@ -75,13 +75,26 @@ class GeolocationHelper
     public static function Flatten($array)
     {
         $flatten = array();
+
         array_walk_recursive(
             $array, // @codeCoverageIgnore
             function ($current) use (&$flatten) {
                 $flatten[] = $current;
             }
         );
+
         return $flatten;
+    }
+
+
+    public static function addPathToPath($first,$second)
+    {   
+        $first_path = self::decode($first);
+        $second_path = self::decode($second);
+
+        $final = array_merge($first_path,$second_path);
+
+        return self::encode($final);
     }
 
     public static function Encode($points)
@@ -104,6 +117,7 @@ class GeolocationHelper
                 $number >>= 5;
             }
             $chunk .= chr($number + 63);
+            
             $encodedString .= $chunk;
         }
         return $encodedString;
@@ -208,6 +222,16 @@ class GeolocationHelper
         //var_dump($last_query);
         //die();
         return $data;
+    }
+
+    public static function sanitizePoints($points)
+    {           
+
+        foreach ($points as $key => $value) {
+            $points[$key] = self::parseLongLat($value);
+        }
+        
+        return $points;    
     }
 }
 ?>

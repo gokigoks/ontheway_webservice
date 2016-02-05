@@ -70,16 +70,12 @@ class Rome2rioHelper
      */
     public static function getRome2RioPrice($data, $index = null)
     {   
-        if(property_exists($data, 'indicativePrice'))
+        if(isset($data->indicativePrice))
         {   
             ///////////
             $price = $data->indicativePrice;    
-            return (property_exists($price, 'nativePrice')) ? "nativePrice" : ($price->price * 42);
+            return (isset($price->nativePrice)) ? $price->nativePrice : ($price->price * 42);
             //eturn $data->indicativePrice->nativePrice;
-        }
-        if(property_exists($data, 'nativePrice'))
-        {
-            return $data->nativePrice;
         }
         
     }
@@ -117,13 +113,33 @@ class Rome2rioHelper
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $data = curl_exec($ch);
 
-            $data = json_decode($data);
-            $data->fromCache = false;
-            //dd('not from cache');
-            self::cacheRequest($origin,$destination,$data);
+            if(curl_errno($ch))
+            {
+                die("Couldn't send request: " . curl_error($ch));
+            }
+            else {
+                
+                $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                if ($resultStatus == 200) {
+                    
+                    $data = json_decode($data);
+                    $data->fromCache = false;
+                    //dd('not from cache');
+                    self::cacheRequest($origin,$destination,$data);
+                    
+                    
+
+                } else {
+                    // the request did not complete as expected. common errors are 4xx
+                    // (not found, bad request, etc.) and 5xx (usually concerning
+                    // errors/exceptions in the remote script execution)
+
+                    die('Request failed: HTTP status code: ' . $resultStatus);
+                }
+            }
+
             
-            //close
-            curl_close($ch);
         }
 
         return $data;                    
@@ -131,15 +147,33 @@ class Rome2rioHelper
     }
 
 
-    public static function convertToFlightSegment($route,$segment){
+    public static function convertToFlightSegment($segment,$data){
 
+       $segment = self::getOrigDest($segment,$data->airports);
        
-       //new segment
        return $segment;
+    }
+
+    public static function getOrigDest($segment,$airports)
+    {
+        foreach ($airports as $airport) {
+
+            if($airport->code == $segment->sCode)
+            {
+                $segment->sName = $airport->name;
+                $segment->sPos = $airport->pos;
+            }
+            if($airport->code == $segment->tCode)
+            {
+                $segment->tName = $airport->name;
+                $segment->tPos = $airport->pos;
+            }
+        }
+
+        return $segment;
     }
         
     
-
     public static function cacheRequest($origin,$destination,$data)
     {   
         $origin = str_replace(" ", "-", $origin);

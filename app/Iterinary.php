@@ -53,7 +53,7 @@ class Iterinary extends Model {
 
 	public function route()
 	{
-		return $this->hasOne('App\Route');
+		return $this->belongsTo('App\Route');
 	}
 	
 	public function scopePlanned($query)
@@ -71,4 +71,5 @@ class Iterinary extends Model {
 	{
 		return $query->where('status', '=', 'done');
 	}
+	
 }

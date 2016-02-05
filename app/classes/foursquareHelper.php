@@ -26,6 +26,7 @@ class FoursquareHelper
         echo 'hello';
     }
 
+
     /**
      * Call foursquare Api
      * @param type|null $query_type 

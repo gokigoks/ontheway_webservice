@@ -18,6 +18,20 @@ class SegmentController extends Controller {
 	}
 
 	/**
+	 * Show one segment
+	 * @param iterinary id
+	 * @return type
+	 */
+	public function showSegment()
+	{
+		$iterinary_id = Input::get('iterinary_id');
+
+		$iterinary = App\Iterinary::find($iterinary_id);
+
+		return response()->json($iterinary,200);
+	}
+
+	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response

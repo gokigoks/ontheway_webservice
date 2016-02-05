@@ -3,6 +3,10 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Iterinary;
+use App\User;
+use Input;
+use App\Route;
+
 
 use Illuminate\Http\Request;
 
@@ -13,16 +17,12 @@ class IterinaryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function new(Request $request) 
+	public function newIterinary(Request $request) 
 	{
-		$credentials = array(
-        'email' => Input::get('email'), 
-        'password' => Input::get('password'),            
-    	);
+		$user_id = Input::get('user_id');
 
-    	$user_id = Input::get('user_id');
-    	$user = App\User::find($user_id);
-    	$withRoute = Input::get('withRoute');
+    	$user = User::find($user_id);
+    	
     	$origin = Input::get('origin');
     	$destination = Input::get('destination');
     	$iterinary = new Iterinary();
@@ -33,18 +33,17 @@ class IterinaryController extends Controller {
     	
 
     	if($iterinary->users()->save($user))
-    	{	
-    		if($withRoute == true)
-    		{
-    			$route = new App\Route;
-    		}
+    	{	    		
+    		$user->iterinaries()->attach($iterinary->id);
+    		// $route = new Route;
+    		// $iterinary->route()->save($route)->toSql();
+    		
     		return response()->json('success',200);	
     	}
     	else
     	{
     		return response()->json('error saving',401);
-    	}
-    	
+    	}    	
 
 	}
 
@@ -56,11 +55,11 @@ class IterinaryController extends Controller {
 	public function getPlanned()
 	{
 		$user_id = Input::get('user_id');
-		$user = App\User::find($user_id);
+		$user = User::find($user_id);
 		$data = $user->planned_iterinaries()->get();
 		if($data->isEmpty())
 		{
-			return response()->json('empty',404);
+			return response()->json($data,404);
 		}
 		else
 		{
@@ -119,7 +118,7 @@ class IterinaryController extends Controller {
 	 */
 	public function addSpot()
 	{
-		$iterinary_id = 
+		//$iterinary_id = 
 	}
 
 	/**
@@ -141,7 +140,7 @@ class IterinaryController extends Controller {
 	 * @return Response
 	 */
 	public function store(Request $request)
-	{
+	{	
 		$ite = new Iterinary;
 		$ite->destination = $request['destination'];
 		$ite->origin = $request['origin'];
@@ -149,4 +148,21 @@ class IterinaryController extends Controller {
 		$ite->save();
 	}
 
+	public function getIterinaries()
+	{
+
+	}
+
+	public function showIterinary()
+	{
+
+	}
+
+	public function end()
+	{
+		$user_id = Input::get('user_id');
+		$iterinary_id = Input::get('iterinary_id');
+
+		dd($user_id,$iterinary_id);
+	}
 }
