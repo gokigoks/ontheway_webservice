@@ -2,7 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Classes\rome2rioHelper as Helper;
+use App\Classes\rome2rioHelper as Rome2Rio;
+use App\Classes\foursquareHelper as Foursquare;
 use App\Iterinary;
 use App\Route;
 use App\Segment;
@@ -32,7 +33,7 @@ class TestController extends Controller {
 	{	
 		
 
-		$data = Helper::call('bacolod','singapore');
+		$data = Rome2Rio::call('bacolod','singapore');
 		$airports = [];
 		$user_id = Input::get('user_id');
 		$contributor = User::find($user_id);
@@ -53,10 +54,10 @@ class TestController extends Controller {
 			$new_route->name = $route->name;
 			$new_route->distance = $route->distance;
 			$new_route->duration = $route->duration;
-			$new_route->price = Helper::getRome2RioPrice($route);
+			$new_route->price = Rome2Rio::getRome2RioPrice($route);
 			$new_route->save();
 			$iterinary->save();
-			$new_route->iterinary()->associate($iterinary);
+			$iterinary->route()->associate($new_route);
 
 			$i=1;
 			foreach ($route->segments as $segment) {
@@ -65,7 +66,7 @@ class TestController extends Controller {
 
 				if($segment->kind == "flight")
 				{
-					$segment = Helper::convertToFlightSegment($segment,$data);
+					$segment = Rome2Rio::convertToFlightSegment($segment,$data);
 				}
 
 				$new_segment->mode = (!isset($segment->subkind)) ? $segment->kind : $segment->subkind;
@@ -74,8 +75,8 @@ class TestController extends Controller {
 				$new_segment->destination_name = (!isset($segment->tName))? "" : $segment->tName;;
 				$new_segment->origin_pos = $segment->sPos;
 				$new_segment->destination_pos = $segment->tPos;
-				$new_segment->price = Helper::getRome2RioPrice($segment);
-				$new_segment->path = ($segment->kind == "flight")? Helper::getFlightPath($airports[$segment->sCode],$airports[$segment->tCode]) : $segment->path;
+				$new_segment->price = Rome2Rio::getRome2RioPrice($segment);
+				$new_segment->path = ($segment->kind == "flight")? Rome2Rio::getFlightPath($airports[$segment->sCode],$airports[$segment->tCode]) : $segment->path;
 				$new_segment->distance = $segment->distance;
 				$new_segment->duration = $segment->duration;
 				
@@ -115,7 +116,11 @@ class TestController extends Controller {
 	 */
 	public function populateSpots()
 	{
-		//
+		$ll = Input::get('ll');
+		$query_type = Input::get('query');
+		$data = Foursquare::call($query_type,$ll);
+
+		dd($data);
 	}
 
 	/**

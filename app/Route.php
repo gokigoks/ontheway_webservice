@@ -28,6 +28,6 @@ class Route extends Model {
 
 	public function iterinary()
 	{
-		return $this->hasOne('App\Iterinary');
+		return $this->hasMany('App\Iterinary');
 	}
 }

@@ -12,7 +12,9 @@ class SpotController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 *
+	 * 
+	 * @request GET
+	 * @route api/spots
 	 * @return Response
 	 */
 	public function get()
@@ -42,6 +44,7 @@ class SpotController extends Controller {
 		}
 
 		//longitude=123.89434773306299&latitude=10.308967644834725
+		//filter of false or null values
 		if(array_filter($error_bag))
 		{			
 			return response()->json($error_bag,400);

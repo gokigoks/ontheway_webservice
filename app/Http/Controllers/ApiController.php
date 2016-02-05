@@ -17,13 +17,15 @@ class ApiController extends Controller {
 
 	public function get_users()
 	{	
-		$users = App/User::all();
+		$users = App\User::all();
 		return response()->json(json_encode($users),200);
 	}
 
 	public function foursquare()
-	{
-		$data = \App\Facades\FourSquareData::getData();
+	{		
+		$ll = Input::get('ll');
+
+		$data = \App\Clsses\foursquareHelper::getData();
 
 		dd($data);
 	}
@@ -152,8 +154,8 @@ class ApiController extends Controller {
 
         $data = json_decode($data);
         // start debug
-        $routes = \Rome2RioData::getRoutes($data,1);    	
-    	$segments = \Rome2RioData::getSegments($routes);
+        $routes = App\Classes\rome2rioHelper::getRoutes($data,1);    	
+    	$segments = App\Classes\rome2rioHelper::getSegments($routes);
         dd($segments);
         //end debug
         return response()->json($data,200);

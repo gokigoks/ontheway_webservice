@@ -13,7 +13,7 @@ class cors {
 	 */
 	public function handle($request, Closure $next)
 	{	
-		
+
 
 		if(\Input::get('token') == "gokigoks")
 		{

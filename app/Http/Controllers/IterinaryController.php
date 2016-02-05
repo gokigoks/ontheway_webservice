@@ -20,11 +20,36 @@ class IterinaryController extends Controller {
 	public function newIterinary(Request $request) 
 	{
 		$user_id = Input::get('user_id');
+		
+		$error_bag = array();
+		$input_bag = array();
 
     	$user = User::find($user_id);
     	
     	$origin = Input::get('origin');
     	$destination = Input::get('destination');
+
+    	$input_bag = ['origin' => $origin, 'destination' => $destination, 'user id' => $user_id];
+
+    	$i=0;
+		foreach ($input_bag as $key => $value) {
+		    $value = trim($value);
+
+		    if (empty($value))
+		    {    $error_bag[$i] = "$key empty"; 
+		    		$i++;
+		    }
+		    else{
+		        
+		    }
+		}
+		//filter of false or null values
+		if(array_filter($error_bag))
+		{			
+			return response()->json($error_bag,400);
+		}
+    	
+    	
     	$iterinary = new Iterinary();
     	$iterinary->creator_id = $user_id;
     	$iterinary->origin = $origin;
@@ -35,8 +60,9 @@ class IterinaryController extends Controller {
     	if($iterinary->users()->save($user))
     	{	    		
     		$user->iterinaries()->attach($iterinary->id);
-    		// $route = new Route;
-    		// $iterinary->route()->save($route)->toSql();
+    		$route = new Route;
+    		$route->save();
+    		$iterinary->route()->associate($route);
     		
     		return response()->json('success',200);	
     	}
