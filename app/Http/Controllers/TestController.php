@@ -31,6 +31,7 @@ class TestController extends Controller {
 	public function populateRoutes()
 	{	
 		
+
 		$data = Helper::call('bacolod','singapore');
 		$airports = [];
 		$user_id = Input::get('user_id');
@@ -108,11 +109,11 @@ class TestController extends Controller {
 	}	
 
 	/**
-	 * Store a newly created resource in storage.
+	 * populate spots database
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function populateSpots()
 	{
 		//
 	}

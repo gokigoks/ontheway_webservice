@@ -17,7 +17,8 @@ class ApiController extends Controller {
 
 	public function get_users()
 	{	
-		return response()->json(json_encode(App\User::all()),200);
+		$users = App/User::all();
+		return response()->json(json_encode($users),200);
 	}
 
 	public function foursquare()
