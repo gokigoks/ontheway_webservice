@@ -17,7 +17,7 @@ class CreateIterinariesTable extends Migration {
 			$table->increments('id');
 			$table->string('destination');
 			$table->string('origin');
-			$table->integer('pax')->unsigned();
+			$table->integer('pax')->unsigned()->default(1);
 			$table->integer('creator_id')->unsigned();
 			$table->integer('route_id')->unsigned()->nullable();
 			$table->timestamps();

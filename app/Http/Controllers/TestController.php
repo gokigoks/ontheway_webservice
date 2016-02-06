@@ -30,10 +30,16 @@ class TestController extends Controller {
 	 * @return Response
 	 */
 	public function populateRoutes()
-	{	
-		
+	{
+		$inputs = [
+		'origin' => Input::get('origin'),
+		'destination' => Input::get('destination'),
+		'pax' => Input::get('pax')
+		];
 
-		$data = Rome2Rio::call('bacolod','singapore');
+		//if($)
+
+		$data = Rome2Rio::call($inputs['origin'],$inputs['destination']);
 		$airports = [];
 		$user_id = Input::get('user_id');
 		$contributor = User::find($user_id);
