@@ -23,6 +23,7 @@ class CreateIterinariesTable extends Migration {
 			$table->timestamps();
 
 
+
 			$table->foreign('creator_id')
 			->references('id')
 			->on('users')

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="" />
+    <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.openshift/action_hooks/deploy" afterPath="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/GeolocationHelper.php" afterPath="$PROJECT_DIR$/app/classes/GeolocationHelper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/rome2rioHelper.php" afterPath="$PROJECT_DIR$/app/classes/rome2rioHelper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_15_144556_create_iterinaries_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_15_144556_create_iterinaries_table.php" />
+    </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -42,50 +47,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IterinaryController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-33.75862">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding>
-                <element signature="e#39#61#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RecommenderController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.142857">
-              <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
-              <folding>
-                <element signature="e#39#61#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StopController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StopController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1034483">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.724138">
-              <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="WelcomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -96,34 +57,74 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RouteController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RouteController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RouteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.4788494">
+            <state vertical-scroll-proportion="-5.5172415">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2016_01_16_121242_create_routes_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_16_121242_create_routes_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.1034483">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2016_01_15_144556_create_iterinaries_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144556_create_iterinaries_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.931034">
+              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pre_build" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/pre_build">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpotController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SpotController.php">
+      <file leaf-file-name="deploy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="24.37931">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state vertical-scroll-proportion="-12.655172">
+              <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SegmentController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SegmentController.php">
+      <file leaf-file-name="rome2rioHelper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/classes/rome2rioHelper.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="34.689655">
-              <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+            <state vertical-scroll-proportion="-0.55172414">
+              <caret line="205" column="3" selection-start-line="205" selection-start-column="3" selection-end-line="205" selection-end-column="3" />
               <folding>
-                <element signature="e#39#61#0#PHP" expanded="true" />
+                <element signature="e#31#49#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeolocationHelper.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/classes/GeolocationHelper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.054145515">
+              <caret line="222" column="32" selection-start-line="222" selection-start-column="32" selection-end-line="222" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,10 +178,13 @@
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SegmentController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_01_15_144556_create_iterinaries_table.php" />
-        <option value="$PROJECT_DIR$/app/classes/rome2rioHelper.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/GeolocationController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_01_16_121242_create_routes_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_01_15_144556_create_iterinaries_table.php" />
+        <option value="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
+        <option value="$PROJECT_DIR$/app/classes/rome2rioHelper.php" />
+        <option value="$PROJECT_DIR$/app/classes/GeolocationHelper.php" />
       </list>
     </option>
   </component>
@@ -419,6 +423,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="action_hooks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -431,7 +467,7 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="iter&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/IterinaryController.php&#10;route&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;segment&#9;FILE&#9;file://C:/wamp/www/php/app/Segment.php&#10;ide&#9;null&#9;null&#10;_ide_helper&#9;null&#9;null&#10;_&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="iterinar&#9;FILE&#9;file://C:/wamp/www/php/database/migrations/2016_01_15_144556_create_iterinaries_table.php&#10;routetable&#9;null&#9;null&#10;iter&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/IterinaryController.php&#10;route&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;segment&#9;FILE&#9;file://C:/wamp/www/php/app/Segment.php&#10;ide&#9;null&#9;null&#10;_ide_helper&#9;null&#9;null&#10;_&#9;null&#9;null" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -518,27 +554,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/classes/rome2rioHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="160" column="46" selection-start-line="160" selection-start-column="27" selection-end-line="160" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/foursquareHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Spot.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Stop.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -787,38 +802,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/GeolocationHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="166.44827">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144556_create_iterinaries_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.24138">
-          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/rome2rioHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.931034">
-          <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-          <folding>
-            <element signature="e#31#49#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="88.81035">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
-            <element signature="e#4374#4405#0#PHP" expanded="true" />
+            <element signature="e#4374#4405#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -846,7 +835,7 @@
         <state vertical-scroll-proportion="-5.142857">
           <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
           <folding>
-            <element signature="e#39#61#0#PHP" expanded="true" />
+            <element signature="e#39#61#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -856,7 +845,7 @@
         <state vertical-scroll-proportion="34.689655">
           <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
           <folding>
-            <element signature="e#39#61#0#PHP" expanded="true" />
+            <element signature="e#39#61#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -911,8 +900,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RouteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4788494">
+        <state vertical-scroll-proportion="-5.5172415">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_16_121242_create_routes_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1034483">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144556_create_iterinaries_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.931034">
+          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/pre_build">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.655172">
+          <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes/rome2rioHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.55172414">
+          <caret line="205" column="3" selection-start-line="205" selection-start-column="3" selection-end-line="205" selection-end-column="3" />
+          <folding>
+            <element signature="e#31#49#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes/GeolocationHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.054145515">
+          <caret line="222" column="32" selection-start-line="222" selection-start-column="32" selection-end-line="222" selection-end-column="32" />
           <folding />
         </state>
       </provider>
