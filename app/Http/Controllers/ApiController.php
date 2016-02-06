@@ -25,7 +25,7 @@ class ApiController extends Controller {
 	{		
 		$ll = Input::get('ll');
 
-		$data = \App\Clsses\foursquareHelper::getData();
+		$data = App\Clsses\foursquareHelper::getData();
 
 		dd($data);
 	}

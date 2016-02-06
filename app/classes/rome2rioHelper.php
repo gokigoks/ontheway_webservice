@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Classes;
 
 use Carbon\Carbon;

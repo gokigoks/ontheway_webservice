@@ -29,8 +29,15 @@ class IterinaryController extends Controller {
     	
     	$origin = Input::get('origin');
     	$destination = Input::get('destination');
+		$origin_pos = Input::get('origin_pos');
+		$pax = Input::get('pax');
 
-    	$input_bag = ['origin' => $origin, 'destination' => $destination, 'user id' => $user_id];
+    	$input_bag = [
+				'origin' => $origin,
+				'destination' => $destination,
+				'user id' => $user_id,
+				'pax' => $pax,
+		];
 
     	$i=0;
 		foreach ($input_bag as $key => $value) {
@@ -68,15 +75,11 @@ class IterinaryController extends Controller {
 			if($withSegment == true)
 			{
 				$segment = new Segment;
-				$segment->origin_pos = Input::get('origin_pos');
-				$segment->sequence = Input::get('sequence');
-				$segment->mode = Input::get('mode');
-				$segment->origin_name = Input::get('origin_name');
 				$input_bag = [
 						'origin name' => $origin,
 						'origin position' => $destination,
-						'mode' => $mode,
-						'sequence' => $sequence
+						'user id' => $user_id,
+						'origin position' => $origin_pos,
 				];
 
 				$i=0;
@@ -96,6 +99,11 @@ class IterinaryController extends Controller {
 				{
 					return response()->json($error_bag,400);
 				}
+				$segment->origin_pos = Input::get('origin_pos');
+				$segment->sequence = Input::get('sequence');
+				$segment->mode = Input::get('mode');
+				$segment->origin_name = Input::get('origin_name');
+
 
 				$route->segments()->save($segment);
 
