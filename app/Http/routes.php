@@ -285,7 +285,7 @@ Route::get('populate/spots',['middleware' => 'cors', 'uses' => 'TestController@p
 Route::get('test/helpers',function(){
 
 App\Classes\FoursquareHelper::testHelper();
-App\Classes\rome2rioHelper::testHelper();
+App\Classes\Rome2rioHelper::testHelper();
 App\Classes\GeolocationHelper::testHelper();
 App\Classes\recommenderModule::testHelper();
 

@@ -50,7 +50,7 @@ class SpotController extends Controller {
 			return response()->json($error_bag,400);
 		}
 		$longlat = $latitude.",".$longitude;
-		$data = \App\Classes\foursquareHelper::call($query,$longlat);
+		$data = App\Classes\foursquareHelper::call($query,$longlat);
 
 		dd($data);
 		$user = App\User::find($user_id);

@@ -17,8 +17,9 @@ class ActivityController extends Controller {
 		$name = $request['place_name'];
 		$lng = $request['lng'];
 		$lat = $request['lat'];
+		$segment_id = $request['segment_id'];
 
-		
+
 	}
 
 	/**s

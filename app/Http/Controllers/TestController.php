@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Classes\rome2rioHelper as Rome2Rio;
+use App\Classes\Rome2rioHelper as Rome2Rio;
 use App\Classes\foursquareHelper as Foursquare;
 use App\Iterinary;
 use App\Route;
