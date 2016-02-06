@@ -9,9 +9,11 @@
 		"nesbot/carbon": "~1.14"
 	},
 	"require-dev": {
+		"barryvdh/laravel-ide-helper": "^2.1",
 		"fzaninotto/faker": "v1.3.0",
 		"phpunit/phpunit": "~4.0",
-		"phpspec/phpspec": "~2.1"
+		"phpspec/phpspec": "~2.1",
+		"doctrine/dbal": "~2.3"
 	},
 	"autoload": {
 		"classmap": [

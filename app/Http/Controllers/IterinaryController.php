@@ -20,10 +20,11 @@ class IterinaryController extends Controller {
 	public function newIterinary(Request $request) 
 	{
 		$user_id = Input::get('user_id');
-		
+		$withSegment = Input::get('withSegment');
 		$error_bag = array();
-		$input_bag = array();
 
+
+		
     	$user = User::find($user_id);
     	
     	$origin = Input::get('origin');
@@ -63,7 +64,11 @@ class IterinaryController extends Controller {
     		$route = new Route;
     		$route->save();
     		$iterinary->route()->associate($route);
-    		
+
+			if($withSegment == true)
+			{
+				$segment = new Segment;
+			}
     		return response()->json('success',200);	
     	}
     	else
@@ -136,12 +141,7 @@ class IterinaryController extends Controller {
 		}		
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+
 	public function addSpot()
 	{
 		//$iterinary_id = 

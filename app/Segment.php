@@ -61,8 +61,8 @@ class Segment extends Model {
 		 * 
 		 * @param   $paramname description
 		 */
-		if($this->attributes['mode'] == 'bus'){
-
+		if($this->attributes['mode'] == 'bus')
+		{
 			return $this->hasMany('App\BusHop');
 		}
 		if($this->attributes['mode'] == 'ferry')

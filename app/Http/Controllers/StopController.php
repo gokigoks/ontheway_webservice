@@ -1,4 +1,4 @@
-	<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,7 @@ class StopController extends Controller {
 	public function addStop()
 	{
 		$segment_id = Input::get('segment_id');
-		$segment = App\segment::find($iterinary_id);
+		$segment = App\segment::find($segment_id);
 
 		$stop = new App\Stop;
 		$stop->name = Input::get('name');

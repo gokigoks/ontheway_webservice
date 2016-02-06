@@ -24,9 +24,9 @@ class SegmentController extends Controller {
 	 */
 	public function showSegment()
 	{
-		$iterinary_id = Input::get('iterinary_id');
+		$segment_id = Input::get('segment_id');
 
-		$iterinary = App\Iterinary::find($iterinary_id);
+		$iterinary = App\Segment::find($segment_id);
 
 		return response()->json($iterinary,200);
 	}
@@ -41,20 +41,21 @@ class SegmentController extends Controller {
 		//
 	}
 
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
-	public function endNew()
+	public function endSegment(Request $request)
 	{
-		//
+
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Request  $request
 	 * @return Response
 	 */
 	public function store(Request $request)

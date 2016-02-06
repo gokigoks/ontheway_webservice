@@ -70,7 +70,7 @@ class ApiController extends Controller {
 
         dd($result,$ch);
       
-        return response()->json($data,200);
+        return response()->json($contents,200);
         curl_close ($ch);
 	}
 

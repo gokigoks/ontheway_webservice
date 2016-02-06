@@ -90,7 +90,7 @@ class HopController extends Controller {
 	 * @return Response
 	 */
 	public function destroy($id)
-	{
+	{	
 		//
 	}
 

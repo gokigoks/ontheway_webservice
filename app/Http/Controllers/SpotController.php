@@ -80,7 +80,7 @@ class SpotController extends Controller {
 		$iterinary = App\Iterinary::find($iterinary_id);
 
 		$new_spot = new Spot();
-		$new
+
 	}
 
 	/**

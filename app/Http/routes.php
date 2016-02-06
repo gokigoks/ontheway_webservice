@@ -164,7 +164,7 @@ Route::get('rome2rio', function(){
 });
 
 use Illuminate\Database\Seeder;
-use App\Spot;
+use \App\Spot;
 use Faker as Faker;
 
 Route::get('test/seed', function(){
@@ -201,6 +201,7 @@ Route::post('api/geolocation/pointsToPath','GeolocationController@addPointsToPat
 Route::post('api/geolocation/pathToPath','GeolocationController@addPathToPath');
 //
 
+
 // CONTRIBUTOR ITERINARIESadd
 Route::post('plot/iterinary/new',['middleware' => 'cors', 'uses' => 'IterinaryController@newIterinary']);
 Route::post('plot/iterinary/end',['midtdleware' => 'cors', 'uses' => 'IterinaryController@end']);
@@ -230,7 +231,7 @@ Route::post('api/spots/add','SpotController@new');
 // END SPOTS
 
 // Route
-Route::post('api/iterinary/activity/new','ActivityController@new');
+Route::post('api/iterinary/activity/new',['middleware' => 'cors', 'uses' => 'ActivityController@new']);
 Route::post('api/iterinary/activity/get',['middleware' => 'cors', 'uses' => 'ActivityController@get']);
 // END ROUTE
 
@@ -262,8 +263,8 @@ Route::get('testcache',function(){
 //  --  SEGMENT ROUTES -- //
 Route::get('api/iterinary/segments/all',['middleware' => 'cors', 'uses' => 'SegmentController@getAll']);
 Route::get('api/iterinary/segments/show',['middleware' => 'cors', 'uses' => 'SegmentController@showSegment']);
-Route::post('api/iterinary/segments/addnew',['middleware' => 'cors', 'uses' => 'SegmentController@addNew']);
-Route::post('api/iterinary/segments/endnew',['middleware' => 'cors', 'uses' => 'SegmentController@endNew']);
+Route::post('api/iterinary/segments/add',['middleware' => 'cors', 'uses' => 'SegmentController@addNew']);
+Route::post('api/iterinary/segments/end',['middleware' => 'cors', 'uses' => 'SegmentController@endNew']);
 
 //  -- END SEGMENT ROUTES -- //
 

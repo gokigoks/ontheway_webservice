@@ -56,9 +56,9 @@ class TestController extends Controller {
 			$new_route->duration = $route->duration;
 			$new_route->price = Rome2Rio::getRome2RioPrice($route);
 			$new_route->save();
-			$iterinary->save();
-			$iterinary->route()->associate($new_route);
 
+			$iterinary->route()->associate($new_route);
+			$iterinary->save();
 			$i=1;
 			foreach ($route->segments as $segment) {
 
@@ -119,6 +119,9 @@ class TestController extends Controller {
 		$ll = Input::get('ll');
 		$query_type = Input::get('query');
 		$data = Foursquare::call($query_type,$ll);
+
+		if($data->response->venues)
+
 
 		dd($data);
 	}
