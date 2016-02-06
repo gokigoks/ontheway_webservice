@@ -3,7 +3,7 @@
 namespace App\Classes;
 
 use App\User;
-use App\Iterinar
+use App\Iterinary;
 use App\Rating;
 use Carbon;
 /**

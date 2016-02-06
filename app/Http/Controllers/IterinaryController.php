@@ -68,6 +68,37 @@ class IterinaryController extends Controller {
 			if($withSegment == true)
 			{
 				$segment = new Segment;
+				$segment->origin_pos = Input::get('origin_pos');
+				$segment->sequence = Input::get('sequence');
+				$segment->mode = Input::get('mode');
+				$segment->origin_name = Input::get('origin_name');
+				$input_bag = [
+						'origin name' => $origin,
+						'origin position' => $destination,
+						'mode' => $mode,
+						'sequence' => $sequence
+				];
+
+				$i=0;
+				foreach ($input_bag as $key => $value) {
+					$value = trim($value);
+
+					if (empty($value))
+					{    $error_bag[$i] = "$key empty";
+						$i++;
+					}
+					else{
+
+					}
+				}
+				//filter of false or null values
+				if(array_filter($error_bag))
+				{
+					return response()->json($error_bag,400);
+				}
+
+				$route->segments()->save($segment);
+
 			}
     		return response()->json('success',200);	
     	}

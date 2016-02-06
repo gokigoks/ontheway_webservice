@@ -68,13 +68,13 @@ class Rome2rioHelper
      * get native price if existing or get price then multiply by USD value.
      * @return integer
      */
-    public static function getRome2RioPrice($data, $index = null)
+    public static function getRome2RioPrice($data)
     {   
         if(isset($data->indicativePrice))
         {   
             ///////////
             $price = $data->indicativePrice;    
-            return (isset($price->nativePrice)) ? $price->nativePrice : ($price->price * 42);
+            return (!isset($price->nativePrice)) ?  ($price->price * 42) : $price->nativePrice;
             //eturn $data->indicativePrice->nativePrice;
         }
         
@@ -211,7 +211,7 @@ class Rome2rioHelper
     public static function getFlightPath($origin,$destination)
     {
         $array = [];
-        $path = "";
+
         $array[0] = Geohelper::parseLongLat($origin); 
         $array[1] = Geohelper::parseLongLat($destination);
 
@@ -220,5 +220,38 @@ class Rome2rioHelper
         return $path;
     }
 
+    public static function calculateDuration($segment)
+    {
+        $start = $segment->created_at;
+        $end = Carbon::now();
+
+        $duration = $end->diffInMinutes($start);
+
+        return $duration;
+        //sreturn $duration;
+    }
+    public static function calculateDistance($segment)
+    {
+
+        //sreturn $duration;
+    }
+
+    public static function distance($lat1, $lon1, $lat2, $lon2, $unit = "k") {
+
+        $theta = $lon1 - $lon2;
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        $dist = rad2deg($dist);
+        $miles = $dist * 60 * 1.1515;
+        $unit = strtoupper($unit);
+
+        if ($unit == "K") {
+            return ($miles * 1.609344);
+        } else if ($unit == "N") {
+            return ($miles * 0.8684);
+        } else {
+            return $miles;
+        }
+    }
 }
 ?>

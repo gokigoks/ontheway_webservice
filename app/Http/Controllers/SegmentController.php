@@ -2,7 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Input;
+use App\Classes\rome2rioHelper;
 use Illuminate\Http\Request;
 
 class SegmentController extends Controller {
@@ -49,7 +50,20 @@ class SegmentController extends Controller {
 	 */
 	public function endSegment(Request $request)
 	{
+		$segment_id = Input::get('segment_id');
 
+		$segment = Segment::find($segment_id);
+		$segment->destination_pos = Input::get('destination_pos');
+		$segment->destination_name = Input::get('destination_name');
+		$segment->distance = rome2rioHelper::calculateDistance($segment);
+		$segment->duration = rome2rioHelper::calculateDuration($segment);
+
+		$route = $segment->route;
+		if($segment->update()){
+			return response()->json('error ending segment',400);
+		}
+
+		return response()->json('success',200);
 	}
 
 	/**

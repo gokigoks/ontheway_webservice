@@ -264,7 +264,7 @@ Route::get('testcache',function(){
 Route::get('api/iterinary/segments/all',['middleware' => 'cors', 'uses' => 'SegmentController@getAll']);
 Route::get('api/iterinary/segments/show',['middleware' => 'cors', 'uses' => 'SegmentController@showSegment']);
 Route::post('api/iterinary/segments/add',['middleware' => 'cors', 'uses' => 'SegmentController@addNew']);
-Route::post('api/iterinary/segments/end',['middleware' => 'cors', 'uses' => 'SegmentController@endNew']);
+Route::post('api/iterinary/segments/end',['middleware' => 'cors', 'uses' => 'SegmentController@endSegment']);
 
 //  -- END SEGMENT ROUTES -- //
 
