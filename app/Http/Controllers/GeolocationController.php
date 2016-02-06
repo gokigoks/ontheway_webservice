@@ -57,7 +57,6 @@ class GeolocationController extends Controller {
 	{
 		$path = $request['path'];
 		$points = GeoHelper::decode($path);
-
 		return response()->json($points,200);
 	}
 

@@ -37,9 +37,8 @@ class RecommenderController extends Controller {
 
         $data = json_decode($data);
         // start debug
-        $routes = \Rome2RioData::getRoutes($data,1);    	
-    	$segments = \Rome2RioData::getSegments($routes));
-        
+        $routes = \Rome2RioData::getRoutes($data);
+    	$segments = \Rome2RioData::getSegments($routes);
 
         //end debug
         return response()->json($segments,200);
