@@ -23,9 +23,9 @@ class FoursquareHelper
         
     }
 
-    public static function getData()
+    public static function testHelper()
     {
-        echo 'hello';
+        echo "foursquare helper";
     }
 
 

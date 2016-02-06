@@ -23,9 +23,9 @@ class GeolocationHelper
         
     }
 
-    public static function getData()
+    public static function testHelper()
     {
-        echo 'data';
+        echo "geolocation helper";
     }
 
     public static function parseLongLat($data)

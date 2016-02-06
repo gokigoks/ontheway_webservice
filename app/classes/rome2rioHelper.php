@@ -17,6 +17,11 @@ class Rome2rioHelper
      * Rome2RioData constructor.
      */
     
+    public static function testHelper()
+    {
+        echo "rome2riohelper helpe&\n";
+    }
+
     /**
      * get routes function
      * @param type|null $index 

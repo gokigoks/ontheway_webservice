@@ -37,7 +37,7 @@ class TestController extends Controller {
 		'pax' => Input::get('pax')
 		];
 
-		//if($)
+		
 
 		$data = Rome2Rio::call($inputs['origin'],$inputs['destination']);
 		$airports = [];

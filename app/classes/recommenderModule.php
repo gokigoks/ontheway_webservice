@@ -23,9 +23,9 @@ class RecommenderModule
         
     }
 
-    public static function getData()
+    public static function testHelper()
     {
-        echo 'hello';
+        echo "recommender helper";
     }
 
 
