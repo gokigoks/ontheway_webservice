@@ -205,7 +205,7 @@ Route::post('api/geolocation/pathToPath','GeolocationController@addPathToPath');
 // CONTRIBUTOR ITERINARIESadd
 Route::post('plot/iterinary/new',['middleware' => 'cors', 'uses' => 'IterinaryController@newIterinary']);
 Route::post('plot/iterinary/end',['midtdleware' => 'cors', 'uses' => 'IterinaryController@end']);
-Route::post('api/iterinary/addspot',['middleware' => 'cors', 'uses' => 'IterinaryController@addSpot']);
+Route::post('api/iterinary/addactivity',['middleware' => 'cors', 'uses' => 'ActivityController@addActivity']);
 // END CONTRIBUTOR  ITERINARIES
 
 // Recomendee Iterinaries

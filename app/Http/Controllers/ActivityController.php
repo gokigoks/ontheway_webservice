@@ -6,14 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller {
-	
+
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function new()
-	{
+	public function addActivity(Request $request)
+	{		
+		$name = $request['place_name'];
+		$lng = $request['lng'];
+		$lat = $request['lat'];
+
 		
 	}
 
