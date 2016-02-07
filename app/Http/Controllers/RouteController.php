@@ -42,6 +42,11 @@ class RouteController extends Controller {
 		$route->save();
 	}
 
+	public function findOtherRoute()
+	{
+		return "no more routes bitch";
+	}
+
 	/**
 	 * Display the specified resource.
 	 *
