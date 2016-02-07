@@ -127,7 +127,9 @@ class TestController extends Controller {
 		$data = Foursquare::call($query_type,$ll);
 
 		if($data->response->venues)
+        {
 
+        }
 
 		dd($data);
 	}

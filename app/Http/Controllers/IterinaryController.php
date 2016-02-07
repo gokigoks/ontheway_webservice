@@ -14,7 +14,7 @@ class IterinaryController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 *
+	 * @route 'plot/iterinary/new'
 	 * @return Response
 	 */
 	public function newIterinary(Request $request) 
@@ -99,6 +99,7 @@ class IterinaryController extends Controller {
 				{
 					return response()->json($error_bag,400);
 				}
+
 				$segment->origin_pos = Input::get('origin_pos');
 				$segment->sequence = Input::get('sequence');
 				$segment->mode = Input::get('mode');
@@ -223,7 +224,12 @@ class IterinaryController extends Controller {
 
 	}
 
-	public function end()
+	/**
+	 *
+	 * @route 'plot/iterinary/end'
+	 * @response json
+	 * */
+	public function endIterinary(Request $request)
 	{
 		$user_id = Input::get('user_id');
 		$iterinary_id = Input::get('iterinary_id');

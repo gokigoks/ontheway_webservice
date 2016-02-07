@@ -9,27 +9,51 @@ class ActivityController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 *
+	 * @route 'api/activity/add'
 	 * @return Response
 	 */
 	public function addActivity(Request $request)
-	{		
-		$name = $request['place_name'];
-		$lng = $request['lng'];
-		$lat = $request['lat'];
-		$segment_id = $request['segment_id'];
+	{
+		$type = $request['type'];
+
+		if($type == "transport")
+		{
+			$origin_name = $request['origin_name'];
+			$origin_pos = $request['origin_pos'];
+			$mode = $request['mode'];
+
+		}
+		if($type == "food")
+		{
+			$name = $request['food'];
+			$lng = $request['lng'];
+			$lat = $request['lat'];
+		}
+		if($type == "spot")
+		{
+			$name = $request['spot'];
+			$lng = $request['lng'];
+			$lat = $request['lat'];
+			$segment_id = $request['segment_id'];
+
+		}
+		else
+		{
+			return response()->json('type field is required',200);
+		}
 
 
 	}
 
 	/**s
-	 * Show the form for creating a new resource.
+	 * end the activity
 	 *
-	 * @return Response
+	 * @route 'api/activity/endactivity'
+	 * @reponse json
 	 */
-	public function get()
+	public function endActivity(Request $request)
 	{
-		//
+
 	}
 
 	/**

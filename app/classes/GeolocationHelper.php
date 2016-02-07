@@ -263,13 +263,57 @@ class GeolocationHelper
         $miles = $dist * 60 * 1.1515;
         $unit = strtoupper($unit);
 
+        $distance = $miles;
         if ($unit == "K") {
-            return ($miles * 1.609344);
+            $distance = $miles * 1.609344;
         } else if ($unit == "N") {
-            return ($miles * 0.8684);
+            $distance = $miles * 0.8684;
         } else {
-            return $miles;
+
         }
+
+        return round($distance,0);
+    }
+
+    public static function getPlaceName($ll)
+    {
+        $ll = (!isset($ll)) ? "10.30903,123.8931" : $ll ;
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$ll.""&key=AIzaSyDBYczEUp2hpIEhRgm2LbSWHI3qvMo4jQ0;
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $data = curl_exec($ch);
+
+        if(curl_errno($ch))
+        {
+            die("Couldn't send request: " . curl_error($ch));
+        }
+        else {
+
+            $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            if ($resultStatus == 200) {
+
+                $data = json_decode($data);
+                $data->fromCache = false;
+                //dd('not from cache');
+
+
+
+
+            } else {
+                // the request did not complete as expected. common errors are 4xx
+                // (not found, bad request, etc.) and 5xx (usually concerning
+                // errors/exceptions in the remote script execution)
+
+                die('Request failed: HTTP status code: ' . $resultStatus);
+            }
+        }
+
+
     }
 }
 ?>

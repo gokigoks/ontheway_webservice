@@ -204,8 +204,9 @@ Route::post('api/geolocation/pathToPath','GeolocationController@addPathToPath');
 
 // CONTRIBUTOR ITERINARIESadd
 Route::post('plot/iterinary/new',['middleware' => 'cors', 'uses' => 'IterinaryController@newIterinary']);
-Route::post('plot/iterinary/end',['midtdleware' => 'cors', 'uses' => 'IterinaryController@end']);
-Route::post('api/iterinary/addactivity',['middleware' => 'cors', 'uses' => 'ActivityController@addActivity']);
+Route::post('plot/iterinary/end',['midtdleware' => 'cors', 'uses' => 'IterinaryController@endIterinary']);
+Route::post('api/activity/add',['middleware' => 'cors', 'uses' => 'ActivityController@addActivity']);
+Route::post('api/activity/end',['middleware' => 'cors', 'uses' => 'ActivityController@endActivity']);
 // END CONTRIBUTOR  ITERINARIES
 
 // Recomendee Iterinaries
@@ -221,19 +222,20 @@ Route::get('api/iterinary/current',['middleware' => 'cors', 'uses' => 'Iterinary
 * @example   description
 **/
 Route::get('api/iterinary/','RecommenderController@getTripRecommendation');
-Route::get('api/spots/','RecommenderController@getSpotRecommendation');
+//Route::get('api/spots/','RecommenderController@getSpotRecommendation');
 //  End Recommendation 
 
 
 // SPOTS
-Route::get('api/spots','SpotController@get');
-Route::post('api/spots/add','SpotController@new');
+Route::get('api/spots','SpotController@getSpots');
+Route::post('api/spots/add','SpotController@newSpot');
+Route::post('api/spots/end','SpotController@endSpot');
 // END SPOTS
 
-// Route
+// Activity routes
 Route::post('api/iterinary/activity/new',['middleware' => 'cors', 'uses' => 'ActivityController@new']);
 Route::post('api/iterinary/activity/get',['middleware' => 'cors', 'uses' => 'ActivityController@get']);
-// END ROUTE
+// END activity routes
 
 //Route::get('api/hotels','')
 
@@ -284,10 +286,21 @@ Route::get('populate/spots',['middleware' => 'cors', 'uses' => 'TestController@p
 //  -- test helpers -- //
 Route::get('test/helpers',function(){
 
-App\Classes\FoursquareHelper::testHelper();
-App\Classes\Rome2rioHelper::testHelper();
-App\Classes\GeolocationHelper::testHelper();
-App\Classes\recommenderModule::testHelper();
+    App\Classes\FoursquareHelper::testHelper();
+    App\Classes\Rome2rioHelper::testHelper();
+    App\Classes\GeolocationHelper::testHelper();
+    App\Classes\RecommenderModule::testHelper();
+
+});
+
+Route::get('test/distance',function(){
+    
+    $lnglat1 = Input::get('lnglat1');
+    $lnglat2 = Input::get('lnglat2');
+    $segment = new App\Segment;
+    $segment->origin_pos = $lnglat1;
+    $segment->destination_pos = $lnglat2;
+    return response()->json(App\Classes\GeolocationHelper::calculateDistance($segment),200);
 
 });
 // -- end test helpers -- //

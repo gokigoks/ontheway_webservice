@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Input;
 use App\Classes\rome2rioHelper;
 use Illuminate\Http\Request;
+use App\Segment;
 
 class SegmentController extends Controller {
 
@@ -27,7 +28,7 @@ class SegmentController extends Controller {
 	{
 		$segment_id = Input::get('segment_id');
 
-		$iterinary = App\Segment::find($segment_id);
+		$iterinary = Segment::find($segment_id);
 
 		return response()->json($iterinary,200);
 	}

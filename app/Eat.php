@@ -32,7 +32,7 @@ class Eat extends Model {
 	 */
 	public function ratings()
 	{
-		return $this->morphMany('App\Rating','ratingable')
+		return $this->morphMany('App\Rating','ratingable');
 	}
 
 }
