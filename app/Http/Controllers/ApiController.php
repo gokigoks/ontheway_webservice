@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Classes\Rome2rioHelper as Rome2rio;
 
 use Illuminate\Http\Request;
 
@@ -81,6 +82,7 @@ class ApiController extends Controller {
 	 */
 	public function get_rome2rio(Request $request)
 	{
+
 		return view('api.rome2rio');
 	}
 
@@ -97,17 +99,18 @@ class ApiController extends Controller {
          * $url = API url
          * kani ray ilisi earl
          */
-        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
 
-        $ch = curl_init($url);
+        //$url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
+//
+//        $ch = curl_init($url);
+//
+//        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+//        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $data = Rome2rio::call($origin,$destination);
 
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $data = curl_exec($ch);
-
-        $data = json_decode($data);
-        dd($data,$ch);
+        //$data = json_decode($data)
+        dd($data);
         return response()->json($data,200);
                 
         curl_close($ch);

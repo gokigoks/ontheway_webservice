@@ -38,9 +38,9 @@ class SegmentController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function addNew()
+	public function newSegment(Request $request)
 	{
-		//
+		
 	}
 
 

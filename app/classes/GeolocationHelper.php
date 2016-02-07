@@ -278,7 +278,7 @@ class GeolocationHelper
     public static function getPlaceName($ll)
     {
         $ll = (!isset($ll)) ? "10.30903,123.8931" : $ll ;
-        $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$ll.""&key=AIzaSyDBYczEUp2hpIEhRgm2LbSWHI3qvMo4jQ0;
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$ll."&key=AIzaSyDBYczEUp2hpIEhRgm2LbSWHI3qvMo4jQ0";
 
         $ch = curl_init($url);
 

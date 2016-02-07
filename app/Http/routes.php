@@ -24,14 +24,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('test/foursquare','ApiController@get_foursquare');
     Route::get('test/rome2rio','ApiController@get_rome2rio');
 
-    Route::post('test/foursquare','ApiController@post_foursquare');
-    Route::post('test/rome2rio','ApiController@post_rome2rio');
 
     Route::get('test/api/dump', 'ApiController@testAjax');
 
     Route::get('test/api/users', 'ApiController@get_users');
 });
 
+Route::post('test/foursquare','ApiController@post_foursquare');
+Route::post('test/rome2rio','ApiController@post_rome2rio');
 
 Route::get('user/logout', ['middleware' => 'cors', 'uses' => function()
 {
@@ -303,4 +303,6 @@ Route::get('test/distance',function(){
     return response()->json(App\Classes\GeolocationHelper::calculateDistance($segment),200);
 
 });
+
+
 // -- end test helpers -- //

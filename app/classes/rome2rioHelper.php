@@ -109,7 +109,7 @@ class Rome2rioHelper
              * kani ray ilisi earl
              */
             $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
-
+            $url = $new = str_replace(' ', '%20', $url);
             $ch = curl_init($url);
 
             curl_setopt($ch, CURLOPT_TIMEOUT, 5);

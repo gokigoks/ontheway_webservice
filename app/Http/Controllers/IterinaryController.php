@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class IterinaryController extends Controller {
 
 	/**
-	 * Display a listing of the resource.
+	 * contributor new iterinary
 	 * @route 'plot/iterinary/new'
 	 * @return Response
 	 */
@@ -26,7 +26,10 @@ class IterinaryController extends Controller {
 
 		
     	$user = User::find($user_id);
-    	
+        if($user == null)
+        {
+            return response()->json('user not found.',404);
+        }
     	$origin = Input::get('origin');
     	$destination = Input::get('destination');
 		$origin_pos = Input::get('origin_pos');
@@ -38,7 +41,7 @@ class IterinaryController extends Controller {
 				'user id' => $user_id,
 				'pax' => $pax,
 		];
-
+		
     	$i=0;
 		foreach ($input_bag as $key => $value) {
 		    $value = trim($value);
@@ -68,6 +71,7 @@ class IterinaryController extends Controller {
     	if($iterinary->users()->save($user))
     	{	    		
     		$user->iterinaries()->attach($iterinary->id);
+    		
     		$route = new Route;
     		$route->save();
     		$iterinary->route()->associate($route);

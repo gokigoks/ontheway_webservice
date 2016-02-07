@@ -44,6 +44,10 @@ class TestController extends Controller {
 		$user_id = Input::get('user_id');
 		$contributor = User::find($user_id);
 
+        if($contributor == null)
+        {
+            return response()->json('user not found.',404);
+        }
 		if(isset($data->airports)){
 			foreach ($data->airports as $airport) {
 				$airports[$airport->code] = $airport->pos;
