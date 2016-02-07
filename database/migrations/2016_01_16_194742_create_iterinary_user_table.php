@@ -26,7 +26,7 @@ class CreateIterinaryUserTable extends Migration {
 			$table->dateTime('date_start');
 			$table->enum('status',array('planned','doing','done'))->default('planned');
 			$table->timestamps();
-			
+				
 			$table->foreign('user_id')
 			->references('id')
 			->on('users')
