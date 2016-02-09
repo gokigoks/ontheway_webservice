@@ -8,6 +8,7 @@ use App\Iterinary;
 use App\Route;
 use App\Segment;
 use App\Stop;
+use App\Spot;
 use App\User;
 use Input;
 use Illuminate\Http\Request;
@@ -129,24 +130,28 @@ class TestController extends Controller {
 		$ll = Input::get('ll');
 		$query_type = Input::get('query');
 		$data = Foursquare::call($query_type,$ll);
-
-		if($data->response->venues)
+		$spots = (!isset($data->response->venues)) ? null : $data->response->venues;
+		if($spots)
         {
+        	foreach ($spots as $spot) {
 
-        }
+        		$new_spot = new Spot();
+        		$new_spot->place_name = "name";
+        		$new_spot->pic_url = Foursquare::getImage($spot);
+        		$new_spot->lat = $spot->location->lat;
+        		$new_spot->lng = $spot->location->long;
+        		$new_spot->price = 50 * rand(1,4);
+
+        	}
+        }	
 
 		dd($data);
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+	
+	public function populateEats()
 	{
-		//
+		
 	}
 
 	/**

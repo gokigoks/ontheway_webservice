@@ -2,6 +2,23 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\BusHop
+ *
+ * @property integer $id
+ * @property integer $segment_id
+ * @property string $sName
+ * @property string $tName
+ * @property string $sPos
+ * @property string $tPos
+ * @property integer $frequency
+ * @property integer $duration
+ * @property integer $price
+ * @property string $agency
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Segment $segment
+ */
 class BusHop extends Model {
 
 	/**

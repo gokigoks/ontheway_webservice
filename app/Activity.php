@@ -2,6 +2,21 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Activity
+ *
+ * @property integer $id
+ * @property integer $day_id
+ * @property string $start_time
+ * @property string $end_time
+ * @property string $typable_type
+ * @property integer $typable_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Day $day
+ * @property-read \App\Activity $typable
+ * @property-read \App\Stop $stop
+ */
 class Activity extends Model {
 
 	/**

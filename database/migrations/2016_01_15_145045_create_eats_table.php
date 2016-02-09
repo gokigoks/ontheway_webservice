@@ -17,6 +17,7 @@ class CreateEatsTable extends Migration {
 			$table->increments('id');
 			$table->string('place_name');
 			$table->integer('price');
+			$table->string('pic_url')->nullable();
 			$table->string('tips',200)->nullable();
 			$table->string('pos')->nullable();
 			$table->timestamps();

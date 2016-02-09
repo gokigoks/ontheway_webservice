@@ -35,4 +35,8 @@ class Eat extends Model {
 		return $this->morphMany('App\Rating','ratingable');
 	}
 
+	public function category()
+	{
+		return $this->belongsToMany('App\Category');
+	}
 }

@@ -26,7 +26,14 @@ class Spot extends Model {
 		$this->morphMany('App\Activity','typable');
 	}
 
-	public function haversine($query, $lat, $lng, $max_distance = 25, $units = 'miles', $fields = false )
+
+	public function category()
+	{
+		return $this->belongsToMany('App\Category');
+	}
+
+
+	public function scopeHaversine($query, $lat, $lng, $max_distance = 25, $units = 'kilometers', $fields = false )
 	{
 
 		if(empty($lat)){
@@ -52,7 +59,7 @@ class Spot extends Model {
          *  Support the selection of certain fields
          */
 		if( ! $fields ) {
-			$fields = array( 'users.*', 'users_profile.*', 'users.username as user_name' );
+			$fields = array( 'place_name', 'CONCAT(lng, " ", lat) as pos ', ' tips' );
 		}
 		/*
          *  Generate the select field for disctance
@@ -74,7 +81,7 @@ class Spot extends Model {
 				$lat
 		);
 
-		$data = $query->select( DB::raw( implode( ',' ,  $fields ) . ',' .  $distance_select  ) )
+		$data = $query->select( \DB::raw( implode( ',' ,  $fields ) . ',' .  $distance_select  ) )
 				->having( 'distance', '<=', $max_distance )
 				->orderBy( 'distance', 'ASC' )
 				->get();

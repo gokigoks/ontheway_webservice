@@ -4,23 +4,23 @@ namespace App\Classes;
 
 
 use Carbon;
+
 /**
  * Class Rome2RioData
  * @package app\classes
  */
-
-
 class GeolocationHelper
-{   
+{
     protected static $precision = 5;
 
     protected $data = "geolocation data";
+
     /**
      * Rome2RioData constructor.
      */
     public function __construct()
     {
-        
+
     }
 
     public static function testHelper()
@@ -29,18 +29,18 @@ class GeolocationHelper
     }
 
     public static function parseLongLat($data)
-    {            
-            list($long, $lat) = explode(",", $data);
-            $array = [$long,$lat];
+    {
+        list($long, $lat) = explode(",", $data);
+        $array = [$long, $lat];
         return $array;
     }
-    
+
 
     public static function Decode($string)
     {
         $points = array();
         $index = $i = 0;
-        $previous = array(0,0);
+        $previous = array(0, 0);
         while ($i < strlen($string)) {
             $shift = $result = 0x00;
             do {
@@ -65,9 +65,9 @@ class GeolocationHelper
         }
         do {
             $pairs[] = array(
-                    array_shift($list),
-                    array_shift($list)
-                );
+                array_shift($list),
+                array_shift($list)
+            );
         } while (!empty($list));
         return $pairs;
     }
@@ -87,12 +87,12 @@ class GeolocationHelper
     }
 
 
-    public static function addPathToPath($first,$second)
-    {   
+    public static function addPathToPath($first, $second)
+    {
         $first_path = self::decode($first);
         $second_path = self::decode($second);
 
-        $final = array_merge($first_path,$second_path);
+        $final = array_merge($first_path, $second_path);
 
         return self::encode($final);
     }
@@ -102,7 +102,7 @@ class GeolocationHelper
         $points = self::Flatten($points);
         $encodedString = '';
         $index = 0;
-        $previous = array(0,0);
+        $previous = array(0, 0);
         foreach ($points as $number) {
             $number = (float)($number);
             $number = (int)round($number * pow(10, static::$precision));
@@ -117,7 +117,7 @@ class GeolocationHelper
                 $number >>= 5;
             }
             $chunk .= chr($number + 63);
-            
+
             $encodedString .= $chunk;
         }
         return $encodedString;
@@ -127,20 +127,19 @@ class GeolocationHelper
     {
         $airports = $data->airports;
         $array = array();
-        if($withName == true){
-            $i=0;
+        if ($withName == true) {
+            $i = 0;
             foreach ($airports as $airport) {
                 $array[$i] = self::parseLongLat($airport->pos);
                 $array[$i]['city'] = $airport->name;
                 $array[$i]['countryCode'] = $airport->countryCode;
                 $i++;
-             }
-        }
-        else{
+            }
+        } else {
 
             foreach ($airports as $key => $airport) {
 
-                $array[$key] = self::parseLongLat($airport->pos);               
+                $array[$key] = self::parseLongLat($airport->pos);
 
             }
 
@@ -159,59 +158,59 @@ class GeolocationHelper
      *  @param Array $fiels to return
      *  @return array
      **/
-     public static function haversine($query, $lat, $lng, $max_distance = 20, $units = 'kilometers', $fields = false )
-     {
-        
-        if(empty($lat)){
+    public static function haversine($query, $lat, $lng, $max_distance = 20, $units = 'kilometers', $fields = false)
+    {
+
+        if (empty($lat)) {
             $lat = 0;
         }
-        if(empty($lng)){
+        if (empty($lng)) {
             $lng = 0;
         }
         /*
          *  Allow for changing of units of measurement
          */
-        switch ( $units ) {
+        switch ($units) {
             case 'miles':
                 //radius of the great circle in miles
                 $gr_circle_radius = 3959;
-            break;
+                break;
             case 'kilometers':
                 //radius of the great circle in kilometers
                 $gr_circle_radius = 6371;
-            break;
+                break;
         }
         /*
          *  Support the selection of certain fields
          */
-        if( ! $fields ) {
-            $fields = array( 'users.*', 'users_profile.*', 'users.username as user_name' );
+        if (!$fields) {
+            $fields = array('users.*', 'users_profile.*', 'users.username as user_name');
         }
         /*
          *  Generate the select field for disctance
          */
         $distance_select = sprintf(
-                                    "           
+            "
                                     ROUND(( %d * acos( cos( radians(%s) ) " .
-                                            " * cos( radians( lat ) ) " .
-                                            " * cos( radians( lng ) - radians(%s) ) " .
-                                            " + sin( radians(%s) ) * sin( radians( lat ) ) " .
-                                        " ) " . 
-                                    ")
-                                    , 2 ) " . 
-                                    "AS distance
+            " * cos( radians( lat ) ) " .
+            " * cos( radians( lng ) - radians(%s) ) " .
+            " + sin( radians(%s) ) * sin( radians( lat ) ) " .
+            " ) " .
+            ")
+                                    , 2 ) " .
+            "AS distance
                                     ",
-                                    $gr_circle_radius,               
-                                    $lat,
-                                    $lng,
-                                    $lat
-                                   );
-        
-        $data = $query->select( DB::raw( implode( ',' ,  $fields ) . ',' .  $distance_select  ) )
-                      ->having( 'distance', '<=', $max_distance )
-                      ->orderBy( 'distance', 'ASC' )
-                      ->get();                    
-  
+            $gr_circle_radius,
+            $lat,
+            $lng,
+            $lat
+        );
+
+        $data = $query->select(DB::raw(implode(',', $fields) . ',' . $distance_select))
+            ->having('distance', '<=', $max_distance)
+            ->orderBy('distance', 'ASC')
+            ->get();
+
         //echo '<pre>';
         //echo $query->toSQL();
         //echo $distance_select;
@@ -226,14 +225,15 @@ class GeolocationHelper
     }
 
     public static function sanitizePoints($points)
-    {           
+    {
 
         foreach ($points as $key => $value) {
             $points[$key] = self::parseLongLat($value);
         }
-        
-        return $points;    
+
+        return $points;
     }
+
     public static function calculateDuration($segment)
     {
         $start = $segment->created_at;
@@ -244,20 +244,21 @@ class GeolocationHelper
         return $duration;
         //sreturn $duration;
     }
+
     public static function calculateDistance($segment)
     {
         $origin = self::parseLongLat($segment->origin_pos);
         $destination = self::parseLongLat($segment->destination_pos);
 
-        return self::distance($origin[0],$origin[1],$destination[0],$destination[1]);
+        return self::distance($origin[0], $origin[1], $destination[0], $destination[1]);
         //sreturn $duration;
     }
 
-    public static function distance($lat1, $lon1, $lat2, $lon2, $unit = "k") 
+    public static function distance($lat1, $lon1, $lat2, $lon2, $unit = "k")
     {
-        
+
         $theta = $lon1 - $lon2;
-        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
         $dist = acos($dist);
         $dist = rad2deg($dist);
         $miles = $dist * 60 * 1.1515;
@@ -272,13 +273,13 @@ class GeolocationHelper
 
         }
 
-        return round($distance,0);
+        return round($distance, 0);
     }
 
     public static function getPlaceName($ll)
     {
-        $ll = (!isset($ll)) ? "10.30903,123.8931" : $ll ;
-        $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$ll."&key=AIzaSyDBYczEUp2hpIEhRgm2LbSWHI3qvMo4jQ0";
+        $ll = (!isset($ll)) ? "10.30903,123.8931" : $ll;
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" . $ll . "&key=AIzaSyDBYczEUp2hpIEhRgm2LbSWHI3qvMo4jQ0";
 
         $ch = curl_init($url);
 
@@ -287,11 +288,9 @@ class GeolocationHelper
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($ch);
 
-        if(curl_errno($ch))
-        {
+        if (curl_errno($ch)) {
             die("Couldn't send request: " . curl_error($ch));
-        }
-        else {
+        } else {
 
             $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
@@ -300,8 +299,6 @@ class GeolocationHelper
                 $data = json_decode($data);
                 $data->fromCache = false;
                 //dd('not from cache');
-
-
 
 
             } else {
@@ -316,4 +313,5 @@ class GeolocationHelper
 
     }
 }
+
 ?>

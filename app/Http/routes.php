@@ -254,7 +254,7 @@ Route::get('geolocationhelper',function(){
 
 // --   END GEOLOCATION ROUTES -- //
 
-// -- FOURSQUARE ROUTES -- //
+// -- FOURSQUARE ROUTES -- //`
 Route::get('testcache',function(){
     $data  = \App\Classes\Rome2rioHelper::call();
     //Cache::add('cebu,manila',$data,20);
@@ -296,11 +296,13 @@ Route::get('test/helpers',function(){
 Route::get('test/distance',function(){
     
     $lnglat1 = Input::get('lnglat1');
-    $lnglat2 = Input::get('lnglat2');
+    //$lnglat2 = Input::get('lnglat2');
     $segment = new App\Segment;
     $segment->origin_pos = $lnglat1;
-    $segment->destination_pos = $lnglat2;
-    return response()->json(App\Classes\GeolocationHelper::calculateDistance($segment),200);
+    //$segment->destination_pos = $lnglat2;
+    //dd($lnglat1);
+    $spots = App\Spot::haversine($lnglat1[0],$lnglat1[1]);
+    //return response()->json(App\Classes\GeolocationHelper::calculateDistance($segment),200);
 
 });
 

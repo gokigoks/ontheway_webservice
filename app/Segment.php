@@ -8,19 +8,18 @@ class Segment extends Model {
 	protected $table = 'segments';
 
 	/**
-	 * Data
-	 * route_id
-	 * sequence             - sequence of segment
-	 * origin_name          - origin name
-	 * origin_pos           - compressed long lat of origin
-	 * destination_name     - name of the destination place
-	 * destination_pos		- compressed long lat of destination
-	 * sCode                - Area code of origin (used in flights segment)
-	 * tCode 				- Area code of destination (used in flights segment)
-	 * price 				- price for segment
-	 * distance             - distance between origin and destination
-	 * duration 			- duration for the travel segment
-	 * mode 				- mode of transportation for this segment
+	 * @property Ingteger route_id
+	 * @property Integer sequence             - sequence of segment
+	 * @property String origin_name          - origin name
+	 * @property String origin_pos           - compressed long lat of origin
+	 * @property String destination_name     - name of the destination place
+	 * @property String destination_pos		- compressed long lat of destination
+	 * @property String sCode                - Area code of origin (used in flights segment)
+	 * @property String tCode 				- Area code of destination (used in flights segment)
+	 * @property Integer price 				- price for segment
+	 * @property Integer distance             - distance between origin and destination
+	 * @property Integer duration 			- duration for the travel segment
+	 * @property Sring mode 				- mode of transportation for this segment
 	 * @var Array
 	 */
 	protected $fillable = ['route_id','sequence','origin_name','origin_pos','destination_name', 'sCode', 'tCode', 'destination_pos','price','distance','duration','mode'];
@@ -74,5 +73,10 @@ class Segment extends Model {
 			return $this->hasMany('App\TrainHop');
 		}
 
+	}
+
+	public function activity()
+	{
+		return $this->hasOne('App\Actovoty');
 	}
 }

@@ -16,6 +16,7 @@ class CreateSpotsTable extends Migration {
 		{
 			$table->increments('id');			
 			$table->string('place_name');
+			$table->string('pic_url')->nullable();
 			$table->string('lat')->nullable();
 			$table->string('lng')->nullable();
 			$table->integer('price');
