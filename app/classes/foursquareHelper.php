@@ -91,13 +91,14 @@ class FoursquareHelper
 
     /**
      * check for identical request in cache
+     * @param $query_type type of query (eg. spot,food)
      * @param type $ll Latitude Longitude
      * @return boolean
      */
 
     public static function checkForCachedQuery($ll, $query_type)
     {
-        $key = $ll . "" . $query_type;
+        $key = md5($ll . "" . $query_type);
         if (Cache::has($key)) {
             return Cache::get($key);
         } else {
@@ -109,7 +110,7 @@ class FoursquareHelper
 
     public static function cacheRequest($ll, $query_type, $data)
     {
-
+        $key = md5($ll);
 
         if (Cache::has($key)) {
 

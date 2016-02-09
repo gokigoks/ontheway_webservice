@@ -16,6 +16,7 @@ class CreateSegmentsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('route_id')->unsigned();
+            $table->integer('day')->default(1);
 			$table->integer('sequence')->unsigned();
 			$table->string('origin_name');
 			$table->string('destination_name');

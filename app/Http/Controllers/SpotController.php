@@ -71,6 +71,7 @@ class SpotController extends Controller {
 		$longitude = Input::get('longitude');
 		$latitude = Input::get('latitude');
 		$place_name = Input::get('place_name');
+        $city = Input::get('city');
 		$tips = Input::get('tips');
 		$price =Input::get('price');
 		$type = Input::get('type');
@@ -79,7 +80,6 @@ class SpotController extends Controller {
 		$user = App\User::find($user_id);
 		$iterinary = App\Iterinary::find($iterinary_id);
 
-		$new_spot = new Spot();
 
 	}
 

@@ -129,6 +129,7 @@ class TestController extends Controller {
 	{
 		$ll = Input::get('ll');
 		$query_type = Input::get('query');
+        if($query_type==null) $query_type = "beach";
 		$data = Foursquare::call($query_type,$ll);
 		$spots = (!isset($data->response->venues)) ? null : $data->response->venues;
 		if($spots)
@@ -136,23 +137,39 @@ class TestController extends Controller {
         	foreach ($spots as $spot) {
 
         		$new_spot = new Spot();
-        		$new_spot->place_name = "name";
+        		$new_spot->place_name = $spot->name;
         		$new_spot->pic_url = Foursquare::getImage($spot);
         		$new_spot->lat = $spot->location->lat;
-        		$new_spot->lng = $spot->location->long;
+        		$new_spot->lng = $spot->location->lng;
         		$new_spot->price = 50 * rand(1,4);
+                $new_spot->save();
 
         	}
         }	
 
-		dd($data);
+		return response()->json('success',200);
 	}
 
 	
 	public function populateEats()
 	{
-		
-	}
+        $ll = Input::get('ll');
+        $query_type = Input::get('query');
+        $data = Foursquare::call($query_type,$ll);
+        $spots = (!isset($data->response->venues)) ? null : $data->response->venues;
+        if($spots)
+        {
+            foreach ($spots as $spot) {
+                $new_spot = new Spot();
+                $new_spot->place_name = "name";
+                $new_spot->pic_url = Foursquare::getImage($spot);
+                $new_spot->lat = $spot->location->lat;
+                $new_spot->lng = $spot->location->long;
+                $new_spot->price = 125 * rand(1,4);
+                $new_spot->save();
+            }
+        }
+    }
 
 	/**
 	 * Show the form for editing the specified resource.

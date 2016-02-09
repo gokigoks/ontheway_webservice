@@ -30,10 +30,26 @@ class Segment extends Model {
 		return $this->hasMany('App\Stop');
 	}
 
+    /**
+     * @param $query
+     * @param $day
+     * @return mixed
+     */
+    public function scopeDay($query,$day)
+    {
+        return $query->where('day','=',$day);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
 	public function route(){
 		return $this->belongsTo('App\Route');
 	}
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany|string
+     */
 	public function flight_iterinaries()
 	{
 		if($this->attributes['mode'] == "flight")
@@ -75,8 +91,11 @@ class Segment extends Model {
 
 	}
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
 	public function activity()
 	{
-		return $this->hasOne('App\Actovoty');
+		return $this->hasOne('App\Activity');
 	}
 }

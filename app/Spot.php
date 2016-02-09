@@ -12,15 +12,15 @@ class Spot extends Model {
 	protected $table = 'spots';
 
 	/**
-	 * place_name - name of spot
-	 * lng 		  - longitude of spot	
-	 * lat 		  - latitude of spot
-	 * price 	  - price expended 
-	 * tips       - tips for this activity
-	 * 
-	 * @return Array
+	 * @property String place_name - name of spot
+	 * @property String lng 		  - longitude of spot
+	 * @property String lat 		  - latitude of spot
+	 * @property Integer price 	  - price expended
+	 * @property String tips       - tips for this activity
+	 * @property String city
+	 * @return Arrays
 	 */
-	protected $fillable = ['place_name', 'lng', 'lat', 'price', 'tips'];
+	protected $fillable = ['place_name', 'lng', 'lat', 'price', 'tips','city'];
 
 	public function activity(){
 		$this->morphMany('App\Activity','typable');
@@ -55,11 +55,13 @@ class Spot extends Model {
 				$gr_circle_radius = 6371;
 				break;
 		}
+
+       // dd($lat,$lng);
 		/*
          *  Support the selection of certain fields
          */
 		if( ! $fields ) {
-			$fields = array( 'place_name', 'CONCAT(lng, " ", lat) as pos ', ' tips' );
+			$fields = array( 'place_name', 'CONCAT(lng, ",", lat) as pos ', ' tips' );
 		}
 		/*
          *  Generate the select field for disctance
@@ -83,8 +85,8 @@ class Spot extends Model {
 
 		$data = $query->select( \DB::raw( implode( ',' ,  $fields ) . ',' .  $distance_select  ) )
 				->having( 'distance', '<=', $max_distance )
-				->orderBy( 'distance', 'ASC' )
-				->get();
+				->orderBy( 'distance', 'ASC' );
+
 
 		//echo '<pre>';
 		//echo $query->toSQL();

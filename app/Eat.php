@@ -15,7 +15,7 @@ class Eat extends Model {
 	 * Mass assignable model data
 	 * @var Array
 	 */
-	protected $fillable = ['place_name', 'price', 'tips', 'pos'];
+	protected $fillable = ['place_name', 'price', 'tips', 'pos','pic_url'];
 
 	/**
 	 * activity relationship

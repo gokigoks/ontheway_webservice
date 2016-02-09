@@ -32,7 +32,7 @@ class HopController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
 		$hop = new Hop;
 		$hop->segment_id = $request['segment_id'];

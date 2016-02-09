@@ -4,7 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\Rome2rioHelper as Rome2rio;
 use Input;
-
+use File;
+use Response;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -171,14 +172,27 @@ class ApiController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
+     * handle image wildcards
+     * @param $image_path
+     * @return image response
      */
-    public function show($id)
+    public function imageHandler($image_path)
     {
-        //
+
+
+        if( File::exists(public_path().'/images/'.$image_path) ){
+
+            $filetype = File::type( public_path().'/images/'.$image_path );
+
+            $response = Response::make( File::get( public_path().'/images/'.$image_path ) , 200 );
+
+            $response->header('Content-Type', $filetype);
+
+            return $response;
+        }
+        else{
+            return response()->json('image not found',404);
+        }
     }
 
     /**
