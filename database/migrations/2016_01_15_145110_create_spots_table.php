@@ -21,7 +21,8 @@ class CreateSpotsTable extends Migration {
 			$table->string('lng')->nullable();
 			$table->integer('price');
             $table->string('city')->nullable();
-			
+            $table->string('main_category_id');
+            $table->string('sub_category_id')->nullable();
 			$table->string('tips',200)->nullable();			
 			$table->timestamps();
 		});

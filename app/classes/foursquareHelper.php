@@ -3,7 +3,9 @@
 namespace App\Classes;
 
 
-use Carbon;
+use Carbon\Carbon;
+use App\FoodCategory;
+use App\SpotCategory;
 use Input;
 use App\Spot;
 
@@ -32,15 +34,25 @@ class FoursquareHelper
     }
 
 
+    public static function browseSearch($query_type = null, $ll = null, $category)
+    {
+        $url = "https://api.foursquare.com/v2/venues/search?intent=browse";
+
+    }
+
     /**
      * Call foursquare Api
      * @param type|null $query_type
      * @param type|null $ll
+     * @param tpye|null $category
      * @return type
      */
-
-    public static function call($query_type = null, $ll = null)
+    public static function call($query_type = null, $ll = null, $category = null)
     {
+        if($category)
+        {
+            self::browseSearch($query_type,$ll,$category);
+        }
 
         $ll = ($ll != null) ? $ll : "10.211121,123.2019";
         $query_type = (!$query_type) ? 'food' : $query_type;
@@ -66,20 +78,16 @@ class FoursquareHelper
             $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
             if ($resultStatus == 200) {
-
                 $data = json_decode($data);
                 $data->fromCache = false;
                 $data->url = $url;
                 $data->query = $query_type;
                 //dd('not from cache');
                 //self::cacheRequest($area,$data);
-
-
             } else {
                 // the request did not complete as expected. common errors are 4xx
                 // (not found, bad request, etc.) and 5xx (usually concerning
                 // errors/exceptions in the remote script execution)
-
                 die('Request failed: HTTP status code: ' . $resultStatus);
             }
         }
@@ -127,10 +135,72 @@ class FoursquareHelper
         $image = (!isset($spot->categories[0]->icon)) ? null : $spot->categories[0]->icon;
 
         if ($image != null) {
-            $image = $image->prefix . "32" . $image->suffix;
+            $image = $image->prefix . "64" . $image->suffix;
+        }
+        else
+        {
+//            $image = Spot::where()
         }
 
         return $image;
+    }
+
+    public static function saveSpotCategories($categories)
+    {
+        //discarded categories
+       // dd($categories);
+        $discard_items = ['College & University', 'Professional & Other Places','Residence','Shop & Service','Travel & Transport'];
+        foreach($categories as $key => $category){
+            if(in_array($category->name,$discard_items))
+            {
+                unset($categories[$key]);
+            }
+        }
+
+        foreach($categories as $key=>$category)
+        {
+
+            if($category->name == "Food")
+            {
+                echo 'food cat??? '. $category->name.'\n';
+                self::saveFoodCategories($category);
+            }
+            else{
+
+                 foreach($category->categories as $sub_category){
+                        $spot_category = new SpotCategory();
+                        $spot_category->main_cat = $category->name;
+                        $spot_category->main_cat_id = $category->id;
+                        $spot_category->sub_cat = $sub_category->name;
+                        $spot_category->sub_cat_id = $sub_category->id;
+                        $spot_category->icon_url = $category->icon->prefix."64".$category->icon->suffix;
+                        $spot_category->save();
+                        unset($spot_category);
+                }
+
+            }
+
+        }
+
+    }
+
+    public static function saveFoodCategories($categories)
+    {
+        foreach($categories->categories as $category){
+            $food_category = new FoodCategory();
+            $food_category->main_cat = $categories->name;
+            $food_category->main_cat_id = $categories->id;
+            $food_category->sub_cat = $category->name;
+            $food_category->sub_cat_id = $category->id;
+            $food_category->icon_url = $categories->icon->prefix.'64'.$categories->icon->suffix;
+            $food_category->save();
+            //var_dump($food_category);
+            unset($food_category);
+        }
+    }
+
+    public static function getCategory(){
+
     }
 }
 

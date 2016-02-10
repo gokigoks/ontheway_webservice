@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\Rome2rioHelper as Rome2Rio;
 use App\Classes\foursquareHelper as Foursquare;
+use Carbon\Carbon;
 use App\Iterinary;
 use App\Route;
 use App\Segment;
@@ -11,6 +12,7 @@ use App\Stop;
 use App\Spot;
 use App\User;
 use Input;
+use Cache;
 use Illuminate\Http\Request;
 
 class TestController extends Controller {
@@ -131,6 +133,7 @@ class TestController extends Controller {
 		$query_type = Input::get('query');
         if($query_type==null) $query_type = "beach";
 		$data = Foursquare::call($query_type,$ll);
+        dd($data);
 		$spots = (!isset($data->response->venues)) ? null : $data->response->venues;
 		if($spots)
         {
@@ -156,11 +159,12 @@ class TestController extends Controller {
         $ll = Input::get('ll');
         $query_type = Input::get('query');
         $data = Foursquare::call($query_type,$ll);
+
         $spots = (!isset($data->response->venues)) ? null : $data->response->venues;
         if($spots)
         {
             foreach ($spots as $spot) {
-                $new_spot = new Spot();
+                $new_spot = new Eat();
                 $new_spot->place_name = "name";
                 $new_spot->pic_url = Foursquare::getImage($spot);
                 $new_spot->lat = $spot->location->lat;
@@ -171,15 +175,56 @@ class TestController extends Controller {
         }
     }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+    /**
+     *
+     * @return mixed
+     */
+	public function populateCategories()
 	{
-		//
+        $refresh = Input::get('refresh');
+        if($refresh == true)
+        {
+            Cache::forget('categories');
+        }
+        if(Cache::has('categories'))
+        {
+            $data = Cache::get('categories');
+
+            Foursquare::saveSpotCategories($data->response->categories);
+        }
+        else {
+            $ch = curl_init();
+            $url = 'https://api.foursquare.com/v2/venues/categories?&oauth_token=1MZTZYIARGVDAGDQAHOVESDUR3P4OFZA2ABTIBESMJNNJM0T&v=20160106';
+            curl_setopt($ch, CURLOPT_URL, $url);
+            //https://api.foursquare.com/v2/venues/search?ll=10.3156990,123.8854370&oauth_token=1MZTZYIARGVDAGDQAHOVESDUR3P4OFZA2ABTIBESMJNNJM0T&v=20160106&query=food
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $data = curl_exec($ch);
+
+            if (curl_errno($ch)) {
+                die("Couldn't send request: " . curl_error($ch));
+            } else {
+
+                $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                if ($resultStatus == 200) {
+                    $expiry = Carbon::now()->addDays(1);
+                    $data = json_decode($data);
+                    Cache::add('categories',$data,$expiry);
+                    dd(Foursquare::saveSpotCategories($data->response->categories));
+
+                } else {
+
+                    die('Request failed: HTTP status code: ' . $resultStatus);
+                }
+            }
+        }
+
+       // dd(json_decode($data));
 	}
 
 	/**

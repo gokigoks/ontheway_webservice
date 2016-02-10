@@ -20,6 +20,8 @@ class CreateEatsTable extends Migration {
 			$table->string('pic_url')->nullable();
 			$table->string('tips',200)->nullable();
 			$table->string('pos')->nullable();
+            $table->string('main_category_id');
+            $table->string('sub_category_id')->nullable();
 			$table->timestamps();
 		});
 	}

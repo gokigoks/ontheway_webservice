@@ -279,10 +279,13 @@ Route::post('api/iterinary/stops/add',['middleware' => 'cors', 'uses' => 'Segmen
 
 Route::get('populate/routes',['middleware' => 'cors', 'uses' => 'TestController@populateRoutes']);
 Route::get('populate/spots',['middleware' => 'cors', 'uses' => 'TestController@populateSpots']);
-
+Route::get('populate/categories','TestController@populateCategories');
 //  -- END -- //
 
-
+Event::listen('cache.hit',function()
+{
+    echo 'cache accessed';
+});
 //  -- test helpers -- //
 Route::get('test/helpers',function(){
 
@@ -300,17 +303,19 @@ Route::get('test/distance',function(){
     $segment = new App\Segment;
     $segment->origin_pos = $lnglat1;
     //$segment->destination_pos = $lnglat2;
-
     //dd($lnglat1);
     $spots = App\Spot::haversine($lnglat1[0],$lnglat1[1])->get();
     //return response()->json(App\Classes\GeolocationHelper::calculateDistance($segment),200);
     dd($spots->toJson());
 });
 
-Event::listen('illuminate.query',function($query){
-    //var_dump($query);
+Event::listen('cache.hit',function($query){
+    var_dump('cache accessed');
 });
 
 Route::get('api/img/{img_url}','ApiController@imageHandler');
 
+Route::get('api/image/{img}', function($img){
+    return response()->make(file_get_contents(public_path().'/images/'.$img))->header('Content-Type','png');
+});
 // -- end test helpers -- //

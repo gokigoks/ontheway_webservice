@@ -37,6 +37,7 @@ class Eat extends Model {
 
 	public function category()
 	{
-		return $this->belongsToMany('App\Category');
+		return $this->belongsToMany('App\FoodCategory');
 	}
+
 }

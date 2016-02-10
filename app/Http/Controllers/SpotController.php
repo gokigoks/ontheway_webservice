@@ -68,6 +68,7 @@ class SpotController extends Controller {
 	{
 		$user_id = Input::get('user_id');
 		$iterinary_id = Input::get('iterinary_id');
+
 		$longitude = Input::get('longitude');
 		$latitude = Input::get('latitude');
 		$place_name = Input::get('place_name');
@@ -75,7 +76,7 @@ class SpotController extends Controller {
 		$tips = Input::get('tips');
 		$price =Input::get('price');
 		$type = Input::get('type');
-		
+//		$category
 
 		$user = App\User::find($user_id);
 		$iterinary = App\Iterinary::find($iterinary_id);
@@ -95,6 +96,7 @@ class SpotController extends Controller {
 		$spot->pos = $request['pos'];
 		$spot->price = $request['price'];
 		$spot->tips = $request['tips'];
+//        $spot->pic_url =
 		$spot->save();
 	}
 

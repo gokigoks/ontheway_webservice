@@ -6,6 +6,7 @@ use App\Classes\Rome2rioHelper as Rome2rio;
 use Input;
 use File;
 use Response;
+use Cache;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -179,20 +180,20 @@ class ApiController extends Controller
     public function imageHandler($image_path)
     {
 
+            if( File::exists(public_path().'/images/'.$image_path) ){
 
-        if( File::exists(public_path().'/images/'.$image_path) ){
+                $filetype = File::type( public_path().'/images/'.$image_path );
 
-            $filetype = File::type( public_path().'/images/'.$image_path );
+                $response = Response::make( File::get( public_path().'/images/'.$image_path ) , 200 );
 
-            $response = Response::make( File::get( public_path().'/images/'.$image_path ) , 200 );
+                $response->header('Content-Type', $filetype);
 
-            $response->header('Content-Type', $filetype);
+                return $response;
+            }
+            else{
+                return response()->json('image not found',404);
+            }
 
-            return $response;
-        }
-        else{
-            return response()->json('image not found',404);
-        }
     }
 
     /**
