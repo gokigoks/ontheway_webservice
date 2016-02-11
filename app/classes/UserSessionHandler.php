@@ -44,6 +44,8 @@ class UserSessionHandler
     public static function logout($token)
     {
 
+
+        Session::forget($token);
     }
 
     public static function cacheRequest()

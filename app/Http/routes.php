@@ -15,6 +15,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+//auth for web logins and register
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
@@ -47,9 +48,23 @@ Route::get('user/logout', ['middleware' => 'cors', 'uses' => function () {
 
 }]);
 
+Route::get('user/login',['middleware' => 'login', 'uses' => function()
+{
+    // cross site route. do nothing for get request
+}]);
 Route::post('user/login', ['middleware' => 'login', 'uses' => 'UserSessionController@login']);
 Route::post('user/register', ['middleware' => 'login', 'uses' => 'UserSessionController@register']);
-
+Route::post('test/login', ['middleware' => 'login', 'uses' => function(){
+    $credentials = array(
+        'email' => Input::get('email'),
+        'password' => Input::get('password'),
+    );
+    if(Auth::attempt($credentials))
+    {
+        return response()->json('logged in ',200);
+    }
+    return response()->json('error credentials',200);
+}]);
 
 /*
 *   API SERVICE ROUTES
