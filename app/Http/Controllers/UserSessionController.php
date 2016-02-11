@@ -27,14 +27,10 @@ class UserSessionController extends Controller {
 
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+
+	public function register(Request $request)
 	{
-		//
+
 	}
 
 	/**

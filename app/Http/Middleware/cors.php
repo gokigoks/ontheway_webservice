@@ -1,6 +1,8 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use Input;
+use Session;
 
 class cors {
 
@@ -13,9 +15,9 @@ class cors {
 	 */
 	public function handle($request, Closure $next)
 	{	
+        $token = (Input::get('token')) ? Input::get('token') : $request['token'];
 
-
-		if(\Input::get('token') == "gokigoks")
+		if($token == "gokigoks" || Session::has($token) )
 		{
 			return $next($request)
             ->header('Access-Control-Allow-Origin' , '*')                
@@ -23,14 +25,7 @@ class cors {
             ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With')
             ->header('Access-Control-Max-Age', '28800');
 		}	
-		if($request['token'] == "gokigoks"){		
-			if (\Request::getMethod() == "OPTIONS") {
-                return $next($request)
-                ->header('Access-Control-Allow-Origin' , '*')                
-                ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')                
-                ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With')
-                ->header('Access-Control-Max-Age', '28800');
-       		}	     
+		if(!$token){
             return $next($request)
             ->header('Access-Control-Allow-Origin' , '*')                
             ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')                
@@ -38,7 +33,7 @@ class cors {
             ->header('Access-Control-Max-Age', '28800');
         }
         
-        return response()->json('error connecting..', 403);
+        return response()->json('token invalid..', 403);
 	}
 
 }

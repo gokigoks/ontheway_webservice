@@ -47,7 +47,8 @@ Route::get('user/logout', ['middleware' => 'cors', 'uses' => function () {
 
 }]);
 
-Route::post('user/login', ['middleware' => 'cors', 'uses' => 'UserSessionController@login']);
+Route::post('user/login', ['middleware' => 'login', 'uses' => 'UserSessionController@login']);
+Route::post('user/register', ['middleware' => 'login', 'uses' => 'UserSessionController@register']);
 
 
 /*
