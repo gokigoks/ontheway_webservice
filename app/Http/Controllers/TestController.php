@@ -133,7 +133,7 @@ class TestController extends Controller {
 		$query_type = Input::get('query');
         if($query_type==null) $query_type = "beach";
 		$data = Foursquare::call($query_type,$ll);
-        dd($data);
+
 		$spots = (!isset($data->response->venues)) ? null : $data->response->venues;
 		if($spots)
         {
@@ -193,6 +193,7 @@ class TestController extends Controller {
             Foursquare::saveSpotCategories($data->response->categories);
         }
         else {
+
             $ch = curl_init();
             $url = 'https://api.foursquare.com/v2/venues/categories?&oauth_token=1MZTZYIARGVDAGDQAHOVESDUR3P4OFZA2ABTIBESMJNNJM0T&v=20160106';
             curl_setopt($ch, CURLOPT_URL, $url);

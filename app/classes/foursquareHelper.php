@@ -6,6 +6,7 @@ namespace App\Classes;
 use Carbon\Carbon;
 use App\FoodCategory;
 use App\SpotCategory;
+use Cache;
 use Input;
 use App\Spot;
 
@@ -150,6 +151,7 @@ class FoursquareHelper
         //discarded categories
        // dd($categories);
         $discard_items = ['College & University', 'Professional & Other Places','Residence','Shop & Service','Travel & Transport'];
+        $collection = collect([]);
         foreach($categories as $key => $category){
             if(in_array($category->name,$discard_items))
             {
@@ -175,9 +177,14 @@ class FoursquareHelper
                         $spot_category->sub_cat_id = $sub_category->id;
                         $spot_category->icon_url = $category->icon->prefix."64".$category->icon->suffix;
                         $spot_category->save();
+                        $collection->push($spot_category);
                         unset($spot_category);
                 }
 
+                $key = str_slug($category->name, "-");
+                Cache::forever($key,$collection);
+                unset($collection);
+                $collection = collect([]);
             }
 
         }
@@ -185,7 +192,7 @@ class FoursquareHelper
     }
 
     public static function saveFoodCategories($categories)
-    {
+    {   $collection = collect([]);
         foreach($categories->categories as $category){
             $food_category = new FoodCategory();
             $food_category->main_cat = $categories->name;
@@ -193,13 +200,20 @@ class FoursquareHelper
             $food_category->sub_cat = $category->name;
             $food_category->sub_cat_id = $category->id;
             $food_category->icon_url = $categories->icon->prefix.'64'.$categories->icon->suffix;
+            $collection->push($food_category);
             $food_category->save();
             //var_dump($food_category);
             unset($food_category);
         }
+
+        $key = str_slug($categories->name, "-");
+        Cache::forever($key,$collection);
+        unset($collection);
     }
 
     public static function getCategory(){
+
+
 
     }
 }

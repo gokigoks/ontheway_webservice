@@ -25,6 +25,9 @@ class CreateSpotsTable extends Migration {
             $table->string('sub_category_id')->nullable();
 			$table->string('tips',200)->nullable();			
 			$table->timestamps();
+
+            $table->index('main_category_id');
+            $table->index('sub_category_id');
 		});
 	}
 

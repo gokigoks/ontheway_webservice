@@ -21,11 +21,19 @@ class CreateFoodCategoriesTable extends Migration
             $table->string('sub_cat_id');
             $table->string('icon_url')->nullable();
             $table->timestamps();
+
+            $table->index('main_cat_id');
+            $table->index('sub_cat_id');
         });
 
         Schema::table('eats', function (Blueprint $table) {
             $table->foreign('main_category_id')
                 ->references('main_cat_id')
+                ->on('food_categories')
+                ->onDelete('cascade');
+
+            $table->foreign('sub_category_id')
+                ->references('sub_cat_id')
                 ->on('food_categories')
                 ->onDelete('cascade');
         });

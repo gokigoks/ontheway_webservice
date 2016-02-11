@@ -23,6 +23,10 @@ class CreateEatsTable extends Migration {
             $table->string('main_category_id');
             $table->string('sub_category_id')->nullable();
 			$table->timestamps();
+
+            $table->index('main_category_id');
+            $table->index('sub_category_id');
+
 		});
 	}
 
