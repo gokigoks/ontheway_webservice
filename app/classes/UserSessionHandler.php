@@ -34,8 +34,8 @@ class UserSessionHandler
             $session->offsetSet('user', $user_object);
             $user_object->setAttribute('token', $token->uuid);
             self::startUserSession($session, $token->uuid);
-            dd($user_object);
-            return Response::json($user_object, 200);
+
+            return $user_object;
         } else {
             return Response::json("error.. bad credentials", 400);
         }

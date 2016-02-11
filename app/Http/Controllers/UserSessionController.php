@@ -22,8 +22,8 @@ class UserSessionController extends Controller {
             'email' => Input::get('email'),
             'password' => Input::get('password'),
         );
-
-        return UserSessionHandler::login($credentials);
+        $user = UserSessionHandler::login($credentials);
+        return response()->json($user,200);
 
 	}
 
