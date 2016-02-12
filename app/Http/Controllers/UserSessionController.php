@@ -22,8 +22,9 @@ class UserSessionController extends Controller {
             'email' => Input::get('email'),
             'password' => Input::get('password'),
         );
+
         $response = UserSessionHandler::login($credentials);
-        return response()->json($response,200);
+        return response()->json($response['body'],$response['http_code']);
 
 	}
 
@@ -34,13 +35,22 @@ class UserSessionController extends Controller {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
+	 * clear session. deletes user assigned web token
+	 * @param $request
 	 * @return Response
 	 */
-	public function store()
+	public function logout(Request $request)
 	{
-		//
+        $token = $request['token'];
+
+        if (UserSessionHandler::check($token)) {
+
+            UserSessionHandler::logout($token);
+
+            return response()->json('user logged out..', 200);
+        } else {
+            return response()->json('user wasnt even logged in, dummy!', 401);
+        }
 	}
 
 	/**

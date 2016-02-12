@@ -20,7 +20,8 @@ class CreateIterinaryUserTable extends Migration {
 		 */
 
 		Schema::create('iterinary_user', function(Blueprint $table)
-		{	
+		{
+            $table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->integer('iterinary_id')->unsigned();			
 			$table->dateTime('date_start');

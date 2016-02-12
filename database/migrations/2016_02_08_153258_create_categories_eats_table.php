@@ -14,6 +14,8 @@ class CreateCategoriesEatsTable extends Migration
     public function up()
     {
         Schema::create('categories_eats', function (Blueprint $table) {
+
+            $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->integer('eat_id')->unsigned();
 

@@ -14,6 +14,7 @@ class CreateSegmentStopTable extends Migration {
 	{
 		Schema::create('segment_stop', function(Blueprint $table)
 		{
+            $table->increments('id');
 			$table->integer('segment_id')->unsigned();
 			$table->integer('stop_id')->unsigned();
 			

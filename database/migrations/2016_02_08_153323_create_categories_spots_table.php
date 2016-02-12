@@ -14,6 +14,7 @@ class CreateCategoriesSpotsTable extends Migration {
 	{
 		Schema::create('categories_spots', function(Blueprint $table)
 		{
+            $table->increments('id');
 			$table->integer('category_id')->unsigned();
 			$table->integer('spots_id')->unsigned();
 

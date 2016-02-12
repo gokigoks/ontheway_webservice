@@ -37,7 +37,7 @@ class tokenGenerator
      * @param int $start
      * @return $this
      */
-    public function limit($length, $start = 0)
+    public function limit($length = 15, $start = 0)
     {
         $this->uuid = substr($this->uuid, $start, $length);
 

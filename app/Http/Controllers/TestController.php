@@ -40,18 +40,18 @@ class TestController extends Controller {
 		'pax' => Input::get('pax')
 		];
 
-		
-
-		$data = Rome2Rio::call($inputs['origin'],$inputs['destination']);
-		$airports = [];
-		$user_id = Input::get('user_id');
-		$contributor = User::find($user_id);
+        $airports = [];
+        $user_id = Input::get('user_id');
+        $contributor = User::find($user_id);
 
         if($contributor == null)
         {
             return response()->json('user not found.',404);
         }
-		if(isset($data->airports)){
+
+        $data = Rome2Rio::call($inputs['origin'],$inputs['destination']);
+
+        if(isset($data->airports)){
 			foreach ($data->airports as $airport) {
 				$airports[$airport->code] = $airport->pos;
 			}

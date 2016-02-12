@@ -64,7 +64,8 @@ class Iterinary extends Model {
 
 	public function scopeDoing($query)
 	{
-		return $query->where('status', '=', 'doing');
+        //dd($this);
+		return $query->wherePivot('status', 'doing');
 	}
 
 	public function scopeDone($query)

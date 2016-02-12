@@ -10,6 +10,10 @@ namespace App\Classes;
 
 use App\Classes\tokenGenerator;
 use App\User;
+use App\Iterinary;
+use App\Segment;
+use App\Activity;
+
 use Cache;
 use Session;
 use Input;
@@ -29,38 +33,61 @@ class UserSessionHandler
              * $token web token for user session
              */
             $token = new tokenGenerator;
-            $user_object = Auth::user();
-            $session = collect([]);
-            $session->offsetSet('user', $user_object);
-            $user_object->setAttribute('token', $token->uuid);
-            self::startUserSession($session, $token->uuid);
+            $user = Auth::user();
 
-            return $user_object;
+            $planned_iterinaries = $user->planned_iterinaries()->with('route.segments')->get();
+            $past_iterinaries = $user->past_iterinaries()->with('route.segments')->get();
+
+            $current_iterinary = self::getCurrentIterinary($user);
+            $session = collect(['user'=>$user]);
+            $session->offsetSet('plannedIterinaries', $planned_iterinaries);
+            $session->offsetSet('pastIterinaries', $past_iterinaries);
+            $session->offsetSet('currentIterinary', $current_iterinary);
+//            dd($session);
+            $user->setAttribute('token' , $token->uuid);
+            self::startUserSession($user->id, $token->uuid);
+
+            return ['body'=>$session,'http_code' => 200];
         } else {
-            return Response::json("error.. bad credentials", 400);
+            return ['body'=>'error bad credentials','http_code' => 400];
         }
+    }
+
+    /**
+     * @param $token
+     * @return bool
+     */
+    public static function check($token)
+    {
+        if(Session::has($token)){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param $user
+     * @return $iterinary
+     */
+    public static function getCurrentIterinary($user)
+    {
+        $iterinary = $user->current_iterinary()->with('route.segments');
+        return $iterinary;
     }
 
     public static function logout($token)
     {
-
-
         Session::forget($token);
     }
 
-    public static function cacheRequest()
-    {
-
-    }
-
     /**
-     * @param $session
+     * @param id
      * @param $token
      */
-    public static function startUserSession($session, $token)
+    public static function startUserSession($id, $token)
     {
         //start a user session
-        Session::put($token.'.session', $session);
+        Session::put($token, $id);
     }
 
     public static function addIterinarySession($token, $iterinary)
@@ -73,10 +100,6 @@ class UserSessionHandler
         Session::put($token.'.segment',$segment);
     }
 
-    public static function getCurrentIterinary($token)
-    {
-
-    }
 
 
 }

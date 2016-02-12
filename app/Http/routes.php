@@ -37,16 +37,7 @@ Route::post('test/rome2rio', 'ApiController@post_rome2rio');
 Route::post('user/register', ['middleware' => 'cors', 'uses' => function () {
 
 }]);
-Route::get('user/logout', ['middleware' => 'cors', 'uses' => function () {
-
-    if (Auth::check()) {
-        Auth::logout();
-        return response()->json('user logged out..', 200);
-    } else {
-        return response()->json('user wasnt even logged in, dummy!', 401);
-    }
-
-}]);
+Route::post('user/logout', ['middleware' => 'login', 'uses' => 'UserSessionController@logout']);
 
 Route::get('user/login',['middleware' => 'login', 'uses' => function()
 {
@@ -318,15 +309,29 @@ Route::get('api/image/{img}', function ($img) {
 
 Route::get('test/collection', function () {
 
-    $collection = array();
-    $data = collect($collection);
-    $some_data = array('foo', 'bar', 'baz');
+//    $collection = array();
+//    $data = collect($collection);
+//    $some_data = array('foo', 'bar', 'baz');
+//
+//    $data->offsetSet('user',['id' => '1', 'name' => 'gokigoks']);
+//    //dd($data);
+//    Session::put('user.session',$data);
+//    Session::put('user.iterinary',['id' => 1, 'name','manila to cebu']);
+//    $session = Session::get('user.session');
+//    $all_session = Session::get('user');
+    //Session::flush();
+    $data = Session::all();
+    //if(Session::forget('56bdc5c7a38ab')) return response()->json('forgottten',200);
 
-    $data->offsetSet('user',['id' => '1', 'name' => 'gokigoks']);
-    //dd($data);
-    Session::put('user.session',$data);
-    Session::put('user.iterinary',['id' => 1, 'name','manila to cebu']);
-    $session = Session::get('user.session');
-    $all_session = Session::get('user');
-    return response()->json($session, 200);
+    //dd(Session::all());
+    return response()->json($data, 200);
 });
+
+
+Route::get('checksession',function()
+{   $token = Input::get('token');
+
+    return response()->json(App\Classes\UserSessionHandler::check($token),200);
+});
+
+//Route::get('');

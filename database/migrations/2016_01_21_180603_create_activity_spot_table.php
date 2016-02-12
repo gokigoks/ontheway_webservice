@@ -14,6 +14,7 @@ class CreateActivitySpotTable extends Migration {
 	{
 		Schema::create('activity_spot', function(Blueprint $table)
 		{
+            $table->increments('id');
 			$table->integer('activity_id')->unsigned();
 			$table->integer('spot_id')->unsigned();
 			

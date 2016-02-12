@@ -82,7 +82,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function current_iterinary()
 	{
-		return $this->iterinaries()->where('status','=','doing');
+		return $this->iterinaries()->doing();
 	}
 
 	/**

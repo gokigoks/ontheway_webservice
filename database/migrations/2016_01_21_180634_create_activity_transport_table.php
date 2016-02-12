@@ -14,6 +14,7 @@ class CreateActivityTransportTable extends Migration {
 	{
 		Schema::create('activity_transport', function(Blueprint $table)
 		{
+            $table->increments('id');
 			$table->integer('activity_id')->unsigned();
 			$table->integer('transport_id')->unsigned();
 			

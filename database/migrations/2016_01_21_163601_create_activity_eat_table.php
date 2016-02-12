@@ -14,6 +14,7 @@ class CreateActivityEatTable extends Migration {
 	{
 		Schema::create('activity_eat', function(Blueprint $table)
 		{
+            $table->increments('id');
 			$table->integer('activity_id')->unsigned();
 			$table->integer('eat_id')->unsigned();
 			

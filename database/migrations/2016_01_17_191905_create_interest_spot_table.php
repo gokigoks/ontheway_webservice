@@ -14,6 +14,7 @@ class CreateInterestSpotTable extends Migration {
 	{
 		Schema::create('interest_spot', function(Blueprint $table)
 		{
+            $table->increments('id');
 			$table->integer('spot_id')->unsigned();
 			$table->integer('interest_id')->unsigned();
 			

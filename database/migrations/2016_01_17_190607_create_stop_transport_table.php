@@ -14,6 +14,7 @@ class CreateStopTransportTable extends Migration {
 	{
 		Schema::create('stop_transport', function(Blueprint $table)
 		{
+            $table->increments('id');
 			$table->integer('stop_id')->unsigned();
 			$table->integer('transport_id')->unsigned();
 
