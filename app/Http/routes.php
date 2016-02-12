@@ -272,7 +272,7 @@ Route::get('populate/categories', 'TestController@populateCategories');
 //  -- END -- //
 
 Event::listen('cache.hit', function ($key, $value) {
-    var_dump($key, $value);
+    //var_dump($key, $value);
 });
 //  -- test helpers -- //
 Route::get('test/helpers', function () {
