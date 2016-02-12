@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\Rome2rioHelper as Rome2Rio;
-use App\Classes\foursquareHelper as Foursquare;
+use App\Classes\FoursquareHelper as Foursquare;
 use Carbon\Carbon;
 use App\Iterinary;
 use App\Route;

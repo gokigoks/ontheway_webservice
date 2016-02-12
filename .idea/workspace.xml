@@ -4,23 +4,6 @@
     <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/checkForSession.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/checkForSession.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Iterinary.php" afterPath="$PROJECT_DIR$/app/Iterinary.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" afterPath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/tokenGenerator.php" afterPath="$PROJECT_DIR$/app/classes/tokenGenerator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_16_194742_create_iterinary_user_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_16_194742_create_iterinary_user_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_16_202410_create_interest_user_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_16_202410_create_interest_user_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_17_190607_create_stop_transport_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_17_190607_create_stop_transport_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_17_191905_create_interest_spot_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_17_191905_create_interest_spot_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_21_163601_create_activity_eat_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_21_163601_create_activity_eat_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_21_180603_create_activity_spot_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_21_180603_create_activity_spot_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_21_180634_create_activity_transport_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_21_180634_create_activity_transport_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_21_210342_create_segment_stop_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_21_210342_create_segment_stop_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_08_153258_create_categories_eats_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_08_153258_create_categories_eats_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_08_153323_create_categories_spots_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_08_153323_create_categories_spots_table.php" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,6 +25,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="foursquareHelper.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/classes/foursquareHelper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.32025117">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.379311">
+              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="2016_02_10_083725_create_eats_foodcategories_table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_10_083725_create_eats_foodcategories_table.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -92,51 +95,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2016_01_25_193858_create_train_hops_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_25_193858_create_train_hops_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_01_25_193928_create_bus_hops_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_25_193928_create_bus_hops_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_01_25_194213_create_ferry_hops_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_25_194213_create_ferry_hops_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_02_08_153258_create_categories_eats_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_08_153258_create_categories_eats_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.551724">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_02_08_142808_create_categories_table.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="2016_02_08_142808_create_categories_table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_08_142808_create_categories_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37362638">
+            <state vertical-scroll-proportion="-8.206897">
               <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkForSession.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Middleware/checkForSession.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.206897">
+              <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StopController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StopController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -215,7 +198,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/SegmentController.php" />
         <option value="$PROJECT_DIR$/app/classes/tokenGenerator.php" />
         <option value="$PROJECT_DIR$/storage/framework/sessions/6bb9b489d6900a298c38a6b32ad2784d34aed683" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/checkForSession.php" />
         <option value="$PROJECT_DIR$/_ide_helper.php" />
@@ -233,6 +215,7 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_01_21_210342_create_segment_stop_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_02_08_153258_create_categories_eats_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_02_08_153323_create_categories_spots_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
       </list>
     </option>
   </component>
@@ -641,22 +624,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/storage/framework/sessions/2345264409101b038f00a3569064fc3a65b12a6b">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/framework/sessions/a12bc23c806127914fc49fd59181f68c53513b75">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/storage/framework/sessions/a0515c1e9c94c398cff8548c769f4f61f4ce29fe">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -828,26 +795,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/checkForSession.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3448277">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_ide_helper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.931034">
           <caret line="10655" column="8" selection-start-line="10655" selection-start-column="8" selection-end-line="10655" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.758621">
-          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1049,8 +1000,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_08_142808_create_categories_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37362638">
+        <state vertical-scroll-proportion="-8.206897">
           <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/checkForSession.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.206897">
+          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StopController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.379311">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes/foursquareHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32025117">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
