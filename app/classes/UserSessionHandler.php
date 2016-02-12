@@ -28,10 +28,13 @@ class UserSessionHandler
      */
     public static function login($credentials)
     {
+        if(Auth::check()) return ['body'=>'logged in naman ka','http_code' => 200];
+
         if (Auth::attempt($credentials)) {
             /*
              * $token web token for user session
              */
+            //if()
             $token = new tokenGenerator;
             $user = Auth::user();
 
@@ -66,12 +69,21 @@ class UserSessionHandler
     }
 
     /**
+     * @param $token
+     * @return mixed
+     */
+    public static function getByToken($token)
+    {
+        return Session::get($token);
+    }
+
+    /**
      * @param $user
      * @return $iterinary
      */
     public static function getCurrentIterinary($user)
     {
-        $iterinary = $user->current_iterinary()->with('route.segments');
+        $iterinary = $user->current_iterinary()->with('route.segments')->get();
         return $iterinary;
     }
 

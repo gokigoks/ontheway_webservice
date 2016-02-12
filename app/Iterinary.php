@@ -57,15 +57,15 @@ class Iterinary extends Model {
 	}
 	
 	public function scopePlanned($query)
-	{	
-
+	{
 		return $query->where('status', '=', 'planned');
 	} 
 
 	public function scopeDoing($query)
 	{
-        //dd($this);
-		return $query->wherePivot('status', 'doing');
+
+        //return $query->wherePivot('pivotcolumn','=', $search);
+		return $query->where('iterinary_user.status','=','doing');
 	}
 
 	public function scopeDone($query)

@@ -44,6 +44,8 @@ class TestController extends Controller {
         $user_id = Input::get('user_id');
         $contributor = User::find($user_id);
 
+        $now = Carbon::now();
+
         if($contributor == null)
         {
             return response()->json('user not found.',404);
@@ -63,6 +65,8 @@ class TestController extends Controller {
 			$iterinary->origin = $data->places[0]->name;
 			$iterinary->destination = $data->places[1]->name;
 			$iterinary->creator_id = $contributor->id;
+
+
 			$new_route = new Route();
 			$new_route->name = $route->name;
 			$new_route->distance = $route->distance;
@@ -71,8 +75,9 @@ class TestController extends Controller {
 			$new_route->save();
 
 			$iterinary->route()->associate($new_route);
-			$iterinary->save();
-			$i=1;
+            $iterinary->save();
+            if(!$contributor->iterinaries()->attach($iterinary->id,['date_start' => $now])) return response()->json('ur fucked',400);
+            $i=1;
 			foreach ($route->segments as $segment) {
 
 				$new_segment = new Segment();
@@ -148,7 +153,9 @@ class TestController extends Controller {
                 $new_spot->save();
 
         	}
-        }	
+        }else{
+            return response()->json('your spots query was empty.. try again fo!',400);
+        }
 
 		return response()->json('success',200);
 	}
@@ -172,7 +179,10 @@ class TestController extends Controller {
                 $new_spot->price = 125 * rand(1,4);
                 $new_spot->save();
             }
+        }else{
+            return response()->json('your food query was empty, fo!',400);
         }
+
     }
 
     /**

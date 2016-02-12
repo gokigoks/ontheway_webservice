@@ -320,13 +320,20 @@ Route::get('test/collection', function () {
 //    $session = Session::get('user.session');
 //    $all_session = Session::get('user');
     //Session::flush();
-    $data = Session::all();
+    //$data = Session::all();
     //if(Session::forget('56bdc5c7a38ab')) return response()->json('forgottten',200);
-
+    //Session::flush();
     //dd(Session::all());
-    return response()->json($data, 200);
+   // return response()->json($data, 200);
 });
 
+Route::get('flush/session',function()
+{
+    if(Input::get('token') == 'gokigoks')
+    {
+        Session::flush();
+    }
+});
 
 Route::get('checksession',function()
 {   $token = Input::get('token');
