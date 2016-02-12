@@ -341,4 +341,16 @@ Route::get('checksession',function()
     return response()->json(App\Classes\UserSessionHandler::check($token),200);
 });
 
+Route::get('iterinary/assign',function()
+{
+    $user_id = Input::get('user');
+    $iterinary_id = Input::get('iterinary');
+    $status = (!Input::get('status')) ? 'doing' : Input::get('status');
+    $user = App\User::find($user_id);
+    $iterinary = App\Iterinary::find($iterinary_id);
+
+        $user->iterinaries()->attach($iterinary->id,['status' => $status, 'date_start' => Carbon\Carbon::now()]);
+
+});
+
 //Route::get('');
