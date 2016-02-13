@@ -14,13 +14,79 @@ use Illuminate\Http\Request;
 
 class IterinaryController extends Controller {
 
+
+    public function newIterinary(Request $request)
+    {
+        $token = Input::get('token');
+        $withSegment = Input::get('withSegment');
+        $error_bag = array();
+
+        if($token == null) return response()->json('token is empty',200);
+
+        $user = userSessionHandler::user($token);
+
+        if($user == null)
+        {
+            return response()->json('user not found.',404);
+        }
+
+        $origin = Input::get('origin');
+        $destination = Input::get('destination');
+        $pax = Input::get('pax');
+
+        $input_bag = [
+            'origin' => $origin,
+            'destination' => $destination,
+            'pax' => $pax,
+        ];
+
+        $i=0;
+        foreach ($input_bag as $key => $value) {
+            $value = trim($value);
+
+            if (empty($value))
+            {    $error_bag[$i] = "$key empty";
+                $i++;
+            }
+            else{
+                //
+            }
+        }
+        //filter of false or null values
+        if(array_filter($error_bag))
+        {
+            return response()->json($error_bag,400);
+        }
+
+        $iterinary = new Iterinary();
+        $iterinary->creator_id = $user->id;
+        $iterinary->origin = $origin;
+        $iterinary->destination = $destination;
+        //dd('dre dapita errr');
+        //$iterinary->save();
+        //dd('dre dapita error');
+        if($user->iterinaries()->save($iterinary))
+        {
+            //$user->iterinaries()->attach($iterinary->id);
+            $route = new Route;
+            $route->name = $iterinary->origin.' to '.$iterinary->destination;
+            $route->save();
+            $iterinary->route()->associate($route);
+            
+            return response()->json('success',200);
+        }
+        else
+        {
+            return response()->json('error saving',401);
+        }
+    }
 	/**
 	 * contributor new iterinary
      * @param $request
 	 * @route 'plot/iterinary/new'
 	 * @return Response
-	 */
-	public function newIterinary(Request $request) 
+*/
+	public function newIterinaryTest(Request $request)
 	{
 		$token = Input::get('token');
 		$withSegment = Input::get('withSegment');
@@ -160,7 +226,7 @@ class IterinaryController extends Controller {
 	public function getPast()
 	{
 		$user_id = Input::get('user_id');
-		$user = App\User::find($user_id);
+		$user = User::find($user_id);
 		$data = $user->past_iterinaries()->get();
 		if($data->isEmpty())
 		{
@@ -181,7 +247,7 @@ class IterinaryController extends Controller {
 	public function getCurrent()
 	{
 		$user_id = Input::get('user_id');
-		$user = App\User::find($user_id);
+		$user = User::find($user_id);
 		$data = $user->current_iterinaries()->get();
 		if($data->isEmpty())
 		{

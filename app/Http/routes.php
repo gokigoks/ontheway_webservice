@@ -353,4 +353,10 @@ Route::get('iterinary/assign',function()
 
 });
 
+Route::get('checktoken',function()
+{
+    $token = Input::get('token');
+    return Session::has($token);
+});
+
 //Route::get('');
