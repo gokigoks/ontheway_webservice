@@ -42,14 +42,22 @@ class UserSessionController extends Controller {
 	public function logout(Request $request)
 	{
         $token = $request['token'];
-//        dd(UserSessionHandler::getByToken($token), \Session::all());
+
+        //if(Auth::check()) return response()->json('nka login lage ka?', 200);
+        if(!$token)
+        {
+            return response()->json('empty token', 400);
+        }
+        //dd(UserSessionHandler::getByToken($token), \Session::all());
         if (UserSessionHandler::check($token)) {
+
             Auth::logout();
             UserSessionHandler::logout($token);
 
             return response()->json('user logged out..', 200);
         } else {
-            return response()->json('user wasnt even logged in, dummy!', 401);
+
+            return response()->json('invalid token to be logged out!', 401);
         }
 	}
 

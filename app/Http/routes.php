@@ -193,8 +193,8 @@ Route::post('api/geolocation/pathToPath', 'GeolocationController@addPathToPath')
 // CONTRIBUTOR ITERINARIESadd
 Route::post('plot/iterinary/new', ['middleware' => 'cors', 'uses' => 'IterinaryController@newIterinary']);
 Route::post('plot/iterinary/end', ['midtdleware' => 'cors', 'uses' => 'IterinaryController@endIterinary']);
-Route::post('api/activity/add', ['middleware' => 'cors', 'uses' => 'ActivityController@addActivity']);
-Route::post('api/activity/end', ['middleware' => 'cors', 'uses' => 'ActivityController@endActivity']);
+Route::post('plot/iterinary/addactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@addActivity']);
+Route::post('plot/iterinary/endactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@endActivity']);
 // END CONTRIBUTOR  ITERINARIES
 
 // Recomendee Iterinaries
@@ -221,8 +221,8 @@ Route::post('api/spots/end', 'SpotController@endSpot');
 // END SPOTS
 
 // Activity routes
-Route::post('api/iterinary/activity/new', ['middleware' => 'cors', 'uses' => 'ActivityController@new']);
-Route::post('api/iterinary/activity/get', ['middleware' => 'cors', 'uses' => 'ActivityController@get']);
+Route::post('plot/iterinary/activity/new', ['middleware' => 'cors', 'uses' => 'ActivityController@new']);
+Route::post('plot/iterinary/activity/get', ['middleware' => 'cors', 'uses' => 'ActivityController@get']);
 // END activity routes
 
 //Route::get('api/hotels','')
@@ -323,7 +323,7 @@ Route::get('test/collection', function () {
     //$data = Session::all();
     //if(Session::forget('56bdc5c7a38ab')) return response()->json('forgottten',200);
     //Session::flush();
-    //dd(Session::all());
+    dd(Session::all());
    // return response()->json($data, 200);
 });
 

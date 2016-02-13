@@ -4,6 +4,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Iterinary extends Model {
 
+    /**
+     * touches the timestamps of related pivot table in iterinary_user pivot
+     * @var array
+     */
+    //protected $touches = ['iterinary_user'];
 	/*
 	*	this model has 3 types. planned, active and done
 	*

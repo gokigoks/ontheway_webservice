@@ -5,7 +5,9 @@ use App\Http\Controllers\Controller;
 use App\Iterinary;
 use App\User;
 use Input;
+use Carbon\Carbon;
 use App\Route;
+use App\Classes\UserSessionHandler;
 
 
 use Illuminate\Http\Request;
@@ -14,32 +16,40 @@ class IterinaryController extends Controller {
 
 	/**
 	 * contributor new iterinary
+     * @param $request
 	 * @route 'plot/iterinary/new'
 	 * @return Response
 	 */
 	public function newIterinary(Request $request) 
 	{
-		$user_id = Input::get('user_id');
+		$token = Input::get('token');
 		$withSegment = Input::get('withSegment');
 		$error_bag = array();
 
+        if($token == null) return response()->json('token is empty',200);
 
-		
-    	$user = User::find($user_id);
+    	$user = userSessionHandler::user($token);
+
         if($user == null)
         {
             return response()->json('user not found.',404);
         }
+
+        $lng = Input::get('lng');
+        $lat = Input::get('lat');
     	$origin = Input::get('origin');
     	$destination = Input::get('destination');
-		$origin_pos = Input::get('origin_pos');
+		$origin_pos = $lat.','.$lng;
 		$pax = Input::get('pax');
+        $date_start = Carbon::now()->addDays(2);
 
     	$input_bag = [
 				'origin' => $origin,
 				'destination' => $destination,
-				'user id' => $user_id,
 				'pax' => $pax,
+                'longitude' => $lng,
+                'latitude' => $lat,
+                'date_start' => $date_start,
 		];
 		
     	$i=0;
@@ -51,7 +61,7 @@ class IterinaryController extends Controller {
 		    		$i++;
 		    }
 		    else{
-		        
+		        //
 		    }
 		}
 		//filter of false or null values
@@ -59,20 +69,22 @@ class IterinaryController extends Controller {
 		{			
 			return response()->json($error_bag,400);
 		}
-    	
-    	
+
     	$iterinary = new Iterinary();
-    	$iterinary->creator_id = $user_id;
+    	$iterinary->creator_id = $user->id;
     	$iterinary->origin = $origin;
     	$iterinary->destination = $destination;
-    	$iterinary->save();
-    	
-
-    	if($iterinary->users()->save($user))
+    	//dd('dre dapita errr');
+        //$iterinary->save();
+        //dd('dre dapita error');
+    	if($user->iterinaries()->save($iterinary))
     	{	    		
-    		$user->iterinaries()->attach($iterinary->id);
-    		
+    		//$user->iterinaries()->attach($iterinary->id);
+    		$pivot = $user->iterinaries()->wherePivot('iterinary_id','=',$iterinary->id)->first();
+            $pivot->pivot->date_start = $date_start;
+            $pivot->pivot->save();
     		$route = new Route;
+            $route->name = $iterinary->origin.' to '.$iterinary->destination;
     		$route->save();
     		$iterinary->route()->associate($route);
 
@@ -82,7 +94,7 @@ class IterinaryController extends Controller {
 				$input_bag = [
 						'origin name' => $origin,
 						'origin position' => $destination,
-						'user id' => $user_id,
+						'user id' => $user->id,
 						'origin position' => $origin_pos,
 				];
 
@@ -95,7 +107,7 @@ class IterinaryController extends Controller {
 						$i++;
 					}
 					else{
-
+                        //
 					}
 				}
 				//filter of false or null values
@@ -109,9 +121,7 @@ class IterinaryController extends Controller {
 				$segment->mode = Input::get('mode');
 				$segment->origin_name = Input::get('origin_name');
 
-
 				$route->segments()->save($segment);
-
 			}
     		return response()->json('success',200);	
     	}
@@ -147,7 +157,6 @@ class IterinaryController extends Controller {
 	 *
 	 * @return Response
 	 */
-
 	public function getPast()
 	{
 		$user_id = Input::get('user_id');
@@ -167,10 +176,9 @@ class IterinaryController extends Controller {
 	/**
 	 * Get current iterinary
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function getCurrent($id)
+	public function getCurrent()
 	{
 		$user_id = Input::get('user_id');
 		$user = App\User::find($user_id);

@@ -33,7 +33,7 @@ class cors {
             ->header('Access-Control-Max-Age', '28800');
         }
         
-        return response()->json('token invalid..', 403);
+        return response()->json('web token invalid..', 403);
 	}
 
 }

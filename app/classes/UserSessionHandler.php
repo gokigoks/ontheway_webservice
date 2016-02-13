@@ -28,8 +28,7 @@ class UserSessionHandler
      */
     public static function login($credentials)
     {
-        if(Auth::check()) return ['body'=>'logged in naman ka','http_code' => 200];
-
+        //if(Auth::check()) return ['body'=>'logged in naman ka','http_code' => 200];
         if (Auth::attempt($credentials)) {
             /*
              * $token web token for user session
@@ -46,12 +45,13 @@ class UserSessionHandler
             $session->offsetSet('plannedIterinaries', $planned_iterinaries);
             $session->offsetSet('pastIterinaries', $past_iterinaries);
             $session->offsetSet('currentIterinary', $current_iterinary);
-//            dd($session);
+            //dd($session);
             $user->setAttribute('token' , $token->uuid);
             self::startUserSession($user->id, $token->uuid);
 
             return ['body'=>$session,'http_code' => 200];
         } else {
+
             return ['body'=>'error bad credentials','http_code' => 400];
         }
     }
@@ -75,6 +75,16 @@ class UserSessionHandler
     public static function getByToken($token)
     {
         return Session::get($token);
+    }
+
+    /**
+     * @param $token
+     * @return mixed
+     */
+    public static function user($token)
+    {
+        $user_id = self::getByToken($token);
+        return User::find($user_id);
     }
 
     /**
