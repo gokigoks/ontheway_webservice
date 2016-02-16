@@ -309,7 +309,7 @@ class UserSessionHandler
     }
 
     /**
-     * @param $user_id
+     * @param $token
      * @return mixed
      */
     public static function getCurrentSession($token)
@@ -327,8 +327,8 @@ class UserSessionHandler
             die(400);
         }
 
-        $segment = ;
-        $activity = $iterinary->activities();
-        return $iterinary;
+        $segment = '' ;
+        //$activity = $iterinary->activities();
+//        return $iterinary;
     }
 }
