@@ -235,17 +235,17 @@ class UserSessionHandler
      * @param $lat
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function endSegment($token, $segment_id, $destination_name, $lng, $lat, $price = 0)
+    public static function endSegment($token,$destination_name, $lng, $lat, $price = 0)
     {
         $request_type = 'transport';
-        $segment = self::getCurrentSession();
+        $segment = self::getCurrentSession($token);
 
         //TODO validation for activities
 //        if (!self::validateActivity($token, $request_type)) {
 //            return response()->json('error activity. you have a different activity in session', 400);
 //        }
 
-        $segment = Segment::find($segment_id);
+//        $segment = Segment::find($segment->id);
         $segment->destination_name = $destination_name;
         $segment->destination_pos = $lat . ',' . $lng;
         $segment->price = $price;
@@ -253,7 +253,7 @@ class UserSessionHandler
         $segment->duration = GeolocationHelper::calculateDuration($segment);
         $points = array_merge(GeolocationHelper::parseLongLat($segment->origin_pos), [$lng, $lat]);
 
-        dd($points);
+
 
         $segment->path = GeolocationHelper::encode($points);
 
@@ -314,12 +314,14 @@ class UserSessionHandler
      */
     public static function getCurrentSession($token)
     {
-        $activity = Session::has($token.'.activity');
+        $session = self::getByToken($token);
 
-        if($activity==null){
+        if($session['activity']==null){
 
             if(Auth::check()){
-                $route = Auth::user()->iterinaries()->route();
+//                dd(Auth::user()->iterinaries()->get());
+                $iterinary= Auth::user()->current_iterinary()->first();
+                $route = $iterinary->route;
                 $segment = $route->segments()->orderBy('sequence','desc')->first();
                 return $segment;
             }

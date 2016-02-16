@@ -3,7 +3,7 @@
 namespace App\Classes;
 
 
-use Carbon;
+use Carbon\Carbon;
 
 /**
  * Class Rome2RioData

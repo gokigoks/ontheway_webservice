@@ -143,7 +143,7 @@ class ActivityController extends Controller
         $lat = $request['lat'];
         $request = $request->all();
         $price  = $request['price'];
-        UserSessionHandler::endSegment($token, $segment_id, $destination_name, $lng, $lat, $price);
+        UserSessionHandler::endSegment($token, $destination_name, $lng, $lat, $price);
 //        $type
         /**
          *  TODO

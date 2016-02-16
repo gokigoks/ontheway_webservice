@@ -1,149 +1,129 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: eldringoks
- * Date: 2016-01-11
- * Time: 9:51 PM
- */
-namespace app\Facades;
-
-use Illuminate\Support\Facades\Facade;
-
-class Rome2RioData extends Facade
-{
-    protected $data;
-
-    protected static function getFacadeAccessor()
-    {
-        return 'Rome2RioData';
-    }
-
-    public static function getData()
-    {
-        dd('data?');
-    }
-
+<?php namespace App\Http\Controllers;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Classes\Rome2rioHelper as Rome2Rio;
+use Illuminate\Http\Request;
+class RecommenderController extends Controller {
     /**
-     * get routes function
-     * @param type|null $index
-     * @return json object || array
+     * Display a listing of the resource.
+     *
+     * @return Response
      */
-    public static function getRoutes($data, $index = null)
+    public function get_recommend(Request $request)
     {
-
-
-        if (property_exists($data, 'routes') && $index >= 0) {
-            return $data->routes[$index];
-        } else if (property_exists($data, 'routes') && $index) {
-            return $data->segments;
-        } else {
-            //dd($data->routes);
-            return $data->routes;
-        }
-    }
-
-    /**
-     * Get Segments Function
-     * @param index object | default NULL
-     * @return Object
-     */
-    public static function getSegments($data, $index = null)
-    {
-        if (isset($data->segments) && $index != null) {    //dd('has segments');
-            return $data->segments[$index];
-        }
-        if (isset($data->segments) && $index == null) {
-            return $data->segments;
-        } else {    //dd('nosegments');
-            // dd($data->segments,$index);
-            // dd($data);
-            return "error.. no segments";
-        }
-    }
-
-    /**
-     * purpose ani nga function kay pra ma kuha ang price
-     * most objects in rome2rio has indicative price sub array
-     * get native price if existing or get price then multiply by USD value.
-     * @return integer
-     */
-    public static function getRome2RioPrice($data, $index = null)
-    {
-        if (property_exists($data, 'indicativePrice')) {
-            ///////////
-            $price = $data->indicativePrice;
-            return (property_exists($price, 'nativePrice')) ? "datanativePrice" : ($price->currency == "USD" ? $price->price * 42 : $price);
-            //eturn $data->indicativePrice->nativePrice;
-        }
-        if (property_exists($data, 'nativePrice')) {
-            return $data->nativePrice;
-        }
-
-    }
-
-    public static function call($o = null, $d = null)
-    {
-        $origin = ($o != null) ? $o : 'cebu';
-        $destination = ($d != null) ? $d : 'manila';
+        $data = \Input::all();
         /**
-         * $url = API urls
+         * $origin and $destination pwede ra e static
+         * tang tanga lang ang parameter na $request
+         */
+        $origin = \Input::get('origin');
+        $destination = \Input::get('destination');
+        $origin = "cebu";
+        $destination = "manila";
+        /**
+         * $url = API url
          * kani ray ilisi earl
          */
-        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=" . $origin . "&dName=" . $destination;
+        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($ch);
-        if (curl_errno($ch)) {
-            die("Couldn't send request: " . curl_error($ch));
-        } else {
-            // check the HTTP status code of the request
-            $resultStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            if ($resultStatus == 200) {
-
-            } else {
-                // the request did not complete as expected. common errors are 4xx
-                // (not found, bad request, etc.) and 5xx (usually concerning
-                // errors/exceptions in the remote script execution)
-                die('Request failed: HTTP status code: ' . $resultStatus);
-            }
-        }
         $data = json_decode($data);
-        dd('dre ko gikanl');
-        //close
-        curl_close($ch);
-
-        return $data;
-    }
-
-    public static function convertToFlightSegment($route, $segment)
-    {
-        foreach ($route->stops as $stop) {
-            if (property_exists($stop, 'code')) {
-                //checks if this stop code matches the origin code
-                if ($stop->code == $segment->sCode) {   //then adds the property to the segment
-                    $segment->sPos = $stop->pos;
-                    $segment->sName = $stop->name;
-                }
-                if ($stop->code == $segment->tCode) {
-                    $segment->tPos = $stop->pos;
-                    $segment->tName = $stop->name;
-                }
+        $airports = [];
+        if (isset($data->airports)) {
+            foreach ($data->airports as $airport) {
+                $airports[$airport->code] = $airport->pos;
             }
         }
-        //new segment
-        return $segment;
+        // dd($data);
+        // start debug
+        $routes = \Rome2RioData::getRoutes($data, 0);
+        // dd($routes);
+        $segments = \Rome2RioData::getSegments($routes);
+        foreach ($segments as $value) {
+            if ($value->kind == "flight") {
+                $value = Rome2Rio::convertToFlightSegment($value, $data);
+                $flightpath = Rome2Rio::getFlightPath($airports[$value->sCode], $airports[$value->tCode]);
+                $value->{"path"} = $flightpath;
+            }
+        }
+        // dd($segments);
+        // dd($segments);
+        //end debug
+        curl_close($ch);
+        return response()->json($segments,200);
+        // dd($data,$ch);
+
+        return response()->json([$request->all(),$data],'200');
     }
-
-
-    public function getStops()
+    /**
+     * get trip recommendatinos
+     * @param $segment current segment
+     * @param $user model
+     * @return Response
+     */
+    public function getTripRecommendations()
     {
+
     }
-
-    public function save($type)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function getStopRecommendations()
     {
+
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        //
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        //
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
-
-?>

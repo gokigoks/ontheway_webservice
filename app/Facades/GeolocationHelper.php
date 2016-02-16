@@ -13,8 +13,8 @@ class GeolocationHelper extends Facade
     protected $data = "rome 2 rio data";
     protected static function getFacadeAccessor() { return 'GeolocationHelper'; }
 
-    public static function call($area == null)
-    {       
+    public static function call($area = null)
+    {
         $area = (!$area) ? $area : 'cebu';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://api.foursquare.com/v2/venues/explore?near='.$area.'&oauth_token=1MZTZYIARGVDAGDQAHOVESDUR3P4OFZA2ABTIBESMJNNJM0T&v=20160106');

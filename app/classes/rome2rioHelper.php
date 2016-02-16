@@ -192,10 +192,19 @@ class Rome2rioHelper
         }
     }
 
+    /**
+     * @param $origin
+     * @param $destination
+     * @return string
+     */
     public static function getFlightPath($origin, $destination)
     {
-        $array = [];
-
+        $array = []
+        // FORMAT
+//        $array = [
+//            0 => [lat,lng],
+//            1 => [lat,lng]
+//        ];
         $array[0] = Geohelper::parseLongLat($origin);
         $array[1] = Geohelper::parseLongLat($destination);
 
