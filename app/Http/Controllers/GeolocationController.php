@@ -18,6 +18,8 @@ class GeolocationController extends Controller
     {
         $points = $request['points'];
 
+        //dd($points);
+
         $array = GeoHelper::sanitizePoints($points);
 
         $path = GeoHelper::Encode($array);
@@ -27,7 +29,7 @@ class GeolocationController extends Controller
 
     /**
      * Add points to an existing long lat
-     * @param @request
+     * @param $request
      * @return Response
      */
     public function addPointsToPath(Request $request)
@@ -56,6 +58,8 @@ class GeolocationController extends Controller
     public function decode(Request $request)
     {
         $path = $request['path'];
+
+        dd($path);
         $points = GeoHelper::decode($path);
         return response()->json($points, 200);
     }

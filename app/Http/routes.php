@@ -323,6 +323,8 @@ Route::get('test/collection', function () {
     //$data = Session::all();
     //if(Session::forget('56bdc5c7a38ab')) return response()->json('forgottten',200);
     //Session::flush();
+    Session::put('56c246e707517.activity','some activity');
+
     dd(Session::all());
    // return response()->json($data, 200);
 });
@@ -334,6 +336,7 @@ Route::get('flush/session',function()
         Session::flush();
     }
 });
+
 
 Route::get('checksession',function()
 {   $token = Input::get('token');
@@ -350,13 +353,34 @@ Route::get('iterinary/assign',function()
     $iterinary = App\Iterinary::find($iterinary_id);
 
         $user->iterinaries()->attach($iterinary->id,['status' => $status, 'date_start' => Carbon\Carbon::now()]);
-
 });
 
 Route::get('checktoken',function()
-{
+{   
     $token = Input::get('token');
     return Session::has($token);
 });
+
+Route::get('days/getdiff', function()
+{
+    $user = App\User::find(Input::get('user_id'));
+    $iterinary_id = Input::get('iterinary_id');
+    $now = Carbon\Carbon::now();
+    $start_date = Carbon\Carbon::now()->subDays(2);
+    $pivot = $user->iterinaries()->find($iterinary_id);
+    $date = new Carbon($pivot->pivot->date_start);
+    $day = $now->diffInDays($date);
+
+    dd($day,$start_date,$now);
+});
+
+Route::get('currentactivity',function()
+{
+    $token = Input::get('token');
+    $activity = Session::get($token);
+
+    dd($activity);
+});
+
 
 //Route::get('');

@@ -96,6 +96,7 @@ class Segment extends Model {
      */
 	public function activity()
 	{
-		return $this->hasOne('App\Activity');
+        // :TODO morph this to an activity model
+        return $this->morphMany('App\Activity','typable');
 	}
 }

@@ -236,13 +236,12 @@ class GeolocationHelper
 
     public static function calculateDuration($segment)
     {
-        $start = $segment->created_at;
+        $start = new Carbon($segment->created_at);
         $end = Carbon::now();
 
         $duration = $end->diffInMinutes($start);
 
         return $duration;
-        //sreturn $duration;
     }
 
     public static function calculateDistance($segment)

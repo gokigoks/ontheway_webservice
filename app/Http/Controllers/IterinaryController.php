@@ -72,7 +72,7 @@ class IterinaryController extends Controller {
             $route->name = $iterinary->origin.' to '.$iterinary->destination;
             $route->save();
             $iterinary->route()->associate($route);
-            
+
             return response()->json('success',200);
         }
         else
@@ -107,7 +107,7 @@ class IterinaryController extends Controller {
     	$destination = Input::get('destination');
 		$origin_pos = $lat.','.$lng;
 		$pax = Input::get('pax');
-        $date_start = Carbon::now()->addDays(2);
+        $date_start = Carbon::now();
 
     	$input_bag = [
 				'origin' => $origin,
@@ -210,7 +210,7 @@ class IterinaryController extends Controller {
 		$data = $user->planned_iterinaries()->get();
 		if($data->isEmpty())
 		{
-			return response()->json($data,404);
+			return response()->json("empty",404);
 		}
 		else
 		{
@@ -280,7 +280,7 @@ class IterinaryController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  $request
 	 * @return Response
 	 */
 	public function store(Request $request)

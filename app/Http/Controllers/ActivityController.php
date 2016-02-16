@@ -2,60 +2,164 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Classes\UserSessionHandler;
 use Illuminate\Http\Request;
+use App\Segment;
 
 class ActivityController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * @param $request
      * @route 'api/activity/add'
      * @return Response
      */
     public function addActivity(Request $request)
     {
+        $error_bag = [];
+        $request = $request->all();
         $type = $request['type'];
-
+        $token = $request['token'];
         if ($type == "transport") {
-            $origin_name = $request['origin_name'];
-            $origin_pos = $request['origin_pos'];
-            $mode = $request['mode'];
 
-        }
-        if ($type == "food") {
-            $name = $request['food'];
+            $iterinary_id = $request['iterinary_id'];
+            $origin_name = $request['origin_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
-            $price = $request['price'];
+            $mode = $request['mode'];
+            $input_bag = [
+                'origin name ' => $origin_name,
+                'longitude ' => $lng,
+                'latitude ' => $lat,
+                'mode' => $mode,
+                'iterinary id' => $iterinary_id,
+            ];
+
+            $i = 0;
+            foreach ($input_bag as $key => $value) {
+                $value = trim($value);
+
+                if (empty($value)) {
+                    $error_bag[$i] = "$key empty";
+                    $i++;
+                } else {
+                    //
+                }
+            }
+            //filter of false or null values
+            if (array_filter($error_bag)) {
+                return response()->json($error_bag, 400);
+            }
+
+            return UserSessionHandler::addSegment($token, $iterinary_id, $origin_name, $lng, $lat, $mode);
         }
-        if ($type == "spot") {
-            $name = $request['spot'];
+        if ($type == "food") {
+
+            $place_name = $request['place_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
             $segment_id = $request['segment_id'];
+            $category = $request['category'];
+            //$token = $request['token'];
 
+            $input_bag = [
+                'place name' => $place_name,
+                'longitude ' => $lng,
+                'latitude ' => $lat,
+                'segment id' => $segment_id,
+                'food category' => $category,
+            ];
+
+            $i = 0;
+            foreach ($input_bag as $key => $value) {
+                $value = trim($value);
+
+                if (empty($value)) {
+                    $error_bag[$i] = "$key empty";
+                    $i++;
+                } else {
+                    //
+                }
+            }
+            //filter of false or null values
+            if (array_filter($error_bag)) {
+                return response()->json($error_bag, 400);
+            }
+            return UserSessionHandler::addFood($token, $place_name, $lng, $lat, $category, $segment_id);
+        }
+        if ($type == "spot") {
+
+            $spot_name = $request['place_name'];
+            $lng = $request['lng'];
+            $lat = $request['lat'];
+            $category = $request['category'];
+            $segment_id = $request['segment_id'];
+            $input_bag = [
+                'spot name' => $spot_name,
+                'category' => $category,
+                'longitude ' => $lng,
+                'latitude ' => $lat,
+                'segment id' => $segment_id,
+            ];
+
+            $i = 0;
+            foreach ($input_bag as $key => $value) {
+                $value = trim($value);
+
+                if (empty($value)) {
+                    $error_bag[$i] = "$key empty";
+                    $i++;
+                } else {
+                    //
+                }
+            }
+            //filter of false or null values
+            if (array_filter($error_bag)) {
+                return response()->json($error_bag, 400);
+            }
+
+
+            return UserSessionHandler::addSpot($token, $spot_name, $category, $lat, $lng, $segment_id);
         } else {
+
             return response()->json('type field is required', 200);
         }
 
 
     }
 
-    /**s
+    /**
      * end the activity
-     *
+     * @param $request
      * @route 'api/activity/endactivity'
-     * @reponse json
+     * @return json
      */
     public function endActivity(Request $request)
-    {
+    {   $token = $request['token'];
+        $segment_id = $request['segment_id'];
+        $destination_name = $request['destination_name'];
+        $lng = $request['lng'];
+        $lat = $request['lat'];
+        $request = $request->all();
+        UserSessionHandler::endSegment();
+//        $type
+        /**
+         *  TODO
+         * @param $type (transport,spot,eat)
+         * @param $segment (if transport)
+         * @param $price
+         * @param $distance (dynamicly calculated)
+         * @param $destination pos (if transport)
+         * @param $destination name (if transport)
+         * @param $tips if(spot,eat)
+         */
+
 
     }
 
     /**
-     * Store a newly created resource in storage.
      *
+     * @param $request
      * @return Response
      */
     public function store(Request $request)

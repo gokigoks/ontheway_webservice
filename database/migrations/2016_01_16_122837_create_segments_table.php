@@ -23,7 +23,7 @@ class CreateSegmentsTable extends Migration {
 			$table->string('origin_pos');
 			$table->string('destination_pos');
 			$table->integer('price');
-			$table->string('path')->nullable();
+			$table->string('path',500)->nullable();
 			$table->integer('distance');
 			$table->integer('duration');
 			$table->string('mode');

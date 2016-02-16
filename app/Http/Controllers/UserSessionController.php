@@ -30,8 +30,8 @@ class UserSessionController extends Controller {
 
 
 	public function register(Request $request)
-	{
-
+	{	
+		//$credentials
 	}
 
 	/**
