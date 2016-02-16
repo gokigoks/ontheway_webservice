@@ -33,7 +33,7 @@ class Spot extends Model {
 	}
 
 
-	public function scopeHaversine($query, $lat, $lng, $max_distance = 25, $units = 'kilometers', $fields = false )
+	public function scopeHaversine($query, $lat, $lng, $max_distance = 20, $units = 'kilometers', $fields = false )
 	{
 
 		if(empty($lat)){
@@ -67,8 +67,7 @@ class Spot extends Model {
          *  Generate the select field for disctance
          */
 		$distance_select = sprintf(
-				"
-					                ROUND(( %d * acos( cos( radians(%s) ) " .
+				"ROUND(( %d * acos( cos( radians(%s) ) " .
 				" * cos( radians( lat ) ) " .
 				" * cos( radians( lng ) - radians(%s) ) " .
 				" + sin( radians(%s) ) * sin( radians( lat ) ) " .
@@ -85,7 +84,8 @@ class Spot extends Model {
 
 		$data = $query->select( \DB::raw( implode( ',' ,  $fields ) . ',' .  $distance_select  ) )
 				->having( 'distance', '<=', $max_distance )
-				->orderBy( 'distance', 'ASC' );
+				->orderBy( 'distance', 'desc' );
+
 
 
 		//echo '<pre>';

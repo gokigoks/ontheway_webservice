@@ -135,13 +135,15 @@ class ActivityController extends Controller
      * @return json
      */
     public function endActivity(Request $request)
-    {   $token = $request['token'];
+    {
+        $token = $request['token'];
         $segment_id = $request['segment_id'];
         $destination_name = $request['destination_name'];
         $lng = $request['lng'];
         $lat = $request['lat'];
         $request = $request->all();
-        UserSessionHandler::endSegment();
+        $price  = $request['price'];
+        UserSessionHandler::endSegment($token, $segment_id, $destination_name, $lng, $lat, $price);
 //        $type
         /**
          *  TODO

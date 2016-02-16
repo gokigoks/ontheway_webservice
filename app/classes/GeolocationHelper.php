@@ -30,8 +30,9 @@ class GeolocationHelper
 
     public static function parseLongLat($data)
     {
-        list($long, $lat) = explode(",", $data);
-        $array = [$long, $lat];
+
+        list($lat, $long) = explode(",", $data);
+        $array = [$lat, $long];
         return $array;
     }
 

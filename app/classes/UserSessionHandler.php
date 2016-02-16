@@ -238,10 +238,12 @@ class UserSessionHandler
     public static function endSegment($token, $segment_id, $destination_name, $lng, $lat, $price = 0)
     {
         $request_type = 'transport';
-        $segment = self::getCurrentSession($token);
-        if(!self::validateActivity($token,$request_type)) {
-            return response()->json('error activity. you have a different activity in session',400);
-        }
+        $segment = self::getCurrentSession();
+
+        //TODO validation for activities
+//        if (!self::validateActivity($token, $request_type)) {
+//            return response()->json('error activity. you have a different activity in session', 400);
+//        }
 
         $segment = Segment::find($segment_id);
         $segment->destination_name = $destination_name;
@@ -279,20 +281,54 @@ class UserSessionHandler
      * @param $request_type
      * @return null
      */
-    public static function getCurrentSession($token, $request_type)
+    public static function validateActivity($token, $request_type)
     {
 
         $activity = Session::get($token);
-        if(!isset($activity['activity']))
-        {
-            dd('wa na set');
-            $user = Auth::user();
+
+        if (!isset($activity['activity'])) {
+            if (!$activity) {
+                if (Auth::check()) {
+
+                    $activity = self::getCurrentActivity();
+
+
+                }
+
+                return response()->json('login again..');
+            }
+            return response()->json('you dont have a current session.', 403);
         }
+
         $id = $activity['activity'][1];
         if ($activity == $request_type) {
             return $id;
         }
 
         return null;
+    }
+
+    /**
+     * @param $user_id
+     * @return mixed
+     */
+    public static function getCurrentSession($token)
+    {
+        $activity = Session::has($token.'.activity');
+
+        if($activity==null){
+
+            if(Auth::check()){
+                $route = Auth::user()->iterinaries()->route();
+                $segment = $route->segments()->orderBy('sequence','desc')->first();
+                return $segment;
+            }
+
+            die(400);
+        }
+
+        $segment = ;
+        $activity = $iterinary->activities();
+        return $iterinary;
     }
 }

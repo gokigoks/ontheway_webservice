@@ -24,7 +24,7 @@ class Rome2rioHelper
 
     /**
      * get routes function
-     * @param type|null $index
+     * @param $data
      * @return json object || array
      */
     public static function getRoutes($data, $index = null)
@@ -63,6 +63,7 @@ class Rome2rioHelper
      * purpose ani nga function kay pra ma kuha ang price
      * most objects in rome2rio has indicative price sub array
      * get native price if existing or get price then multiply by USD value.
+     * @param $data
      * @return integer
      */
     public static function getRome2RioPrice($data)
@@ -82,7 +83,6 @@ class Rome2rioHelper
         $origin = ($o != null) ? $o : 'cebu';
         $destination = ($d != null) ? $d : 'manila';
         //
-
 
         if (self::checkForCachedQuery($origin, $destination)) {
             $origin = str_replace(" ", "-", $origin);

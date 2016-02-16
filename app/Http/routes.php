@@ -293,7 +293,7 @@ Route::get('test/distance', function () {
     //dd($lnglat1);
     $spots = App\Spot::haversine($lnglat1[0], $lnglat1[1])->get();
     //return response()->json(App\Classes\GeolocationHelper::calculateDistance($segment),200);
-    dd($spots->toJson());
+    dd($spots);
 });
 
 Event::listen('cache.hit', function ($query) {

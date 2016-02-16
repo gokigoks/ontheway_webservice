@@ -46,26 +46,43 @@ class Iterinary extends Model {
 		return $this->belongsToMany('App\User')->withPivot('date_start','status');
 	}
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
 	public function days()
 	{
 		return $this->hasMany('App\Day');
 	}
-	
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
 	public function transport()
 	{
 		return $this->hasOne('App\Transport');
 	}
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
 	public function route()
 	{
 		return $this->belongsTo('App\Route');
 	}
-	
+
+    /**
+     * @param $query
+     * @return mixed
+     */
 	public function scopePlanned($query)
 	{
 		return $query->where('status', '=', 'planned');
-	} 
+	}
 
+    /**
+     * @param $query
+     * @return mixed
+     */
 	public function scopeDoing($query)
 	{
 
@@ -73,9 +90,21 @@ class Iterinary extends Model {
 		return $query->where('iterinary_user.status','=','doing');
 	}
 
+    /**
+     * @param $query
+     * @return mixed
+     */
 	public function scopeDone($query)
 	{
 		return $query->where('status', '=', 'done');
 	}
-	
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function activities()
+    {
+        return $this->hasMany('App\Activity');
+    }
 }

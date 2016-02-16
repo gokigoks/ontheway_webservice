@@ -41,6 +41,7 @@ class TestController extends Controller
             'pax' => Input::get('pax')
         ];
 
+
         $airports = [];
         $user_id = Input::get('user_id');
         $contributor = User::find($user_id);
@@ -98,19 +99,8 @@ class TestController extends Controller
 
                 $new_route->segments()->save($new_segment);
 
-                // if(isset($segment->stops))
-                // {
-                // 	foreach ($segment->stops as $stop) {
-                // 		$new_stop = new Stop();
-                // 		$new_stop->name = $stop->name;
-                // 		$new_stop->pos = $stop->pos;
-                // 		$new_stop->kind = $stop->kind;
-                // 		$new_stop->city = "";
-                // 		$new_stop->tips = "";
-                // 		$new_stop->timezone = (!isset($stop->timeZone))? "" : $stop->timeZone;
-                // 		$segment->
-                // 	}
-                // }
+
+
                 $i++;
             }
 
