@@ -38,7 +38,7 @@ class UserSessionHandler
             //if()
             $token = new tokenGenerator;
             $user = Auth::user();
-            
+
             $planned_iterinaries = $user->planned_iterinaries()->with('route.segments')->get();
             $past_iterinaries = $user->past_iterinaries()->with('route.segments')->get();
 

@@ -3,10 +3,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\Rome2rioHelper as Rome2Rio;
 use Illuminate\Http\Request;
+use Input;
 class RecommenderController extends Controller {
     /**
      * Display a listing of the resource.
-     *
+     * @param $request
      * @return Response
      */
     public function get_recommend(Request $request)
@@ -18,8 +19,8 @@ class RecommenderController extends Controller {
          */
         $origin = \Input::get('origin');
         $destination = \Input::get('destination');
-        $origin = "cebu";
-        $destination = "manila";
+//        $origin = "cebu";
+//        $destination = "manila";
         /**
          * $url = API url
          * kani ray ilisi earl
@@ -65,6 +66,17 @@ class RecommenderController extends Controller {
      * @return Response
      */
     public function getTripRecommendations()
+    {
+        $origin = Input::get('origin');
+        $destination = Input::get('destination');
+        $budget = Input::get('budget');
+        $pax = Input::get('pax');
+
+
+
+    }
+
+    public function getIterinaryRecommendation()
     {
 
     }

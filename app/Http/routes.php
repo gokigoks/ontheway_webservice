@@ -396,4 +396,6 @@ Route::get('createsession',function(){
     dd($result);
 
 });
+
+Route::get('api/recommend/search',['middleware' => 'cors', 'uses' => 'RecommenderController@getIterinaryRecommendation']);
 //Route::get('');

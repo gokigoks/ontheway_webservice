@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Activity.php" afterPath="$PROJECT_DIR$/app/Activity.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Facades/Rome2RioData.php" afterPath="$PROJECT_DIR$/app/Facades/Rome2RioData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/Recommender.php" afterPath="$PROJECT_DIR$/app/classes/Recommender.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" afterPath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,8 +42,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.923077">
-              <caret line="392" column="0" selection-start-line="392" selection-start-column="0" selection-end-line="392" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.4363637">
+              <caret line="182" column="97" selection-start-line="182" selection-start-column="97" selection-end-line="182" selection-end-column="97" />
               <folding>
                 <element signature="e#7#393#0#PHP" expanded="true" />
               </folding>
@@ -54,35 +51,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserSessionController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
+      <file leaf-file-name="RecommenderController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="46.076923">
-              <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.23905724">
+              <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
               <folding>
-                <element signature="e#39#61#0#PHP" expanded="true" />
+                <element signature="e#38#60#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IterinaryController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
+      <file leaf-file-name="Recommender.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/classes/Recommender.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="17.076923">
-              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+            <state vertical-scroll-proportion="-7.769231">
+              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
               <folding>
-                <element signature="e#39#61#0#PHP" expanded="true" />
+                <element signature="e#121#137#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserSessionHandler.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserSessionHandler.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1840708">
-              <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+            <state vertical-scroll-proportion="-3.418182">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="true" />
                 <element signature="e#121#152#0#PHP" expanded="true" />
@@ -185,7 +182,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_01_15_145110_create_spots_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_02_09_183145_create_spot_categories_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_02_09_183120_create_food_categories_table.php" />
-        <option value="$PROJECT_DIR$/app/classes/Recommender.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Collection.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
@@ -224,13 +220,14 @@
         <option value="$PROJECT_DIR$/app/classes/GeolocationHelper.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php" />
         <option value="$PROJECT_DIR$/app/classes/rome2rioHelper.php" />
         <option value="$PROJECT_DIR$/app/Facades/Rome2RioData.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" />
         <option value="$PROJECT_DIR$/app/Activity.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/classes/Recommender.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php" />
       </list>
     </option>
   </component>
@@ -952,14 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/Recommender.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Segment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.0">
@@ -1021,16 +1010,6 @@
         <state vertical-scroll-proportion="-5.2181816">
           <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.692307">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-          <folding>
-            <element signature="e#38#60#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1134,23 +1113,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.418182">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+            <element signature="e#121#152#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes/Recommender.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.769231">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding>
+            <element signature="e#121#137#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.923077">
-          <caret line="392" column="0" selection-start-line="392" selection-start-column="0" selection-end-line="392" selection-end-column="0" />
+        <state vertical-scroll-proportion="-4.4363637">
+          <caret line="182" column="97" selection-start-line="182" selection-start-column="97" selection-end-line="182" selection-end-column="97" />
           <folding>
             <element signature="e#7#393#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1840708">
-          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.23905724">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
           <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
-            <element signature="e#121#152#0#PHP" expanded="true" />
+            <element signature="e#38#60#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
