@@ -199,7 +199,7 @@ class Rome2rioHelper
      */
     public static function getFlightPath($origin, $destination)
     {
-        $array = []
+        $array = [];
         // FORMAT
 //        $array = [
 //            0 => [lat,lng],
