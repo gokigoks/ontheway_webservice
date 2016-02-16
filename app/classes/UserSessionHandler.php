@@ -38,11 +38,11 @@ class UserSessionHandler
             //if()
             $token = new tokenGenerator;
             $user = Auth::user();
-
+            
             $planned_iterinaries = $user->planned_iterinaries()->with('route.segments')->get();
             $past_iterinaries = $user->past_iterinaries()->with('route.segments')->get();
 
-            $current_iterinary = self::getCurrentIterinary($user);
+            $current_iterinary = $user->past_iterinaries()->with('route.segments')->first();
             $session = collect(['user' => $user]);
             $session->offsetSet('plannedIterinaries', $planned_iterinaries);
             $session->offsetSet('pastIterinaries', $past_iterinaries);
@@ -106,7 +106,7 @@ class UserSessionHandler
      */
     public static function getCurrentIterinary($user)
     {
-        $iterinary = $user->current_iterinary()->with('route.segments')->get();
+        $iterinary = $user->current_iterinary()->with('route.segments')->first();
         return $iterinary;
     }
 
@@ -122,18 +122,29 @@ class UserSessionHandler
     public static function startUserSession($id, $token)
     {
         //start a user session
-        Session::put($token, $id);
+        Session::put($token, ['user' => $id]);
         Session::regenerate();
     }
 
+    /**
+     * @param $token
+     * @param $iterinary
+     */
     public static function addIterinarySession($token, $iterinary)
-    {
-        Session::put($token . '.iterinary', $iterinary);
+    {   $current_session = Session::get($token);
+        $current_session['iterinary'] = $iterinary->id;
+        Session::put($token, $current_session);
     }
 
+    /**
+     * @param $token
+     * @param $segment
+     */
     public static function addSegmentSession($token, $segment)
     {
-        Session::put($token . '.segment', $segment);
+        $current_session = Session::get($token);
+        $current_session['session'] = $segment->id;
+        Session::put($token, $current_session);
     }
 
 
@@ -178,14 +189,11 @@ class UserSessionHandler
         $route = $iterinary->route()->first();
         $route->segments()->save($segment);
 
-
         //dd($segment->getAttributes());
         self::newUserActivity('transport', $segment->getAttribute('id'), $token);
 
-
         return response()->json('success', 200);
     }
-
 
     public static function addSpot($token, $spot_name, $category, $tips, $lat, $lng, $segment_id)
     { //todo
@@ -228,7 +236,6 @@ class UserSessionHandler
 
     /**
      * @param $token
-     * @param $segment_id
      * @param $destination_name
      * @param $lng
      * @param $price
@@ -238,13 +245,12 @@ class UserSessionHandler
     public static function endSegment($token,$destination_name, $lng, $lat, $price = 0)
     {
         $request_type = 'transport';
-        $segment = self::getCurrentSession($token);
+        $segment = self::getCurrentActivity($token);
 
         //TODO validation for activities
 //        if (!self::validateActivity($token, $request_type)) {
 //            return response()->json('error activity. you have a different activity in session', 400);
 //        }
-
 //        $segment = Segment::find($segment->id);
         $segment->destination_name = $destination_name;
         $segment->destination_pos = $lat . ',' . $lng;
@@ -252,8 +258,6 @@ class UserSessionHandler
         $segment->distance = GeolocationHelper::calculateDistance($segment);
         $segment->duration = GeolocationHelper::calculateDuration($segment);
         $points = array_merge(GeolocationHelper::parseLongLat($segment->origin_pos), [$lng, $lat]);
-
-
 
         $segment->path = GeolocationHelper::encode($points);
 
@@ -271,7 +275,10 @@ class UserSessionHandler
      */
     public static function newUserActivity($type, $id, $token)
     {
-        Session::put($token . '.activity', [$type, $id]);
+        $activity = Session::get($token);
+        $activity['type'] = $id;
+        Session::put($token, $activity);
+
     }
 
     /**
@@ -283,16 +290,12 @@ class UserSessionHandler
      */
     public static function validateActivity($token, $request_type)
     {
-
         $activity = Session::get($token);
 
         if (!isset($activity['activity'])) {
             if (!$activity) {
                 if (Auth::check()) {
-
                     $activity = self::getCurrentActivity();
-
-
                 }
 
                 return response()->json('login again..');
@@ -312,12 +315,11 @@ class UserSessionHandler
      * @param $token
      * @return mixed
      */
-    public static function getCurrentSession($token)
+    public static function getCurrentActivity($token)
     {
         $session = self::getByToken($token);
 
         if($session['activity']==null){
-
             if(Auth::check()){
 //                dd(Auth::user()->iterinaries()->get());
                 $iterinary= Auth::user()->current_iterinary()->first();
@@ -325,12 +327,15 @@ class UserSessionHandler
                 $segment = $route->segments()->orderBy('sequence','desc')->first();
                 return $segment;
             }
-
             die(400);
         }
-
         $segment = '' ;
         //$activity = $iterinary->activities();
 //        return $iterinary;
+    }
+
+    public static function addActivity($id)
+    {
+        $activity = new Activity;
     }
 }

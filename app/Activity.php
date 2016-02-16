@@ -55,7 +55,10 @@ class Activity extends Model {
 		return $this->morphTo();
 	}
 
-	public function stop(){
-		return $this->belongsTo('App\Stop');
+    /*
+     *  BelongTo Iterinary Model
+     */
+	public function iterinary(){
+		return $this->belongsTo('App\Iterinary');
 	}	
 }

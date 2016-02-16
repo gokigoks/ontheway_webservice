@@ -39,7 +39,8 @@ class Rome2RioData extends Facade
     }
     /**
      * Get Segments Function
-     * @param index object | default NULL
+     * @param $data
+     * @param $index | default null
      * @return Object
      */
     public static function getSegments($data,$index = null)

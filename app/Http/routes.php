@@ -382,5 +382,18 @@ Route::get('currentactivity',function()
     dd($activity);
 });
 
+Route::get('createsession',function(){
+    $token = Input::get('token');
+    $activity = Input::get('activity_type');
+    $activity_id = Input::get('activity_id');
+    $activity = [Input::get('activity_type') => Input::get('activity_id')];
+    $all = Session::all();
+    $current = Session::get($token);
+    $activity_session = Session::put($token.'.activity',$activity);
 
+
+    $result = Session::get($token);
+    dd($result);
+
+});
 //Route::get('');
