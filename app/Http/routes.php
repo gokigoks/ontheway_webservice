@@ -39,22 +39,20 @@ Route::post('user/register', ['middleware' => 'cors', 'uses' => function () {
 }]);
 Route::post('user/logout', ['middleware' => 'login', 'uses' => 'UserSessionController@logout']);
 
-Route::get('user/login',['middleware' => 'login', 'uses' => function()
-{
+Route::get('user/login', ['middleware' => 'login', 'uses' => function () {
     // cross site route. do nothing for get request
 }]);
 Route::post('user/login', ['middleware' => 'login', 'uses' => 'UserSessionController@login']);
 Route::post('user/register', ['middleware' => 'login', 'uses' => 'UserSessionController@register']);
-Route::post('test/login', ['middleware' => 'login', 'uses' => function(){
+Route::post('test/login', ['middleware' => 'login', 'uses' => function () {
     $credentials = array(
         'email' => Input::get('email'),
         'password' => Input::get('password'),
     );
-    if(Auth::attempt($credentials))
-    {
-        return response()->json('logged in ',200);
+    if (Auth::attempt($credentials)) {
+        return response()->json('logged in ', 200);
     }
-    return response()->json('error credentials',200);
+    return response()->json('error credentials', 200);
 }]);
 
 /*
@@ -197,10 +195,7 @@ Route::post('plot/iterinary/addactivity', ['middleware' => 'cors', 'uses' => 'Ac
 Route::post('plot/iterinary/endactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@endActivity']);
 // END CONTRIBUTOR  ITERINARIES
 
-// Recomendee Iterinaries
-Route::get('api/iterinary/planned', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPlanned']);
-Route::get('api/iterinary/past', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPast']);
-Route::get('api/iterinary/current', ['middleware' => 'cors', 'uses' => 'IterinaryController@getCurrent']);
+
 // End Recomendee Iterinaries
 
 /**
@@ -323,46 +318,44 @@ Route::get('test/collection', function () {
     //$data = Session::all();
     //if(Session::forget('56bdc5c7a38ab')) return response()->json('forgottten',200);
     //Session::flush();
-    Session::put('56c246e707517.activity','some activity');
+    Session::put('56c246e707517.activity', 'some activity');
+    $array = Session::get('56c246e707517');
+    $array = array_merge($array, ['new' => 'new activity']);
+    Session::put('56c246e707517', $array);
 
-    dd(Session::all());
-   // return response()->json($data, 200);
+    dd(Session::all(), $array, Session::get('56c246e707517.new'));
+    // return response()->json($data, 200);
 });
 
-Route::get('flush/session',function()
-{
-    if(Input::get('token') == 'gokigoks')
-    {
+Route::get('flush/session', function () {
+    if (Input::get('token') == 'gokigoks') {
         Session::flush();
     }
 });
 
 
-Route::get('checksession',function()
-{   $token = Input::get('token');
+Route::get('checksession', function () {
+    $token = Input::get('token');
 
-    return response()->json(App\Classes\UserSessionHandler::check($token),200);
+    return response()->json(App\Classes\UserSessionHandler::check($token), 200);
 });
 
-Route::get('iterinary/assign',function()
-{
+Route::get('iterinary/assign', function () {
     $user_id = Input::get('user');
     $iterinary_id = Input::get('iterinary');
     $status = (!Input::get('status')) ? 'doing' : Input::get('status');
     $user = App\User::find($user_id);
     $iterinary = App\Iterinary::find($iterinary_id);
 
-        $user->iterinaries()->attach($iterinary->id,['status' => $status, 'date_start' => Carbon\Carbon::now()]);
+    $user->iterinaries()->attach($iterinary->id, ['status' => $status, 'date_start' => Carbon\Carbon::now()]);
 });
 
-Route::get('checktoken',function()
-{   
+Route::get('checktoken', function () {
     $token = Input::get('token');
     return Session::has($token);
 });
 
-Route::get('days/getdiff', function()
-{
+Route::get('days/getdiff', function () {
     $user = App\User::find(Input::get('user_id'));
     $iterinary_id = Input::get('iterinary_id');
     $now = Carbon\Carbon::now();
@@ -371,31 +364,36 @@ Route::get('days/getdiff', function()
     $date = new Carbon($pivot->pivot->date_start);
     $day = $now->diffInDays($date);
 
-    dd($day,$start_date,$now);
+    dd($day, $start_date, $now);
 });
 
-Route::get('currentactivity',function()
-{
+Route::get('currentactivity', function () {
     $token = Input::get('token');
     $activity = Session::get($token);
 
     dd($activity);
 });
 
-Route::get('createsession',function(){
+Route::get('createsession', function () {
     $token = Input::get('token');
     $activity = Input::get('activity_type');
     $activity_id = Input::get('activity_id');
     $activity = [Input::get('activity_type') => Input::get('activity_id')];
     $all = Session::all();
     $current = Session::get($token);
-    $activity_session = Session::put($token.'.activity',$activity);
-
+    $activity_session = Session::put($token . '.activity', $activity);
 
     $result = Session::get($token);
     dd($result);
 
 });
 
-Route::get('api/recommend/search',['middleware' => 'cors', 'uses' => 'RecommenderController@getIterinaryRecommendation']);
+Route::get('api/recommend/search', ['middleware' => 'cors', 'uses' => 'RecommenderController@getIterinaryRecommendation']);
 //Route::get('');
+
+// Recomendee Iterinaries
+Route::get('api/iterinary/current', ['middleware' => 'cors', 'uses' => 'IterinaryController@getCurrent']);
+Route::get('api/iterinary/all', ['middleware' => 'cors', 'uses' => 'IterinaryController@getAll']);
+Route::get('api/iterinary/planned', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPlanned']);
+Route::get('api/iterinary/past', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPast']);
+Route::post('api/iterinary/startplanned', ['middleware' => 'cors', 'uses' => 'IterinaryController@startPlannedIterinary']);

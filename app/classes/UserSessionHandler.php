@@ -87,7 +87,8 @@ class UserSessionHandler
      */
     public static function getByToken($token)
     {
-        return Session::get($token);
+        $user = User::find(Session::get($token));
+        return $user;
     }
 
     /**

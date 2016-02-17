@@ -205,7 +205,11 @@ class IterinaryController extends Controller {
 	 */
 	public function getPlanned()
 	{
-		$user_id = Input::get('user_id');
+        $token = Input::get('token');
+        $user_id = Input::get('user_id');
+
+        if(!$token && !$user_id) return response()->json('user id or token must be supplied');
+
 		$user = User::find($user_id);
 		$data = $user->planned_iterinaries()->get();
 		if($data->isEmpty())
@@ -225,8 +229,16 @@ class IterinaryController extends Controller {
 	 */
 	public function getPast()
 	{
-		$user_id = Input::get('user_id');
-		$user = User::find($user_id);
+        $token = Input::get('token');
+        $user_id = Input::get('user_id');
+
+        if(!$token && !$user_id) return response()->json('user id or token must be supplied');
+
+        $user = User::find($user_id);
+        if(!$user) {
+            $user = UserSessionHandler::getByToken($token);
+        }
+
 		$data = $user->past_iterinaries()->get();
 		if($data->isEmpty())
 		{
@@ -246,10 +258,18 @@ class IterinaryController extends Controller {
 	 */
 	public function getCurrent()
 	{
-		$user_id = Input::get('user_id');
+        $token = Input::get('token');
+        $user_id = Input::get('user_id');
+
+        if(!$token && !$user_id) return response()->json('user id or token must be supplied');
 		$user = User::find($user_id);
-		$data = $user->current_iterinaries()->get();
-		if($data->isEmpty())
+
+        if(!$user) {
+            $user = UserSessionHandler::getByToken($token);
+        }
+
+		$data = $user->current_iterinary()->first();
+		if(!$data->count() > 0)
 		{
 			return response()->json('empty',404);
 		}
@@ -259,6 +279,58 @@ class IterinaryController extends Controller {
 		}		
 	}
 
+    public function getAll()
+    {
+        $token = Input::get('token');
+        $user_id = Input::get('user_id');
+
+        if(!$token && !$user_id) return response()->json('user id or token must be supplied');
+        $user = User::find($user_id);
+        if(!$user) {
+            $user = UserSessionHandler::getByToken($token);
+        }
+
+        $data = $user->iterinaries()->get();
+
+        if($data->isEmpty())
+        {
+            return response()->json('empty',404);
+        }
+        else
+        {
+            return response()->json($data,200);
+        }
+
+    }
+
+
+    public function startPlannedIterinary(Request $request)
+    {
+        $request = $request->all();
+        $token = $request['token'];
+        $iterinary_id = $request['iterinary_id'];
+        if(!$token) return response()->json('token must be supplied');
+        if(!$iterinary_id) return response()->json('iterinary id must be supplied');
+
+        $user = UserSessionHandler::getByToken($token);
+        $iterinary = Iterinary::find($iterinary_id);
+
+        $current = $user->current_iterinary()->first();
+
+        if( !$current ){
+
+            $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'doing'];
+            $user->current_iterinary()->save($iterinary);
+            $user->current_iterinary()->updateExistingPivot($iterinary->id,$pivot_fields, true);
+            return response()->json('saved',200);
+        }
+        else{
+            $pivot_fields = ['status' => 'planned'];
+            $user->current_iterinary()->updateExistingPivot($iterinary->id,$pivot_fields, true);
+            return response()->json('updated',200);
+        }
+
+    }
 
 	public function addSpot()
 	{
@@ -303,7 +375,7 @@ class IterinaryController extends Controller {
 	}
 
 	/**
-	 *
+	 * @param $request
 	 * @route 'plot/iterinary/end'
 	 * @response json
 	 * */
