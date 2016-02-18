@@ -398,5 +398,7 @@ Route::get('api/iterinary/planned', ['middleware' => 'cors', 'uses' => 'Iterinar
 Route::get('api/iterinary/past', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPast']);
 Route::post('api/iterinary/startplanned', ['middleware' => 'cors', 'uses' => 'IterinaryController@startPlannedIterinary']);
 
-Route::get('api/iterinary/path', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPath']);
+Route::get('api/iterinary/getpath', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPath']);
 Route::get('api/route/get',['middleware' => 'cors','uses' => 'IterinaryController@getRoute']);
+
+Route::post('');
