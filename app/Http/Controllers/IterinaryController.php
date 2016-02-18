@@ -332,10 +332,32 @@ class IterinaryController extends Controller {
 
     }
 
-	public function addSpot()
+	public function getPath()
 	{
-		//$iterinary_id = 
+		$id = Input::get('id');
+        if(!id) return response()->json('id?',400);
+        $iterinary = Iterinary::find($id);
+        $segments = $iterinary->route->segments()->get();
+
+        foreach ($segments as $item) {
+
+        }
+
 	}
+
+    public function getRoute()
+    {
+        $id = Input::get('id');
+        if(!$id) return response()->json('id is required',400);
+
+        $route = Route::find($id);
+        if($route->count()>0)
+        {
+            
+            return response()->json($route,200);
+        }
+        return response()->json('no route found',404);
+    }
 
 	/**
 	 * Update the specified resource in storage.
