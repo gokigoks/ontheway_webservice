@@ -400,6 +400,22 @@ class IterinaryController extends Controller
         dd($user_id, $iterinary_id);
     }
 
+    public function copyIterinary(Request $request)
+    {
+        $request = $request->all();
+        $token = $request['token'];
+        $iterinary_id = $request['iterinary_id'];
+
+        $iterinary = Iterinary::find($iterinary_id);
+        $user = UserSessionHandler::getByToken($token);
+
+        $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'planned'];
+        $user->iterinaries()->attach($iterinary_id,$pivot_fields);
+//        $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
+
+        return response()->json('success',200);
+    }
+
 
 //end
 }

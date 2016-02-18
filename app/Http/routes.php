@@ -400,4 +400,4 @@ Route::post('api/iterinary/startplanned', ['middleware' => 'cors', 'uses' => 'It
 
 Route::get('api/iterinary/getpath', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPath']);
 Route::get('api/route/get',['middleware' => 'cors','uses' => 'IterinaryController@getRoute']);
-
+Route::post('api/iterinary/follow',['middleware' => 'cors', 'uses' => 'IterinaryController@copyIterinary']);
