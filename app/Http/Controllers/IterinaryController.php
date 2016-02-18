@@ -316,12 +316,12 @@ class IterinaryController extends Controller
      */
     public function getPath()
     {
-        $iterinary_id = Input::get('iterinary_id');
-        if (!$iterinary_id) return response()->json('id?', 400);
-        $iterinary = Iterinary::find($iterinary_id);
-        if(!$iterinary) return response()->json('iterinary not found',404);
+        $route_id = Input::get('route_id');
+        if (!$route_id) return response()->json('id?', 400);
+        $route = Route::find($route_id);
+        if(!$route) return response()->json('route not found',404);
 //        dd($iterinary)
-        $segments = $iterinary->route->segments()->get();
+        $segments = $route->segments()->get();
 
         if($segments->isEmpty()) return response()->json('error',400);
 
