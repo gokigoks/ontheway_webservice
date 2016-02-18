@@ -330,11 +330,15 @@ class IterinaryController extends Controller
         foreach ($segments as $segment) {
             $points[] = GeolocationHelper::decode($segment->path);
         }
+        $center[] = $points[0][0];
+        $center[] += $points[0][1];
 
         $points = GeolocationHelper::flatten($points);
         $path = GeolocationHelper::encode($points);
 
-        return response()->json($path,200);
+        $data = ['center' => $center, 'path' => $path];
+
+        return response()->json($data,200);
     }
 
     public function getRoute()

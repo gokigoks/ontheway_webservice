@@ -107,4 +107,14 @@ class Iterinary extends Model {
     {
         return $this->hasMany('App\Activity');
     }
+
+    /**
+     * ratings relationship
+     * @return dynamic relationship
+     */
+    public function ratings()
+    {
+        return $this->morphMany('App\Rating','ratingable');
+    }
+
 }
