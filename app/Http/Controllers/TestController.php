@@ -10,6 +10,7 @@ use App\Route;
 use App\Segment;
 use App\Stop;
 use App\Spot;
+use App\Eat;
 use App\User;
 use Input;
 use Cache;

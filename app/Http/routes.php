@@ -245,7 +245,7 @@ Route::post('api/iterinary/stops/add', ['middleware' => 'cors', 'uses' => 'Segme
 
 //  -- POPULATE TABLES -- //
 Route::get('populate/routes', ['middleware' => 'cors', 'uses' => 'TestController@populateRoutes']);
-Route::get('populate/spots', ['middleware' => 'cors', 'uses' => 'TestControler@populateSpots']);
+Route::get('populate/spots', ['middleware' => 'cors', 'uses' => 'TestController@populateSpots']);
 Route::get('populate/eats', ['middleware' => 'cors', 'uses' => 'TestController@populateEats']);
 Route::get('populate/categories', 'TestController@populateCategories');
 //  -- END -- //
