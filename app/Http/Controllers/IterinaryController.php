@@ -135,9 +135,8 @@ class IterinaryController extends Controller
         $iterinary->creator_id = $user->id;
         $iterinary->origin = $origin;
         $iterinary->destination = $destination;
-        //dd('dre dapita errr');
-        //$iterinary->save();
-        //dd('dre dapita error');
+
+        
         if ($user->iterinaries()->save($iterinary)) {
             //$user->iterinaries()->attach($iterinary->id);
             $pivot = $user->iterinaries()->wherePivot('iterinary_id', '=', $iterinary->id)->first();

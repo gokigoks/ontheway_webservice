@@ -33,7 +33,7 @@ class CreateActivitiesTable extends Migration {
 			 * 
 			**/
 			$table->timestamps();
-			
+
 
 			$table->foreign('iterinary_id')
 			->references('id')
