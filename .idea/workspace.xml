@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.openshift/action_hooks/deploy" afterPath="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,16 +24,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="2016_01_15_144556_create_iterinaries_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144556_create_iterinaries_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="2016_01_15_144605_create_days_table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144605_create_days_table.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -110,15 +98,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19476268">
-              <caret line="243" column="28" selection-start-line="243" selection-start-column="28" selection-end-line="243" selection-end-column="28" />
+            <state vertical-scroll-proportion="-13.363636">
+              <caret line="250" column="16" selection-start-line="250" selection-start-column="16" selection-end-line="250" selection-end-column="16" />
               <folding>
                 <element signature="e#7#393#0#PHP" expanded="true" />
                 <element signature="e#4353#4384#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deploy" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7057057">
+              <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -216,11 +214,11 @@
         <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
         <option value="$PROJECT_DIR$/app/classes/GeolocationHelper.php" />
-        <option value="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
         <option value="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
+        <option value="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
       </list>
     </option>
   </component>
@@ -1038,14 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1132,12 +1122,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19476268">
-          <caret line="243" column="28" selection-start-line="243" selection-start-column="28" selection-end-line="243" selection-end-column="28" />
+        <state vertical-scroll-proportion="-13.363636">
+          <caret line="250" column="16" selection-start-line="250" selection-start-column="16" selection-end-line="250" selection-end-column="16" />
           <folding>
             <element signature="e#7#393#0#PHP" expanded="true" />
             <element signature="e#4353#4384#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7057057">
+          <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
