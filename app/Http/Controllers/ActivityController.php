@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Activity;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\UserSessionHandler;
@@ -17,6 +18,7 @@ class ActivityController extends Controller
     public function addActivity(Request $request)
     {
         $error_bag = [];
+        $activity = new Activity();
         $request = $request->all();
         $type = $request['type'];
         $token = $request['token'];
@@ -136,14 +138,14 @@ class ActivityController extends Controller
      */
     public function endActivity(Request $request)
     {
+        $request = $request->all();
         $token = $request['token'];
         $segment_id = $request['segment_id'];
         $destination_name = $request['destination_name'];
         $lng = $request['lng'];
         $lat = $request['lat'];
-        $request = $request->all();
-        $price  = $request['price'];
-        UserSessionHandler::endSegment($token, $destination_name, $lng, $lat, $price);
+        $price = $request['price'];
+        UserSessionHandler::endSegment($token, $segment_id, $destination_name, $lat, $lng, $price);
 //        $type
         /**
          *  TODO

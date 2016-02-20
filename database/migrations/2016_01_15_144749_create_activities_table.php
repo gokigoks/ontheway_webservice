@@ -16,9 +16,10 @@ class CreateActivitiesTable extends Migration {
 		{   //TODO
             // add foreign key to iterinary table
 			$table->increments('id');
-			$table->integer('day_id')->unsigned();
-			$table->time('start_time');
-			$table->time('end_time');
+			$table->integer('day')->unsigned()->default(1);
+			$table->integer('iterinary_id')->unsigned();
+			$table->string('start_time');
+			$table->string('end_time');
 
 			/**
 			 * required for morph to many
@@ -36,6 +37,11 @@ class CreateActivitiesTable extends Migration {
 			$table->foreign('day_id')
 			->references('id')
 			->on('days')
+			->onDelete('cascade');
+
+			$table->foreign('iterinary_id')
+			->references('id')
+			->on('iterinaries')
 			->onDelete('cascade');
 		});
 	}

@@ -235,6 +235,10 @@ class GeolocationHelper
         return $points;
     }
 
+    /**
+     * @param $segment
+     * @return int $duration in minutes
+     */
     public static function calculateDuration($segment)
     {
         $start = new Carbon($segment->created_at);

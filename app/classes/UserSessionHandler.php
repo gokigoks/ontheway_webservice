@@ -237,22 +237,24 @@ class UserSessionHandler
 
     /**
      * @param $token
+     * @param $segment_id
      * @param $destination_name
      * @param $lng
      * @param $price
      * @param $lat
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function endSegment($token,$destination_name, $lng, $lat, $price = 0)
+    public static function endSegment($token, $segment_id, $destination_name, $lng, $lat, $price = 0)
     {
         $request_type = 'transport';
-        $segment = self::getCurrentActivity($token);
+        $segment = Segment::find($segment_id);
 
         //TODO validation for activities
 //        if (!self::validateActivity($token, $request_type)) {
 //            return response()->json('error activity. you have a different activity in session', 400);
 //        }
 //        $segment = Segment::find($segment->id);
+
         $segment->destination_name = $destination_name;
         $segment->destination_pos = $lat . ',' . $lng;
         $segment->price = $price;
@@ -261,6 +263,7 @@ class UserSessionHandler
         $points = array_merge(GeolocationHelper::parseLongLat($segment->origin_pos), [$lng, $lat]);
 
         $segment->path = GeolocationHelper::encode($points);
+        dd($segment->path);
 
         if ($segment->save()) {
             return response()->json('success', 200);

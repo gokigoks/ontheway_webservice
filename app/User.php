@@ -21,7 +21,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * touches the timestamps of related pivot table in iterinary_user pivot
      * @var array
      */
-    protected $touches = ['iterinary_user'];
+//    protected $touches = ['iterinary_user'];
 	/**
 	 * The attributes that are mass assignable.
 	 *

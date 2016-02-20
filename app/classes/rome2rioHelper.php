@@ -44,7 +44,8 @@ class Rome2rioHelper
 
     /**
      * Get Segments Function
-     * @param index object | default NULL
+     * @param $data
+     * @param $index object | default NULL
      * @return Object
      */
     public static function getSegments($data, $index = null)

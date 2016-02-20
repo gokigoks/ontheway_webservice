@@ -34,9 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::post('test/foursquare', 'ApiController@post_foursquare');
 Route::post('test/rome2rio', 'ApiController@post_rome2rio');
 
-Route::post('user/register', ['middleware' => 'cors', 'uses' => function () {
-
-}]);
 Route::post('user/logout', ['middleware' => 'login', 'uses' => 'UserSessionController@logout']);
 
 Route::get('user/login', ['middleware' => 'login', 'uses' => function () {
@@ -188,14 +185,6 @@ Route::post('api/geolocation/pathToPath', 'GeolocationController@addPathToPath')
 //
 
 
-// CONTRIBUTOR ITERINARIESadd
-Route::post('plot/iterinary/new', ['middleware' => 'cors', 'uses' => 'IterinaryController@newIterinary']);
-Route::post('plot/iterinary/end', ['midtdleware' => 'cors', 'uses' => 'IterinaryController@endIterinary']);
-Route::post('plot/iterinary/addactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@addActivity']);
-Route::post('plot/iterinary/endactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@endActivity']);
-// END CONTRIBUTOR  ITERINARIES
-
-
 // End Recomendee Iterinaries
 
 /**
@@ -215,10 +204,6 @@ Route::post('api/spots/add', 'SpotController@newSpot');
 Route::post('api/spots/end', 'SpotController@endSpot');
 // END SPOTS
 
-// Activity routes
-Route::post('plot/iterinary/activity/new', ['middleware' => 'cors', 'uses' => 'ActivityController@new']);
-Route::post('plot/iterinary/activity/get', ['middleware' => 'cors', 'uses' => 'ActivityController@get']);
-// END activity routes
 
 //Route::get('api/hotels','')
 
@@ -259,7 +244,6 @@ Route::post('api/iterinary/stops/add', ['middleware' => 'cors', 'uses' => 'Segme
 //  -- END STOP ROUTES -- //
 
 //  -- POPULATE TABLES -- //
-
 Route::get('populate/routes', ['middleware' => 'cors', 'uses' => 'TestController@populateRoutes']);
 Route::get('populate/spots', ['middleware' => 'cors', 'uses' => 'TestControler@populateSpots']);
 Route::get('populate/eats', ['middleware' => 'cors', 'uses' => 'TestController@populateEats']);
@@ -292,7 +276,7 @@ Route::get('test/distance', function () {
 });
 
 Event::listen('cache.hit', function ($query) {
-    var_dump('cache accessed');
+    var_dump('cache accessed ' . $query);
 });
 
 Route::get('api/img/{img_url}', 'ApiController@imageHandler');
@@ -399,5 +383,22 @@ Route::get('api/iterinary/past', ['middleware' => 'cors', 'uses' => 'IterinaryCo
 Route::post('api/iterinary/startplanned', ['middleware' => 'cors', 'uses' => 'IterinaryController@startPlannedIterinary']);
 
 Route::get('api/iterinary/getpath', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPath']);
-Route::get('api/route/get',['middleware' => 'cors','uses' => 'IterinaryController@getRoute']);
-Route::post('api/iterinary/follow',['middleware' => 'cors', 'uses' => 'IterinaryController@copyIterinary']);
+Route::get('api/route/get', ['middleware' => 'cors', 'uses' => 'IterinaryController@getRoute']);
+Route::post('api/iterinary/follow', ['middleware' => 'cors', 'uses' => 'IterinaryController@copyIterinary']);
+
+// Activity routes
+Route::post('plot/iterinary/activity/new', ['middleware' => 'cors', 'uses' => 'ActivityController@new']);
+Route::post('plot/iterinary/activity/get', ['middleware' => 'cors', 'uses' => 'ActivityController@get']);
+// END activity routes
+
+
+// CONTRIBUTOR ITERINARIESadd
+Route::post('plot/iterinary/new', ['middleware' => 'cors', 'uses' => 'IterinaryController@newIterinary']);
+Route::post('plot/iterinary/end', ['midtdleware' => 'cors', 'uses' => 'IterinaryController@endIterinary']);
+Route::post('plot/iterinary/addactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@addActivity']);
+Route::post('plot/iterinary/endactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@endActivity']);
+// END CONTRIBUTOR  ITERINARIES
+
+
+
+

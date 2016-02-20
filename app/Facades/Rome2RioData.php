@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Facade;
 class Rome2RioData extends Facade
 {
     protected $data;
+
     protected static function getFacadeAccessor() { return 'Rome2RioData'; }
     public static function getData(){
         dd('data?');
@@ -17,6 +18,7 @@ class Rome2RioData extends Facade
 
     /**
      * get routes function
+     * @param $data
      * @param type|null $index
      * @return json object || array
      */
@@ -112,7 +114,7 @@ class Rome2RioData extends Facade
             }
         }
         $data = json_decode($data);
-        dd('dre ko gikanl');
+//        dd('dre ko gikanl');
         //close
         curl_close($ch);
 

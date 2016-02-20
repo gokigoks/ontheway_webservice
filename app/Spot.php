@@ -23,8 +23,9 @@ class Spot extends Model {
 	protected $fillable = ['place_name', 'lng', 'lat', 'price', 'tips','city'];
 
 	public function activity(){
-		$this->morphMany('App\Activity','typable');
-	}
+		return $this->morphMany('App\Activity','typable');
+	}	
+
 
 
 	public function category()

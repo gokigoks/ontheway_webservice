@@ -34,6 +34,8 @@ class Activity extends Model {
 
 	protected $fillable = ['day_id','start_time','end_time','typable_type','typable_id'];
 	
+
+	
 	/**s
 	 * day to activity
 	 * 1 to many

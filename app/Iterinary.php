@@ -8,7 +8,7 @@ class Iterinary extends Model {
      * touches the timestamps of related pivot table in iterinary_user pivot
      * @var array
      */
-    //protected $touches = ['iterinary_user'];
+    
 	/*
 	*	this model has 3 types. planned, active and done
 	*
@@ -32,7 +32,7 @@ class Iterinary extends Model {
 	 */
 	public function user()
 	{
-		return $this->belongTo('App\User','creator_id');
+		return $this->belongsTo('App\User','creator_id');
 	}
 
 	/** MANY -- TO -- MANY
@@ -43,7 +43,7 @@ class Iterinary extends Model {
 	 */
 	public function users()
 	{
-		return $this->belongsToMany('App\User')->withPivot('date_start','status');
+		return $this->belongsToMany('App\User')->withPivot('date_start','status')->withTimestamps();;
 	}
 
     /**
@@ -98,8 +98,8 @@ class Iterinary extends Model {
 	{
 		return $query->where('status', '=', 'done');
 	}
-
-
+	
+	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
