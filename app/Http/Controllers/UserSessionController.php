@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use Cache;
 use Input;
+use App\Classes\tokenGenerator;
 use Validator;
 use App\Classes\UserSessionHandler;
 use Illuminate\Http\Request;
@@ -60,7 +61,12 @@ class UserSessionController extends Controller
         $user->password = bcrypt($request['password']);
         $user->save();
 
-        return response()->json('success', 200);
+        $token = new tokenGenerator;
+        $user = Auth::user();
+        $user->setAttribute('token', $token->uuid);
+
+        UserSessionHandler::startUserSession($user->id,$token->uuid);
+        return response()->json($user, 200);
     }
 
     /**

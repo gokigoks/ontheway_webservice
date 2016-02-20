@@ -188,9 +188,15 @@ class UserSessionHandler
         }
 
         $route = $iterinary->route()->first();
-        $route->segments()->save($segment);
 
-        //dd($segment->getAttributes());
+            // activity
+            $activity = new Activity();
+            $activity->iterinary_id = $iterinary_id;
+            $activity->start_time = Carbon::now()->toTimeString();
+            $segment->activity()->save($activity);
+            // end activity
+
+        $route->segments()->save($segment);
         self::newUserActivity('transport', $segment->getAttribute('id'), $token);
 
         return response()->json('success', 200);

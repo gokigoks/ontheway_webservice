@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.openshift/action_hooks/deploy" afterPath="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" afterPath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,22 +26,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="2016_01_15_144605_create_days_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144605_create_days_table.php">
+      <file leaf-file-name="UserSessionHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-14.653846">
+              <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+              <folding>
+                <element signature="e#6#95#0#PHP" expanded="true" />
+                <element signature="e#121#152#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2016_01_15_144749_create_activities_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php">
+      <file leaf-file-name="ActivityController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-32.307693">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-4.230769">
+              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+              <folding>
+                <element signature="e#39#56#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,14 +81,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserSessionController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserSessionController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="50.76923">
-              <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
-              <folding>
-                <element signature="e#39#61#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.175">
+              <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,8 +106,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.363636">
-              <caret line="250" column="16" selection-start-line="250" selection-start-column="16" selection-end-line="250" selection-end-column="16" />
+            <state vertical-scroll-proportion="-4.490909">
+              <caret line="397" column="103" selection-start-line="397" selection-start-column="103" selection-end-line="397" selection-end-column="103" />
               <folding>
                 <element signature="e#7#393#0#PHP" expanded="true" />
                 <element signature="e#4353#4384#0#PHP" expanded="true" />
@@ -111,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deploy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7057057">
-              <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -209,16 +214,16 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_01_16_200415_create_ratings_table.php" />
         <option value="$PROJECT_DIR$/app/Facades/Rome2RioData.php" />
         <option value="$PROJECT_DIR$/app/classes/rome2rioHelper.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
         <option value="$PROJECT_DIR$/app/classes/GeolocationHelper.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
         <option value="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
+        <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
       </list>
     </option>
   </component>
@@ -673,7 +678,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="0" />
+    <frame x="0" y="0" width="1366" height="768" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18081991" sideWeight="0.5057637" order="2" side_tool="true" content_ui="tabs" />
@@ -991,27 +996,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.653846">
-          <caret line="147" column="35" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
-          <folding>
-            <element signature="e#39#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.423077">
-          <caret line="261" column="61" selection-start-line="261" selection-start-column="61" selection-end-line="261" selection-end-column="61" />
-          <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
-            <element signature="e#121#152#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/classes/GeolocationHelper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.730769">
@@ -1092,16 +1076,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="50.76923">
-          <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
-          <folding>
-            <element signature="e#39#61#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.076923">
@@ -1120,10 +1094,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.363636">
-          <caret line="250" column="16" selection-start-line="250" selection-start-column="16" selection-end-line="250" selection-end-column="16" />
+        <state vertical-scroll-proportion="-4.490909">
+          <caret line="397" column="103" selection-start-line="397" selection-start-column="103" selection-end-line="397" selection-end-column="103" />
           <folding>
             <element signature="e#7#393#0#PHP" expanded="true" />
             <element signature="e#4353#4384#0#PHP" expanded="true" />
@@ -1131,10 +1113,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7057057">
-          <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+        <state vertical-scroll-proportion="-4.230769">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+          <folding>
+            <element signature="e#39#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.653846">
+          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+            <element signature="e#121#152#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.175">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
           <folding />
         </state>
       </provider>
