@@ -85,8 +85,8 @@ if [  -f ${OPENSHIFT_REPO_DIR}.openshift/.env ]; then
 fi
 
 echo 1>&2
-echo "Running 'php artisan migrate --force'..." 1>&2
+echo "Running 'php artisan migrate:refresh --force'..." 1>&2
 echo 1>&2
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-php artisan migrate --force
+php artisan migrate:refresh --force
 popd > /dev/null
