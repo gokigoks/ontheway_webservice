@@ -34,10 +34,6 @@ class CreateActivitiesTable extends Migration {
 			**/
 			$table->timestamps();
 			
-			$table->foreign('day_id')
-			->references('id')
-			->on('days')
-			->onDelete('cascade');
 
 			$table->foreign('iterinary_id')
 			->references('id')
