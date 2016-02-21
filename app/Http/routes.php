@@ -288,20 +288,16 @@ Route::get('api/image/{img}', function ($img) {
 
 Route::get('test/collection', function () {
 
-//    $collection = array();
-//    $data = collect($collection);
-//    $some_data = array('foo', 'bar', 'baz');
-//
-//    $data->offsetSet('user',['id' => '1', 'name' => 'gokigoks']);
-//    //dd($data);
-//    Session::put('user.session',$data);
-//    Session::put('user.iterinary',['id' => 1, 'name','manila to cebu']);
-//    $session = Session::get('user.session');
-//    $all_session = Session::get('user');
-    //Session::flush();
-    //$data = Session::all();
+
     //if(Session::forget('56bdc5c7a38ab')) return response()->json('forgottten',200);
     //Session::flush();
+//    $category = Input::get('category');
+//    $categories  = \DB::table('spot_categories')->select('main_cat','main_cat_id')->where('main_cat','=',$category)->distinct()->get();
+//    dd($categories[0]->main_cat_id);
+    $food_cat  = \DB::table('food_categories')->select('main_cat','main_cat_id')->distinct()->get();
+//    $food_cat = App\FoodCategory::distinct()->get();
+    dd($food_cat);
+
     Session::put('56c246e707517.activity', 'some activity');
     $array = Session::get('56c246e707517');
     $array = array_merge($array, ['new' => 'new activity']);

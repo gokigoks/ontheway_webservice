@@ -17,7 +17,10 @@ use Illuminate\Http\Request;
 class IterinaryController extends Controller
 {
 
-
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function newIterinary(Request $request)
     {
         $token = Input::get('token');
@@ -26,7 +29,7 @@ class IterinaryController extends Controller
 
         if ($token == null) return response()->json('token is empty', 200);
 
-        $user = userSessionHandler::user($token);
+        $user = userSessionHandler::getByToken($token);
 
         if ($user == null) {
             return response()->json('user not found.', 404);
@@ -62,6 +65,7 @@ class IterinaryController extends Controller
         $iterinary->creator_id = $user->id;
         $iterinary->origin = $origin;
         $iterinary->destination = $destination;
+        $iterinary->pax = $pax;
         //dd('dre dapita errr');
         //$iterinary->save();
         //dd('dre dapita error');
@@ -71,6 +75,7 @@ class IterinaryController extends Controller
             $route->name = $iterinary->origin . ' to ' . $iterinary->destination;
             $route->save();
             $iterinary->route()->associate($route);
+            $iterinary->save();
 
             return response()->json('success', 200);
         } else {
@@ -93,7 +98,7 @@ class IterinaryController extends Controller
         if ($token == null) return response()->json('token is empty', 200);
 
         $user = userSessionHandler::user($token);
-
+        dd($user);
         if ($user == null) {
             return response()->json('user not found.', 404);
         }
@@ -318,11 +323,11 @@ class IterinaryController extends Controller
         $route_id = Input::get('route_id');
         if (!$route_id) return response()->json('id?', 400);
         $route = Route::find($route_id);
-        if(!$route) return response()->json('route not found',404);
+        if (!$route) return response()->json('route not found', 404);
 //        dd($iterinary)
         $segments = $route->segments()->get();
 
-        if($segments->isEmpty()) return response()->json('error',400);
+        if ($segments->isEmpty()) return response()->json('error', 400);
 
         $points = [];
 
@@ -337,7 +342,7 @@ class IterinaryController extends Controller
 
         $data = ['center' => $center, 'path' => $path];
 
-        return response()->json($data,200);
+        return response()->json($data, 200);
     }
 
     public function getRoute()
@@ -413,10 +418,10 @@ class IterinaryController extends Controller
         $user = UserSessionHandler::getByToken($token);
 
         $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'planned'];
-        $user->iterinaries()->attach($iterinary_id,$pivot_fields);
+        $user->iterinaries()->attach($iterinary_id, $pivot_fields);
 //        $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
 
-        return response()->json('success',200);
+        return response()->json('success', 200);
     }
 
 

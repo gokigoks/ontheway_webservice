@@ -9,13 +9,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $day_id
  * @property string $start_time
  * @property string $end_time
+ * @property string day
  * @property string $typable_type
  * @property integer $typable_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \App\Day $day
  * @property-read \App\Activity $typable
  * @property-read \App\Stop $stop
+ * @property integer $iterinary_id
+ * @property-read \App\Iterinary $iterinary
  */
 class Activity extends Model {
 
@@ -41,7 +43,6 @@ class Activity extends Model {
 	 * 1 to many
 	 * @return relationship
 	 */
-
 	public function day()
 	{
 		return $this->belongsTo('App\Day');
@@ -62,5 +63,21 @@ class Activity extends Model {
      */
 	public function iterinary(){
 		return $this->belongsTo('App\Iterinary');
-	}	
+	}
+
+    public function scopeCurrent($query)
+    {
+        return $query->where('end_time','=','')->orWhereNull('end_time');
+    }
+
+    public function scopeSpot($query)
+    {
+        return $query->where('typable_type','=','App\Spot');
+    }
+
+    public function scopeFood($query)
+    {
+        return $query->where('typable_type','=','App\Eat');
+    }
+
 }

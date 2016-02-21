@@ -2,6 +2,11 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Route
+ * @package App
+ * @property-write string name
+ */
 class Route extends Model {
 
 	//

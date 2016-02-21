@@ -18,7 +18,7 @@ class ActivityController extends Controller
     public function addActivity(Request $request)
     {
         $error_bag = [];
-        $activity = new Activity();
+
         $request = $request->all();
         $type = $request['type'];
         $token = $request['token'];
@@ -60,16 +60,19 @@ class ActivityController extends Controller
             $place_name = $request['place_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
-            $segment_id = $request['segment_id'];
+            $tips = $request['tips'];
+            $iterinary_id = $request['iterinary_id'];
+
             $category = $request['category'];
+            $pic_url = "http://php-usjrproject.rhcloud.com/api/img/food.png";
             //$token = $request['token'];
 
             $input_bag = [
                 'place name' => $place_name,
                 'longitude ' => $lng,
                 'latitude ' => $lat,
-                'segment id' => $segment_id,
                 'food category' => $category,
+                'iterinary id' => $iterinary_id
             ];
 
             $i = 0;
@@ -87,7 +90,8 @@ class ActivityController extends Controller
             if (array_filter($error_bag)) {
                 return response()->json($error_bag, 400);
             }
-            return UserSessionHandler::addFood($token, $place_name, $lng, $lat, $category, $segment_id);
+
+            return UserSessionHandler::addFood($token, $place_name, $lng, $lat, $category, $iterinary_id);
         }
         if ($type == "spot") {
 
@@ -95,13 +99,15 @@ class ActivityController extends Controller
             $lng = $request['lng'];
             $lat = $request['lat'];
             $category = $request['category'];
-            $segment_id = $request['segment_id'];
+            $iterinary_id = $request['iterinary_id'];
+            $pic_url = "http://php-usjrproject.rhcloud.com/api/img/beach.png";
+
             $input_bag = [
                 'spot name' => $spot_name,
                 'category' => $category,
                 'longitude ' => $lng,
                 'latitude ' => $lat,
-                'segment id' => $segment_id,
+                'iterinary id' => $iterinary_id,
             ];
 
             $i = 0;
@@ -120,8 +126,8 @@ class ActivityController extends Controller
                 return response()->json($error_bag, 400);
             }
 
+            return UserSessionHandler::addSpot($token, $spot_name, $category, $lat, $lng, $iterinary_id);
 
-            return UserSessionHandler::addSpot($token, $spot_name, $category, $lat, $lng, $segment_id);
         } else {
 
             return response()->json('type field is required', 200);
@@ -140,24 +146,30 @@ class ActivityController extends Controller
     {
         $request = $request->all();
         $token = $request['token'];
-        $segment_id = $request['segment_id'];
-        $destination_name = $request['destination_name'];
-        $lng = $request['lng'];
-        $lat = $request['lat'];
-        $price = $request['price'];
-        UserSessionHandler::endSegment($token, $segment_id, $destination_name, $lat, $lng, $price);
-//        $type
-        /**
-         *  TODO
-         * @param $type (transport,spot,eat)
-         * @param $segment (if transport)
-         * @param $price
-         * @param $distance (dynamicly calculated)
-         * @param $destination pos (if transport)
-         * @param $destination name (if transport)
-         * @param $tips if(spot,eat)
-         */
+        $type = $request['type'];
+        if (!$type) return response()->json('error', 400);
+        if ($type == 'transpo') {
+            $segment_id = $request['segment_id'];
+            $destination_name = $request['destination_name'];
+            $lng = $request['lng'];
+            $lat = $request['lat'];
+            $price = $request['price'];
+            UserSessionHandler::endSegment($token, $segment_id, $destination_name, $lat, $lng, $price);
+        }
 
+        if ($type == 'spot') {
+            $iterinary_id = $request['iterinary_id'];
+            $price = $request['price'];
+            $tips = $request['tips'];
+            UserSessionHandler::endSpotActivity($token, $iterinary_id, $price, $tips);
+        }
+        if ($type == 'eat') {
+
+            $iterinary_id = $request['iterinary_id'];
+            $price = $request['price'];
+            $tips = $request['tips'];
+            UserSessionHandler::endFoodActivity($token, $iterinary_id, $price, $tips);
+        }
 
     }
 

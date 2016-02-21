@@ -3,8 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Activity.php" afterPath="$PROJECT_DIR$/app/Activity.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Eat.php" afterPath="$PROJECT_DIR$/app/Eat.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Route.php" afterPath="$PROJECT_DIR$/app/Route.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Segment.php" afterPath="$PROJECT_DIR$/app/Segment.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" afterPath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,17 +28,77 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - ontheway@localhost [2]" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - ontheway@localhost [2]" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="eats" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - ontheway@localhost [2]" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="activities" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="php" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserSessionHandler.php" pinned="false" current-in-tab="false">
+    <leaf>
+      <file leaf-file-name="ontheway.activities" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.activities">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserSessionHandler.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.653846">
-              <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.34375">
+              <caret line="469" column="0" selection-start-line="469" selection-start-column="0" selection-end-line="469" selection-end-column="0" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="true" />
                 <element signature="e#121#152#0#PHP" expanded="true" />
@@ -39,63 +107,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivityController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
+      <file leaf-file-name="Activity.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Activity.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.230769">
-              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
-              <folding>
-                <element signature="e#39#56#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="compile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/compile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-17.076923">
+              <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FoodCategory.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/FoodCategory.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WelcomeController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserSessionController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserSessionController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.175">
-              <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IterinaryController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.076923">
-              <caret line="149" column="39" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
+            <state vertical-scroll-proportion="-28.0">
+              <caret line="131" column="7" selection-start-line="131" selection-start-column="7" selection-end-line="131" selection-end-column="7" />
               <folding>
                 <element signature="e#39#61#0#PHP" expanded="true" />
               </folding>
@@ -103,34 +129,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <file leaf-file-name="ActivityController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.490909">
-              <caret line="397" column="103" selection-start-line="397" selection-start-column="103" selection-end-line="397" selection-end-column="103" />
+            <state vertical-scroll-proportion="-6.2363634">
+              <caret line="163" column="40" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
               <folding>
-                <element signature="e#7#393#0#PHP" expanded="true" />
-                <element signature="e#4353#4384#0#PHP" expanded="true" />
+                <element signature="e#39#56#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
+      <file leaf-file-name="Eat.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Eat.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.769231">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state vertical-scroll-proportion="5.3846154">
+              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -140,15 +155,6 @@
   </component>
   <component name="FrameworkCommandLineHistory">
     <commandsHistory>
-      <command text="php artisan ide-helper:models Iterinary" />
-      <command text="php artisan ide-helper:models Rating" />
-      <command text="php artisan ide-helper:models Route " />
-      <command text="php artisan ide-helper:models Segment" />
-      <command text="php artisan ide-helper:models Spot" />
-      <command text="php artisan ide-helper:models User" />
-      <command text="php artisan ide-helper:models --ignore=&quot;Activities&quot;" />
-      <command text="php artisan optimize" />
-      <command text="php artisan ide-hepler:models Route" />
       <command text="php artisan ide-helperr:models Route" />
       <command text="php artisan ide-helper:models Route" />
       <command text="php artisan make:model FoodCategory" />
@@ -165,6 +171,15 @@
       <command text="Cache::get('Arts-and-Entertainment')" />
       <command text="php artisan serve " />
       <command text="php artisan serve" />
+      <command text="php artisan" />
+      <command text="php artisan ide-helper:models" />
+      <command text="php artisan clear-compiled" />
+      <command text="composer config:clear" />
+      <command text="php artisan config" />
+      <command text="php artisan config:clear" />
+      <command text="composer dump-autoload" />
+      <command text="php artisan optimize" />
+      <command text="php artisan ide-helper:models" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
@@ -173,11 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2016_01_15_145045_create_eats_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_01_15_145110_create_spots_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_02_09_183145_create_spot_categories_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_02_09_183120_create_food_categories_table.php" />
-        <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Collection.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SegmentController.php" />
         <option value="$PROJECT_DIR$/storage/framework/sessions/6bb9b489d6900a298c38a6b32ad2784d34aed683" />
@@ -203,11 +213,8 @@
         <option value="$PROJECT_DIR$/config/session.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/.openshift/.env" />
-        <option value="$PROJECT_DIR$/app/Spot.php" />
-        <option value="$PROJECT_DIR$/app/Segment.php" />
         <option value="$PROJECT_DIR$/app/classes/foursquareHelper.php" />
         <option value="$PROJECT_DIR$/app/Facades/GeolocationHelper.php" />
-        <option value="$PROJECT_DIR$/app/Activity.php" />
         <option value="$PROJECT_DIR$/app/classes/Recommender.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php" />
         <option value="$PROJECT_DIR$/app/Iterinary.php" />
@@ -216,14 +223,22 @@
         <option value="$PROJECT_DIR$/app/classes/rome2rioHelper.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/classes/GeolocationHelper.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
         <option value="$PROJECT_DIR$/.openshift/action_hooks/deploy" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
-        <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
+        <option value="$PROJECT_DIR$/app/Segment.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/app/Day.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
+        <option value="$PROJECT_DIR$/app/Route.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Spot.php" />
+        <option value="$PROJECT_DIR$/vendor/phpspec/phpspec/features/formatter/use_the_junit_formatter.feature" />
+        <option value="$PROJECT_DIR$/app/Eat.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
+        <option value="$PROJECT_DIR$/app/Activity.php" />
+        <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
       </list>
     </option>
   </component>
@@ -292,8 +307,93 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Changed Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="php">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="database">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="migrations">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="php">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="php">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Http">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Controllers">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="php">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="classes">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="php">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -322,80 +422,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -415,28 +441,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Middleware" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -476,133 +480,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Facades" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Events" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Console" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Console" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Commands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Commands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="action_hooks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -616,9 +494,14 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="route&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;rotue&#9;null&#9;null&#10;validater&#9;null&#9;null&#10;create_rating&#9;FILE&#9;file://C:/wamp/www/php/database/migrations/2016_01_16_200415_create_ratings_table.php&#10;usercon:login&#9;null&#9;null&#10;iter&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/IterinaryController.php&#10;test&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;recom&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/RecommenderController.php&#10;rome2riod:115&#9;null&#9;null&#10;testc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;iterinar&#9;FILE&#9;file://C:/wamp/www/php/app/Iterinary.php&#10;geo&#9;FILE&#9;file://C:/wamp/www/php/app/classes/GeolocationHelper.php&#10;spec&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;session&#9;FILE&#9;file://C:/wamp/www/php/config/session.php&#10;app.p&#9;FILE&#9;file://C:/wamp/www/php/config/app.php&#10;usc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;storage/log&#9;FILE&#9;file://C:/wamp/www/php/storage/logs/laravel-2016-02-09.log&#10;specifi&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;rout&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;routetable&#9;null&#9;null&#10;segment&#9;FILE&#9;file://C:/wamp/www/php/app/Segment.php&#10;ide&#9;null&#9;null&#10;_ide_helper&#9;null&#9;null&#10;_&#9;null&#9;null" />
-    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="userse&#9;FILE&#9;file://C:/wamp/www/php/app/classes/UserSessionHandler.php&#10;ush:444&#9;null&#9;null&#10;acti&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;act&#9;FILE&#9;dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.activities&#10;activit&#9;FILE&#9;file://C:/wamp/www/php/app/Activity.php&#10;route&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;ac&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;iter&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/IterinaryController.php&#10;usersessh:288&#9;null&#9;null&#10;user&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;rotue&#9;null&#9;null&#10;validater&#9;null&#9;null&#10;create_rating&#9;FILE&#9;file://C:/wamp/www/php/database/migrations/2016_01_16_200415_create_ratings_table.php&#10;usercon:login&#9;null&#9;null&#10;test&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;recom&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/RecommenderController.php&#10;rome2riod:115&#9;null&#9;null&#10;testc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;iterinar&#9;FILE&#9;file://C:/wamp/www/php/app/Iterinary.php&#10;geo&#9;FILE&#9;file://C:/wamp/www/php/app/classes/GeolocationHelper.php&#10;spec&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;session&#9;FILE&#9;file://C:/wamp/www/php/config/session.php&#10;app.p&#9;FILE&#9;file://C:/wamp/www/php/config/app.php&#10;usc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;storage/log&#9;FILE&#9;file://C:/wamp/www/php/storage/logs/laravel-2016-02-09.log&#10;specifi&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;rout&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;routetable&#9;null&#9;null&#10;segment&#9;FILE&#9;file://C:/wamp/www/php/app/Segment.php&#10;ide&#9;null&#9;null&#10;_ide_helper&#9;null&#9;null&#10;_&#9;null&#9;null" />
+    <property name="full.screen.before.presentation.mode" value="true" />
     <property name="TODO_SCOPE" value="Project Files" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -678,50 +561,50 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="1" />
+    <frame x="0" y="0" width="1366" height="768" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18081991" sideWeight="0.5057637" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23499268" sideWeight="0.49423632" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31412104" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18081991" sideWeight="0.5057637" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20058565" sideWeight="0.49423632" order="3" side_tool="false" content_ui="combo" x="-3" y="23" width="555" height="604" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24207492" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18008785" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.39969134" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="1641" y="82" width="928" height="298" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3443804" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3628809" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31412104" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24207492" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36419752" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.39969134" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="1641" y="82" width="928" height="298" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3443804" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18081991" sideWeight="0.5057637" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18081991" sideWeight="0.5057637" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22148149" sideWeight="0.49423632" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20131771" sideWeight="0.49423632" order="3" side_tool="false" content_ui="combo" x="21" y="82" width="523" height="526" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -738,123 +621,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php</url>
+          <line>63</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/var-dumper/Symfony/Component/VarDumper/Dumper/CliDumper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.346875">
-          <caret line="393" column="77" selection-start-line="393" selection-start-column="77" selection-end-line="393" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.303125">
-          <caret line="199" column="3" selection-start-line="199" selection-start-column="3" selection-end-line="199" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GeolocationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1538461">
-          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Day.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-kernel/Symfony/Component/HttpKernel/HttpCache/HttpCache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-189.53847">
-          <caret line="190" column="11" selection-start-line="190" selection-start-column="11" selection-end-line="190" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/tests/Regression/GitHub/1468/Issue1468Test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.3076925">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/ChangeLog-4.2.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5185184">
-          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpspec/phpspec/src/PhpSpec/Formatter/TapFormatter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.730769">
-          <caret line="119" column="15" selection-start-line="119" selection-start-column="15" selection-end-line="119" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Spot.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="82" column="10" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/foursquareHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.769231">
-          <caret line="61" column="44" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.openshift/pear.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.openshift/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.openshift/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.185185">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/classes/tokenGenerator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.461538">
@@ -876,20 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Activity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.307692">
-          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Rating.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -897,26 +661,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Eat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Segment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_16_200415_create_ratings_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.0">
           <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -924,7 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0769231">
           <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -932,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="14.153846">
           <caret line="120" column="21" selection-start-line="120" selection-start-column="21" selection-end-line="120" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -940,7 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.5384617">
           <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,17 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.0">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#121#137#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Route.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,7 +709,7 @@
         <state vertical-scroll-proportion="-3.6909091">
           <caret line="21" column="28" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="28" />
           <folding>
-            <element signature="e#51#79#0#PHP" expanded="true" />
+            <element signature="e#51#79#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1008,7 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1016,7 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1024,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1032,7 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1040,15 +770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.307693">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1056,7 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1068,29 +788,450 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/nesbot/carbon/src/Carbon/Carbon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.076923">
-          <caret line="149" column="39" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.42905983">
+          <caret line="1999" column="44" selection-start-line="1999" selection-start-column="44" selection-end-line="1999" selection-end-column="44" />
           <folding>
-            <element signature="e#39#61#0#PHP" expanded="true" />
+            <marker date="1455113371579" expanded="false" signature="9:228" placeholder="..." />
+            <marker date="1455113371579" expanded="false" signature="255:496" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="501:1957" placeholder=" A simple API extension for DateTime ..." />
+            <marker date="1455113371579" expanded="true" signature="1989:63987" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="1999:2030" placeholder=" The day constants ..." />
+            <marker date="1455113371579" expanded="true" signature="2203:2268" placeholder=" Names of days of the week. ..." />
+            <marker date="1455113371579" expanded="true" signature="2306:2565" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="2576:2692" placeholder=" Terms used to detect if a time passed is a relative date for testing purposes ..." />
+            <marker date="1455113371579" expanded="true" signature="2742:2910" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="2921:2951" placeholder=" Number of X in Y ..." />
+            <marker date="1455113371579" expanded="true" signature="3220:3330" placeholder=" Default format to use for __toString method when type juggling occurs. ..." />
+            <marker date="1455113371579" expanded="true" signature="3393:3495" placeholder=" Format to use for __toString method when type juggling occurs. ..." />
+            <marker date="1455113371579" expanded="true" signature="3577:3631" placeholder=" First day of week ..." />
+            <marker date="1455113371579" expanded="true" signature="3693:3746" placeholder=" Last day of week ..." />
+            <marker date="1455113371579" expanded="true" signature="3806:3860" placeholder=" Days of weekend ..." />
+            <marker date="1455113371579" expanded="true" signature="3944:4052" placeholder=" A test Carbon instance to be returned when now instances are created ..." />
+            <marker date="1455113371579" expanded="true" signature="4094:4189" placeholder=" A translator to ... er ... translate stuff ..." />
+            <marker date="1455113371579" expanded="true" signature="4234:4438" placeholder=" Creates a DateTimeZone from a string or a DateTimeZone ..." />
+            <marker date="1455113371579" expanded="true" signature="4502:4974" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="4540:4682" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="4731:4768" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="4848:4946" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="5200:5506" placeholder=" Create a new Carbon instance. ..." />
+            <marker date="1455113371579" expanded="true" signature="5566:6380" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="5808:6299" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="5918:5977" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="6109:6171" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="6179:6233" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="6389:6510" placeholder=" Create a Carbon instance from a DateTime one ..." />
+            <marker date="1455113371579" expanded="true" signature="6562:6651" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="6660:7043" placeholder=" Create a carbon instance from a string.  This is an alias for the ..." />
+            <marker date="1455113371579" expanded="true" signature="7104:7155" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="7164:7308" placeholder=" Get a Carbon instance for the current date and time ..." />
+            <marker date="1455113371579" expanded="true" signature="7353:7403" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="7412:7539" placeholder=" Create a Carbon instance for today ..." />
+            <marker date="1455113371579" expanded="true" signature="7586:7645" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="7654:7784" placeholder=" Create a Carbon instance for tomorrow ..." />
+            <marker date="1455113371579" expanded="true" signature="7834:7891" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="7900:8031" placeholder=" Create a Carbon instance for yesterday ..." />
+            <marker date="1455113371579" expanded="true" signature="8082:8139" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="8148:8248" placeholder=" Create a Carbon instance for the greatest supported date. ..." />
+            <marker date="1455113371579" expanded="true" signature="8288:8537" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="8328:8454" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="8546:8644" placeholder=" Create a Carbon instance for the lowest supported date. ..." />
+            <marker date="1455113371579" expanded="true" signature="8684:8926" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="8724:8851" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="8935:9704" placeholder=" Create a new Carbon instance from a specific date and time. ..." />
+            <marker date="1455113371579" expanded="true" signature="9840:10471" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="10033:10197" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="10205:10322" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="10480:10782" placeholder=" Create a Carbon instance from just a date. The time portion is set to now. ..." />
+            <marker date="1455113371579" expanded="true" signature="10880:10967" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="10976:11284" placeholder=" Create a Carbon instance from just a time. The date portion is set to today. ..." />
+            <marker date="1455113371579" expanded="true" signature="11386:11477" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="11486:11765" placeholder=" Create a Carbon instance from a specific format ..." />
+            <marker date="1455113371579" expanded="true" signature="11839:12280" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="11873:11979" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="11987:12056" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="12097:12148" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="12289:12473" placeholder=" Create a Carbon instance from a timestamp ..." />
+            <marker date="1455113371579" expanded="true" signature="12546:12617" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="12626:12751" placeholder=" Create a Carbon instance from an UTC timestamp ..." />
+            <marker date="1455113371579" expanded="true" signature="12815:12870" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="12879:12948" placeholder=" Get a copy of the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="12977:13029" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="13255:13427" placeholder=" Get a part of the Carbon object ..." />
+            <marker date="1455113371579" expanded="true" signature="13462:15244" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="13492:15237" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="13527:14004" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="13551:14003" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14006:14067" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14110:14181" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14216:14267" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14306:14359" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14397:14440" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14483:14582" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14617:14668" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14705:14811" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14846:14890" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="14948:14993" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="15059:15115" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="15137:15228" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="15253:15370" placeholder=" Check if an attribute exists on the object ..." />
+            <marker date="1455113371579" expanded="true" signature="15407:15572" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="15427:15469" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="15508:15543" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="15581:15769" placeholder=" Set a part of the Carbon object ..." />
+            <marker date="1455113371579" expanded="true" signature="15812:16893" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="15843:16886" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="15868:15957" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="15984:16072" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="16097:16187" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="16213:16306" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="16334:16425" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="16453:16544" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="16575:16644" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="16697:16764" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="16786:16877" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="16902:17000" placeholder=" Set the instance's year ..." />
+            <marker date="1455113371579" expanded="true" signature="17035:17100" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="17109:17208" placeholder=" Set the instance's month ..." />
+            <marker date="1455113371579" expanded="true" signature="17244:17310" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="17319:17416" placeholder=" Set the instance's day ..." />
+            <marker date="1455113371579" expanded="true" signature="17450:17514" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="17523:17621" placeholder=" Set the instance's hour ..." />
+            <marker date="1455113371579" expanded="true" signature="17656:17721" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="17730:17830" placeholder=" Set the instance's minute ..." />
+            <marker date="1455113371579" expanded="true" signature="17867:17934" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="17943:18043" placeholder=" Set the instance's second ..." />
+            <marker date="1455113371579" expanded="true" signature="18080:18147" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="18156:18388" placeholder=" Set the date and time all together ..." />
+            <marker date="1455113371579" expanded="true" signature="18472:18570" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="18579:18683" placeholder=" Set the time by time string ..." />
+            <marker date="1455113371579" expanded="true" signature="18734:18967" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="18976:19079" placeholder=" Set the instance's timestamp ..." />
+            <marker date="1455113371579" expanded="true" signature="19119:19189" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="19198:19312" placeholder=" Alias for setTimezone() ..." />
+            <marker date="1455113371579" expanded="true" signature="19351:19406" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="19415:19529" placeholder=" Alias for setTimezone() ..." />
+            <marker date="1455113371579" expanded="true" signature="19562:19617" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="19626:19768" placeholder=" Set the instance's timezone from a string or object ..." />
+            <marker date="1455113371579" expanded="true" signature="19810:19914" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="20140:20205" placeholder=" Get the first day of week ..." />
+            <marker date="1455113371579" expanded="true" signature="20252:20302" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="20311:20375" placeholder=" Set the first day of week ..." />
+            <marker date="1455113371579" expanded="true" signature="20426:20476" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="20485:20549" placeholder=" Get the last day of week ..." />
+            <marker date="1455113371579" expanded="true" signature="20594:20642" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="20651:20715" placeholder=" Set the first day of week ..." />
+            <marker date="1455113371579" expanded="true" signature="20764:20812" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="20821:20879" placeholder=" Get weekend days ..." />
+            <marker date="1455113371579" expanded="true" signature="20925:20974" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="20983:21040" placeholder=" Set weekend days ..." />
+            <marker date="1455113371579" expanded="true" signature="21091:21141" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="21367:22134" placeholder=" Set a Carbon instance (real or mock) to be returned when a &quot;now&quot; ..." />
+            <marker date="1455113371579" expanded="true" signature="22198:22247" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="22256:22431" placeholder=" Get the Carbon instance (real or mock) to be returned when a &quot;now&quot; ..." />
+            <marker date="1455113371579" expanded="true" signature="22473:22518" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="22527:22725" placeholder=" Determine if there is a valid test instance set. A valid test instance ..." />
+            <marker date="1455113371579" expanded="true" signature="22767:22825" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="22834:23099" placeholder=" Determine if there is a relative keyword in the time string, this is to ..." />
+            <marker date="1455113371579" expanded="true" signature="23155:23507" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="23283:23477" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="23345:23467" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="23403:23453" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="23733:23836" placeholder=" Intialize the translator instance if necessary. ..." />
+            <marker date="1455113371579" expanded="true" signature="23881:24149" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="23931:24105" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="24158:24248" placeholder=" Get the translator instance in use ..." />
+            <marker date="1455113371579" expanded="true" signature="24293:24342" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="24351:24452" placeholder=" Set the translator instance to use ..." />
+            <marker date="1455113371579" expanded="true" signature="24528:24583" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="24592:24668" placeholder=" Get the current translator locale ..." />
+            <marker date="1455113371579" expanded="true" signature="24709:24771" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="24780:24863" placeholder=" Set the current translator locale ..." />
+            <marker date="1455113371579" expanded="true" signature="24911:25122" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="25348:25554" placeholder=" Format the instance with the current locale.  You can set the current ..." />
+            <marker date="1455113371579" expanded="true" signature="25601:25897" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="25751:25837" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="25906:26005" placeholder=" Reset the format used to the default when type juggling a Carbon instance to a string ..." />
+            <marker date="1455113371579" expanded="true" signature="26056:26137" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="26146:26272" placeholder=" Set the default format used when type juggling a Carbon instance to a string ..." />
+            <marker date="1455113371579" expanded="true" signature="26328:26383" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="26392:26487" placeholder=" Format the instance as a string using the set format ..." />
+            <marker date="1455113371579" expanded="true" signature="26522:26589" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="26598:26668" placeholder=" Format the instance as date ..." />
+            <marker date="1455113371579" expanded="true" signature="26705:26756" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="26765:26846" placeholder=" Format the instance as a readable date ..." />
+            <marker date="1455113371579" expanded="true" signature="26892:26944" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="26953:27023" placeholder=" Format the instance as time ..." />
+            <marker date="1455113371579" expanded="true" signature="27060:27111" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="27120:27199" placeholder=" Format the instance as date and time ..." />
+            <marker date="1455113371579" expanded="true" signature="27240:27297" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="27306:27392" placeholder=" Format the instance with day, date and time ..." />
+            <marker date="1455113371579" expanded="true" signature="27436:27497" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="27506:27576" placeholder=" Format the instance as ATOM ..." />
+            <marker date="1455113371579" expanded="true" signature="27613:27669" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="27678:27750" placeholder=" Format the instance as COOKIE ..." />
+            <marker date="1455113371579" expanded="true" signature="27789:27847" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="27856:27929" placeholder=" Format the instance as ISO8601 ..." />
+            <marker date="1455113371579" expanded="true" signature="27969:28028" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="28037:28109" placeholder=" Format the instance as RFC822 ..." />
+            <marker date="1455113371579" expanded="true" signature="28148:28206" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="28215:28287" placeholder=" Format the instance as RFC850 ..." />
+            <marker date="1455113371579" expanded="true" signature="28326:28384" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="28393:28466" placeholder=" Format the instance as RFC1036 ..." />
+            <marker date="1455113371579" expanded="true" signature="28506:28565" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="28574:28647" placeholder=" Format the instance as RFC1123 ..." />
+            <marker date="1455113371579" expanded="true" signature="28687:28746" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="28755:28828" placeholder=" Format the instance as RFC2822 ..." />
+            <marker date="1455113371579" expanded="true" signature="28868:28927" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="28936:29009" placeholder=" Format the instance as RFC3339 ..." />
+            <marker date="1455113371579" expanded="true" signature="29049:29108" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="29117:29186" placeholder=" Format the instance as RSS ..." />
+            <marker date="1455113371579" expanded="true" signature="29222:29277" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="29286:29355" placeholder=" Format the instance as W3C ..." />
+            <marker date="1455113371579" expanded="true" signature="29391:29446" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="29672:29791" placeholder=" Determines if the instance is equal to another ..." />
+            <marker date="1455113371579" expanded="true" signature="29828:29869" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="29878:30001" placeholder=" Determines if the instance is not equal to another ..." />
+            <marker date="1455113371579" expanded="true" signature="30038:30082" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="30091:30222" placeholder=" Determines if the instance is greater (after) than another ..." />
+            <marker date="1455113371579" expanded="true" signature="30259:30299" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="30308:30451" placeholder=" Determines if the instance is greater (after) than or equal to another ..." />
+            <marker date="1455113371579" expanded="true" signature="30489:30530" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="30539:30668" placeholder=" Determines if the instance is less (before) than another ..." />
+            <marker date="1455113371579" expanded="true" signature="30705:30745" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="30754:30890" placeholder=" Determines if the instance is less (before) or equal to another ..." />
+            <marker date="1455113371579" expanded="true" signature="30928:30969" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="30978:31215" placeholder=" Determines if the instance is between two others ..." />
+            <marker date="1455113371579" expanded="true" signature="31286:31557" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="31322:31408" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="31432:31498" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="31566:31707" placeholder=" Get the closest date from the instance. ..." />
+            <marker date="1455113371579" expanded="true" signature="31763:31861" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="31870:32012" placeholder=" Get the farthest date from the instance. ..." />
+            <marker date="1455113371579" expanded="true" signature="32069:32167" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="32176:32345" placeholder=" Get the minimum instance between a given instance (default now) and the current instance. ..." />
+            <marker date="1455113371579" expanded="true" signature="32390:32493" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="32502:32671" placeholder=" Get the maximum instance between a given instance (default now) and the current instance. ..." />
+            <marker date="1455113371579" expanded="true" signature="32716:32819" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="32828:32908" placeholder=" Determines if the instance is a weekday ..." />
+            <marker date="1455113371579" expanded="true" signature="32942:32990" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="32999:33083" placeholder=" Determines if the instance is a weekend day ..." />
+            <marker date="1455113371579" expanded="true" signature="33117:33192" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="33201:33281" placeholder=" Determines if the instance is yesterday ..." />
+            <marker date="1455113371579" expanded="true" signature="33317:33416" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="33425:33501" placeholder=" Determines if the instance is today ..." />
+            <marker date="1455113371579" expanded="true" signature="33533:33626" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="33635:33714" placeholder=" Determines if the instance is tomorrow ..." />
+            <marker date="1455113371579" expanded="true" signature="33749:33847" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="33856:33970" placeholder=" Determines if the instance is in the future, ie. greater (after) than now ..." />
+            <marker date="1455113371579" expanded="true" signature="34003:34065" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="34074:34184" placeholder=" Determines if the instance is in the past, ie. less (before) than now ..." />
+            <marker date="1455113371579" expanded="true" signature="34215:34277" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="34286:34368" placeholder=" Determines if the instance is a leap year ..." />
+            <marker date="1455113371579" expanded="true" signature="34403:34458" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="34467:34613" placeholder=" Checks if the passed in date is the same day as the instance current day. ..." />
+            <marker date="1455113371579" expanded="true" signature="34657:34731" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="34740:34812" placeholder=" Checks if this day is a Sunday. ..." />
+            <marker date="1455113371579" expanded="true" signature="34845:34909" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="34918:34990" placeholder=" Checks if this day is a Monday. ..." />
+            <marker date="1455113371579" expanded="true" signature="35023:35087" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="35096:35169" placeholder=" Checks if this day is a Tuesday. ..." />
+            <marker date="1455113371579" expanded="true" signature="35203:35268" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="35277:35352" placeholder=" Checks if this day is a Wednesday. ..." />
+            <marker date="1455113371579" expanded="true" signature="35388:35455" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="35464:35538" placeholder=" Checks if this day is a Thursday. ..." />
+            <marker date="1455113371579" expanded="true" signature="35573:35639" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="35648:35720" placeholder=" Checks if this day is a Friday. ..." />
+            <marker date="1455113371579" expanded="true" signature="35753:35817" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="35826:35900" placeholder=" Checks if this day is a Saturday. ..." />
+            <marker date="1455113371579" expanded="true" signature="35935:36001" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="36227:36410" placeholder=" Add years to the instance. Positive $value travel forward while ..." />
+            <marker date="1455113371579" expanded="true" signature="36449:36513" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="36522:36623" placeholder=" Add a year to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="36665:36717" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="36726:36832" placeholder=" Remove a year from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="36874:36926" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="36935:37041" placeholder=" Remove years from the instance. ..." />
+            <marker date="1455113371579" expanded="true" signature="37080:37137" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="37146:37332" placeholder=" Add months to the instance. Positive $value travels forward while ..." />
+            <marker date="1455113371579" expanded="true" signature="37372:37437" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="37446:37548" placeholder=" Add a month to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="37591:37644" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="37653:37760" placeholder=" Remove a month from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="37803:37856" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="37865:37971" placeholder=" Remove months from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="38011:38069" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="38078:38284" placeholder=" Add months without overflowing to the instance. Positive $value ..." />
+            <marker date="1455113371579" expanded="true" signature="38334:38535" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="38432:38505" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="38544:38663" placeholder=" Add a month with no overflow to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="38716:38779" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="38788:38912" placeholder=" Remove a month with no overflow from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="38965:39028" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="39037:39160" placeholder=" Remove months with no overflow from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="39210:39278" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="39287:39471" placeholder=" Add days to the instance. Positive $value travels forward while ..." />
+            <marker date="1455113371579" expanded="true" signature="39509:39572" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="39581:39681" placeholder=" Add a day to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="39722:39773" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="39782:39887" placeholder=" Remove a day from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="39928:39979" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="39988:40092" placeholder=" Remove days from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="40130:40186" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="40195:40383" placeholder=" Add weekdays to the instance. Positive $value travels forward while ..." />
+            <marker date="1455113371579" expanded="true" signature="40425:40492" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="40501:40605" placeholder=" Add a weekday to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="40650:40705" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="40714:40823" placeholder=" Remove a weekday from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="40868:40923" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="40932:41040" placeholder=" Remove weekdays from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="41082:41142" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="41151:41336" placeholder=" Add weeks to the instance. Positive $value travels forward while ..." />
+            <marker date="1455113371579" expanded="true" signature="41375:41439" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="41448:41549" placeholder=" Add a week to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="41591:41643" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="41652:41758" placeholder=" Remove a week from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="41800:41852" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="41861:41964" placeholder=" Remove weeks to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="42003:42060" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="42069:42254" placeholder=" Add hours to the instance. Positive $value travels forward while ..." />
+            <marker date="1455113371579" expanded="true" signature="42293:42357" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="42366:42468" placeholder=" Add an hour to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="42510:42562" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="42571:42678" placeholder=" Remove an hour from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="42720:42772" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="42781:42886" placeholder=" Remove hours from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="42925:42982" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="42991:43178" placeholder=" Add minutes to the instance. Positive $value travels forward while ..." />
+            <marker date="1455113371579" expanded="true" signature="43219:43285" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="43294:43397" placeholder=" Add a minute to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="43441:43495" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="43504:43612" placeholder=" Remove a minute from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="43656:43710" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="43719:43826" placeholder=" Remove minutes from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="43867:43926" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="43935:44122" placeholder=" Add seconds to the instance. Positive $value travels forward while ..." />
+            <marker date="1455113371579" expanded="true" signature="44163:44229" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="44238:44341" placeholder=" Add a second to the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="44385:44439" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="44448:44556" placeholder=" Remove a second from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="44600:44654" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="44663:44770" placeholder=" Remove seconds from the instance ..." />
+            <marker date="1455113371579" expanded="true" signature="44811:44870" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="45096:45266" placeholder=" Get the difference in years ..." />
+            <marker date="1455113371579" expanded="true" signature="45332:45451" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="45460:45631" placeholder=" Get the difference in months ..." />
+            <marker date="1455113371579" expanded="true" signature="45698:45875" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="45884:46054" placeholder=" Get the difference in weeks ..." />
+            <marker date="1455113371579" expanded="true" signature="46120:46209" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="46218:46387" placeholder=" Get the difference in days ..." />
+            <marker date="1455113371579" expanded="true" signature="46452:46571" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="46580:46813" placeholder=" Get the difference in days using a filter closure ..." />
+            <marker date="1455113371579" expanded="true" signature="46905:46998" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="47007:47241" placeholder=" Get the difference in hours using a filter closure ..." />
+            <marker date="1455113371579" expanded="true" signature="47334:47428" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="47437:47759" placeholder=" Get the difference by the given interval using a filter closure ..." />
+            <marker date="1455113371579" expanded="true" signature="47865:48416" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="47997:48088" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="48173:48325" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="48244:48324" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="48425:48598" placeholder=" Get the difference in weekdays ..." />
+            <marker date="1455113371579" expanded="true" signature="48667:48808" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="48715:48800" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="48740:48788" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="48817:49009" placeholder=" Get the difference in weekend days using a filter ..." />
+            <marker date="1455113371579" expanded="true" signature="49081:49222" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="49129:49214" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="49154:49202" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="49231:49401" placeholder=" Get the difference in hours ..." />
+            <marker date="1455113371579" expanded="true" signature="49467:49591" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="49600:49772" placeholder=" Get the difference in minutes ..." />
+            <marker date="1455113371579" expanded="true" signature="49840:49937" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="49946:50118" placeholder=" Get the difference in seconds ..." />
+            <marker date="1455113371579" expanded="true" signature="50186:50350" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="50359:50436" placeholder=" The number of seconds since midnight. ..." />
+            <marker date="1455113371579" expanded="true" signature="50481:50559" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="50568:50645" placeholder=" The number of seconds until 23:23:59. ..." />
+            <marker date="1455113371579" expanded="true" signature="50690:50766" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="50775:51452" placeholder=" Get the difference in a human readable format in the current locale. ..." />
+            <marker date="1455113371579" expanded="true" signature="51529:53504" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="51592:51646" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="51718:52724" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="51759:51857" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="51899:51998" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="52040:52311" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="52167:52287" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="52353:52451" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="52493:52593" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="52615:52715" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="52754:52787" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="52908:52943" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="53303:53417" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="53730:53800" placeholder=" Resets the time to 00:00:00 ..." />
+            <marker date="1455113371579" expanded="true" signature="53835:53900" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="53909:53979" placeholder=" Resets the time to 23:59:59 ..." />
+            <marker date="1455113371579" expanded="true" signature="54012:54080" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="54089:54202" placeholder=" Resets the date to the first day of the month and the time to 00:00:00 ..." />
+            <marker date="1455113371579" expanded="true" signature="54239:54295" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="54304:54403" placeholder=" Resets the date to end of the month and time to 23:59:59 ..." />
+            <marker date="1455113371579" expanded="true" signature="54438:54509" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="54518:54630" placeholder=" Resets the date to the first day of the year and the time to 00:00:00 ..." />
+            <marker date="1455113371579" expanded="true" signature="54666:54726" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="54735:54833" placeholder=" Resets the date to end of the year and time to 23:59:59 ..." />
+            <marker date="1455113371579" expanded="true" signature="54867:54947" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="54956:55070" placeholder=" Resets the date to the first day of the decade and the time to 00:00:00 ..." />
+            <marker date="1455113371579" expanded="true" signature="55108:55217" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="55226:55326" placeholder=" Resets the date to end of the decade and time to 23:59:59 ..." />
+            <marker date="1455113371579" expanded="true" signature="55362:55500" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="55509:55624" placeholder=" Resets the date to the first day of the century and the time to 00:00:00 ..." />
+            <marker date="1455113371579" expanded="true" signature="55663:55773" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="55782:55883" placeholder=" Resets the date to end of the century and time to 23:59:59 ..." />
+            <marker date="1455113371579" expanded="true" signature="55920:56060" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="56069:56204" placeholder=" Resets the date to the first day of week (defined in $weekStartsAt) and the time to 00:00:00 ..." />
+            <marker date="1455113371579" expanded="true" signature="56240:56409" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="56304:56365" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="56418:56537" placeholder=" Resets the date to end of week (defined in $weekEndsAt) and time to 23:59:59 ..." />
+            <marker date="1455113371579" expanded="true" signature="56571:56730" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="56633:56688" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="56739:57072" placeholder=" Modify to the next occurrence of a given day of the week. ..." />
+            <marker date="1455113371579" expanded="true" signature="57118:57298" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="57159:57211" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="57307:57648" placeholder=" Modify to the previous occurrence of a given day of the week. ..." />
+            <marker date="1455113371579" expanded="true" signature="57698:57878" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="57739:57791" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="57887:58226" placeholder=" Modify to the first occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="58280:58510" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="58351:58394" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="58519:58856" placeholder=" Modify to the last occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="58909:59155" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="58980:59040" placeholder="..." />
+            <marker date="1455113371579" expanded="true" signature="59164:59565" placeholder=" Modify to the given occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="59616:59847" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="59856:60199" placeholder=" Modify to the first occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="60255:60354" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="60363:60704" placeholder=" Modify to the last occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="60759:60853" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="60862:61267" placeholder=" Modify to the given occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="61320:61630" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="61639:61976" placeholder=" Modify to the first occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="62029:62099" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="62108:62443" placeholder=" Modify to the last occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="62495:62586" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="62595:62994" placeholder=" Modify to the given occurrence of a given day of the week ..." />
+            <marker date="1455113371579" expanded="true" signature="63044:63220" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="63229:63411" placeholder=" Modify the current instance to the average of a given instance (default now) and the current instance. ..." />
+            <marker date="1455113371579" expanded="true" signature="63460:63598" placeholder="{...}" />
+            <marker date="1455113371579" expanded="true" signature="63607:63817" placeholder=" Check if its the birthday. Compares the date/month values of the two dates. ..." />
+            <marker date="1455113371579" expanded="true" signature="63869:63985" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.769231">
+        <state vertical-scroll-proportion="-8.961538">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,47 +1239,287 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.hoppables">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b21f49db-620e-4dc5-8492-c8d7416fa903/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.spot_categories">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.flight_iterinaries">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.384615">
+          <caret line="179" column="20" selection-start-line="179" selection-start-column="20" selection-end-line="179" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.012903226">
+          <caret line="75" column="27" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.012903226">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_15_144749_create_activities_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30769232">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RecommenderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30769232">
+          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30769232">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.923077">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.490909">
-          <caret line="397" column="103" selection-start-line="397" selection-start-column="103" selection-end-line="397" selection-end-column="103" />
+        <state vertical-scroll-proportion="0.42441055">
+          <caret line="296" column="4" selection-start-line="296" selection-start-column="4" selection-end-line="296" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.food_categories">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/BusHop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Day.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40221915">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Segment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27184466">
+          <caret line="13" column="57" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
           <folding>
-            <element signature="e#7#393#0#PHP" expanded="true" />
-            <element signature="e#4353#4384#0#PHP" expanded="true" />
+            <marker date="1456001687771" expanded="true" signature="92:2630" placeholder="..." />
+            <marker date="1456001687771" expanded="true" signature="135:979" placeholder=" @property Ingteger route_id ..." />
+            <marker date="1456001687771" expanded="true" signature="1176:1219" placeholder="{...}" />
+            <marker date="1456001687771" expanded="true" signature="1228:1295" placeholder=" @param $query ..." />
+            <marker date="1456001687771" expanded="true" signature="1339:1397" placeholder="{...}" />
+            <marker date="1456001687771" expanded="true" signature="1406:1477" placeholder=" @return \Illuminate\Database\Eloquent\Relations\BelongsTo ..." />
+            <marker date="1456001687771" expanded="true" signature="1505:1547" placeholder="..." />
+            <marker date="1456001687771" expanded="true" signature="1557:1633" placeholder=" @return \Illuminate\Database\Eloquent\Relations\HasMany|string ..." />
+            <marker date="1456001687771" expanded="true" signature="1673:1819" placeholder="{...}" />
+            <marker date="1456001687771" expanded="true" signature="1720:1777" placeholder="{...}" />
+            <marker date="1456001687771" expanded="true" signature="1784:1816" placeholder="{...}" />
+            <marker date="1456001687771" expanded="true" signature="1825:1956" placeholder=" this model has different associated models depending on  ..." />
+            <marker date="1456001687771" expanded="true" signature="1983:2455" placeholder="..." />
+            <marker date="1456001687771" expanded="true" signature="1989:2174" placeholder="&#9;Access the current model's attributes and check the mode ..." />
+            <marker date="1456001687771" expanded="true" signature="2217:2265" placeholder="{...}" />
+            <marker date="1456001687771" expanded="true" signature="2308:2358" placeholder="{...}" />
+            <marker date="1456001687771" expanded="true" signature="2465:2533" placeholder=" @return \Illuminate\Database\Eloquent\Relations\HasOne ..." />
+            <marker date="1456001687771" expanded="true" signature="2563:2629" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Spot.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46601942">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <marker date="1456070651883" expanded="true" signature="89:2282" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="95:160" placeholder=" No not mistake with table 'stops' ..." />
+            <marker date="1456070651883" expanded="true" signature="197:494" placeholder=" @property String place_name - name of spot ..." />
+            <marker date="1456070651883" expanded="true" signature="603:658" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="691:748" placeholder="{...}" />
+            <marker date="1456070651883" expanded="true" signature="863:2281" placeholder="{...}" />
+            <marker date="1456070651883" expanded="true" signature="886:902" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="922:938" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="944:1009" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="1033:1246" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="1050:1133" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="1155:1243" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="1278:1340" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="1362:1443" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="1449:1511" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="1543:1867" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="1977:2010" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="2026:2046" placeholder="..." />
+            <marker date="1456070651883" expanded="true" signature="2054:2262" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/phpspec/phpspec/features/formatter/use_the_junit_formatter.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4563107">
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.categories_spots">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Eat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.3846154">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.spots">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.activities">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.230769">
-          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+        <state vertical-scroll-proportion="-6.2363634">
+          <caret line="163" column="40" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
           <folding>
             <element signature="e#39#56#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.653846">
-          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+        <state vertical-scroll-proportion="-28.0">
+          <caret line="131" column="7" selection-start-line="131" selection-start-column="7" selection-end-line="131" selection-end-column="7" />
           <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
-            <element signature="e#121#152#0#PHP" expanded="true" />
+            <element signature="e#39#61#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
+    <entry file="file://$PROJECT_DIR$/app/Activity.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.175">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        <state vertical-scroll-proportion="-17.076923">
+          <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34375">
+          <caret line="469" column="0" selection-start-line="469" selection-start-column="0" selection-end-line="469" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+            <element signature="e#121#152#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

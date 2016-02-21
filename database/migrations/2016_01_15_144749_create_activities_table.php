@@ -13,8 +13,7 @@ class CreateActivitiesTable extends Migration {
 	public function up()
 	{
 		Schema::create('activities', function(Blueprint $table)
-		{   //TODO
-            // add foreign key to iterinary table
+		{
 			$table->increments('id');
 			$table->integer('day')->unsigned()->default(1);
 			$table->integer('iterinary_id')->unsigned();

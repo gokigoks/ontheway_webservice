@@ -2,6 +2,12 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Eat
+ * @property-write String $place_name
+ * @property-write String $pos
+ * @package App
+ */
 class Eat extends Model {
 
 	/**
