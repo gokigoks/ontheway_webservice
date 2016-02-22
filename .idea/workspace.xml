@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" afterPath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,119 +40,12 @@
     <favorites_list name="php" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ontheway.activities" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.activities">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserSessionHandler.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.769231">
-              <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
-              <folding>
-                <element signature="e#6#95#0#PHP" expanded="true" />
-                <element signature="e#121#152#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ontheway.spot_categories" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.spot_categories">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+    <leaf>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.4727273">
-              <caret line="391" column="89" selection-start-line="391" selection-start-column="89" selection-end-line="391" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IterinaryController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37710437">
-              <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Route.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Route.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.076923">
-              <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Activity.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Activity.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserSessionController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="7" selection-start-line="131" selection-start-column="7" selection-end-line="131" selection-end-column="7" />
-              <folding>
-                <element signature="e#39#61#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivityController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="163" column="40" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
-              <folding>
-                <element signature="e#39#56#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Eat.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Eat.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.48891786">
+              <caret line="296" column="4" selection-start-line="296" selection-start-column="4" selection-end-line="296" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -197,7 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SegmentController.php" />
         <option value="$PROJECT_DIR$/storage/framework/sessions/6bb9b489d6900a298c38a6b32ad2784d34aed683" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/checkForSession.php" />
@@ -240,7 +130,6 @@
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/Day.php" />
         <option value="$PROJECT_DIR$/app/Route.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Spot.php" />
         <option value="$PROJECT_DIR$/vendor/phpspec/phpspec/features/formatter/use_the_junit_formatter.feature" />
         <option value="$PROJECT_DIR$/app/Eat.php" />
@@ -248,6 +137,8 @@
         <option value="$PROJECT_DIR$/app/Activity.php" />
         <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
+        <option value="$USER_HOME$/Downloads/plot.html" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
       </list>
     </option>
   </component>
@@ -266,10 +157,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="width" value="1366" />
+    <option name="height" value="768" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -505,7 +394,7 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="route&#9;FILE&#9;file://C:/wamp/www/php/app/Route.php&#10;userse&#9;FILE&#9;file://C:/wamp/www/php/app/classes/UserSessionHandler.php&#10;ush:444&#9;null&#9;null&#10;acti&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;act&#9;FILE&#9;dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.activities&#10;activit&#9;FILE&#9;file://C:/wamp/www/php/app/Activity.php&#10;ac&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;iter&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/IterinaryController.php&#10;usersessh:288&#9;null&#9;null&#10;user&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;rotue&#9;null&#9;null&#10;validater&#9;null&#9;null&#10;create_rating&#9;FILE&#9;file://C:/wamp/www/php/database/migrations/2016_01_16_200415_create_ratings_table.php&#10;usercon:login&#9;null&#9;null&#10;test&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;recom&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/RecommenderController.php&#10;rome2riod:115&#9;null&#9;null&#10;testc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;iterinar&#9;FILE&#9;file://C:/wamp/www/php/app/Iterinary.php&#10;geo&#9;FILE&#9;file://C:/wamp/www/php/app/classes/GeolocationHelper.php&#10;spec&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;session&#9;FILE&#9;file://C:/wamp/www/php/config/session.php&#10;app.p&#9;FILE&#9;file://C:/wamp/www/php/config/app.php&#10;usc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;storage/log&#9;FILE&#9;file://C:/wamp/www/php/storage/logs/laravel-2016-02-09.log&#10;specifi&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;rout&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;routetable&#9;null&#9;null&#10;segment&#9;FILE&#9;file://C:/wamp/www/php/app/Segment.php&#10;ide&#9;null&#9;null&#10;_ide_helper&#9;null&#9;null&#10;_&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="route&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;userse&#9;FILE&#9;file://C:/wamp/www/php/app/classes/UserSessionHandler.php&#10;ush:444&#9;null&#9;null&#10;acti&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;act&#9;FILE&#9;dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.activities&#10;activit&#9;FILE&#9;file://C:/wamp/www/php/app/Activity.php&#10;ac&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;iter&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/IterinaryController.php&#10;usersessh:288&#9;null&#9;null&#10;user&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;rotue&#9;null&#9;null&#10;validater&#9;null&#9;null&#10;create_rating&#9;FILE&#9;file://C:/wamp/www/php/database/migrations/2016_01_16_200415_create_ratings_table.php&#10;usercon:login&#9;null&#9;null&#10;test&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;recom&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/RecommenderController.php&#10;rome2riod:115&#9;null&#9;null&#10;testc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;iterinar&#9;FILE&#9;file://C:/wamp/www/php/app/Iterinary.php&#10;geo&#9;FILE&#9;file://C:/wamp/www/php/app/classes/GeolocationHelper.php&#10;spec&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;session&#9;FILE&#9;file://C:/wamp/www/php/config/session.php&#10;app.p&#9;FILE&#9;file://C:/wamp/www/php/config/app.php&#10;usc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;storage/log&#9;FILE&#9;file://C:/wamp/www/php/storage/logs/laravel-2016-02-09.log&#10;specifi&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;rout&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;routetable&#9;null&#9;null&#10;segment&#9;FILE&#9;file://C:/wamp/www/php/app/Segment.php&#10;ide&#9;null&#9;null&#10;_ide_helper&#9;null&#9;null&#10;_&#9;null&#9;null" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="TODO_SCOPE" value="Project Files" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
@@ -572,15 +461,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18081991" sideWeight="0.5057637" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20058565" sideWeight="0.49423632" order="3" side_tool="false" content_ui="combo" x="-3" y="23" width="555" height="604" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20058565" sideWeight="0.49423632" order="3" side_tool="false" content_ui="combo" x="-3" y="23" width="555" height="604" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24207492" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18008785" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18008785" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -644,13 +533,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/classes/tokenGenerator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.461538">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_16_122837_create_segments_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -1458,7 +1340,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="7.3612905">
           <caret line="163" column="40" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
           <folding>
             <element signature="e#39#56#0#PHP" expanded="true" />
@@ -1468,7 +1350,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="5.916129">
           <caret line="131" column="7" selection-start-line="131" selection-start-column="7" selection-end-line="131" selection-end-column="7" />
           <folding>
             <element signature="e#39#61#0#PHP" expanded="true" />
@@ -1478,7 +1360,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Activity.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="3.7032259">
           <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
           <folding />
         </state>
@@ -1499,16 +1381,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Route.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923">
+        <state vertical-scroll-proportion="0.5483871">
           <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.4727273">
-          <caret line="391" column="89" selection-start-line="391" selection-start-column="89" selection-end-line="391" selection-end-column="89" />
           <folding />
         </state>
       </provider>
@@ -1526,8 +1400,86 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37710437">
-          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        <state vertical-scroll-proportion="-9.923077">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/plot.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4380704">
+          <caret line="193" column="29" selection-start-line="193" selection-start-column="29" selection-end-line="193" selection-end-column="29" />
+          <folding>
+            <marker date="1456154341990" expanded="true" signature="21:14185" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="30:1322" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="1329:14177" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="1397:2473" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="1429:2460" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="1467:1907" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="1578:1796" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="1956:2445" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="2009:2428" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="2504:2841" placeholder="..." />
+            <marker date="1456154341990" expanded="false" signature="2540:2558" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="2559:2828" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="2590:2796" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="2625:2779" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="2929:3654" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="2958:3088" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="3115:3647" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="3151:3291" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="3325:3463" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="3497:3636" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="3724:4563" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="3753:3878" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="3922:4553" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="3949:4426" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="4139:4417" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="4455:4541" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="4576:5733" placeholder="..." />
+            <marker date="1456154341990" expanded="false" signature="5758:5804" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="5805:14170" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="6309:12517" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="6507:8429" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="6831:6892" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="7048:8419" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
+            <marker date="1456154341990" expanded="true" signature="7254:7602" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="7643:7865" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="7908:8173" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="8220:8408" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="8472:10638" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="8525:8863" placeholder="{&quot;el&quot;: '#map'...}" />
+            <marker date="1456154341990" expanded="true" signature="8641:8716" placeholder="{&quot;style&quot;: 'SMALL'...}" />
+            <marker date="1456154341990" expanded="true" signature="8923:10623" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="8963:10379" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="9297:10363" placeholder="{&quot;title&quot;: 'Lima'...}" />
+            <marker date="1456154341990" expanded="true" signature="9448:10348" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="10416:10490" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="10530:10611" placeholder="{...}" />
+            <marker date="1456154341990" expanded="true" signature="10662:10860" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="10862:11609" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="11611:11891" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="11964:12082" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="12084:12392" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="12400:12473" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="12475:12509" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="12571:13275" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="12573:13231" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="13235:13267" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="13321:14166" placeholder="..." />
+            <marker date="1456154341990" expanded="true" signature="13359:13510" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="13512:13657" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="13659:14038" placeholder="//..." />
+            <marker date="1456154341990" expanded="true" signature="14088:14150" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48891786">
+          <caret line="296" column="4" selection-start-line="296" selection-start-column="4" selection-end-line="296" selection-end-column="4" />
           <folding />
         </state>
       </provider>
