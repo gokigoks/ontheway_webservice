@@ -23,6 +23,7 @@ class IterinaryController extends Controller
      */
     public function newIterinary(Request $request)
     {
+        $user = '';
         $token = Input::get('token');
         $withSegment = Input::get('withSegment');
         $error_bag = array();
@@ -30,8 +31,18 @@ class IterinaryController extends Controller
         if ($token == null) return response()->json('token is empty', 200);
 
         $user = userSessionHandler::getByToken($token);
+//        $user = $user->filter(function($item)
+//        {
+//            return $item->id = $item->getAttribute('id');
+//        })->first();
+        $user = $user->first();
+
 
         if ($user == null) {
+            if(Auth::check())
+            {
+                $user = Auth::user();
+            }
             return response()->json('user not found.', 404);
         }
 
@@ -62,7 +73,7 @@ class IterinaryController extends Controller
         }
 
         $iterinary = new Iterinary();
-        $iterinary->creator_id = $user->id;
+        $iterinary->creator_id = $user->getAttribute('id');
         $iterinary->origin = $origin;
         $iterinary->destination = $destination;
         $iterinary->pax = $pax;
@@ -77,7 +88,7 @@ class IterinaryController extends Controller
             $iterinary->route()->associate($route);
             $iterinary->save();
 
-            return response()->json('success', 200);
+            return response()->json($iterinary, 200);
         } else {
             return response()->json('error saving', 401);
         }

@@ -465,7 +465,7 @@ class UserSessionHandler
         $eat->tips = $tips;
         $eat->save();
 
-        return response()->json('sucess',200);
+        return response()->json('success',200);
     }
 
     public static function endSpotActivity($token, $iterinary_id, $price, $tips)
