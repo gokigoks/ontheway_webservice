@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.openshift/.env" afterPath="$PROJECT_DIR$/.openshift/.env" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,14 +41,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UserSessionController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
+      <file leaf-file-name=".env" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.openshift/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55149937">
-              <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
-              <folding>
-                <element signature="e#39#61#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.18252933">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,7 +111,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_01_16_122837_create_segments_table.php" />
         <option value="$PROJECT_DIR$/config/session.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/.openshift/.env" />
         <option value="$PROJECT_DIR$/app/classes/foursquareHelper.php" />
         <option value="$PROJECT_DIR$/app/Facades/GeolocationHelper.php" />
         <option value="$PROJECT_DIR$/app/classes/Recommender.php" />
@@ -143,6 +138,7 @@
         <option value="$USER_HOME$/Downloads/plot.html" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
+        <option value="$PROJECT_DIR$/.openshift/.env" />
       </list>
     </option>
   </component>
@@ -569,13 +565,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_16_122837_create_segments_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_16_121242_create_routes_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.5384617">
@@ -1377,16 +1366,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.3612905">
-          <caret line="163" column="40" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
-          <folding>
-            <element signature="e#39#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Activity.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.7032259">
@@ -1424,14 +1403,6 @@
             <element signature="e#6#95#0#PHP" expanded="true" />
             <element signature="e#121#152#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.923077">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1505,10 +1476,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5149935">
+          <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+          <folding>
+            <marker date="1456155083460" expanded="true" signature="43:312" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="361:3301" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="400:479" placeholder=" Display a listing of the resource. ..." />
+            <marker date="1456155083460" expanded="true" signature="509:795" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="545:648" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="830:866" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="875:970" placeholder=" @param Request $request ..." />
+            <marker date="1456155083460" expanded="true" signature="1019:1853" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="1099:1263" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="1110:1262" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="1862:1969" placeholder=" clear session. deletes user assigned web token ..." />
+            <marker date="1456155083460" expanded="true" signature="2016:2601" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="2162:2228" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="2349:2499" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="2507:2594" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="2610:2709" placeholder=" Display the specified resource. ..." />
+            <marker date="1456155083460" expanded="true" signature="2741:2764" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="2773:2890" placeholder=" Show the form for editing the specified resource. ..." />
+            <marker date="1456155083460" expanded="true" signature="2922:2945" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="2954:3063" placeholder=" Update the specified resource in storage. ..." />
+            <marker date="1456155083460" expanded="true" signature="3097:3120" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="3129:3240" placeholder=" Remove the specified resource from storage. ..." />
+            <marker date="1456155083460" expanded="true" signature="3275:3298" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40547588">
+          <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+          <folding>
+            <marker date="1456084658017" expanded="true" signature="43:198" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="243:6563" placeholder="{...}" />
+            <marker date="1456084658017" expanded="true" signature="254:340" placeholder=" @param $request ..." />
+            <marker date="1456084658017" expanded="true" signature="392:4138" placeholder="{...}" />
+            <marker date="1456084658017" expanded="true" signature="566:1616" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="810:1028" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="1104:1337" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="1181:1275" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="1283:1323" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="1427:1498" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="1648:2873" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="2058:2285" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="2361:2594" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="2438:2532" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="2540:2580" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="2684:2755" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="2905:4043" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="3234:3455" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="3531:3764" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="3608:3702" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="3710:3750" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="3854:3925" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="4051:4129" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="4147:4261" placeholder=" end the activity ..." />
+            <marker date="1456084658017" expanded="true" signature="4313:5384" placeholder="{...}" />
+            <marker date="1456084658017" expanded="true" signature="4518:4855" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="4888:5116" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="5147:5376" placeholder="..." />
+            <marker date="1456084658017" expanded="true" signature="5393:5453" placeholder=" ..." />
+            <marker date="1456084658017" expanded="true" signature="5499:5788" placeholder="{...}" />
+            <marker date="1456084658017" expanded="true" signature="5797:5896" placeholder=" Display the specified resource. ..." />
+            <marker date="1456084658017" expanded="true" signature="5928:6026" placeholder="{...}" />
+            <marker date="1456084658017" expanded="true" signature="6035:6152" placeholder=" Show the form for editing the specified resource. ..." />
+            <marker date="1456084658017" expanded="true" signature="6184:6207" placeholder="{...}" />
+            <marker date="1456084658017" expanded="true" signature="6216:6325" placeholder=" Update the specified resource in storage. ..." />
+            <marker date="1456084658017" expanded="true" signature="6359:6382" placeholder="{...}" />
+            <marker date="1456084658017" expanded="true" signature="6391:6502" placeholder=" Remove the specified resource from storage. ..." />
+            <marker date="1456084658017" expanded="true" signature="6537:6560" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5619296">
-          <caret line="298" column="60" selection-start-line="298" selection-start-column="60" selection-end-line="298" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.452412">
+          <caret line="389" column="86" selection-start-line="389" selection-start-column="86" selection-end-line="389" selection-end-column="86" />
           <folding>
             <marker date="1456154820724" expanded="false" signature="9:391" placeholder="..." />
             <marker date="1456154820724" expanded="true" signature="539:624" placeholder="..." />
@@ -1589,13 +1639,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55149937">
-          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.58800524">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
           <folding>
-            <element signature="e#39#61#0#PHP" expanded="true" />
+            <marker date="1456131871249" expanded="false" signature="43:335" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="381:12465" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="392:487" placeholder=" @param Request $request ..." />
+            <marker date="1456131871249" expanded="true" signature="540:2667" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="819:961" placeholder="//..." />
+            <marker date="1456131871249" expanded="true" signature="1024:1190" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="1054:1120" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="1340:1452" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="1520:1721" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="1589:1671" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="1679:1711" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="1803:1866" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="2235:2585" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="2593:2660" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="2676:2797" placeholder=" contributor new iterinary ..." />
+            <marker date="1456131871249" expanded="true" signature="2854:6135" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="3154:3224" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="3520:3738" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="3806:4007" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="3875:3957" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="3965:3997" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="4089:4152" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="4378:6052" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="4862:5989" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="4933:5149" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="5233:5498" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="5318:5424" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="5432:5480" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="5596:5675" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="6060:6127" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="6144:6231" placeholder=" Show the form for creating a new resource. ..." />
+            <marker date="1456131871249" expanded="true" signature="6266:6706" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="6573:6633" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="6641:6699" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="6715:6780" placeholder=" Get past iterinaries ..." />
+            <marker date="1456131871249" expanded="true" signature="6812:7343" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="7056:7125" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="7209:7269" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="7277:7335" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="7352:7418" placeholder=" Get current iterinary ..." />
+            <marker date="1456131871249" expanded="true" signature="7453:7989" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="7697:7766" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="7856:7916" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="7924:7982" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="8019:8545" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="8262:8331" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="8411:8471" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="8479:8537" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="8607:9617" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="9086:9386" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="9394:9609" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="9626:9690" placeholder=" @return \Symfony\Component\HttpFoundation\Response ..." />
+            <marker date="1456131871249" expanded="true" signature="9722:10521" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="10156:10232" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="10553:10851" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="10728:10788" placeholder="..." />
+            <marker date="1456131871249" expanded="true" signature="10860:10969" placeholder=" Update the specified resource in storage. ..." />
+            <marker date="1456131871249" expanded="true" signature="11001:11100" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="11109:11221" placeholder=" Remove the specified resource from storage. ..." />
+            <marker date="1456131871249" expanded="true" signature="11267:11474" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="11512:11525" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="11562:11575" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="11584:11672" placeholder=" @param $request ..." />
+            <marker date="1456131871249" expanded="true" signature="11725:11869" placeholder="{...}" />
+            <marker date="1456131871249" expanded="true" signature="11922:12455" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18252933">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
