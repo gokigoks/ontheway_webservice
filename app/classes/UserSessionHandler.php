@@ -123,7 +123,7 @@ class UserSessionHandler
     public static function startUserSession($id, $token)
     {
         //start a user session
-        Session::put($token, ['user' => $id]);
+        Session::put($token, $id);
         Session::regenerate();
     }
 

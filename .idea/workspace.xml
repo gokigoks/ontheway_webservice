@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a37ae815-6ebb-4ca5-b956-e9156cd88b90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.openshift/.env" afterPath="$PROJECT_DIR$/.openshift/.env" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" afterPath="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,12 +42,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name=".env" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.openshift/.env">
+      <file leaf-file-name="UserSessionHandler.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18252933">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.5149935">
+              <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
+              <folding>
+                <element signature="e#6#95#0#PHP" expanded="true" />
+                <element signature="e#121#152#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,12 +137,12 @@
         <option value="$PROJECT_DIR$/app/Eat.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
         <option value="$PROJECT_DIR$/app/Activity.php" />
-        <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IterinaryController.php" />
         <option value="$USER_HOME$/Downloads/plot.html" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php" />
         <option value="$PROJECT_DIR$/.openshift/.env" />
+        <option value="$PROJECT_DIR$/app/classes/UserSessionHandler.php" />
       </list>
     </option>
   </component>
@@ -329,6 +333,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="action_hooks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -426,7 +448,7 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="route&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;userse&#9;FILE&#9;file://C:/wamp/www/php/app/classes/UserSessionHandler.php&#10;ush:444&#9;null&#9;null&#10;acti&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;act&#9;FILE&#9;dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.activities&#10;activit&#9;FILE&#9;file://C:/wamp/www/php/app/Activity.php&#10;ac&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;iter&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/IterinaryController.php&#10;usersessh:288&#9;null&#9;null&#10;user&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;rotue&#9;null&#9;null&#10;validater&#9;null&#9;null&#10;create_rating&#9;FILE&#9;file://C:/wamp/www/php/database/migrations/2016_01_16_200415_create_ratings_table.php&#10;usercon:login&#9;null&#9;null&#10;test&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;recom&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/RecommenderController.php&#10;rome2riod:115&#9;null&#9;null&#10;testc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;iterinar&#9;FILE&#9;file://C:/wamp/www/php/app/Iterinary.php&#10;geo&#9;FILE&#9;file://C:/wamp/www/php/app/classes/GeolocationHelper.php&#10;spec&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;session&#9;FILE&#9;file://C:/wamp/www/php/config/session.php&#10;app.p&#9;FILE&#9;file://C:/wamp/www/php/config/app.php&#10;usc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;storage/log&#9;FILE&#9;file://C:/wamp/www/php/storage/logs/laravel-2016-02-09.log&#10;specifi&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;rout&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;routetable&#9;null&#9;null&#10;segment&#9;FILE&#9;file://C:/wamp/www/php/app/Segment.php&#10;ide&#9;null&#9;null&#10;_ide_helper&#9;null&#9;null&#10;_&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="user&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;route&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;userse&#9;FILE&#9;file://C:/wamp/www/php/app/classes/UserSessionHandler.php&#10;ush:444&#9;null&#9;null&#10;acti&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;act&#9;FILE&#9;dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.activities&#10;activit&#9;FILE&#9;file://C:/wamp/www/php/app/Activity.php&#10;ac&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/ActivityController.php&#10;iter&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/IterinaryController.php&#10;usersessh:288&#9;null&#9;null&#10;rotue&#9;null&#9;null&#10;validater&#9;null&#9;null&#10;create_rating&#9;FILE&#9;file://C:/wamp/www/php/database/migrations/2016_01_16_200415_create_ratings_table.php&#10;usercon:login&#9;null&#9;null&#10;test&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;recom&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/RecommenderController.php&#10;rome2riod:115&#9;null&#9;null&#10;testc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/TestController.php&#10;iterinar&#9;FILE&#9;file://C:/wamp/www/php/app/Iterinary.php&#10;geo&#9;FILE&#9;file://C:/wamp/www/php/app/classes/GeolocationHelper.php&#10;spec&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;session&#9;FILE&#9;file://C:/wamp/www/php/config/session.php&#10;app.p&#9;FILE&#9;file://C:/wamp/www/php/config/app.php&#10;usc&#9;FILE&#9;file://C:/wamp/www/php/app/Http/Controllers/UserSessionController.php&#10;storage/log&#9;FILE&#9;file://C:/wamp/www/php/storage/logs/laravel-2016-02-09.log&#10;specifi&#9;FILE&#9;file://C:/wamp/www/php/specifications.txt&#10;rout&#9;FILE&#9;file://C:/wamp/www/php/app/Http/routes.php&#10;routetable&#9;null&#9;null&#10;segment&#9;FILE&#9;file://C:/wamp/www/php/app/Segment.php&#10;ide&#9;null&#9;null&#10;_ide_helper&#9;null&#9;null&#10;_&#9;null&#9;null" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="TODO_SCOPE" value="Project Files" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
@@ -1153,13 +1175,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/4eef629/1f5cd31f-1c5a-47fc-aabf-eb712748b62c/ontheway.hoppables">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1395,17 +1410,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.769231">
-          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
-          <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
-            <element signature="e#121#152#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/plot.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4380704">
@@ -1472,38 +1476,6 @@
             <marker date="1456154341990" expanded="true" signature="13512:13657" placeholder="//..." />
             <marker date="1456154341990" expanded="true" signature="13659:14038" placeholder="//..." />
             <marker date="1456154341990" expanded="true" signature="14088:14150" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5149935">
-          <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
-          <folding>
-            <marker date="1456155083460" expanded="true" signature="43:312" placeholder="..." />
-            <marker date="1456155083460" expanded="true" signature="361:3301" placeholder="{...}" />
-            <marker date="1456155083460" expanded="true" signature="400:479" placeholder=" Display a listing of the resource. ..." />
-            <marker date="1456155083460" expanded="true" signature="509:795" placeholder="{...}" />
-            <marker date="1456155083460" expanded="true" signature="545:648" placeholder="..." />
-            <marker date="1456155083460" expanded="true" signature="830:866" placeholder="{...}" />
-            <marker date="1456155083460" expanded="true" signature="875:970" placeholder=" @param Request $request ..." />
-            <marker date="1456155083460" expanded="true" signature="1019:1853" placeholder="{...}" />
-            <marker date="1456155083460" expanded="true" signature="1099:1263" placeholder="..." />
-            <marker date="1456155083460" expanded="true" signature="1110:1262" placeholder="..." />
-            <marker date="1456155083460" expanded="true" signature="1862:1969" placeholder=" clear session. deletes user assigned web token ..." />
-            <marker date="1456155083460" expanded="true" signature="2016:2601" placeholder="{...}" />
-            <marker date="1456155083460" expanded="true" signature="2162:2228" placeholder="..." />
-            <marker date="1456155083460" expanded="true" signature="2349:2499" placeholder="..." />
-            <marker date="1456155083460" expanded="true" signature="2507:2594" placeholder="..." />
-            <marker date="1456155083460" expanded="true" signature="2610:2709" placeholder=" Display the specified resource. ..." />
-            <marker date="1456155083460" expanded="true" signature="2741:2764" placeholder="{...}" />
-            <marker date="1456155083460" expanded="true" signature="2773:2890" placeholder=" Show the form for editing the specified resource. ..." />
-            <marker date="1456155083460" expanded="true" signature="2922:2945" placeholder="{...}" />
-            <marker date="1456155083460" expanded="true" signature="2954:3063" placeholder=" Update the specified resource in storage. ..." />
-            <marker date="1456155083460" expanded="true" signature="3097:3120" placeholder="{...}" />
-            <marker date="1456155083460" expanded="true" signature="3129:3240" placeholder=" Remove the specified resource from storage. ..." />
-            <marker date="1456155083460" expanded="true" signature="3275:3298" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1715,9 +1687,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.openshift/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18252933">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.58409387">
+          <caret line="16" column="80" selection-start-line="16" selection-start-column="80" selection-end-line="16" selection-end-column="80" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/action_hooks/deploy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43807042">
+          <caret line="81" column="21" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserSessionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7092568">
+          <caret line="68" column="39" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
+          <folding>
+            <marker date="1456155083460" expanded="true" signature="43:312" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="361:3301" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="400:479" placeholder=" Display a listing of the resource. ..." />
+            <marker date="1456155083460" expanded="true" signature="509:795" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="545:648" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="830:866" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="875:970" placeholder=" @param Request $request ..." />
+            <marker date="1456155083460" expanded="true" signature="1019:1853" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="1099:1263" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="1110:1262" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="1862:1969" placeholder=" clear session. deletes user assigned web token ..." />
+            <marker date="1456155083460" expanded="true" signature="2016:2601" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="2162:2228" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="2349:2499" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="2507:2594" placeholder="..." />
+            <marker date="1456155083460" expanded="true" signature="2610:2709" placeholder=" Display the specified resource. ..." />
+            <marker date="1456155083460" expanded="true" signature="2741:2764" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="2773:2890" placeholder=" Show the form for editing the specified resource. ..." />
+            <marker date="1456155083460" expanded="true" signature="2922:2945" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="2954:3063" placeholder=" Update the specified resource in storage. ..." />
+            <marker date="1456155083460" expanded="true" signature="3097:3120" placeholder="{...}" />
+            <marker date="1456155083460" expanded="true" signature="3129:3240" placeholder=" Remove the specified resource from storage. ..." />
+            <marker date="1456155083460" expanded="true" signature="3275:3298" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/classes/UserSessionHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5149935">
+          <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+            <element signature="e#121#152#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
