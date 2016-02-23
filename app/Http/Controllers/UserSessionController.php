@@ -60,8 +60,8 @@ class UserSessionController extends Controller
         $user->save();
 
         $token = new tokenGenerator;
-        $user = Auth::user();
         
+
         $user->setAttribute('token', $token->uuid); // add token to returned object
 
         UserSessionHandler::startUserSession($user->id,$token->uuid); // starts session
