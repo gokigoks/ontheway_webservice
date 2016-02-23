@@ -35,10 +35,7 @@ class UserSessionController extends Controller
 
     }
 
-    public function getRegister()
-    {
-        return 'hello';
-    }
+
 
     /**
      * @param Request $request
@@ -47,6 +44,7 @@ class UserSessionController extends Controller
     public function register(Request $request)
     {
         $request = $request->all();
+
         $validator = Validator::make($request, [
             'email' => 'required|email|unique:users|min:6',
             'name' => 'required|min:3',
@@ -63,7 +61,7 @@ class UserSessionController extends Controller
 
         $token = new tokenGenerator;
         $user = Auth::user();
-        dd($user);
+        
         $user->setAttribute('token', $token->uuid); // add token to returned object
 
         UserSessionHandler::startUserSession($user->id,$token->uuid); // starts session

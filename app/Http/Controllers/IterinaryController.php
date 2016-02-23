@@ -109,7 +109,8 @@ class IterinaryController extends Controller
         if ($token == null) return response()->json('token is empty', 200);
 
         $user = userSessionHandler::user($token);
-        dd($user);
+
+
         if ($user == null) {
             return response()->json('user not found.', 404);
         }
@@ -312,7 +313,6 @@ class IterinaryController extends Controller
         if (!$current) {
 
             $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'doing'];
-            $user->current_iterinary()->save($iterinary);
             $user->current_iterinary()->updateExistingPivot($iterinary->id, $pivot_fields, true);
             return response()->json('saved', 200);
 
@@ -372,13 +372,14 @@ class IterinaryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param  $request
      * @return Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $data = Iterinary::all();
-        return response()->json(json_encode($data));
+        $iterinary_id = $request->input('iterinary_id');
+        $iterinary = Iterinary::find($iterinary_id);
+        return response()->json($iterinary,200);
     }
 
     /**
@@ -435,6 +436,42 @@ class IterinaryController extends Controller
         return response()->json('success', 200);
     }
 
+    public function deleteIterinary(Request $request)
+    {
+        $request = $request->all();
+        $token = $request['token'];
+        $iterinary_id = $request['iterinary_id'];
+        $error_bag = [];
+        $input_bag = [
+            'token' => $token,
+            'iterinary id' => $iterinary_id,
+        ];
 
+        $i = 0;
+        foreach ($input_bag as $key => $value) {
+            $value = trim($value);
+            if (empty($value)) {
+                $error_bag[$i] = "$key empty";
+                $i++;
+            } else {
+                //
+            }
+        }
+        //filter of false or null values
+        if (array_filter($error_bag)) {
+            return response()->json($error_bag, 400);
+        }
+
+        $user = UserSessionHandler::getByToken($token);
+
+        $user->iterinaries()->detach($iterinary_id);
+
+        return response()->json('delete successful',200);
+    }
+
+    public function startIterinary()
+    {
+        //
+    }
 //end
 }

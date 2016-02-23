@@ -43,7 +43,7 @@ class Iterinary extends Model {
 	 */
 	public function users()
 	{
-		return $this->belongsToMany('App\User')->withPivot('date_start','status')->withTimestamps();;
+		return $this->belongsToMany('App\User')->withPivot('date_start','status')->withTimestamps();
 	}
 
     /**

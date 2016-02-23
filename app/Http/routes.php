@@ -250,10 +250,10 @@ Route::get('populate/eats', ['middleware' => 'cors', 'uses' => 'TestController@p
 Route::get('populate/categories', 'TestController@populateCategories');
 //  -- END -- //
 
-Event::listen('cache.hit', function ($key, $value) {
+//Event::listen('cache.hit', function ($key, $value) {
     //var_dump($key, $value);
-});
-//  -- test helpers -- //
+//});
+///  -- test helpers -- //
 Route::get('test/helpers', function () {
 
     App\Classes\FoursquareHelper::testHelper();
@@ -374,7 +374,7 @@ Route::get('api/iterinary/current', ['middleware' => 'cors', 'uses' => 'Iterinar
 Route::get('api/iterinary/all', ['middleware' => 'cors', 'uses' => 'IterinaryController@getAll']);
 Route::get('api/iterinary/planned', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPlanned']);
 Route::get('api/iterinary/past', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPast']);
-Route::post('api/iterinary/startplanned', ['middleware' => 'cors', 'uses' => 'IterinaryController@startPlannedIterinary']);
+
 
 Route::get('api/iterinary/getpath', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPath']);
 Route::get('api/route/get', ['middleware' => 'cors', 'uses' => 'IterinaryController@getRoute']);
@@ -393,6 +393,11 @@ Route::post('plot/iterinary/addactivity', ['middleware' => 'cors', 'uses' => 'Ac
 Route::post('plot/iterinary/endactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@endActivity']);
 // END CONTRIBUTOR  ITERINARIES
 
+
+Route::post('api/iterinary/delete','IterinaryController@deleteIterinary');
+
+Route::post('api/iterinary/startplanned', ['middleware' => 'cors', 'uses' => 'IterinaryController@startPlannedIterinary']);
+Route::get('api/iterinary/get','IterinaryController@show');
 
 
 

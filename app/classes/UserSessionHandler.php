@@ -85,7 +85,7 @@ class UserSessionHandler
      */
     public static function getByToken($token)
     {
-        $user = User::find(Session::get($token));
+        $user = User::where('id','=',Session::get($token))->first();
 
         return $user;
     }
@@ -125,6 +125,7 @@ class UserSessionHandler
         //start a user session
         Session::put($token, $id);
         Session::regenerate();
+
     }
 
     /**
@@ -309,7 +310,7 @@ class UserSessionHandler
     public static function getDiffInDays($token, $iterinary_id)
     {
         $now = Carbon::now();
-        $user = self::user($token);
+        $user = self::getByToken($token);
 
         $pivot = $user->iterinaries()->find($iterinary_id);
 
@@ -482,4 +483,8 @@ class UserSessionHandler
 
         return response()->json('success',200);
     }
-}
+
+
+
+
+}//end
