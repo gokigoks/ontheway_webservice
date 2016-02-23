@@ -35,7 +35,7 @@ class IterinaryController extends Controller
 //        {
 //            return $item->id = $item->getAttribute('id');
 //        })->first();
-        $user = $user->first();
+
 
 
         if ($user == null) {

@@ -47,12 +47,12 @@ class UserSessionHandler
             $past_iterinaries = $user->past_iterinaries()->with('route.segments')->get();
 
             $current_iterinary = $user->past_iterinaries()->with('route.segments')->first();
+            $user->setAttribute('token', $token->uuid);
             $session = collect(['user' => $user]);
             $session->offsetSet('plannedIterinaries', $planned_iterinaries);
             $session->offsetSet('pastIterinaries', $past_iterinaries);
             $session->offsetSet('currentIterinary', $current_iterinary);
             //dd($session);
-            $user->setAttribute('token', $token->uuid);
             self::startUserSession($user->id, $token->uuid);
 
             return ['body' => $session, 'http_code' => 200];
@@ -119,12 +119,14 @@ class UserSessionHandler
     /**
      * @param id
      * @param $token
+     * @return Response
      */
     public static function startUserSession($id, $token)
     {
         //start a user session
         Session::put($token, $id);
-        Session::regenerate();
+
+        Session::save();
 
     }
 

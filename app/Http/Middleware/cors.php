@@ -14,8 +14,10 @@ class cors {
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next)
-	{	
-        $token = (Input::get('token')) ? Input::get('token') : $request['token'];
+	{
+
+
+        $token = (!Input::get('token')) ? $request['token'] : Input::get('token');
 
 		if($token == "gokigoks" || Session::has($token) )
 		{
@@ -24,7 +26,8 @@ class cors {
             ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')                
             ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With')
             ->header('Access-Control-Max-Age', '28800');
-		}	
+		}
+
 		if(!$token){
             return $next($request)
             ->header('Access-Control-Allow-Origin' , '*')                
@@ -33,7 +36,11 @@ class cors {
             ->header('Access-Control-Max-Age', '28800');
         }
         
-        return response()->json('web token invalid..', 403);
+        return response()->json('web token invalid..', 403)
+            ->header('Access-Control-Allow-Origin' , '*')
+            ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With')
+            ->header('Access-Control-Max-Age', '28800');
 	}
 
 }

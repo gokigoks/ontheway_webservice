@@ -399,5 +399,20 @@ Route::post('api/iterinary/delete','IterinaryController@deleteIterinary');
 Route::post('api/iterinary/startplanned', ['middleware' => 'cors', 'uses' => 'IterinaryController@startPlannedIterinary']);
 Route::get('api/iterinary/get','IterinaryController@show');
 
+Route::get('check/user',['middleware' => 'cors', 'uses' => function()
+{
+    return Auth::user();
+}]);
 
+Route::post('check/user',['middleware' => 'cors', 'uses' => function()
+{
+    return response()->json(Auth::user());
+}]);
+
+Route::post('putsession',['middleware' => 'cors', 'uses' => function()
+{
+    Session::put('asdasd','some value');
+    Session::save();
+    return response()->json('asdasd',200);
+}]);
 
