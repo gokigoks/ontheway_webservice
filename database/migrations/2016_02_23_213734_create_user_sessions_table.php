@@ -16,7 +16,7 @@ class CreateUserSessionsTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('token');
-            $table->integer('id');
+            $table->integer('payload_id');
 			$table->timestamps();
 		});
 	}
