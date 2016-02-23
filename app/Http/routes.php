@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -295,13 +294,8 @@ Route::get('test/collection', function () {
 //    $categories  = \DB::table('spot_categories')->select('main_cat','main_cat_id')->where('main_cat','=',$category)->distinct()->get();
 //    dd($categories[0]->main_cat_id);
 
-
-    Session::put('56c246e707517.activity', 'some activity');
-    $array = Session::get('56c246e707517');
-    $array = array_merge($array, ['new' => 'new activity']);
-    Session::put('56c246e707517', $array);
-
-    dd(Session::all(), $array, Session::get('56c246e707517.new'));
+    $sessions = App\UserSession::all();
+    dd($sessions->count());
     // return response()->json($data, 200);
 });
 
@@ -315,7 +309,7 @@ Route::get('flush/session', function () {
 Route::get('checksession', function () {
     $token = Input::get('token');
 
-    return response()->json(App\Classes\UserSessionHandler::check($token), 200);
+    return response()->json(App\Classes\UserSessionHandler::getByToken($token), 200);
 });
 
 Route::get('iterinary/assign', function () {
@@ -411,8 +405,14 @@ Route::post('check/user',['middleware' => 'cors', 'uses' => function()
 
 Route::post('putsession',['middleware' => 'cors', 'uses' => function()
 {
+
     Session::put('asdasd','some value');
     Session::save();
-    return response()->json('asdasd',200);
+    return response()->json(Session::get('asdasd'),200);
+}]);
+
+Route::post('check/login',['middleware' => 'cors', 'uses' => function ()
+{
+    return response()->json(Auth::user());
 }]);
 

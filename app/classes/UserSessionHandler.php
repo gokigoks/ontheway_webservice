@@ -20,6 +20,7 @@ use App\Activity;
 use App\Spot;
 use App\FoodCategory;
 use Carbon\Carbon;
+use App\UserSession;
 use Cache;
 use Session;
 use Input;
@@ -85,7 +86,10 @@ class UserSessionHandler
      */
     public static function getByToken($token)
     {
-        $user = User::where('id','=',Session::get($token))->first();
+//        $user = User::where('id','=',Session::get($token))->first();
+
+        $session = UserSession::where('token','=',$token)->first();
+        $user = User::where('id','=',$session->payload_id)->first();
 
         return $user;
     }
@@ -124,9 +128,13 @@ class UserSessionHandler
     public static function startUserSession($id, $token)
     {
         //start a user session
-        Session::put($token, $id);
+//        Session::put($token, $id);
+//        Session::save();
 
-        Session::save();
+        $session = UserSession::firstOrNew(['payload_id' => $id]);
+        $session->token = $token;
+        $session->payload_id = $id;
+        $session->save();
 
     }
 

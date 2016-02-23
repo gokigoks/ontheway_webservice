@@ -30,6 +30,8 @@ class UserSessionController extends Controller
             'password' => Input::get('password'),
         );
 
+
+
         $response = UserSessionHandler::login($credentials);
         return response()->json($response['body'], $response['http_code']);
 
