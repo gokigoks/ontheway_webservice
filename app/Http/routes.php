@@ -405,7 +405,6 @@ Route::post('check/user',['middleware' => 'cors', 'uses' => function()
 
 Route::post('putsession',['middleware' => 'cors', 'uses' => function()
 {
-
     Session::put('asdasd','some value');
     Session::save();
     return response()->json(Session::get('asdasd'),200);
