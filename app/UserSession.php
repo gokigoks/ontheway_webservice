@@ -9,6 +9,6 @@ class UserSession extends Model {
 
     protected $fillable = ['payload_id','token'];
 
-    
+
 
 }
