@@ -234,7 +234,7 @@ class UserSessionHandler
         //$categories = App\SpotCategory::list('');
         $spot_category = \DB::table('spot_categories')->select('main_cat','main_cat_id')->where('main_cat','LIKE','%'.$category.'%')->distinct()->get();
         $activity = new Activity();
-
+        
         $day = self::getDiffInDays($token,$iterinary_id);
 
         $spot = new Spot;
