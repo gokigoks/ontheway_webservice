@@ -205,8 +205,8 @@ class TestController extends Controller
                     $expiry = Carbon::now()->addDays(1);
                     $data = json_decode($data);
                     Cache::add('categories', $data, $expiry);
-                    dd(Foursquare::saveSpotCategories($data->response->categories));
-
+                    Foursquare::saveSpotCategories($data->response->categories);
+                    return response()->json('success',200);
                 } else {
 
                     die('Request failed: HTTP status code: ' . $resultStatus);
