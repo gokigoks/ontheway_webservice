@@ -7,5 +7,8 @@ class UserSession extends Model {
 	//
     protected $table = 'user_sessions';
 
+    protected $fillable = ['payload_id','token'];
+
+    
 
 }
