@@ -141,4 +141,11 @@ class UserSessionController extends Controller
         //
     }
 
+    public function rateIterinary(Request $request)
+    {
+
+
+        return response()->json('success',200);
+    }
+
 }

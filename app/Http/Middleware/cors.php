@@ -3,6 +3,7 @@
 use Closure;
 use Input;
 use Session;
+use App\Classes\UserSessionHandler as Handler;
 
 class cors {
 
@@ -19,7 +20,7 @@ class cors {
 
         $token = (!Input::get('token')) ? $request['token'] : Input::get('token');
 
-		if($token == "gokigoks" || Session::has($token) )
+		if($token == "gokigoks" || Handler::check($token) )
 		{
 			return $next($request)
             ->header('Access-Control-Allow-Origin' , '*')                

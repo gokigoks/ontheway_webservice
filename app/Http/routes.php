@@ -306,11 +306,11 @@ Route::get('flush/session', function () {
 });
 
 
-Route::get('checksession', function () {
+Route::get('checksession', ['middleware' => 'cors','uses' => function () {
     $token = Input::get('token');
 
     return response()->json(App\Classes\UserSessionHandler::getByToken($token), 200);
-});
+}]);
 
 Route::get('iterinary/assign', function () {
     $user_id = Input::get('user');
@@ -415,3 +415,4 @@ Route::post('check/login',['middleware' => 'cors', 'uses' => function ()
     return response()->json(Auth::user());
 }]);
 
+Route::get('api/iterinary/like','UserSessionController@rateIterinary');

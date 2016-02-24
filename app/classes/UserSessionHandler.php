@@ -74,7 +74,11 @@ class UserSessionHandler
      */
     public static function check($token)
     {
-        if (Session::has($token)) {
+        $session = UserSession::where('token','=',$token)->first();
+
+        if(!$session) return false;
+
+        if ($session->count()>0) {
             return true;
         }
         return false;
