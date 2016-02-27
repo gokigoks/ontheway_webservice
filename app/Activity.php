@@ -80,4 +80,15 @@ class Activity extends Model {
         return $query->where('typable_type','=','App\Eat');
     }
 
+    public function scopeTransport($query)
+    {
+        return $query->where('typable_type','=','App\Segment');
+    }
+
+    public function scopeUnfinished($query)
+    {
+        return $query->where('end_time','=','')->orWhereNull('end_time');
+    }
+
+
 }

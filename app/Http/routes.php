@@ -341,7 +341,7 @@ Route::get('days/getdiff', function () {
 
 Route::get('currentactivity', function () {
     $token = Input::get('token');
-    $activity = Session::get($token);
+    $activity = App\Classes\UserSessionHandler::user($token);
 
     dd($activity);
 });

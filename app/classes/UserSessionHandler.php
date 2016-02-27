@@ -187,7 +187,6 @@ class UserSessionHandler
 
         //dd($route->count());
 
-        $segment->day = self::getDiffInDays($token, $iterinary_id);
 
         //dd($route);
         if ($route->count() < 1) {
@@ -208,6 +207,7 @@ class UserSessionHandler
         // activity
         $activity = new Activity();
         $activity->iterinary_id = $iterinary_id;
+        $activity->day = self::getDiffInDays($token, $iterinary_id);
         $activity->start_time = Carbon::now()->toTimeString();
 
         // end activity
@@ -217,7 +217,7 @@ class UserSessionHandler
 
         //self::newUserActivity('transport', $segment->getAttribute('id'), $token);
 
-        return response()->json('success', 200);
+        return response()->json($segment, 200);
     }
 
     /**
@@ -349,7 +349,7 @@ class UserSessionHandler
      */
     public static function endSegment($token, $segment_id, $destination_name, $lng, $lat, $price = 0)
     {
-        $request_type = 'transport';
+
         $segment = Segment::find($segment_id);
 
         $segment->destination_name = $destination_name;
@@ -498,7 +498,33 @@ class UserSessionHandler
         return response()->json('success',200);
     }
 
+    //
+    public static function endIterinary($iterinary)
+    {
+        $distance = 0;
+        $duration = 0;
+        $price = 0;
 
+        $activities = $iterinary->activities;
+
+            foreach ($activities as $activity)
+            {
+                $start_time = Carbon::parse($activity->start_time);
+                $end_time = Carbon::parse($activity->end_time);
+
+
+                $distance += GeolocationHelper::resolveDistance($activity);
+                $duration += $end_time->diffInMinutes($start_time);
+                $price += $activity->typable->price;
+            }
+
+        $iterinary->distance = $distance;
+        $iterinary->duration = $duration;
+        $iterinary->price = $price;
+        $iterinary->save();
+
+        return response()->json('success',200);
+    }
 
 
 }//end

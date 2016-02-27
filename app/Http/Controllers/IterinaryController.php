@@ -37,10 +37,8 @@ class IterinaryController extends Controller
 //        })->first();
 
 
-
         if ($user == null) {
-            if(Auth::check())
-            {
+            if (Auth::check()) {
                 $user = Auth::user();
             }
             return response()->json('user not found.', 404);
@@ -293,7 +291,6 @@ class IterinaryController extends Controller
         } else {
             return response()->json($data, 200);
         }
-
     }
 
 
@@ -379,7 +376,7 @@ class IterinaryController extends Controller
     {
         $iterinary_id = $request->input('iterinary_id');
         $iterinary = Iterinary::find($iterinary_id);
-        return response()->json($iterinary,200);
+        return response()->json($iterinary, 200);
     }
 
     /**
@@ -410,14 +407,40 @@ class IterinaryController extends Controller
     /**
      * @param $request
      * @route 'plot/iterinary/end'
-     * @response json
+     * @return json
      * */
     public function endIterinary(Request $request)
     {
-        $user_id = Input::get('user_id');
+        //TODO
+        // update pivot status column to done.
+        // calculate routes columns
+        $token = Input::get('token');
         $iterinary_id = Input::get('iterinary_id');
 
-        dd($user_id, $iterinary_id);
+        if(!$token || !$iterinary_id)
+        {
+            return response()->json('kuwang input',400);
+        }
+
+        $user = UserSessionHandler::user($token);
+
+        $current_iterinary = $user->iterinaries()->find($iterinary_id);
+
+        $route = $current_iterinary->route;
+        if(!$route) {
+            $current_iterinary->delete(); // e delete nalang
+            return response()->json('walay route');
+        }
+
+        UserSessionHandler::endIterinary($current_iterinary);
+
+        $pivot = [
+            'status' => 'done',
+        ];
+        $user->iterinaries()
+            ->updateExistingPivot($iterinary_id,$pivot,true);
+        //dd($user_id, $iterinary_id);
+        return response()->json('success',200);
     }
 
     public function copyIterinary(Request $request)
@@ -466,7 +489,7 @@ class IterinaryController extends Controller
 
         $user->iterinaries()->detach($iterinary_id);
 
-        return response()->json('delete successful',200);
+        return response()->json('delete successful', 200);
     }
 
     public function startIterinary()

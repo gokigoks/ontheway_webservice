@@ -148,27 +148,27 @@ class ActivityController extends Controller
         $token = $request['token'];
         $type = $request['type'];
         if (!$type) return response()->json('error', 400);
-        if ($type == 'transpo') {
+        if ($type == 'transpo' || $type == 'transport') {
             $segment_id = $request['segment_id'];
             $destination_name = $request['destination_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
             $price = $request['price'];
-            UserSessionHandler::endSegment($token, $segment_id, $destination_name, $lat, $lng, $price);
+            return UserSessionHandler::endSegment($token, $segment_id, $destination_name, $lat, $lng, $price);
         }
 
         if ($type == 'spot') {
             $iterinary_id = $request['iterinary_id'];
             $price = $request['price'];
             $tips = $request['tips'];
-            UserSessionHandler::endSpotActivity($token, $iterinary_id, $price, $tips);
+            return UserSessionHandler::endSpotActivity($token, $iterinary_id, $price, $tips);
         }
         if ($type == 'eat') {
 
             $iterinary_id = $request['iterinary_id'];
             $price = $request['price'];
             $tips = $request['tips'];
-            UserSessionHandler::endFoodActivity($token, $iterinary_id, $price, $tips);
+            return UserSessionHandler::endFoodActivity($token, $iterinary_id, $price, $tips);
         }
 
     }

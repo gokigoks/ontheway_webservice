@@ -28,6 +28,11 @@ class GeolocationHelper
         echo "geolocation helper";
     }
 
+    /**
+     * explode pos string
+     * @param $data
+     * @return array
+     */
     public static function parseLongLat($data)
     {
 
@@ -36,7 +41,11 @@ class GeolocationHelper
         return $array;
     }
 
-
+    /**
+     * decode polyline string to array
+     * @param $string
+     * @return array
+     */
     public static function Decode($string)
     {
         $points = array();
@@ -58,6 +67,11 @@ class GeolocationHelper
         return $points;
     }
 
+    /**
+     * pair a flat array
+     * @param $list
+     * @return array
+     */
     public static function Pair($list)
     {
         $pairs = array();
@@ -73,6 +87,11 @@ class GeolocationHelper
         return $pairs;
     }
 
+    /**
+     * flatten array for polyine encoding
+     * @param $array
+     * @return array
+     */
     public static function Flatten($array)
     {
         $flatten = array();
@@ -88,6 +107,12 @@ class GeolocationHelper
     }
 
 
+    /**
+     * Add a polyline to polyline
+     * @param $first
+     * @param $second
+     * @return string polyline
+     */
     public static function addPathToPath($first, $second)
     {
         $first_path = self::decode($first);
@@ -98,6 +123,11 @@ class GeolocationHelper
         return self::encode($final);
     }
 
+    /**
+     * encode points into polyline format
+     * @param $points
+     * @return string
+     */
     public static function Encode($points)
     {
         $points = self::Flatten($points);
@@ -124,6 +154,12 @@ class GeolocationHelper
         return $encodedString;
     }
 
+    /**
+     * get lat lng from rome2rio api query result
+     * @param $data
+     * @param bool|false $withName
+     * @return array
+     */
     public static function getAirportLongLat($data, $withName = false)
     {
         $airports = $data->airports;
@@ -225,6 +261,10 @@ class GeolocationHelper
         return $data;
     }
 
+    /**
+     * @param $points
+     * @return mixed
+     */
     public static function sanitizePoints($points)
     {
 
@@ -249,6 +289,10 @@ class GeolocationHelper
         return $duration;
     }
 
+    /**
+     * @param $segment
+     * @return float
+     */
     public static function calculateDistance($segment)
     {
         $origin = self::parseLongLat($segment->origin_pos);
@@ -258,6 +302,14 @@ class GeolocationHelper
         //sreturn $duration;
     }
 
+    /**
+     * @param $lat1
+     * @param $lon1
+     * @param $lat2
+     * @param $lon2
+     * @param string $unit
+     * @return float
+     */
     public static function distance($lat1, $lon1, $lat2, $lon2, $unit = "k")
     {
 
@@ -280,7 +332,7 @@ class GeolocationHelper
         return round($distance, 0);
     }
 
-    public static function getPlaceName($ll)
+    public static function getPlaceName($ll = null)
     {
         $ll = (!isset($ll)) ? "10.30903,123.8931" : $ll;
         $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" . $ll . "&key=AIzaSyDBYczEUp2hpIEhRgm2LbSWHI3qvMo4jQ0";
@@ -306,15 +358,20 @@ class GeolocationHelper
 
 
             } else {
-                // the request did not complete as expected. common errors are 4xx
-                // (not found, bad request, etc.) and 5xx (usually concerning
-                // errors/exceptions in the remote script execution)
 
                 die('Request failed: HTTP status code: ' . $resultStatus);
             }
         }
 
+    }
 
+    public static function resolveDistance($activity)
+    {
+        if ($activity->typable_type == 'App\Segment') {
+            return $activity->typable->distance;
+        }
+
+        return 0;
     }
 }
 
