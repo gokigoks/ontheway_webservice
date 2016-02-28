@@ -60,7 +60,7 @@ class ActivityController extends Controller
             $place_name = $request['place_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
-            $tips = $request['tips'];
+            
             $iterinary_id = $request['iterinary_id'];
 
             $category = $request['category'];

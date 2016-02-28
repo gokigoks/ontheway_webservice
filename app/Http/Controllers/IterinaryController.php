@@ -108,7 +108,6 @@ class IterinaryController extends Controller
 
         $user = userSessionHandler::user($token);
 
-
         if ($user == null) {
             return response()->json('user not found.', 404);
         }
@@ -150,7 +149,6 @@ class IterinaryController extends Controller
         $iterinary->creator_id = $user->id;
         $iterinary->origin = $origin;
         $iterinary->destination = $destination;
-
 
         if ($user->iterinaries()->save($iterinary)) {
             //$user->iterinaries()->attach($iterinary->id);
@@ -331,11 +329,14 @@ class IterinaryController extends Controller
         $route_id = Input::get('route_id');
         if (!$route_id) return response()->json('id?', 400);
         $route = Route::find($route_id);
-        if (!$route) return response()->json('route not found', 404);
+        if (!$route) return response()
+            ->json(['err' => 'route not found'], 404);
 //        dd($iterinary)
         $segments = $route->segments()->get();
 
-        if ($segments->isEmpty()) return response()->json('error', 400);
+        if ($segments->isEmpty()) return response()
+            ->json(['err' => 'no segments',
+                    'center_lat' => ''], 400);
 
         $points = [];
 
@@ -359,6 +360,7 @@ class IterinaryController extends Controller
         if (!$id) return response()->json('id is required', 400);
 
         $route = Route::find($id);
+
         if ($route->count() > 0) {
 
             return response()->json($route, 200);
