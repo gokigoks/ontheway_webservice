@@ -22,7 +22,7 @@ class ActivityController extends Controller
         $request = $request->all();
         $type = $request['type'];
         $token = $request['token'];
-        if ($type == "transport") {
+        if ($type == "transport" || $type == 'transpo' ) {
 
             $iterinary_id = $request['iterinary_id'];
             $origin_name = $request['origin_name'];
@@ -55,7 +55,7 @@ class ActivityController extends Controller
 
             return UserSessionHandler::addSegment($token, $iterinary_id, $origin_name, $lng, $lat, $mode);
         }
-        if ($type == "food") {
+        if ($type == "food" || $type = 'Food' || $type == 'eat') {
 
             $place_name = $request['place_name'];
             $lng = $request['lng'];

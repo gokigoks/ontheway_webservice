@@ -93,6 +93,9 @@ class UserSessionHandler
 //        $user = User::where('id','=',Session::get($token))->first();
 
         $session = UserSession::where('token','=',$token)->first();
+        
+        if($session==null) return response()->json('web token invalid',403); 
+
         $user = User::where('id','=',$session->payload_id)->first();
 
         return $user;
@@ -356,7 +359,7 @@ class UserSessionHandler
                     ->where('destination_name','=','')
                     ->orWhere('destination_name','=','null')
                     ->first();
-                        
+
         $segment->destination_name = $destination_name;
         $segment->destination_pos = $lat . ',' . $lng;
         $segment->price = $price;
