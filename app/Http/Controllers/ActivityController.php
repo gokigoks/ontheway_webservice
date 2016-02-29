@@ -25,7 +25,7 @@ class ActivityController extends Controller
         if ($type == "transport" || $type == 'transpo' ) {
 
             $iterinary_id = $request['iterinary_id'];
-            $origin_name = $request['origin_name'];
+            $origin_name = $request['place_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
             $mode = $request['mode'];
@@ -149,7 +149,7 @@ class ActivityController extends Controller
         $type = $request['type'];
         if (!$type) return response()->json('error', 400);
         if ($type == 'transpo' || $type == 'transport') {
-            $segment_id = $request['iterinary_id'];
+            $iterinary_id = $request['iterinary_id'];
             $destination_name = $request['destination_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
