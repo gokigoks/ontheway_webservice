@@ -347,11 +347,16 @@ class UserSessionHandler
      * @param $lat
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function endSegment($token, $segment_id, $destination_name, $lng, $lat, $price = 0)
-    {
+    public static function endSegment($token, $iterinary_id, $destination_name, $lng, $lat, $price = 0)
+    {   
+        $iterinary = Iterinary::find($iterinary_id);
+        $route = $iterinary->route;
 
-        $segment = Segment::find($segment_id);
-
+        $segment = $route->segments()
+                    ->where('destination_name','=','')
+                    ->orWhere('destination_name','=','null')
+                    ->first();
+                        
         $segment->destination_name = $destination_name;
         $segment->destination_pos = $lat . ',' . $lng;
         $segment->price = $price;

@@ -149,12 +149,12 @@ class ActivityController extends Controller
         $type = $request['type'];
         if (!$type) return response()->json('error', 400);
         if ($type == 'transpo' || $type == 'transport') {
-            $segment_id = $request['segment_id'];
+            $segment_id = $request['iterinary_id'];
             $destination_name = $request['destination_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
             $price = $request['price'];
-            return UserSessionHandler::endSegment($token, $segment_id, $destination_name, $lat, $lng, $price);
+            return UserSessionHandler::endSegment($token, $iterinary_id, $destination_name, $lat, $lng, $price);
         }
 
         if ($type == 'spot') {
