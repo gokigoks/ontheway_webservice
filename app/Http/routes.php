@@ -425,3 +425,5 @@ Route::get('api/test/addRatings',function()
 });
 
 Route::post('api/iterinary/track',['middleware' => 'cors', 'uses' => 'IterinaryController@trackUser']);
+
+Route::post('api/recommendee/getrecommendation', ['middleware' => 'cors', 'uses' => 'RecommenderController@getRecommendation']);
