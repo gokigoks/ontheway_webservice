@@ -350,7 +350,7 @@ class IterinaryController extends Controller
         $points = GeolocationHelper::flatten($points);
         $path = GeolocationHelper::encode($points);
 
-        $data = ['center' => $center, 'path' => $path,'activities' => $iterinary->typable];
+        $data = ['center' => $center, 'path' => $path,'activities' => $activities->typable];
 
         return response()->json($data, 200);
     }
