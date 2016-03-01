@@ -326,9 +326,10 @@ class IterinaryController extends Controller
      */
     public function getPath()
     {   //TODO
-        $route_id = Input::get('route_id');
-        if (!$route_id) return response()->json('id?', 400);
-        $route = Route::find($route_id);
+
+        $iterinary_id = Input::get('iterinary_id');
+        $iterinary = Iterinary::find($iterinary_id);
+        $route = $iterinary->route;
         if (!$route) return response()
             ->json(['err' => 'route not found'], 404);
 //        dd($iterinary)
@@ -337,7 +338,7 @@ class IterinaryController extends Controller
         if ($segments->isEmpty()) return response()
             ->json(['err' => 'no segments',
                 'center_lat' => ''], 400);
-
+        $activities = $iterinary->activities()->with('typable')->get();
         $points = [];
 
         foreach ($segments as $segment) {
@@ -349,7 +350,7 @@ class IterinaryController extends Controller
         $points = GeolocationHelper::flatten($points);
         $path = GeolocationHelper::encode($points);
 
-        $data = ['center' => $center, 'path' => $path];
+        $data = ['center' => $center, 'path' => $path,'activities' => $iterinary->typable];
 
         return response()->json($data, 200);
     }

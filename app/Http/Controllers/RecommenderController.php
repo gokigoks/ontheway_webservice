@@ -83,6 +83,10 @@ class RecommenderController extends Controller
         $suggested_iterinary = WeightedAverage::whereIn("ratingable_id", $iterinary_choices)->where("ratingable_type", "Iterinary")->max("average");
         $suggested_iterinary = WeightedAverage::where("average", $suggested_iterinary)->where("ratingable_type", "Iterinary")->lists("ratingable_id");
         //refers to points if there are iterinaries with the same rate
+        if(!$suggested_iterinary)
+        {
+            return response()->json('error walay suggested',403);
+        }
         // dd($suggested_iterinary);
         if (count($suggested_iterinary) > 1) {
             $suggested_iterinary = $this->getSuggestedIterinary($suggested_iterinary);
