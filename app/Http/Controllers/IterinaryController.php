@@ -362,11 +362,17 @@ class IterinaryController extends Controller
         $id = Input::get('id');
         if (!$id) return response()->json('id is required', 400);
 
-        $route = Route::find($id);
-
+        $iterinary = Iterinary::find($id);
+        $route = $iterinary->route;
+        $activities = $iterinary->activities()->with('typable')->get();
+        $data = [
+            'iterinary' => $iterinary,
+            'route' => $route,
+            'activities' => $activities
+        ];
         if ($route->count() > 0) {
 
-            return response()->json($route, 200);
+            return response()->json($data, 200);
         }
         return response()->json('no route found', 404);
     }
