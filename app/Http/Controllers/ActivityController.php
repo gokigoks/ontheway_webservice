@@ -55,7 +55,7 @@ class ActivityController extends Controller
 
             return UserSessionHandler::addSegment($token, $iterinary_id, $origin_name, $lng, $lat, $mode);
         }
-        if ($type == "food" || $type = 'Food' || $type == 'eat') {
+        if ($type == "foods" || $type = 'Food' || $type == 'eat') {
 
             $place_name = $request['place_name'];
             $lng = $request['lng'];
@@ -93,7 +93,7 @@ class ActivityController extends Controller
 
             return UserSessionHandler::addFood($token, $place_name, $lng, $lat, $category, $iterinary_id);
         }
-        if ($type == "spot") {
+        if ($type == "spots" || $type== 'spot') {
 
             $spot_name = $request['place_name'];
             $lng = $request['lng'];

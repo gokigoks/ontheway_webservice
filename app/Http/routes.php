@@ -423,3 +423,5 @@ Route::get('api/test/addRatings',function()
 {
     $users = App\User::lists('id')->chunk(4);
 });
+
+Route::post('api/iterinary/track',['middleware' => 'cors', 'uses' => 'IterinaryController@trackUser']);
