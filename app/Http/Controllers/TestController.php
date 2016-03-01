@@ -6,6 +6,7 @@ use App\Classes\Rome2rioHelper as Rome2Rio;
 use App\Classes\FoursquareHelper as Foursquare;
 use Carbon\Carbon;
 use App\Iterinary;
+use App\Activity;
 use App\Route;
 use App\Segment;
 use App\Stop;
@@ -77,6 +78,7 @@ class TestController extends Controller
             $new_route->price = Rome2Rio::getRome2RioPrice($route);
             $new_route->save();
 
+
             $iterinary->route()->associate($new_route);
             $iterinary->save();
             $contributor->iterinaries()->attach($iterinary->id, ['date_start' => $now]);
@@ -102,7 +104,13 @@ class TestController extends Controller
 
                 $new_route->segments()->save($new_segment);
 
+                $activity = new Activity();
+                $activity->iterinary_id = $iterinary->id;
+                $activity->day = 1;
+                $activity->start_time = Carbon::now()->toTimeString();
+                $activity->end_time = Carbon::now()->addMinute($segment->duration)->toTimeString();
 
+                $new_segment->activity()->save($activity);
 
                 $i++;
             }

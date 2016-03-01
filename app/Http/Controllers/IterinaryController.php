@@ -330,7 +330,7 @@ class IterinaryController extends Controller
         $iterinary_id = Input::get('iterinary_id');
         $iterinary = Iterinary::find($iterinary_id);
         $route = $iterinary->route;
-        
+
 
         if (!$route) return response()
             ->json(['err' => 'route not found'], 404);
