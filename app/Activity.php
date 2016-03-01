@@ -75,6 +75,11 @@ class Activity extends Model {
         return $query->where('typable_type','=','App\Spot');
     }
 
+    public function scopeDisregardSegments($query)
+    {
+        return $query->where('typable_type','!=','App\Segment');
+    }
+
     public function scopeFood($query)
     {
         return $query->where('typable_type','=','App\Eat');

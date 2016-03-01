@@ -9,7 +9,6 @@ use App\Segment;
 
 class ActivityController extends Controller
 {
-
     /**
      * @param $request
      * @route 'api/activity/add'
@@ -21,6 +20,7 @@ class ActivityController extends Controller
 
         $request = $request->all();
         $type = $request['type'];
+
         $token = $request['token'];
         if ($type == "transport" || $type == 'transpo' ) {
 
@@ -55,7 +55,7 @@ class ActivityController extends Controller
 
             return UserSessionHandler::addSegment($token, $iterinary_id, $origin_name, $lng, $lat, $mode);
         }
-        if ($type == "foods" || $type = 'Food' || $type == 'eat') {
+        if ($type=='food') {
 
             $place_name = $request['place_name'];
             $lng = $request['lng'];
@@ -164,7 +164,6 @@ class ActivityController extends Controller
             return UserSessionHandler::endSpotActivity($token, $iterinary_id, $price, $tips);
         }
         if ($type == 'eat') {
-
             $iterinary_id = $request['iterinary_id'];
             $price = $request['price'];
             $tips = $request['tips'];

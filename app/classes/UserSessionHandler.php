@@ -333,7 +333,7 @@ class UserSessionHandler
         $date_start = new Carbon($pivot->pivot->date_start);
         $day = $now->diffInDays($date_start);
 
-        if ($day == 0) {
+        if ($day == 0 || $day > 20 ) {
             return 1; //default
         }
 

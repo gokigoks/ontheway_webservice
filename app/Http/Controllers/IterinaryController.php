@@ -325,7 +325,7 @@ class IterinaryController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getPath()
-    {
+    {   //TODO
         $route_id = Input::get('route_id');
         if (!$route_id) return response()->json('id?', 400);
         $route = Route::find($route_id);

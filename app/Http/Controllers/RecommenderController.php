@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\Rome2rioHelper as Rome2Rio;
@@ -8,14 +9,14 @@ use App\Segment;
 use App\Contribution;
 use App\WeightedAverage;
 use Illuminate\Http\Request;
-class RecommenderController extends Controller {
+
+class RecommenderController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-
-
     public function get_recommend(Request $request)
     {
         $data = \Input::all();
@@ -31,7 +32,7 @@ class RecommenderController extends Controller {
          * $url = API url
          * kani ray ilisi earl
          */
-        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=".$origin."&dName=".$destination;
+        $url = "http://free.rome2rio.com/api/1.2/json/Search?key=nKYL3BZS&oName=" . $origin . "&dName=" . $destination;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
@@ -59,28 +60,31 @@ class RecommenderController extends Controller {
         // dd($segments);
         // dd($segments);
         //end debug
-        return response()->json($segments,200);
+        return response()->json($segments, 200);
         // dd($data,$ch);
 
         curl_close($ch);
-        return response()->json([$request->all(),$data],'200');
+        return response()->json([$request->all(), $data], '200');
     }
-    public function getRecommendation(Request $request){
+
+    public function getRecommendation(Request $request)
+    {
         $origin = $request->origin;
         $destination = $request->destination;
         $userbudget = $request->budget;
         // $origin = "cebu city";
         // $destination = "manila";
         //get closest budget
-        $budget = $this->getBudgetRecommendation($userbudget);
+        $budget = $this->getBudgetRecommendation($userbudget, $origin, $destination);
         //get iterinaries that falls under the budget
-        $iterinary_choices = Iterinary::whereRaw("price <= ?", [$budget])->lists("id");
+        $iterinary_choices = Iterinary::whereRaw("price <= ?", [$budget])->where("origin", $origin)->where("destination", $destination)->lists("id");
+        // dd($iterinary_choices);
         //get the iterinary_id that falls under the budget and is the best in terms of rating
         $suggested_iterinary = WeightedAverage::whereIn("ratingable_id", $iterinary_choices)->where("ratingable_type", "Iterinary")->max("average");
         $suggested_iterinary = WeightedAverage::where("average", $suggested_iterinary)->where("ratingable_type", "Iterinary")->lists("ratingable_id");
         //refers to points if there are iterinaries with the same rate
         // dd($suggested_iterinary);
-        if(count($suggested_iterinary)>1){
+        if (count($suggested_iterinary) > 1) {
             $suggested_iterinary = $this->getSuggestedIterinary($suggested_iterinary);
         }
         // dd($suggested_iterinary);
@@ -91,32 +95,19 @@ class RecommenderController extends Controller {
         // dd($route_id);
         // dd($iterinary_choices);
     }
-    /**
-     * get trip recommendatinos
-     * @param id
-     * @return Response
-     */
-    public function getRouteRecommendations($id = null)
-    {
 
-        //gets the iterinary with the most points [copy and like]
-        $suggested_id = $this->getSuggestedIterinary($id);
-        //get the route from iterinary
-        $route_id = Iterinary::where("id", $suggested_id)->lists("route_id");
-        return $route_id[0];
-        // dd($route_id);
-    }
     /**
      * Show the form for creating a new resource.
-     * @param budget
+     *
      * @return Response
      */
-    public function getBudgetRecommendation($budget)
+    public function getBudgetRecommendation($budget, $origin, $destination)
     {
 
-        $prices = Iterinary::all();
+        $prices = Iterinary::where("origin", $origin)->where("destination", $destination)->get();
         $allprice = [];
-        if (count($prices)==0) {
+        // dd($prices);
+        if (count($prices) == 0) {
             return 0;
         } else {
 
@@ -124,14 +115,14 @@ class RecommenderController extends Controller {
                 array_push($allprice, $price->price);
             }
             // $budget = 2700;
-            $distance = abs($allprice[0]-$budget);
+            $distance = abs($allprice[0] - $budget);
             // dd($distance);
             $idx = 0;
             $distanceHasReplaced = false;
-            for ($i=1; $i < count($allprice); $i++) {
-                $cdistance = abs($allprice[$i]-$budget);
+            for ($i = 1; $i < count($allprice); $i++) {
+                $cdistance = abs($allprice[$i] - $budget);
                 // dd($cdistance);
-                if($cdistance<$distance && $allprice[$i]<=$budget){
+                if ($cdistance < $distance && $allprice[$i] <= $budget) {
                     $idx = $i;
                     $distance = $cdistance;
                     $distanceHasReplaced = true;
@@ -158,12 +149,12 @@ class RecommenderController extends Controller {
     //  }
     //  return $keys;
     // }
-    public function getSuggestedIterinary($ids){
+    public function getSuggestedIterinary($ids)
+    {
         // $iterinary_ids = $this->getIterinariesByPlaces($origin, $destination);
         //vars
         $points = [];
         $suggested = [];
-
         $contributions = Contribution::whereIn("iterinary_id", $ids)->get();
         // dd($contributions);
         foreach ($contributions as $value) {
@@ -181,6 +172,7 @@ class RecommenderController extends Controller {
         return $suggested->iterinary_id;
         // dd($suggested->iterinary_id);
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -190,40 +182,44 @@ class RecommenderController extends Controller {
     {
         //
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id)
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)
