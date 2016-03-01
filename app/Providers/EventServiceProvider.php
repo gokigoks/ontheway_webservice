@@ -23,17 +23,17 @@ class EventServiceProvider extends ServiceProvider {
 		'event.name' => [
 			'EventListener',
 		],
-        IterinaryWasCopied::class=>[
-            UpdateContributionTable::class,
+        'IterinaryWasCopied'=>[
+            'UpdateContributionTable',
         ],
-		IterinaryWasCreated::class=>[
-			CreateContributionEntry::class,
+		'IterinaryWasCreated'=>[
+			'CreateContributionEntry',
 		],
-		IterinaryRateWasAdded::class=>[
-			UpdateIterinaryWeighted::class,
+		'IterinaryRateWasAdded'=>[
+			'UpdateIterinaryWeighted',
 		],
-		ActivityRateWasAdded::class=>[
-			UpdateActivityWeighted::class,
+		'ActivityRateWasAdded'=>[
+			'UpdateActivityWeighted',
 		],
 	];
 
