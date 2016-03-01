@@ -66,9 +66,9 @@ class TestController extends Controller
             $iterinary->destination = $data->places[1]->name;
             $iterinary->creator_id = $contributor->id;
             $iterinary->duration = $route->duration;
-            $iterinary->distance = Rome2Rio::getRome2RioPrice($route);
+            $iterinary->distance = $route->distance;
 
-            $iterinary->price = $route->price;
+            $iterinary->price = Rome2Rio::getRome2RioPrice($route);
 
             $new_route = new Route();
             $new_route->name = $route->name;
