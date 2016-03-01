@@ -336,7 +336,7 @@ class IterinaryController extends Controller
 
         if ($segments->isEmpty()) return response()
             ->json(['err' => 'no segments',
-                    'center_lat' => ''], 400);
+                'center_lat' => ''], 400);
 
         $points = [];
 
@@ -419,9 +419,8 @@ class IterinaryController extends Controller
         $token = Input::get('token');
         $iterinary_id = Input::get('iterinary_id');
 
-        if(!$token || !$iterinary_id)
-        {
-            return response()->json('kuwang input',400);
+        if (!$token || !$iterinary_id) {
+            return response()->json('kuwang input', 400);
         }
 
         $user = UserSessionHandler::user($token);
@@ -429,7 +428,7 @@ class IterinaryController extends Controller
         $current_iterinary = $user->iterinaries()->find($iterinary_id);
 
         $route = $current_iterinary->route;
-        if(!$route) {
+        if (!$route) {
             $current_iterinary->delete(); // e delete nalang
             return response()->json('walay route');
         }
@@ -440,9 +439,9 @@ class IterinaryController extends Controller
             'status' => 'done',
         ];
         $user->iterinaries()
-            ->updateExistingPivot($iterinary_id,$pivot,true);
+            ->updateExistingPivot($iterinary_id, $pivot, true);
         //dd($user_id, $iterinary_id);
-        return response()->json('success',200);
+        return response()->json('success', 200);
     }
 
     public function copyIterinary(Request $request)
@@ -451,7 +450,6 @@ class IterinaryController extends Controller
         $token = $request['token'];
         $iterinary_id = $request['iterinary_id'];
 
-        $iterinary = Iterinary::find($iterinary_id);
         $user = UserSessionHandler::getByToken($token);
 
         $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'planned'];
@@ -498,5 +496,44 @@ class IterinaryController extends Controller
     {
         //
     }
+
+    public function setIterinaryStartDate(Request $request)
+    {
+        $request = $request->all();
+        $token = $request['token'];
+        $iterinary_id = $request['iterinary_id'];
+        $date = $request['start_date'];
+        $error_bag = [];
+
+        $input_bag = [
+            'token' => $token,
+            'iterinary id' => $iterinary_id,
+            'start date' => $date,
+        ];
+
+        $i = 0;
+        foreach ($input_bag as $key => $value) {
+            $value = trim($value);
+
+            if (empty($value)) {
+                $error_bag[$i] = "$key is empty";
+                $i++;
+            } else {
+                //
+            }
+        }
+        //filter of false or null values
+        if (array_filter($error_bag)) {
+            return response()->json($error_bag, 400);
+        }
+
+        $start_date = Carbon::parse($date);
+
+        return UserSessionHandler::setIterinaryStartDate($token, $iterinary_id, $start_date);
+
+    }
+
+    //TODO
+    // check if date is 00 00 00 in mobile
 //end
 }

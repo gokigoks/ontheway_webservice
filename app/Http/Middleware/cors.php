@@ -17,7 +17,6 @@ class cors {
 	public function handle($request, Closure $next)
 	{
 
-
         $token = (!Input::get('token')) ? $request['token'] : Input::get('token');
 
 		if($token == "gokigoks" || Handler::check($token) )

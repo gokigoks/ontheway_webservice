@@ -416,3 +416,10 @@ Route::post('check/login',['middleware' => 'cors', 'uses' => function ()
 }]);
 
 Route::get('api/iterinary/like','UserSessionController@rateIterinary');
+
+Route::post('api/iterinary/date',['middleware' => 'cors', 'uses' => 'IterinaryController@setIterinaryStartDate']);
+
+Route::get('api/test/addRatings',function()
+{
+    $users = App\User::lists('id')->chunk(4);
+});

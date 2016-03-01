@@ -37,11 +37,10 @@ class TestController extends Controller
     public function populateRoutes()
     {
         $inputs = [
-            'origin' => Input::get('origin'),
-            'destination' => Input::get('destination'),
+            'origin' => rawurlencode(Input::get('origin')),
+            'destination' => rawurlencode(Input::get('destination')),
             'pax' => Input::get('pax')
         ];
-
 
         $airports = [];
         $user_id = Input::get('user_id');
@@ -66,7 +65,9 @@ class TestController extends Controller
             $iterinary->origin = $data->places[0]->name;
             $iterinary->destination = $data->places[1]->name;
             $iterinary->creator_id = $contributor->id;
-
+            $iterinary->duration = $route->duration;
+            $iterinary->distance = $route->distance;
+            $iterinary->price = $route->price;
 
             $new_route = new Route();
             $new_route->name = $route->name;
