@@ -330,6 +330,8 @@ class IterinaryController extends Controller
         $iterinary_id = Input::get('iterinary_id');
         $iterinary = Iterinary::find($iterinary_id);
         $route = $iterinary->route;
+        
+
         if (!$route) return response()
             ->json(['err' => 'route not found'], 404);
 //        dd($iterinary)
@@ -350,7 +352,7 @@ class IterinaryController extends Controller
         $points = GeolocationHelper::flatten($points);
         $path = GeolocationHelper::encode($points);
 
-        $data = ['center' => $center, 'path' => $path,'activities' => $activities->typable];
+        $data = ['center' => $center, 'path' => $path,'activities' => $activities];
 
         return response()->json($data, 200);
     }
