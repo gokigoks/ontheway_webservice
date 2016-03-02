@@ -526,6 +526,8 @@ class UserSessionHandler
         $iterinary->price = $price;
         $iterinary->save();
 
+        event(new App\Events\IterinaryWasCreated($iterinary->save()));
+
         return response()->json('success', 200);
     }
 

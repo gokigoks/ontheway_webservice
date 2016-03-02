@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Route;
 use App\Classes\UserSessionHandler;
 use App\Classes\GeolocationHelper;
+use App\Events\IterinaryWasCopied;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
@@ -260,8 +261,7 @@ class IterinaryController extends Controller
     {
         $token = Input::get('token');
 
-
-        if (!$token && !$user_id) return response()->json('user id or token must be supplied');
+        if (!$token) return response()->json('user id or token must be supplied');
         $user = UserSessionHandler::user($token);
 
         $data = $user->current_iterinary()->first();
@@ -340,8 +340,8 @@ class IterinaryController extends Controller
 
         if ($segments->isEmpty()) return response()
             ->json(['err' => 'no segments',
-                'center_lat' => ''], 400);
-        $activities = $iterinary->activities()->with('typable')->get();
+                    'center_lat' => ''], 400);
+            $activities = $iterinary->activities()->with('typable')->get();
         $points = [];
 
         foreach ($segments as $segment) {
@@ -465,6 +465,9 @@ class IterinaryController extends Controller
         $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'planned'];
         $user->iterinaries()->attach($iterinary_id, $pivot_fields);
 //        $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
+
+        event(new App\Events\IterinaryWasCopied($iterinary_id));
+//        \Event::fire(new(App\EventsIterinaryWasCopied($iterinary_id)));
 
         return response()->json('success', 200);
     }
