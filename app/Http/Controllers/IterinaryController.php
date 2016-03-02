@@ -85,7 +85,12 @@ class IterinaryController extends Controller
             $route->save();
             $iterinary->route()->associate($route);
             $iterinary->save();
-
+            $pivot_fields = [
+                'status' => 'doing',
+                'date_start' => Carbon::now()->toTimeString()
+            ];
+            $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
+            
             return response()->json($iterinary, 200);
         } else {
             return response()->json('error saving', 401);
@@ -254,14 +259,10 @@ class IterinaryController extends Controller
     public function getCurrent()
     {
         $token = Input::get('token');
-        $user_id = Input::get('user_id');
+
 
         if (!$token && !$user_id) return response()->json('user id or token must be supplied');
-        $user = User::find($user_id);
-
-        if (!$user) {
-            $user = UserSessionHandler::getByToken($token);
-        }
+        $user = UserSessionHandler::user($token);
 
         $data = $user->current_iterinary()->first();
         if (!$data->count() > 0) {

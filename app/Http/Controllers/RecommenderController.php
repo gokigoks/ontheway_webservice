@@ -8,6 +8,10 @@ use App\Route;
 use App\Segment;
 use App\Contribution;
 use App\WeightedAverage;
+use App\Events\IterinaryRateWasAdded;
+use App\Events\ActivityRateWasAdded;
+use App\Classes\userSessionHandler;
+use App\Rating;
 use Illuminate\Http\Request;
 
 class RecommenderController extends Controller
@@ -175,6 +179,27 @@ class RecommenderController extends Controller
         }
         return $suggested->iterinary_id;
         // dd($suggested->iterinary_id);
+    }
+
+    public function addrating(Request $request){
+        $token = $request->token;
+        if($token == null) return response()->json('token is empty',200);
+        $user = userSessionHandler::user($token);
+        if($user == null)
+        {
+            return response()->json('user not found.',404);
+        }
+        $rating = new Rating;
+        $rating->user_id           = $user->id;
+        $rating->value             = $request->value;
+        $rating->ratingable_id     = $request->ratingable_id;
+        $rating->ratingable_type  = $request->ratingable_type;
+        $rating->save();
+        if ($request->ratingable_type == "Iterinary") {
+            \Event::fire(new IterinaryRateWasAdded($request->ratingable_id));
+        } else {
+            \Event::fire(new ActivityRateWasAdded($request->ratingable_id));
+        }
     }
 
     /**
