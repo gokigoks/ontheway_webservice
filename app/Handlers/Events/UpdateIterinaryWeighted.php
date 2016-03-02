@@ -44,8 +44,9 @@ class UpdateIterinaryWeighted {
     }
 
     public function updateAllWeightedAverage(){
+
         $all = WeightedAverage::where("ratingable_type", "Iterinary")->get();
-        // dd($all);
+
 
         foreach ($all as $wa) {
             //check if number of votes reaches 5 (minimum)
