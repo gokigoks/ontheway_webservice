@@ -505,7 +505,7 @@ class UserSessionHandler
     }
 
     //
-    public static function endIterinary($iterinary)
+    public static function endIterinary($user,$iterinary)
     {
         $distance = 0;
         $duration = 0;
@@ -526,7 +526,7 @@ class UserSessionHandler
         $iterinary->price = $price;
         $iterinary->save();
 
-        event(new App\Events\IterinaryWasCreated($iterinary->save()));
+        event(new \App\Events\IterinaryWasCreated($user->id,$iterinary->id));
 
         return response()->json('success', 200);
     }

@@ -443,7 +443,7 @@ class IterinaryController extends Controller
             return response()->json('walay route');
         }
 
-        UserSessionHandler::endIterinary($current_iterinary);
+        UserSessionHandler::endIterinary($user,$current_iterinary);
 
         $pivot = [
             'status' => 'done',
@@ -466,7 +466,7 @@ class IterinaryController extends Controller
         $user->iterinaries()->attach($iterinary_id, $pivot_fields);
 //        $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
 
-        event(new App\Events\IterinaryWasCopied($iterinary_id));
+        event(new \App\Events\IterinaryWasCopied($iterinary_id));
 //        \Event::fire(new(App\EventsIterinaryWasCopied($iterinary_id)));
 
         return response()->json('success', 200);
