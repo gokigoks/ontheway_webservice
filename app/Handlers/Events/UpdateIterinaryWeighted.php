@@ -64,7 +64,7 @@ class UpdateIterinaryWeighted
                 $update_weighted_average->average = $weighted_average;
                 $update_weighted_average->save();
                 // return "updated successfully";
-                var_dump('success');
+//                var_dump('success');
             } else {
 //                return "cannot get WeightedAverage";
                 //do nothing

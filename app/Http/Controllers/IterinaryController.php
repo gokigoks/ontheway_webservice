@@ -90,7 +90,7 @@ class IterinaryController extends Controller
                 'date_start' => Carbon::now()->toTimeString()
             ];
             $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
-            
+
             return response()->json($iterinary, 200);
         } else {
             return response()->json('error saving', 401);

@@ -65,7 +65,7 @@ class UpdateActivityWeighted
                 $update_weighted_average->save();
                 // return "updated successfully";
             } else {
-                dd("cannot get WeightedAverage");
+//                dd("cannot get WeightedAverage");
             }
         }
     }
