@@ -93,7 +93,7 @@ class RecommenderController extends Controller {
             $price += Rome2Rio::getRome2RioPrice($segment);
         }
 
-        $segments['price'] = $price;
+        
         curl_close($ch);
         return $segments;
 
