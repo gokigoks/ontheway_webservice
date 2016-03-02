@@ -72,7 +72,7 @@ class Rome2rioHelper
         if (isset($data->indicativePrice)) {
             ///////////
             $price = $data->indicativePrice;
-            return (!isset($price->nativePrice)) ? ($price->price * 42) : $price->nativePrice;
+            return (!isset($price->nativePrice)) ? ($price->price * 42) : $price->nativePrice * 42;
             //eturn $data->indicativePrice->nativePrice;
         }
 

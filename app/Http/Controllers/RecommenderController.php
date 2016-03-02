@@ -77,7 +77,7 @@ class RecommenderController extends Controller {
                 $value->{"path"} = $flightpath;
             }
         }
-
+        $price = 0;
         foreach ($segments as &$segment) {
             $segment->mode = $segment->kind;
             unset($segment->kind);
@@ -89,9 +89,11 @@ class RecommenderController extends Controller {
             unset($segment->sPos);
             $segment->destination_pos = $segment->tPos;
             unset($segment->tPos);
-
+            $segment->{'price'} = Rome2Rio::getRome2RioPrice($segment);
+            $price += Rome2Rio::getRome2RioPrice($segment);
         }
 
+        $segments['price'] = $price;
         curl_close($ch);
         return $segments;
 
