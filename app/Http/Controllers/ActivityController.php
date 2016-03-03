@@ -254,9 +254,9 @@ class ActivityController extends Controller
     {
 
         $iterinary_id = Input::get('iterinary_id');
-
-        $activities = Iterinary::find($iterinary_id)->with('activities.typable')->get();
-        return response()->json($activities,200);   
+        $iterinary = Iterinary::find($iterinary_id);
+        $activities = $iterinary->activities()->with('typable')->get();
+        return response()->json($activities,200);
 
     }
 }
