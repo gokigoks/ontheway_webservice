@@ -4,8 +4,10 @@ use App\Activity;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\UserSessionHandler;
+use App\Iterinary;
 use Illuminate\Http\Request;
 use App\Segment;
+use Input;
 
 class ActivityController extends Controller
 {
@@ -22,7 +24,7 @@ class ActivityController extends Controller
         $type = $request['type'];
 
         $token = $request['token'];
-        if ($type == "transport" || $type == 'transpo' ) {
+        if ($type == "transport" || $type == 'transpo') {
 
             $iterinary_id = $request['iterinary_id'];
             $origin_name = $request['place_name'];
@@ -55,12 +57,12 @@ class ActivityController extends Controller
 
             return UserSessionHandler::addSegment($token, $iterinary_id, $origin_name, $lng, $lat, $mode);
         }
-        if ($type=='food') {
+        if ($type == 'food') {
 
             $place_name = $request['place_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
-            
+
             $iterinary_id = $request['iterinary_id'];
 
             $category = $request['category'];
@@ -93,7 +95,7 @@ class ActivityController extends Controller
 
             return UserSessionHandler::addFood($token, $place_name, $lng, $lat, $category, $iterinary_id);
         }
-        if ($type == "spots" || $type== 'spot') {
+        if ($type == "spots" || $type == 'spot') {
 
             $spot_name = $request['place_name'];
             $lng = $request['lng'];
@@ -232,4 +234,29 @@ class ActivityController extends Controller
         //
     }
 
+    public function spotCheckInAutocomplete()
+    {
+        $word = Input::get('key_word');
+
+    }
+
+    public function spotCategoryAutocomplete()
+    {
+
+    }
+
+    public function foodCategoryAutocomplete()
+    {
+
+    }
+
+    public function getAll()
+    {
+
+        $iterinary_id = Input::get('iterinary_id');
+
+        $activities = Iterinary::find($iterinary_id)->with('activities.typable')->get();
+        return response()->json($activities,200);   
+
+    }
 }

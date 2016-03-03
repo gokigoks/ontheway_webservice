@@ -429,3 +429,8 @@ Route::post('api/iterinary/track',['middleware' => 'cors', 'uses' => 'IterinaryC
 Route::get('api/recommendee/getrecommendation', ['middleware' => 'cors', 'uses' => 'RecommenderController@getRecommendation']);
 
 Route::get("addrating", ['middleware' => 'cors', 'uses' => 'RecommenderController@addrating']);
+
+Route::get('api/foursquare/spot/checkin',['middleware' => 'cors', 'uses' => 'ActivityController@spotCheckInAutocomplete']);
+
+Route::get('api/iterinary/activities',['middleware' => 'cors','uses' => 'ActivityController@getAll']);
+

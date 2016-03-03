@@ -69,7 +69,6 @@ class FoursquareHelper
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-
         $data = curl_exec($ch);
 
         if (curl_errno($ch)) {

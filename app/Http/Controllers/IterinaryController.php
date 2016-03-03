@@ -460,7 +460,7 @@ class IterinaryController extends Controller
         $token = $request['token'];
         $iterinary_id = $request['iterinary_id'];
         $user = UserSessionHandler::getByToken($token);
-    
+
         $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'planned'];
         $user->iterinaries()->attach($iterinary_id, $pivot_fields);
 //        $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);

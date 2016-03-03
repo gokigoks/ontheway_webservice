@@ -66,4 +66,5 @@ class FourSquareData extends Facade
 
 }
 
+
 ?>
