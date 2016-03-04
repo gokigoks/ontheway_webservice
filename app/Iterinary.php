@@ -117,4 +117,9 @@ class Iterinary extends Model {
         return $this->morphMany('App\Rating','ratingable');
     }
 
+    public function photos()
+    {
+        return $this->hasMany('App\IterinaryPhoto');
+    }
+
 }

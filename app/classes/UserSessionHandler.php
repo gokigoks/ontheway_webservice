@@ -225,39 +225,45 @@ class UserSessionHandler
 
     /**
      * @param $token
-     * @param $spot_name
-     * @param $category
-     * @param $lat
-     * @param $lng
-     * @param $iterinary_id
+     * @param $spot_data
+     * @param $segment
      * @return reponse json
      */
-    public static function addSpot($token, $spot_name, $category, $lat, $lng, $iterinary_id)
+    public static function addSpot($token, $spot_data, $segment)
     {
         //$categories = App\SpotCategory::list('');
-        $spot_category = \DB::table('spot_categories')->select('main_cat', 'main_cat_id')->where('main_cat', 'LIKE', '%' . $category . '%')->distinct()->get();
+        $spot_category = \DB::table('spot_categories')
+            ->select('main_cat', 'main_cat_id')
+            ->where('main_cat', 'LIKE', '%' . $spot_data->category . '%')
+            ->distinct()
+            ->get();
+
+        $current_iterinary = self::getUserCurrentIterinary($token);
         $activity = new Activity();
 
-        $day = self::getDiffInDays($token, $iterinary_id);
+        $day = self::getDiffInDays($token, $current_iterinary->id);
 
         $spot = new Spot;
 
         $spot->main_category_id = $spot_category[0]->main_cat_id;
-        $spot->place_name = $spot_name;
-        $spot->lat = $lat;
-        $spot->lng = $lng;
+        $spot->place_name = $spot_data->place_name;
+        $spot->lat = $spot_data->lat;
+        $spot->lng = $spot_data->lng;
 
-        $spot->pic_url = self::resolveCategoryPic($category);
+        $spot->pic_url = self::resolveCategoryPic($spot_data->category);
         $spot->save();
 
         $start_time = Carbon::now()->toTimeString();
         $activity->start_time = $start_time;
         $activity->day = $day;
-        $activity->iterinary_id = $iterinary_id;
+        $activity->iterinary_id = $current_iterinary->id;
         $activity->start_time = Carbon::now()->toTimeString();
 
         $spot->activity()->save($activity);
-        $iterinary = Iterinary::findOrFail($iterinary_id)->with('activities.typable')->first();
+
+        self::resolveSegmentFromAddActivity($token,$segment);
+//        self::
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)->with('activities.typable')->first();
         return response()->json($iterinary, 200);
     }//end
 
@@ -551,5 +557,26 @@ class UserSessionHandler
         return response()->json('success', 200);
     }
 
+    public static function getLastActivity($token)
+    {
+        $user = self::getByToken($token);
+        $iterinary = $user->current_iterinary()->first();
+        $activity = $iterinary->activities()->with('typable')->orderBy('created_at','desc')->first();
 
+        return $activity->typable;
+    }
+
+
+
+    public static function resolveSegmentFromActivity($token,$data)
+    {
+        $iterinary = self::getCurrentIterinary($token);
+
+    }
+
+    public static function getUserCurrentIterinary($token)
+    {
+        $user = self::getByToken($token);
+        return $user->current_iterinary()->first();
+    }
 }//end

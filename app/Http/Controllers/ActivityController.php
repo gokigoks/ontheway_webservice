@@ -24,6 +24,7 @@ class ActivityController extends Controller
         $type = $request['type'];
 
         $token = $request['token'];
+
         if ($type == "transport" || $type == 'transpo') {
 
             $iterinary_id = $request['iterinary_id'];
@@ -31,6 +32,7 @@ class ActivityController extends Controller
             $lng = $request['lng'];
             $lat = $request['lat'];
             $mode = $request['mode'];
+            $price = $request['price'];
             $input_bag = [
                 'origin name ' => $origin_name,
                 'longitude ' => $lng,
@@ -59,22 +61,10 @@ class ActivityController extends Controller
         }
         if ($type == 'food') {
 
-            $place_name = $request['place_name'];
-            $lng = $request['lng'];
-            $lat = $request['lat'];
-
-            $iterinary_id = $request['iterinary_id'];
-
-            $category = $request['category'];
-            $pic_url = "http://php-usjrproject.rhcloud.com/api/img/food.png";
-            //$token = $request['token'];
-
+            $food = $request['food'];
+            $segment = $request['segment'];
             $input_bag = [
-                'place name' => $place_name,
-                'longitude ' => $lng,
-                'latitude ' => $lat,
-                'food category' => $category,
-                'iterinary id' => $iterinary_id
+                'food object is ' => $food
             ];
 
             $i = 0;
@@ -93,23 +83,16 @@ class ActivityController extends Controller
                 return response()->json($error_bag, 400);
             }
 
-            return UserSessionHandler::addFood($token, $place_name, $lng, $lat, $category, $iterinary_id);
+            return UserSessionHandler::addFood($token, $food,$segment);
         }
         if ($type == "spots" || $type == 'spot') {
 
-            $spot_name = $request['place_name'];
-            $lng = $request['lng'];
-            $lat = $request['lat'];
-            $category = $request['category'];
-            $iterinary_id = $request['iterinary_id'];
-            $pic_url = "http://php-usjrproject.rhcloud.com/api/img/beach.png";
+            $spot = $request['spot'];
+
+            $segment = $request['segment'];
 
             $input_bag = [
-                'spot name' => $spot_name,
-                'category' => $category,
-                'longitude ' => $lng,
-                'latitude ' => $lat,
-                'iterinary id' => $iterinary_id,
+                'spot' => $spot,
             ];
 
             $i = 0;
@@ -128,9 +111,14 @@ class ActivityController extends Controller
                 return response()->json($error_bag, 400);
             }
 
-            return UserSessionHandler::addSpot($token, $spot_name, $category, $lat, $lng, $iterinary_id);
+            return UserSessionHandler::addSpot($token, $spot, $segment);
 
-        } else {
+        }
+        if($type == 'hotel')
+        {
+            //todo
+        }
+        else {
 
             return response()->json('type field is required', 200);
         }
@@ -242,17 +230,17 @@ class ActivityController extends Controller
 
     public function spotCategoryAutocomplete()
     {
-
+        //TODO
     }
 
     public function foodCategoryAutocomplete()
     {
-
+        //TODO
     }
 
     public function getAll()
     {
-
+        //add a compiled polyline of all activities
         $iterinary_id = Input::get('iterinary_id');
         $iterinary = Iterinary::find($iterinary_id);
         $activities = $iterinary->activities()->with('typable')->get();

@@ -67,7 +67,6 @@ class UserSessionController extends Controller
 
         UserSessionHandler::startUserSession($user->id,$token->uuid); // starts session
 
-        dd(\Session::get($token->uuid));
         return response()->json($user, 200);
     }
 

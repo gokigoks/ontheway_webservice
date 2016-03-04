@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Iterinary;
 use App\User;
+use App\IterinaryPhoto;
+use App\Segment;
 use Input;
 use Carbon\Carbon;
 use App\Route;
@@ -24,19 +26,12 @@ class IterinaryController extends Controller
      */
     public function newIterinary(Request $request)
     {
-        $user = '';
         $token = Input::get('token');
-        $withSegment = Input::get('withSegment');
         $error_bag = array();
 
         if ($token == null) return response()->json('token is empty', 200);
 
         $user = userSessionHandler::getByToken($token);
-//        $user = $user->filter(function($item)
-//        {
-//            return $item->id = $item->getAttribute('id');
-//        })->first();
-
 
         if ($user == null) {
             if (Auth::check()) {
@@ -48,11 +43,13 @@ class IterinaryController extends Controller
         $origin = Input::get('origin');
         $destination = Input::get('destination');
         $pax = Input::get('pax');
+        $origin_segment = Input::get('origin_segment');
 
         $input_bag = [
             'origin' => $origin,
             'destination' => $destination,
             'pax' => $pax,
+            'segment' => $origin_segment
         ];
 
         $i = 0;
@@ -76,8 +73,7 @@ class IterinaryController extends Controller
         $iterinary->origin = $origin;
         $iterinary->destination = $destination;
         $iterinary->pax = $pax;
-        //dd('dre dapita errr');
-        //$iterinary->save();
+
         //dd('dre dapita error');
         if ($user->iterinaries()->save($iterinary)) {
             //$user->iterinaries()->attach($iterinary->id);
@@ -86,14 +82,23 @@ class IterinaryController extends Controller
             $route->save();
             $iterinary->route()->associate($route);
             $iterinary->save();
+
+            $segment = new Segment;
+            $segment->origin_name = $origin_segment->longName;
+            $segment->origin_pos = $origin_segment->lat.','.$origin_segment->lng;
+            $route->segments()->save($segment);
+
             $pivot_fields = [
                 'status' => 'doing',
                 'date_start' => Carbon::now()->toTimeString()
             ];
+
             $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
 
             return response()->json($iterinary, 200);
+
         } else {
+
             return response()->json('error saving', 401);
         }
     }
@@ -326,7 +331,7 @@ class IterinaryController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getPath()
-    {   //TODO
+    {
 
         $iterinary_id = Input::get('iterinary_id');
         $iterinary = Iterinary::find($iterinary_id);
@@ -543,6 +548,34 @@ class IterinaryController extends Controller
 
         return UserSessionHandler::setIterinaryStartDate($token, $iterinary_id, $start_date);
 
+    }
+
+    public function addPhotoToIterinary()
+    {
+        $data = Input::get('image');
+        $iterinary_id = Input::get('iterinary_id');
+        //get the base-64 from data
+        $iterinary = Iterinary::find($iterinary_id);
+        $photo = new IterinaryPhoto();
+        //decode base64 string
+//        $image =  base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data));
+        $img = str_replace('data:image/png;base64,', '', $data);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $png_url = str_random(16).".png";
+
+        $photo->image_path = 'http:/php-usjrproject.rhcloud.com/api/img/'.$png_url;
+        $path = public_path('images/' . $png_url);
+
+        $result = file_put_contents($path,$data);
+
+        $iterinary->photos()->save($photo);
+        // $result = file_put_contents($path, $image);
+        $response = array(
+            'status' => 'success',
+            'data' => $result
+        );
+        return response()->json( $response  );
     }
 
     //TODO

@@ -434,3 +434,4 @@ Route::get('api/foursquare/spot/checkin',['middleware' => 'cors', 'uses' => 'Act
 
 Route::get('api/iterinary/activities',['middleware' => 'cors','uses' => 'ActivityController@getAll']);
 
+Route::post('api/iterinary/photos/save',['middleware' => 'cors', 'uses' => 'IterinaryController@addPhotoToIterinary']);

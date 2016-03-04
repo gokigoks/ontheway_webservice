@@ -16,7 +16,11 @@ class CreateHotelsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('hotel_name');
-			$table->string('pos');
+			$table->string('lat');
+            $table->string('lng');
+            $table->integer('days_stayed');
+            $table->string('pic_url')->nullable();
+            $table->integer('price');
 			$table->string('tips',200)->nullable();
 			$table->timestamps();
 		});
