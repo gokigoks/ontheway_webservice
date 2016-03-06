@@ -27,6 +27,7 @@ class CreateSegmentsTable extends Migration {
 			$table->integer('distance');
 			$table->integer('duration');
 			$table->string('mode');
+			$table->string('details');
 			$table->timestamps();
 			
 			$table->unique(array('route_id','sequence'));

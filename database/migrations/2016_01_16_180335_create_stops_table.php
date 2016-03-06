@@ -21,7 +21,7 @@ class CreateStopsTable extends Migration {
 			$table->string('lat');
 			$table->string('details',200)->nullable();
             $table->integer('price');
-        
+
 			$table->timestamps();
 		});
 	}
