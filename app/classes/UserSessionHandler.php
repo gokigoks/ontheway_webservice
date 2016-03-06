@@ -9,6 +9,7 @@
 namespace App\Classes;
 
 use App\Classes\tokenGenerator;
+use App\Classes\FoursquareHelper;
 use App\Classes\GeolocationHelper;
 use App\Eat;
 use App\User;
@@ -16,7 +17,9 @@ use App\Iterinary;
 use DB;
 use App\Route;
 use App\Segment;
+use App\Hotel;
 use App\Activity;
+use App\Stop;
 use App\Spot;
 use App\FoodCategory;
 use Carbon\Carbon;
@@ -116,7 +119,7 @@ class UserSessionHandler
      * @param $user
      * @return $iterinary
      */
-    public static function getCurrentIterinary($user)
+    public static function getCurrentIterinaryWithSegment($user)
     {
         $iterinary = $user->current_iterinary()->with('route.segments')->first();
         return $iterinary;
@@ -170,20 +173,19 @@ class UserSessionHandler
 
     /**
      * @param $token
-     * @param $iterinary_id
-     * @param $origin_name
+    s     * @param $origin_name
      * @param $lng
      * @param $lat
      * @param $mode
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function addSegment($token, $iterinary_id, $origin_name, $lng, $lat, $mode)
-    {
+    public static function addSegment($token, $origin_name, $lng, $lat, $mode)
+    {   //todo
         $segment = new Segment;
         $segment->origin_name = $origin_name;
         $segment->origin_pos = $lat . ',' . $lng;
         $segment->mode = $mode;
-        $iterinary = Iterinary::findOrFail($iterinary_id);
+        $iterinary = self::getUserCurrentIterinary($token);
         $route = $iterinary->route()->first();
 //        dd($route->segments()->count());
         $segment->sequence = $route->segments()->count() + 1;
@@ -209,15 +211,15 @@ class UserSessionHandler
 
         // activity
         $activity = new Activity();
-        $activity->iterinary_id = $iterinary_id;
-        $activity->day = self::getDiffInDays($token, $iterinary_id);
+        $activity->iterinary_id = $iterinary->id;
+        $activity->day = self::getDiffInDays($token, $iterinary->id);
         $activity->start_time = Carbon::now()->toTimeString();
 
         // end activity
 
         $route->segments()->save($segment);
         $segment->activity()->save($activity);
-        $iterinary = Iterinary::findOrFail($iterinary_id)->with('activities.typable')->first();
+        $iterinary = Iterinary::findOrFail($iterinary->id)->with('activities.typable')->first();
         //self::newUserActivity('transport', $segment->getAttribute('id'), $token);
 
         return response()->json($iterinary, 200);
@@ -225,103 +227,192 @@ class UserSessionHandler
 
     /**
      * @param $token
-     * @param $spot_data
-     * @param $segment
+     * @param $food_data
+     * @param transpo
      * @return reponse json
      */
-    public static function addSpot($token, $spot_data, $segment)
-    {
-        //$categories = App\SpotCategory::list('');
-        $spot_category = \DB::table('spot_categories')
-            ->select('main_cat', 'main_cat_id')
-            ->where('main_cat', 'LIKE', '%' . $spot_data->category . '%')
-            ->distinct()
-            ->get();
+    public static function addSpot($token, $food_data, $transpo)
+    {   //todo
+        $response = self::resolveNewSegmentFromActivity($token, $transpo, $food_data);
 
         $current_iterinary = self::getUserCurrentIterinary($token);
-        $activity = new Activity();
-
         $day = self::getDiffInDays($token, $current_iterinary->id);
-
-        $spot = new Spot;
-
-        $spot->main_category_id = $spot_category[0]->main_cat_id;
-        $spot->place_name = $spot_data->place_name;
-        $spot->lat = $spot_data->lat;
-        $spot->lng = $spot_data->lng;
-
-        $spot->pic_url = self::resolveCategoryPic($spot_data->category);
-        $spot->save();
-
-        $start_time = Carbon::now()->toTimeString();
-        $activity->start_time = $start_time;
-        $activity->day = $day;
-        $activity->iterinary_id = $current_iterinary->id;
+        $activity = new Activity();
         $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+        $eat = new Spot();
+        $eat->place_name = $food_data['place_name'];
+        $eat->lng = $food_data['lng'];
+        $eat->lat = $food_data['lat'];
+        $eat->tips = $food_data['review'];
+        $eat->price = $food_data['price'];
 
-        $spot->activity()->save($activity);
+        $foodcategory = FoursquareHelper::resolveSpotCategory($food_data['category']['cat_id']);
 
-        self::resolveSegmentFromAddActivity($token,$segment);
-//        self::
-        $iterinary = Iterinary::findOrFail($current_iterinary->id)->with('activities.typable')->first();
+//        return response()->json($foodcategory['main_cat']);
+        $eat->main_category_id = $foodcategory['main_cat'];
+        $eat->sub_category_id = $foodcategory['sub_cat'];
+        $pic = $food_data['category'];
+        $eat->pic_url = $pic['prefix'] . '64' . $pic['suffix'];
+
+//        return response()->json($eat);
+        $eat->save();
+        $eat->activity()->save($activity);
+
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+            ->with('activities.typable')
+            ->first();
         return response()->json($iterinary, 200);
+
+//        $current_iterinary = self::getUserCurrentIterinary($token);
+//        $day = self::getDiffInDays($token, $current_iterinary->id);
+//        $activity = new Activity();
+//        $activity->start_time = Carbon::now()->toTimeString();
+//        $activity->iterinary_id = $current_iterinary->id;
+//        $activity->day = $day;
+//        $eat = new Spot();
+//        $eat->place_name = $spot_data['place_name'];
+//
+//        $eat->lng = $spot_data['lng'];
+//        $eat->lat = $spot_data['lat'];
+//        $eat->tips = $spot_data['review'];
+//        $eat->price = $spot_data['price'];
+//
+//        $spot_category = FoursquareHelper::resolveSpotCategory($spot_data['category']['cat_id']);
+//
+////        return response()->json($foodcategory['main_cat']);
+//        $eat->main_category_id = $spot_category['main_cat'];
+//        $eat->sub_category_id = $spot_category['sub_cat'];
+//        $pic = $spot_data['category'];
+//        $eat->pic_url = $pic['prefix'] . '64' . $pic['suffix'];
+//
+////        return response()->json($spot_category, 200);
+//        self::resolveSegmentFromActivity($token);
+//
+////        return response()->json($eat);
+//        $eat->save();
+//        $eat->activity()->save($activity);
+//
+//
+//        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+//            ->with('activities.typable')
+//            ->first();
+//        return response()->json($iterinary, 200);
+//        return response()->json($eat);
     }//end
 
     /**
      * resolve pictures
      * @param $category
+     * @param $type
      * @return string
      */
-    public static function resolveCategoryPic($category)
-    {
-        $pic_url = 'http://php-usjrproject.rhcloud.com/api/img/default.png';
-        $categories = [
-            'food' => 'http://php-usjrproject.rhcloud.com/api/img/food.png',
-            'arts & entertainment' => 'http://php-usjrproject.rhcloud.com/api/img/arts.png',
-            'event' => 'http://php-usjrproject.rhcloud.com/api/img/event.png',
-            'nightlife spot' => 'http://php-usjrproject.rhcloud.com/api/img/night.png',
-            'Outdoors & Recreation' => 'http://php-usjrproject.rhcloud.com/api/img/beach.png'
-        ];
+    public static function resolveCategoryPic($category, $type)
+    {   //todo
+//        $pic_url = 'http://php-usjrproject.rhcloud.com/api/img/default.png';
+//        $categories = [
+//            'food' => 'http://php-usjrproject.rhcloud.com/api/img/food.png',
+//            'arts & entertainment' => 'http://php-usjrproject.rhcloud.com/api/img/arts.png',
+//            'event' => 'http://php-usjrproject.rhcloud.com/api/img/event.png',
+//            'nightlife spot' => 'http://php-usjrproject.rhcloud.com/api/img/night.png',
+//            'Outdoors & Recreation' => 'http://php-usjrproject.rhcloud.com/api/img/beach.png'
+//        ];
 
-        foreach ($categories as $key => $item) {
-            if ($key == $category) {
-                $pic_url = $item;
+//        foreach ($categories as $key => $item) {
+//            if ($key == $category) {
+//                $pic_url = $item;
+//            }
+//        }
+        $pic_url = 'http://php-usjrproject.rhcloud.com/api/img/default.png';
+        if ($type == 'food') {
+            $categories = FoursquareHelper::resolveFoodCategory($category);
+            if (!$categories['sub_cat']) {
+
             }
         }
+
 
         return $pic_url;
     }//end
 
     /**
      * @param $token
-     * @param $place_name
-     * @param $lng
-     * @param $lat
-     * @param $category
-     * @param $iterinary_id
+     * @param $food_data
+     * @param transpo
      * @return json response
      */
-    public static function addFood($token, $place_name, $lng, $lat, $category, $iterinary_id)
+    public static function addFood($token, $food_data, $transpo)
     {
+        //todo
+        $response = self::resolveNewSegmentFromActivity($token, $transpo, $food_data);
 
-        $day = self::getDiffInDays($token, $iterinary_id);
-        $foodcategory = DB::table('food_categories')->select('main_cat', 'main_cat_id')->distinct()->get();
+        $current_iterinary = self::getUserCurrentIterinary($token);
+
+        $day = self::getDiffInDays($token, $current_iterinary->id);
         $activity = new Activity();
         $activity->start_time = Carbon::now()->toTimeString();
-        $activity->iterinary_id = $iterinary_id;
+        $activity->iterinary_id = $current_iterinary->id;
         $activity->day = $day;
 
         $eat = new Eat();
-        $eat->place_name = $place_name;
-        $eat->pos = $lng . ',' . $lat;
-        $eat->main_category_id = $foodcategory[0]->main_cat_id;
-        $eat->sub_category_id = self::resolveFoodSubCat($category);
-        $eat->pic_url = self::resolveCategoryPic('food');
+        $eat->place_name = $food_data['place_name'];
+        $eat->lng = $food_data['lng'];
+        $eat->lat = $food_data['lat'];
+        $eat->tips = $food_data['review'];
+        $eat->price = $food_data['price'];
 
+        $foodcategory = FoursquareHelper::resolveFoodCategory($food_data['category']['cat_id']);
+
+//        return response()->json($foodcategory['main_cat']);
+        $eat->main_category_id = $foodcategory['main_cat'];
+        $eat->sub_category_id = $foodcategory['sub_cat'];
+        $pic = $food_data['category'];
+        $eat->pic_url = $pic['prefix'] . '64' . $pic['suffix'];
+
+//        return response()->json($eat);
         $eat->save();
         $eat->activity()->save($activity);
-        $iterinary = Iterinary::findOrFail($iterinary_id)->with('activities.typable')->first();
+//        return $eat;
+
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+            ->with('activities.typable')
+            ->first();
         return response()->json($iterinary, 200);
+//
+//        $current_iterinary = self::getUserCurrentIterinary($token);
+//        $day = self::getDiffInDays($token, $current_iterinary->id);
+//        $activity = new Activity();
+//        $activity->start_time = Carbon::now()->toTimeString();
+//        $activity->iterinary_id = $current_iterinary->id;
+//        $activity->day = $day;
+//        $eat = new Eat();
+//        $eat->place_name = $food_data['place_name'];
+//        $eat->lng = $food_data['lng'];
+//        $eat->lat = $food_data['lat'];
+//        $eat->tips = $food_data['review'];
+//        $eat->price = $food_data['price'];
+//
+//        $foodcategory = FoursquareHelper::resolveFoodCategory($food_data['category']['cat_id']);
+//
+////        return response()->json($foodcategory['main_cat']);
+//        $eat->main_category_id = $foodcategory['main_cat'];
+//        $eat->sub_category_id = $foodcategory['sub_cat'];
+//        $pic = $food_data['category'];
+//        $eat->pic_url = $pic['prefix'] . '64' . $pic['suffix'];
+//
+//        self::resolveSegmentFromActivity($token);
+//
+//        $eat->save();
+//        $eat->activity()->save($activity);
+//
+//
+//        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+//            ->with('activities.typable')
+//            ->first();
+//        return response()->json($iterinary, 200);
+//
+//        return response()->json($request);
     }
 
     /**
@@ -339,7 +430,7 @@ class UserSessionHandler
         $date_start = new Carbon($pivot->pivot->date_start);
         $day = $now->diffInDays($date_start);
 
-        if ($day == 0 || $day > 20 ) {
+        if ($day == 0 || $day > 20) {
             return 1; //default
         }
 
@@ -456,20 +547,22 @@ class UserSessionHandler
 //        return $iterinary;
     }
 
+    /**
+     * @param $id
+     */
     public static function addActivity($id)
     {
         $activity = new Activity;
+
     }
 
 
     /**
      * @param $category
-     * @return App\FoodCategory instance
+     * @return FoodCategory instance
      */
     public static function resolveFoodSubCat($category)
     {
-        $category = FoodCategory::where('sub_cat', '=', $category)->first();
-
         $foodcategory = DB::table('food_categories')
             ->select('sub_cat_id')
             ->where('sub_cat', '=', $category)
@@ -511,7 +604,7 @@ class UserSessionHandler
     }
 
     //
-    public static function endIterinary($user,$iterinary)
+    public static function endIterinary($user, $iterinary)
     {
         $distance = 0;
         $duration = 0;
@@ -532,7 +625,7 @@ class UserSessionHandler
         $iterinary->price = $price;
         $iterinary->save();
 
-        event(new \App\Events\IterinaryWasCreated($user->id,$iterinary->id));
+        event(new \App\Events\IterinaryWasCreated($user->id, $iterinary->id));
 
         return response()->json('success', 200);
     }
@@ -561,16 +654,87 @@ class UserSessionHandler
     {
         $user = self::getByToken($token);
         $iterinary = $user->current_iterinary()->first();
-        $activity = $iterinary->activities()->with('typable')->orderBy('created_at','desc')->first();
-
+        $activity = $iterinary
+            ->activities()
+            ->where('typable_type', '!=', 'App\\Segment')
+            ->with('typable')
+            ->orderBy('created_at', 'desc')
+            ->first();
+        if (!$activity) {
+            $data = new \stdClass();
+            $data->created_at = $iterinary->created_at;
+            list($lng, $lat) = explode(',', $iterinary->origin_pos);
+            $data->lng = $lng;
+            $data->lat = $lat;
+            $data->place_name = $iterinary->origin;
+            return $data;
+        }
         return $activity->typable;
     }
 
-
-
-    public static function resolveSegmentFromActivity($token,$data)
+    public static function getLastSegment($iterinary)
     {
-        $iterinary = self::getCurrentIterinary($token);
+        $route = $iterinary->route;
+        $segment = $route->segments()->orderBy('created_at', 'desc')->first();
+        if (!$segment) return 'way sud ang segment';
+
+        return $segment;
+    }
+
+
+    public static function resolveNewSegmentFromActivity($token, $travel_data, $new_activity)
+    {
+        $iterinary = self::getUserCurrentIterinary($token);
+        if(!$iterinary)
+        {
+            $response = [
+                'err code' => '403',
+                'message' => 'no current iterinaries found for user'
+            ];
+
+            return $response;
+        }
+
+        $route = $iterinary->route;
+        $last_activity = self::getLastActivity($token);
+//        return $last_activity;
+        $segment = new Segment();
+//        return $last_activity;
+        $segment->origin_name = $last_activity->place_name;
+        $segment->origin_pos = $last_activity->lng . ',' . $last_activity->lat;
+        $segment->details = $travel_data['transpo_details'];
+        $segment->mode = $travel_data['mode'];
+        $segment->day = self::getDiffInDays($token, $iterinary->id);
+        $segment->destination_name = $new_activity['place_name'];
+        $segment->destination_pos = $new_activity['lng'] . ',' . $new_activity['lat'];
+        $segment->price = $travel_data['expense'];
+        $segment->sequence = $route->segments()->count() + 1;
+        $points = array_merge([$last_activity->lng, $last_activity->lat]
+            , [$new_activity['lng'], $new_activity['lat']]);
+
+        $segment->path = GeolocationHelper::encode($points);
+        $segment->distance = GeolocationHelper::calculateDistance($segment);
+        $segment->duration = GeolocationHelper::durationFromLastActivity($last_activity);
+
+        $activity = new Activity();
+        $activity->iterinary_id = $iterinary->id;
+        $activity->day = self::getDiffInDays($token, $iterinary->id);
+        $activity->end_time = Carbon::now()->toTimeString();
+        $activity->start_time = $last_activity->created_at->toTimeString();
+        // end activity
+
+        // from end segment function
+//        $segment->destination_name = $destination_name;
+//        $segment->destination_pos = $lat . ',' . $lng;
+//        $segment->price = $price;
+//        $segment->distance = GeolocationHelper::calculateDistance($segment);
+//        $segment->duration = GeolocationHelper::calculateDuration($segment);
+//        $points = array_merge(GeolocationHelper::parseLongLat($segment->origin_pos), [$lng, $lat]);
+//
+//        $segment->path = GeolocationHelper::encode($points);
+        //end from end segemtn function
+        $route->segments()->save($segment);
+        $segment->activity()->save($activity);
 
     }
 
@@ -579,4 +743,75 @@ class UserSessionHandler
         $user = self::getByToken($token);
         return $user->current_iterinary()->first();
     }
+
+    public static function addHotel($token, $hotel_data,$transpo)
+    {
+
+        $response = UserSessionHandler::resolveNewSegmentFromActivity($token, $transpo, $hotel_data);
+//        return response()->json($response);
+
+        if($response) return $response;
+
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+        $day = UserSessionHandler::getDiffInDays($token, $current_iterinary->id);
+        $activity = new Activity();
+        $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+        $hotel = new Hotel();
+        $hotel->place_name = $hotel_data['place_name'];
+        $hotel->lng = $hotel_data['lng'];
+        $hotel->lat = $hotel_data['lat'];
+        $hotel->tips = $hotel_data['review'];
+        $hotel->price = $hotel_data['price'];
+
+
+        $hotel->pic_url = '';
+//        return response()->json($eat);
+        $hotel->save();
+        $hotel->activity()->save($activity);
+
+
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+            ->with('activities.typable')
+            ->first();
+        return response()->json($iterinary, 200);
+    }
+
+    //stops
+    public static function addStop($token,$stop_data,$transpo)
+    {
+        $response = UserSessionHandler::resolveNewSegmentFromActivity($token, $transpo, $stop_data);
+//        return response()->json($response);
+
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+        $day = UserSessionHandler::getDiffInDays($token, $current_iterinary->id);
+        $activity = new Activity();
+        $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+        $stop = new Stop();
+        $stop->place_name = $stop_data['place_name'];
+        $stop->lng = $stop_data['lng'];
+        $stop->lat = $stop_data['lat'];
+        $stop->details = $stop_data['details'];
+        $stop->price = $stop_data['price'];
+
+//        return response()->json($eat);
+        $stop->save();
+        $stop->activity()->save($activity);
+
+
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+            ->with('activities.typable')
+            ->first();
+        return response()->json($iterinary, 200);
+    }
+
+    public static function addOtherActivity($token,$other_data,$transpo)
+    {
+
+    }
+
+
 }//end

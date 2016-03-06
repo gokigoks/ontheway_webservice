@@ -98,5 +98,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return $this->iterinaries()->where('status','=','done');
 	}
-		
+
 }

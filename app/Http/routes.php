@@ -426,7 +426,7 @@ Route::get('api/test/addRatings',function()
 
 Route::post('api/iterinary/track',['middleware' => 'cors', 'uses' => 'IterinaryController@trackUser']);
 
-Route::get('api/recommendee/getrecommendation', ['middleware' => 'cors', 'uses' => 'RecommenderController@getRecommendation']);
+Route::post('api/recommendee/getrecommendation', ['middleware' => 'cors', 'uses' => 'RecommenderController@findrecommendations']);
 
 Route::get("addrating", ['middleware' => 'cors', 'uses' => 'RecommenderController@addrating']);
 
@@ -435,3 +435,16 @@ Route::get('api/foursquare/spot/checkin',['middleware' => 'cors', 'uses' => 'Act
 Route::get('api/iterinary/activities',['middleware' => 'cors','uses' => 'ActivityController@getAll']);
 
 Route::post('api/iterinary/photos/save',['middleware' => 'cors', 'uses' => 'IterinaryController@addPhotoToIterinary']);
+
+
+
+Route::post('test/iterinary/add',['middleware' => 'cors', 'uses' => 'TestController@newIterinaryTest']);
+Route::post('test/addactivity/food',['middleware' => 'cors','uses' => 'TestController@addFoodTest']);
+Route::post('test/addactivity/spot',['middleware' => 'cors','uses' => 'TestController@addSpotTest']);
+Route::post('test/addactivity/hotel',['middleware' => 'cors','uses' => 'TestController@addHotelTest']);
+Route::post('test/addactivity/transpo',['middleware' => 'cors','uses' => 'TestController@addTranspoTest']);
+
+Route::get('test/dumpquery',function()
+{
+    dd(\Input::all());
+});

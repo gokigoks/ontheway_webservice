@@ -4,12 +4,14 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classes\Rome2rioHelper as Rome2Rio;
 use App\Classes\FoursquareHelper as Foursquare;
+use App\Classes\UserSessionHandler;
 use Carbon\Carbon;
 use App\Iterinary;
 use App\Activity;
 use App\Route;
 use App\Segment;
 use App\Stop;
+use App\Hotel;
 use App\Spot;
 use App\Eat;
 use App\User;
@@ -216,7 +218,7 @@ class TestController extends Controller
                     $data = json_decode($data);
                     Cache::add('categories', $data, $expiry);
                     Foursquare::saveSpotCategories($data->response->categories);
-                    return response()->json('success',200);
+                    return response()->json('success', 200);
                 } else {
 
                     die('Request failed: HTTP status code: ' . $resultStatus);
@@ -227,26 +229,151 @@ class TestController extends Controller
         // dd(json_decode($data));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function update($id)
+    public function addFoodTest(Request $request)
     {
-        //
+        $request = $request->all();
+        return response()->json($request);
+        $food_data = $request['food'];
+        $token = $request['token'];
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+        $day = UserSessionHandler::getDiffInDays($token, $current_iterinary->id);
+        $activity = new Activity();
+        $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+        $eat = new Eat();
+        $eat->place_name = $food_data['place_name'];
+        $eat->lng = $food_data['lng'];
+        $eat->lat = $food_data['lat'];
+        $eat->tips = $food_data['review'];
+        $eat->price = $food_data['price'];
+
+        $foodcategory = Foursquare::resolveFoodCategory($food_data['category']['cat_id']);
+
+//        return response()->json($foodcategory['main_cat']);
+        $eat->main_category_id = $foodcategory['main_cat'];
+        $eat->sub_category_id = $foodcategory['sub_cat'];
+        $pic = $food_data['category'];
+        $eat->pic_url = $pic['prefix'] . '64' . $pic['suffix'];
+
+        UserSessionHandler::resolveSegmentFromActivity($token);
+
+        $eat->save();
+        $eat->activity()->save($activity);
+
+
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+            ->with('activities.typable')
+            ->first();
+        return response()->json($iterinary, 200);
+//        return response()->json($eat);
+
+        return response()->json($request);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function destroy($id)
+
+    //SPOT
+    //id
+    //place_name
+    //pic_url
+    //lat
+    //lng
+    //price
+    //main_category_id
+    //sub_category_id
+    //tips
+
+    public function addSpotTest(Request $request)
     {
-        //
+
+        $request = $request->all();
+        $food_data = $request['spot'];
+        $token = $request['token'];
+        $transpo = $request['transpo'];
+
+        $response = UserSessionHandler::resolveNewSegmentFromActivity($token, $transpo, $food_data);
+
+//        return response()->json($response);
+
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+        $day = UserSessionHandler::getDiffInDays($token, $current_iterinary->id);
+        $activity = new Activity();
+        $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+        $eat = new Spot();
+        $eat->place_name = $food_data['place_name'];
+        $eat->lng = $food_data['lng'];
+        $eat->lat = $food_data['lat'];
+        $eat->tips = $food_data['review'];
+        $eat->price = $food_data['price'];
+
+        $foodcategory = Foursquare::resolveSpotCategory($food_data['category']['cat_id']);
+
+//        return response()->json($foodcategory['main_cat']);
+        $eat->main_category_id = $foodcategory['main_cat'];
+        $eat->sub_category_id = $foodcategory['sub_cat'];
+        $pic = $food_data['category'];
+        $eat->pic_url = $pic['prefix'] . '64' . $pic['suffix'];
+
+//        return response()->json($eat);
+        $eat->save();
+        $eat->activity()->save($activity);
+
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+            ->with('activities.typable')
+            ->first();
+        return response()->json($iterinary, 200);
+//        return response()->json($eat);
+
     }
 
+    public function addHotelTest(Request $request)
+    {
+        $request = $request->all();
+        $food_data = $request['hotel'];
+        $token = $request['token'];
+        $transpo = $request['transpo'];
+
+        $response = UserSessionHandler::resolveNewSegmentFromActivity($token, $transpo, $food_data);
+
+//        return response()->json($response);
+
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+        $day = UserSessionHandler::getDiffInDays($token, $current_iterinary->id);
+        $activity = new Activity();
+        $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+        $hotel = new Hotel();
+        $hotel->hotel_name = $food_data['place_name'];
+        $hotel->lng = $food_data['lng'];
+        $hotel->lat = $food_data['lat'];
+        $hotel->tips = $food_data['review'];
+        $hotel->price = $food_data['price'];
+
+
+        $hotel->pic_url = '';
+//        return response()->json($eat);
+        $hotel->save();
+        $hotel->activity()->save($activity);
+
+
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+            ->with('activities.typable')
+            ->first();
+        return response()->json($iterinary, 200);
+    }
+
+    public function addTranspoTest(Request $request)
+    {
+        $request = $request->all();
+        return response()->json($request);
+    }
+
+    public function newIterinaryTest(Request $request)
+    {
+        $request = $request->all();
+        return response()->json($request);
+    }
 }

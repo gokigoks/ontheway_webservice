@@ -12,15 +12,15 @@ class Spot extends Model {
 	protected $table = 'spots';
 
 	/**
-	 * @property String place_name - name of spot
-	 * @property String lng 		  - longitude of spot
-	 * @property String lat 		  - latitude of spot
-	 * @property Integer price 	  - price expended
-	 * @property String tips       - tips for this activity
-	 * @property String city
+	 * @property-write String place_name
+	 * @property-write String lng
+	 * @property-write String lat
+	 * @property-write Integer price
+	 * @property-write String tips
+	 * @property-write String pic_ur
 	 * @return Arrays
 	 */
-	protected $fillable = ['place_name', 'lng', 'lat', 'price', 'tips','city'];
+	protected $fillable = ['place_name', 'lng', 'lat', 'price', 'tips'];
 
 	public function activity(){
 		return $this->morphMany('App\Activity','typable');

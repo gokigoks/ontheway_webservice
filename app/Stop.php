@@ -21,15 +21,15 @@ class Stop extends Model {
 	 *  
 	 * @var Array
 	 */
-	protected $fillable = ['name', 'kind', 'city', 'pos', 'tips', 'timezone', 'region_code'];
+	protected $fillable = ['name','tips','lng','lat'];
 
 	public function segment()
 	{
 		return $this->belongsToMany('App\Segment');
 	}
 	
-	public function activities()
+	public function activity()
 	{
-		return $this->belongsToMany('App\Activity');
+		return $this->morphMany('App\Activity','typable');
 	}
 }

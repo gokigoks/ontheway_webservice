@@ -210,11 +210,60 @@ class FoursquareHelper
         unset($collection);
     }
 
-    public static function getCategory(){
-
-
-
+    public static function getFoodMainCategory($food_cat){
+//        return response()->json('error sa resolve food MAIN cat');
+        $category = FoodCategory::where('main_cat_id',$food_cat)
+                    ->orWhere('sub_cat_id',$food_cat)
+                    ->first();
+        return $category->main_cat_id;
     }
+
+    public static function getFoodSubCategory($food_cat)
+    {
+//        return response()->json('error sa resolve food SUB cat');
+        $category = FoodCategory::where('sub_cat_id','=',$food_cat)
+                    ->first();
+
+        return (!$category->sub_cat_id) ? null : $category->sub_cat_id;
+    }
+
+    public static function resolveFoodCategory($food_data)
+    {
+        //return response()->json('error sa resolve food cat');
+        $food_cat = [
+          'sub_cat' => self::getFoodSubCategory($food_data),
+            'main_cat' => self::getFoodMainCategory($food_data)
+        ];
+        return $food_cat;
+    }
+
+    public static function getSpotMainCategory($spot_cat){
+//        return response()->json('dre error dapite sa MAIN');
+        $category = SpotCategory::where('main_cat_id',$spot_cat)
+            ->orWhere('sub_cat_id',$spot_cat)
+            ->first();
+        return $category->main_cat_id;
+    }
+
+    public static function getSpotSubCategory($spot_cat)
+    {
+//        return response()->json('dre error dapita sa SUB');
+        $category = SpotCategory::select('sub_cat_id')
+            ->where('sub_cat_id','=',$spot_cat)
+            ->first();
+        return $category->sub_cat_id;
+    }
+
+    public static function resolveSpotCategory($food_data)
+    {
+        $food_cat = [
+            'sub_cat' => self::getSpotSubCategory($food_data),
+            'main_cat' => self::getSpotMainCategory($food_data)
+        ];
+
+        return $food_cat;
+    }
+
 }
 
 ?>

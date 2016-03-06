@@ -7,7 +7,10 @@ use App\Iterinary;
 use App\Route;
 use App\Segment;
 use App\Contribution;
+use App\User;
 use App\WeightedAverage;
+use App\Activity;
+use App\Eat;
 
 use App\Events\IterinaryRateWasAdded;
 use App\Events\ActivityRateWasAdded;
@@ -77,7 +80,7 @@ class RecommenderController extends Controller {
                 $value->{"path"} = $flightpath;
             }
         }
-        $price = 0;
+
         foreach ($segments as &$segment) {
             $segment->mode = $segment->kind;
             unset($segment->kind);
@@ -89,10 +92,8 @@ class RecommenderController extends Controller {
             unset($segment->sPos);
             $segment->destination_pos = $segment->tPos;
             unset($segment->tPos);
-            $segment->{'price'} = Rome2Rio::getRome2RioPrice($segment);
-            $price += Rome2Rio::getRome2RioPrice($segment);
-        }
 
+        }
 
         curl_close($ch);
         return $segments;
@@ -326,6 +327,126 @@ class RecommenderController extends Controller {
     public function destroy($id)
     {
         //
+    }
+
+
+
+    public function getPreviousTrips(Request $request){
+        $token = $request->token;
+
+        if($token == null) return response()->json('token is empty',200);
+
+        $user = userSessionHandler::user($token);
+
+        if($user == null)
+        {
+            return response()->json('user not found.',404);
+        }
+
+        // dd($user->id);
+
+        $mytrips = Iterinary::where("creator_id", $user->id)->orderBy("updated_at", "DESC")->get();
+        // dd($mytrips);
+
+        $mytripdetailed = [];
+        foreach ($mytrips as $value) {
+            $rating = Rating::where("ratingable_type","Iterinary")->where("ratingable_id", $value->id)->selectRaw("avg(value)")->lists("avg(value)");
+            // dd($rating);
+            $arrayvalue = [
+                "id"			=> $value->id,
+                "destination"	=> $value->destination,
+                "origin" 		=> $value->origin,
+                "pax" 			=> $value->pax,
+                "days" 			=> $value->days,
+                "distance" 		=> $value->distance,
+                "duration" 		=> $value->duration,
+                "price" 		=> $value->price,
+                "creator_id" 	=> $value->creator_id,
+                "route_id" 		=> $value->route_id,
+                "created_at" 	=> $value->created_at,
+                "updated_at" 	=> $value->updated_at,
+                "rating"		=> $rating[0]
+            ];
+            // dd($arrayvalue);
+            array_push($mytripdetailed, $arrayvalue);
+        }
+
+        dd($mytripdetailed);
+
+
+
+        return $mytripdetailed;
+
+
+    }
+
+    public function findrecommendations(Request $request){
+        // $title = $request->title;
+        $origin = $request->origin;
+        $destination = $request->destination;
+        $budget = $request->budget;
+        $pax = $request->pax;
+
+        // return $origin;
+
+        //get iterinaries base from the origin destination
+        $iterinaries = Iterinary::where("origin", $origin)->where("destination", $destination)->lists("id");
+        // dd($iterinaries);
+
+        //get iterinaries that is sorted based on their avg ratings 5-1
+        $orderbyrate = $this->sortByRating($iterinaries);
+        // dd($orderbyrate);
+
+        //
+        $acceptedBudget = $budget+($budget*.5);
+        // dd($acceptedBudget);
+
+        //iterinaries what fits the budget
+        $iterinaries_accepted = Iterinary::whereIn("id", $orderbyrate)->where("price","<=",$acceptedBudget)->lists("id");
+        // dd($iterinaries_accepted);
+
+
+        $sortedSuggestions = $this->sortByRating($iterinaries_accepted);
+
+        // return $sortedSuggestions[0];
+
+        $finalrecommendations = [];
+        for($i = 0; $i<count($sortedSuggestions); $i++){
+            $data = Iterinary::where("id", $sortedSuggestions[$i])->get();
+            $creator = User::where("id", $data[0]->creator_id)->lists("name");
+            $rate = Rating::where("ratingable_type", "Iterinary")->where("ratingable_id", $sortedSuggestions[$i])->selectRaw("avg(value)")->lists("avg(value)");
+            // return round($rate[0],2);
+            $arrayvalue = [
+                "id"			=> $data[0]->id,
+                "destination"	=> $data[0]->destination,
+                "origin" 		=> $data[0]->origin,
+                "pax" 			=> $data[0]->pax,
+                "days" 			=> $data[0]->days,
+                "distance" 		=> $data[0]->distance,
+                "duration" 		=> $data[0]->duration,
+                "price" 		=> $data[0]->price,
+                "creator_id" 	=> $data[0]->creator_id,
+                "route_id" 		=> $data[0]->route_id,
+                "created_at" 	=> $data[0]->created_at,
+                "updated_at" 	=> $data[0]->updated_at,
+                "rating"		=> round($rate[0],2),
+                "creator"		=> $creator[0]
+            ];
+            // return $arrayvalue;
+            array_push($finalrecommendations, $arrayvalue);
+        }
+        // dd($finalrecommendations);
+        return $finalrecommendations;
+    }
+
+    public function sortByRating($iterinaries){
+        $data = Rating::where("ratingable_type", "Iterinary")->whereIn("ratingable_id", $iterinaries)->selectRaw("ratingable_id, avg(value)")->groupBy("ratingable_id")->orderBy("avg(value)", "DESC")->lists("ratingable_id");
+        return $data;
+    }
+
+    //testing get avg rating for each iterinary
+    public function getEachAvgRating(){
+        return  Rating::where("ratingable_type", "Iterinary")->selectRaw("ratingable_id, avg(value)")->groupBy("ratingable_id")->orderBy("avg(value)", "DESC")->get();
     }
 
 }

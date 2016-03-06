@@ -289,6 +289,14 @@ class GeolocationHelper
         return $duration;
     }
 
+    public static function durationFromLastActivity($activity)
+    {
+        $start = new Carbon($activity->created_at);
+        $end = Carbon::now();
+        $duration = $end->diffInMinutes($start);
+
+        return $duration;
+    }
     /**
      * @param $segment
      * @return float

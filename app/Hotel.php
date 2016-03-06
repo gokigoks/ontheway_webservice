@@ -11,8 +11,7 @@ class Hotel extends Model {
 	protected $table = 'hotels';
 	
 	//fillable data / mass assignable data
-	protected $fillable = ['hotel_name', 'pos', 'tips'];
-
+	protected $fillable = ['hotel_name', 'lng','lat', 'tips','pic_url','price,'];
 
 	/**
 	 * returns a polymorphic relationship with App\Activity
@@ -23,7 +22,17 @@ class Hotel extends Model {
 
 	public function activity()
 	{
-		$this->morphMany('App\Activity','typable');
+		return $this->morphMany('App\Activity','typable');
 	}
+
+    /**
+     * ratings relationship
+     * @return dynamic relationship
+     */
+    public function ratings()
+    {
+        return $this->morphMany('App\Rating','ratingable');
+    }
+
 
 }

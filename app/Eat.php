@@ -5,7 +5,13 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Eat
  * @property-write String $place_name
- * @property-write String $pos
+ * @property-write String $lng
+ * @property-write String $lat
+ * @property-write String tips
+ * @property-write String price
+ * @property-write String main_category_id
+ * @property-write String sub_category_id
+ * @property-write String pic_url
  * @package App
  */
 class Eat extends Model {
@@ -21,7 +27,7 @@ class Eat extends Model {
 	 * Mass assignable model data
 	 * @var Array
 	 */
-	protected $fillable = ['place_name', 'price', 'tips', 'pos','pic_url'];
+	protected $fillable = ['place_name', 'price', 'tips', 'lng','lat','pic_url'];
 
 	/**
 	 * activity relationship

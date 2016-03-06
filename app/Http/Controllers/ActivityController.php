@@ -22,23 +22,21 @@ class ActivityController extends Controller
 
         $request = $request->all();
         $type = $request['type'];
-
         $token = $request['token'];
 
         if ($type == "transport" || $type == 'transpo') {
 
-            $iterinary_id = $request['iterinary_id'];
             $origin_name = $request['place_name'];
             $lng = $request['lng'];
             $lat = $request['lat'];
             $mode = $request['mode'];
             $price = $request['price'];
+
             $input_bag = [
                 'origin name ' => $origin_name,
                 'longitude ' => $lng,
                 'latitude ' => $lat,
                 'mode' => $mode,
-                'iterinary id' => $iterinary_id,
             ];
 
             $i = 0;
@@ -57,66 +55,63 @@ class ActivityController extends Controller
                 return response()->json($error_bag, 400);
             }
 
-            return UserSessionHandler::addSegment($token, $iterinary_id, $origin_name, $lng, $lat, $mode);
+            return UserSessionHandler::addSegment($token, $origin_name, $lng, $lat, $mode);
         }
         if ($type == 'food') {
-
             $food = $request['food'];
-            $segment = $request['segment'];
-            $input_bag = [
-                'food object is ' => $food
-            ];
+            $transpo = $request['transpo'];
+//            $input_bag = [
+//                'food object is ' => $food
+//            ];
+//            return response()->json('err dre dit');
+//
+//            $i = 0;
+//            foreach ($input_bag as $key => $value) {
+//                $value = trim($value);
+//
+//                if (empty($value)) {
+//                    $error_bag[$i] = "$key empty";
+//                    $i++;
+//                } else {
+//                    //
+//                }
+//            }
+//            //filter of false or null values
+//            if (array_filter($error_bag)) {
+//                return response()->json($error_bag, 400);
+//            }
 
-            $i = 0;
-            foreach ($input_bag as $key => $value) {
-                $value = trim($value);
-
-                if (empty($value)) {
-                    $error_bag[$i] = "$key empty";
-                    $i++;
-                } else {
-                    //
-                }
-            }
-            //filter of false or null values
-            if (array_filter($error_bag)) {
-                return response()->json($error_bag, 400);
-            }
-
-            return UserSessionHandler::addFood($token, $food,$segment);
+            return UserSessionHandler::addFood($token, $food, $transpo);
         }
         if ($type == "spots" || $type == 'spot') {
 
             $spot = $request['spot'];
+            $transpo = $request['transpo'];
 
-            $segment = $request['segment'];
 
-            $input_bag = [
-                'spot' => $spot,
-            ];
-
-            $i = 0;
-            foreach ($input_bag as $key => $value) {
-                $value = trim($value);
-
-                if (empty($value)) {
-                    $error_bag[$i] = "$key empty";
-                    $i++;
-                } else {
-                    //
-                }
-            }
-            //filter of false or null values
-            if (array_filter($error_bag)) {
-                return response()->json($error_bag, 400);
-            }
-
-            return UserSessionHandler::addSpot($token, $spot, $segment);
+            return UserSessionHandler::addSpot($token, $spot,$transpo);
 
         }
         if($type == 'hotel')
         {
             //todo
+            $hotel = $request['hotel'];
+            $transpo = $request['transpo'];
+
+
+            return UserSessionHandler::addHotel($token,$hotel, $transpo);
+        }
+        if($type == 'stop')
+        {
+            $stop = $request['stop'];
+            $transpo = $request['transpo'];
+            return UserSessionHandler::addStop($token, $stop, $transpo);
+        }
+        if($type == 'others')
+        {
+            $others_data = $request['others'];
+            $transpo = $request['transpo'];
+            return UserSessionHandler::addOtherActivity($token,$others_data,$transpo);
         }
         else {
 

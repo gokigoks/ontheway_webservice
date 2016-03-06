@@ -40,41 +40,42 @@ class IterinaryController extends Controller
             return response()->json('user not found.', 404);
         }
 
+        $current_iterinary = $user->current_iterinary()->get();
+
+        if($current_iterinary->count() > 0)
+        {
+            $message = [
+                'error' => '403',
+                'message' => 'you already have a current iterinary'
+            ];
+            return response()->json($message,403);
+        }
+
         $origin = Input::get('origin');
         $destination = Input::get('destination');
         $pax = Input::get('pax');
         $origin_segment = Input::get('origin_segment');
+        $lat = $request['lat'];
+        $lng = $request['lng'];
 
         $input_bag = [
             'origin' => $origin,
             'destination' => $destination,
             'pax' => $pax,
-            'segment' => $origin_segment
+            'origin segment' => $origin_segment
         ];
-
-        $i = 0;
-        foreach ($input_bag as $key => $value) {
-            $value = trim($value);
-
-            if (empty($value)) {
-                $error_bag[$i] = "$key empty";
-                $i++;
-            } else {
-                //
-            }
-        }
-        //filter of false or null values
-        if (array_filter($error_bag)) {
-            return response()->json($error_bag, 400);
-        }
-
+//        return $input_bag;
         $iterinary = new Iterinary();
+//        return response()->json($origin_segment['origin_name']);
+
         $iterinary->creator_id = $user->getAttribute('id');
         $iterinary->origin = $origin;
         $iterinary->destination = $destination;
         $iterinary->pax = $pax;
+        $iterinary->origin_pos = $origin_segment['origin_pos'];
 
         //dd('dre dapita error');
+
         if ($user->iterinaries()->save($iterinary)) {
             //$user->iterinaries()->attach($iterinary->id);
             $route = new Route;
@@ -82,15 +83,13 @@ class IterinaryController extends Controller
             $route->save();
             $iterinary->route()->associate($route);
             $iterinary->save();
-
-            $segment = new Segment;
-            $segment->origin_name = $origin_segment->longName;
-            $segment->origin_pos = $origin_segment->lat.','.$origin_segment->lng;
-            $route->segments()->save($segment);
-
+//            $segment = new Segment;
+//            $segment->origin_name = $origin_segment['origin_name'];
+//            $segment->origin_pos = $origin_segment['origin_pos'];
+//            $route->segments()->save($segment);
             $pivot_fields = [
                 'status' => 'doing',
-                'date_start' => Carbon::now()->toTimeString()
+                'date_start' => Carbon::now()->toDateTimeString()
             ];
 
             $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
@@ -432,15 +431,15 @@ class IterinaryController extends Controller
         // update pivot status column to done.
         // calculate routes columns
         $token = Input::get('token');
-        $iterinary_id = Input::get('iterinary_id');
 
-        if (!$token || !$iterinary_id) {
+
+        if (!$token) {
             return response()->json('kuwang input', 400);
         }
 
         $user = UserSessionHandler::user($token);
 
-        $current_iterinary = $user->iterinaries()->find($iterinary_id);
+        $current_iterinary = $user->current_iterinary()->first();
 
         $route = $current_iterinary->route;
         if (!$route) {
@@ -454,7 +453,7 @@ class IterinaryController extends Controller
             'status' => 'done',
         ];
         $user->iterinaries()
-            ->updateExistingPivot($iterinary_id, $pivot, true);
+            ->updateExistingPivot($current_iterinary->id, $pivot, true);
         //dd($user_id, $iterinary_id);
         return response()->json('success', 200);
     }
