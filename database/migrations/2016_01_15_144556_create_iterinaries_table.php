@@ -24,6 +24,8 @@ class CreateIterinariesTable extends Migration {
             $table->integer('price')->default(0);
 			$table->integer('creator_id')->unsigned();
 			$table->integer('route_id')->unsigned()->nullable();
+			$table->string('title')->nullable();
+			$table->string('origin_pos');
 			$table->timestamps();
 
 

@@ -12,6 +12,7 @@ use App\Classes\tokenGenerator;
 use App\Classes\FoursquareHelper;
 use App\Classes\GeolocationHelper;
 use App\Eat;
+use App\OtherActivity;
 use App\User;
 use App\Iterinary;
 use DB;
@@ -744,6 +745,12 @@ class UserSessionHandler
         return $user->current_iterinary()->first();
     }
 
+    /**
+     * @param $token
+     * @param $hotel_data
+     * @param $transpo
+     * @return array|\Illuminate\Http\JsonResponse
+     */
     public static function addHotel($token, $hotel_data,$transpo)
     {
 
@@ -810,7 +817,31 @@ class UserSessionHandler
 
     public static function addOtherActivity($token,$other_data,$transpo)
     {
+        $response = UserSessionHandler::resolveNewSegmentFromActivity($token, $transpo, $stop_data);
+//        return response()->json($response);
 
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+        $day = UserSessionHandler::getDiffInDays($token, $current_iterinary->id);
+        $activity = new Activity();
+        $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+        $stop = new OtherActivity();
+        $stop->name = $other_data['place_name'];
+        $stop->lng = $other_data['lng'];
+        $stop->lat = $other_data['lat'];
+        $stop->review = $other_data['review'];
+        $stop->expense = $other_data['expense'];
+
+//        return response()->json($eat);
+        $stop->save();
+        $stop->activity()->save($activity);
+
+
+        $iterinary = Iterinary::findOrFail($current_iterinary->id)
+            ->with('activities.typable')
+            ->first();
+        return response()->json($iterinary, 200);
     }
 
 

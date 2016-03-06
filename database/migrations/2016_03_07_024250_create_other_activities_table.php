@@ -18,6 +18,8 @@ class CreateOtherActivitiesTable extends Migration {
 			$table->integer('expense');
             $table->string('name');
             $table->string('review');
+            $table->string('lng');
+            $table->string('lng');
 			$table->timestamps();
 		});
 	}
