@@ -19,7 +19,7 @@ class CreateOtherActivitiesTable extends Migration {
             $table->string('name');
             $table->string('review');
             $table->string('lng');
-            $table->string('lng');
+            $table->string('lat');
 			$table->timestamps();
 		});
 	}
