@@ -47,7 +47,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function iterinaries()
 	{
-		return $this->belongsToMany('App\Iterinary')->withPivot('date_start','status');
+		return $this->belongsToMany('App\Iterinary')->withPivot('date_start','status','title');
 	}
 
 	/** 	1 -- TO -- MANY

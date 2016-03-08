@@ -149,7 +149,7 @@ class FoursquareHelper
     {
         //discarded categories
        // dd($categories);
-        $discard_items = ['College & University', 'Professional & Other Places','Residence','Shop & Service','Travel & Transport'];
+        $discard_items = ['College & University', 'Professional & Other Places','Residence'];
         $collection = collect([]);
         foreach($categories as $key => $category){
             if(in_array($category->name,$discard_items))
@@ -215,6 +215,10 @@ class FoursquareHelper
         $category = FoodCategory::where('main_cat_id',$food_cat)
                     ->orWhere('sub_cat_id',$food_cat)
                     ->first();
+        if(!$category)
+        {
+            return 'error';
+        }
         return $category->main_cat_id;
     }
 
@@ -224,7 +228,7 @@ class FoursquareHelper
         $category = FoodCategory::where('sub_cat_id','=',$food_cat)
                     ->first();
 
-        return (!$category->sub_cat_id) ? null : $category->sub_cat_id;
+        return (!isset($category->sub_cat_id)) ? null : $category->sub_cat_id;
     }
 
     public static function resolveFoodCategory($food_data)
@@ -234,6 +238,12 @@ class FoursquareHelper
           'sub_cat' => self::getFoodSubCategory($food_data),
             'main_cat' => self::getFoodMainCategory($food_data)
         ];
+
+        if($food_cat['main_cat'] == 'error')
+        {
+            $food_cat['error_code'] == "403";
+            $food_cat['message'] = "main category id not valid";
+        }
         return $food_cat;
     }
 
@@ -248,10 +258,10 @@ class FoursquareHelper
     public static function getSpotSubCategory($spot_cat)
     {
 //        return response()->json('dre error dapita sa SUB');
-        $category = SpotCategory::select('sub_cat_id')
-            ->where('sub_cat_id','=',$spot_cat)
+        $category = SpotCategory::where('sub_cat_id','=',$spot_cat)
             ->first();
-        return $category->sub_cat_id;
+
+        return (!isset($category->sub_cat_id)) ? null : $category->sub_cat_id;
     }
 
     public static function resolveSpotCategory($food_data)
@@ -263,6 +273,7 @@ class FoursquareHelper
 
         return $food_cat;
     }
+
 
 }
 

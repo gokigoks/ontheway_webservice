@@ -193,6 +193,7 @@ class TestController extends Controller
             $data = Cache::get('categories');
 
             Foursquare::saveSpotCategories($data->response->categories);
+
         } else {
 
             $ch = curl_init();

@@ -44,7 +44,7 @@ class RouteController extends Controller {
 
 	public function findOtherRoute()
 	{
-		return "no more routes bitch";
+		return "no more routes ";
 	}
 
 	/**

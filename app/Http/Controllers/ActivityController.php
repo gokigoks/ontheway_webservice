@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Segment;
 use Input;
 
+
 class ActivityController extends Controller
 {
     /**
@@ -60,6 +61,13 @@ class ActivityController extends Controller
         if ($type == 'food') {
             $food = $request['food'];
             $transpo = $request['transpo'];
+
+            $input = [
+                'food' => $food,
+                'transpo' => $transpo
+            ];
+
+//            return response()->json($input);
 //            $input_bag = [
 //                'food object is ' => $food
 //            ];
@@ -80,8 +88,9 @@ class ActivityController extends Controller
 //            if (array_filter($error_bag)) {
 //                return response()->json($error_bag, 400);
 //            }
-
+//            return response()->json($food);
             return UserSessionHandler::addFood($token, $food, $transpo);
+//            return response()->json(UserSessionHandler::addFood($token, $food, $transpo),403);
         }
         if ($type == "spots" || $type == 'spot') {
 
@@ -89,31 +98,27 @@ class ActivityController extends Controller
             $transpo = $request['transpo'];
 
 
-            return UserSessionHandler::addSpot($token, $spot,$transpo);
-
+            return UserSessionHandler::addSpot($token, $spot, $transpo);
+//            return response()->json(UserSessionHandler::addSpot($token, $spot,$transpo),403);
         }
-        if($type == 'hotel')
-        {
+        if ($type == 'hotel') {
             //todo
             $hotel = $request['hotel'];
             $transpo = $request['transpo'];
 
 
-            return UserSessionHandler::addHotel($token,$hotel, $transpo);
+            return UserSessionHandler::addHotel($token, $hotel, $transpo);
         }
-        if($type == 'stop')
-        {
+        if ($type == 'stop') {
             $stop = $request['stop'];
             $transpo = $request['transpo'];
             return UserSessionHandler::addStop($token, $stop, $transpo);
         }
-        if($type == 'others')
-        {
+        if ($type == 'others') {
             $others_data = $request['others'];
             $transpo = $request['transpo'];
-            return UserSessionHandler::addOtherActivity($token,$others_data,$transpo);
-        }
-        else {
+            return UserSessionHandler::addOtherActivity($token, $others_data, $transpo);
+        } else {
 
             return response()->json('type field is required', 200);
         }
@@ -239,7 +244,7 @@ class ActivityController extends Controller
         $iterinary_id = Input::get('iterinary_id');
         $iterinary = Iterinary::find($iterinary_id);
         $activities = $iterinary->activities()->with('typable')->get();
-        return response()->json($activities,200);
+        return response()->json($activities, 200);
 
     }
 }
