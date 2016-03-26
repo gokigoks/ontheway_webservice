@@ -21,7 +21,7 @@ class CreateIterinaryPhotosTable extends Migration {
 
             $table->foreign('iterinary_id')
                 ->references('id')
-                ->on('spot_categories')
+                ->on('iterinaries')
                 ->onDelete('cascade');
 		});
 	}

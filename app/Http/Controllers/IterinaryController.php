@@ -217,12 +217,13 @@ class IterinaryController extends Controller
     public function getPlanned()
     {
         $token = Input::get('token');
-        $user_id = Input::get('user_id');
+        if (!$token) return response()->json('user id or token must be supplied');
 
-        if (!$token && !$user_id) return response()->json('user id or token must be supplied');
-
-        $user = User::find($user_id);
-        $data = $user->planned_iterinaries()->get();
+        $user = UserSessionHandler::getByToken($token);
+        $data = $user->planned_iterinaries()
+                ->with('photos')
+                ->with('activities.typable')
+                ->get();
         if ($data->isEmpty()) {
             return response()->json("empty", 404);
         } else {
@@ -287,7 +288,7 @@ class IterinaryController extends Controller
             $user = UserSessionHandler::getByToken($token);
         }
 
-        $data = $user->iterinaries()->get();
+        $data = $user->iterinaries()->with('photos')->get();
 
         if ($data->isEmpty()) {
             return response()->json('empty', 404);
@@ -410,14 +411,36 @@ class IterinaryController extends Controller
         $ite->save();
     }
 
-    public function getIterinaries()
+    public function getIterinaries($id)
     {
-
+        dd($id);
     }
 
-    public function showIterinary()
+    public function showUserIterinary($id)
     {
+        $token = Input::get('token');
+        if($id == 'undefined'){
+            $message = [
+                'err_code' => '403',
+                'message' => 'no iterinary id'
+            ];
+            return response()->json($message,403);
+        }
 
+        $user = UserSessionHandler::getByToken($token);
+
+        $iterinary = $user->iterinaries()->find($id);
+
+        if($iterinary == null)
+        {
+            $message = [
+                'err_code' => 404,
+                'message' => 'no iterinaries found'
+            ];
+            return response()->json($message,404);
+        }
+
+        return response()->json($iterinary);
     }
 
     /**
@@ -440,21 +463,31 @@ class IterinaryController extends Controller
         $user = UserSessionHandler::user($token);
 
         $current_iterinary = $user->current_iterinary()->first();
-
+        if(!$current_iterinary)
+        {
+            return response()->json('you have no iterinaries',403);
+        }
+        $title = Input::get('title');
         $route = $current_iterinary->route;
         if (!$route) {
             $current_iterinary->delete(); // e delete nalang
             return response()->json('walay route');
         }
 
-        UserSessionHandler::endIterinary($user,$current_iterinary);
+        UserSessionHandler::endIterinary($user,$current_iterinary,$title);
 
         $pivot = [
             'status' => 'done',
+            'title' => $title
         ];
+
         $user->iterinaries()
             ->updateExistingPivot($current_iterinary->id, $pivot, true);
         //dd($user_id, $iterinary_id);
+        $message = [
+            'code' => 200,
+            'message' => 'success'
+        ];
         return response()->json('success', 200);
     }
 
@@ -462,15 +495,72 @@ class IterinaryController extends Controller
     {
         $request = $request->all();
         $token = $request['token'];
-        $iterinary_id = $request['iterinary_id'];
         $user = UserSessionHandler::getByToken($token);
 
-        $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'planned'];
-        $user->iterinaries()->attach($iterinary_id, $pivot_fields);
-//        $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
+        $current_iterinary = $user->current_iterinary()->first();
+        if($current_iterinary)
+        {
+            $message = [
+                'err' => '403',
+                'message' => 'you already have an iterinary'
+            ];
 
-        event(new \App\Events\IterinaryWasCopied($iterinary_id));
+            return response()->json($message,403);
+        }
+
+        //$start_date = $request['start_date'];
+        $iterinary_id = $request['iterinary_id'];
+        $check_duplicate = $user->iterinaries()->find($iterinary_id);
+
+        if($check_duplicate)
+        {
+            $check_duplicate->pivot->status = 'doing';
+            $check_duplicate->pivot->date_start = Carbon::now()->toDateTimeString();
+            $iterinary = $user->iterinaries()->find($iterinary_id);
+            $iterinary->load('activities.typable');
+            $check_duplicate->pivot->save();
+            $message = [
+                'code' => 200,
+                'message' => 'that iterinary was pinned but is not moved to doing'
+            ];
+            return response()->json($iterinary);
+        }
+
+        $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'doing'];
+        $user->iterinaries()->attach($iterinary_id, $pivot_fields);
+    //        $user->iterinaries()->updateExistingPivot($iterinary->id, $pivot_fields, true);
+        $iterinary = $user->iterinaries()->find($iterinary_id);
+        $iterinary->load('activities.typable');
+        //event(new \App\Events\IterinaryWasCopied($iterinary_id));
 //        \Event::fire(new(App\EventsIterinaryWasCopied($iterinary_id)));
+
+        return response()->json($iterinary, 200);
+    }
+    public function pinIterinary(Request $request)
+    {
+        $request = $request->all();
+        $token = $request['token'];
+        $id = $request['iterinary_id'];
+        $user = UserSessionHandler::getByToken($token);
+
+        $iterinary = $user->iterinaries()->find($id);
+        if($iterinary)
+        {
+            $message = [
+                'err' => '403',
+                'message' => 'you already pinned this'
+            ];
+
+            return response()->json($message,403);
+        }
+
+        //$start_date = $request['start_date'];
+
+
+
+        $pivot_fields = ['date_start' => Carbon::now(), 'status' => 'planned'];
+        $user->iterinaries()->attach($id, $pivot_fields);
+
 
         return response()->json('success', 200);
     }
@@ -552,9 +642,10 @@ class IterinaryController extends Controller
     public function addPhotoToIterinary()
     {
         $data = Input::get('image');
-        $iterinary_id = Input::get('iterinary_id');
+        $token = Input::get('token');
+
         //get the base-64 from data
-        $iterinary = Iterinary::find($iterinary_id);
+        $iterinary = UserSessionHandler::getUserCurrentIterinary($token);
         $photo = new IterinaryPhoto();
         //decode base64 string
 //        $image =  base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data));
@@ -563,7 +654,7 @@ class IterinaryController extends Controller
         $data = base64_decode($img);
         $png_url = str_random(16).".png";
 
-        $photo->image_path = 'http:/php-usjrproject.rhcloud.com/api/img/'.$png_url;
+        $photo->image_path = 'http://localhost:8000/api/img/'.$png_url;
         $path = public_path('images/' . $png_url);
 
         $result = file_put_contents($path,$data);
@@ -577,6 +668,44 @@ class IterinaryController extends Controller
         return response()->json( $response  );
     }
 
+
+    public function showIterinary($id)
+    {
+        if(!$id){
+            $message = [
+                'err_code' => '404',
+                'message' => 'no iterinary id'
+            ];
+            return response()->json($message,404);
+        }
+
+        $iterinary = Iterinary::find($id);
+
+        if($iterinary == null)
+        {
+            $message = [
+                'err_code' => '403',
+                'message' => 'no iterinary found'
+            ];
+            return response()->json($message,403);
+        }
+
+        $iterinary->{'activities'} = $iterinary->activities()->with('typable')->get();
+
+        return response()->json($iterinary);
+    }
+
+    public function getByDay($iterinary,$day)
+    {
+        $iterinary = Iterinary::find($iterinary);
+        $activities = $iterinary->activities()->day($day)->with('typable')->get();
+        $data = collect([]);
+        $data->offsetSet('iterinary',$iterinary);
+        $data->offsetSet('activities',$activities);
+
+        return response()->json($data,200);
+
+    }
     //TODO
     // check if date is 00 00 00 in mobile
 //end

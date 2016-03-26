@@ -169,8 +169,9 @@ Route::get('test/seed', function () {
 
 Route::get('user/iterinary', 'IterinaryController@getIterinaries');
 Route::post('user/iterinary', 'IterinaryController@create');
-Route::get('user/iterinary/{id}', 'IterinaryController@showIterinary');
+Route::get('user/iterinary/{id}', ['middleware'=> 'cors','uses' => 'IterinaryController@showUserIterinary']);
 
+Route::get('api/iterinary/get/{id}',['middleware'=> 'cors','uses' => 'IterinaryController@showIterinary']);
 
 Route::get('api/recomendee/getrecommend', ['middleware' => 'cors', 'uses' => 'RecommenderController@get_recommend']);
 Route::get('api/addspots', ['middleware' => 'cors', 'uses' => 'RecommenderController@add_spots']);
@@ -368,11 +369,12 @@ Route::get('api/iterinary/current', ['middleware' => 'cors', 'uses' => 'Iterinar
 Route::get('api/iterinary/all', ['middleware' => 'cors', 'uses' => 'IterinaryController@getAll']);
 Route::get('api/iterinary/planned', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPlanned']);
 Route::get('api/iterinary/past', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPast']);
-
+Route::get('api/iterinary/get', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPast']);
 
 Route::get('api/iterinary/getpath', ['middleware' => 'cors', 'uses' => 'IterinaryController@getPath']);
 Route::get('api/route/get', ['middleware' => 'cors', 'uses' => 'IterinaryController@getRoute']);
 Route::post('api/iterinary/follow', ['middleware' => 'cors', 'uses' => 'IterinaryController@copyIterinary']);
+Route::post('api/iterinary/pin', ['middleware' => 'cors', 'uses' => 'IterinaryController@pinIterinary']);
 
 // Activity routes
 Route::post('plot/iterinary/activity/new', ['middleware' => 'cors', 'uses' => 'ActivityController@new']);
@@ -387,11 +389,10 @@ Route::post('plot/iterinary/addactivity', ['middleware' => 'cors', 'uses' => 'Ac
 Route::post('plot/iterinary/endactivity', ['middleware' => 'cors', 'uses' => 'ActivityController@endActivity']);
 // END CONTRIBUTOR  ITERINARIES
 
-
 Route::post('api/iterinary/delete','IterinaryController@deleteIterinary');
 
 Route::post('api/iterinary/startplanned', ['middleware' => 'cors', 'uses' => 'IterinaryController@startPlannedIterinary']);
-Route::get('api/iterinary/get','IterinaryController@show');
+
 
 Route::get('check/user',['middleware' => 'cors', 'uses' => function()
 {
@@ -426,7 +427,7 @@ Route::get('api/test/addRatings',function()
 
 Route::post('api/iterinary/track',['middleware' => 'cors', 'uses' => 'IterinaryController@trackUser']);
 
-Route::post('api/recommendee/getrecommendation', ['middleware' => 'cors', 'uses' => 'RecommenderController@findrecommendations']);
+Route::post('api/recommendee/getrecommendations', ['middleware' => 'cors', 'uses' => 'RecommenderController@findrecommendations']);
 
 Route::get("addrating", ['middleware' => 'cors', 'uses' => 'RecommenderController@addrating']);
 
@@ -436,15 +437,18 @@ Route::get('api/iterinary/activities',['middleware' => 'cors','uses' => 'Activit
 
 Route::post('api/iterinary/photos/save',['middleware' => 'cors', 'uses' => 'IterinaryController@addPhotoToIterinary']);
 
-
-
 Route::post('test/iterinary/add',['middleware' => 'cors', 'uses' => 'TestController@newIterinaryTest']);
 Route::post('test/addactivity/food',['middleware' => 'cors','uses' => 'TestController@addFoodTest']);
 Route::post('test/addactivity/spot',['middleware' => 'cors','uses' => 'TestController@addSpotTest']);
 Route::post('test/addactivity/hotel',['middleware' => 'cors','uses' => 'TestController@addHotelTest']);
 Route::post('test/addactivity/transpo',['middleware' => 'cors','uses' => 'TestController@addTranspoTest']);
-
+Route::post('api/iterinary/stop',['middleware' => 'cors', 'uses' => 'ActivityController@addStop']);
 Route::get('test/dumpquery',function()
 {
     dd(\Input::all());
 });
+
+Route::post('plot/iterinary/checkin',['middleware' => 'cors', 'uses' => 'ActivityController@checkIn']);
+Route::post('plot/iterinary/checkout',['middleware' => 'cors', 'uses' => 'ActivityController@checkOutFromHotel']);
+
+Route::get('api/iterinary/{iterinary}/day/{day}',['middleware' => 'cors', 'uses' => 'IterinaryController@getByDay']);

@@ -10,6 +10,7 @@ use App\Contribution;
 use App\User;
 use App\WeightedAverage;
 use App\Activity;
+
 use App\Eat;
 
 use App\Events\IterinaryRateWasAdded;
@@ -180,7 +181,7 @@ class RecommenderController extends Controller {
             $distance = abs($allprice[0]-$budget);
             // dd($distance);
             $idx = 0;
-            $distanceHasReplaced = false;
+            $distanceHasReplaced;
             for ($i=1; $i < count($allprice); $i++) {
                 $cdistance = abs($allprice[$i]-$budget);
                 // dd($cdistance);
@@ -222,7 +223,7 @@ class RecommenderController extends Controller {
         // $iterinary_ids = $this->getIterinariesByPlaces($origin, $destination);
         //vars
         $points = [];
-        $suggested = [];
+        $suggested;
 
         $contributions = Contribution::whereIn("iterinary_id", $ids)->get();
         // dd($contributions);
@@ -348,8 +349,11 @@ class RecommenderController extends Controller {
         $mytrips = Iterinary::where("creator_id", $user->id)->orderBy("updated_at", "DESC")->get();
         // dd($mytrips);
 
+
         $mytripdetailed = [];
         foreach ($mytrips as $value) {
+            $listactivity = [];
+
             $rating = Rating::where("ratingable_type","Iterinary")->where("ratingable_id", $value->id)->selectRaw("avg(value)")->lists("avg(value)");
             // dd($rating);
             $arrayvalue = [
@@ -365,27 +369,24 @@ class RecommenderController extends Controller {
                 "route_id" 		=> $value->route_id,
                 "created_at" 	=> $value->created_at,
                 "updated_at" 	=> $value->updated_at,
-                "rating"		=> $rating[0]
+                "rating"		=> $rating[0],
+                "activities"	=> $listactivity
             ];
             // dd($arrayvalue);
             array_push($mytripdetailed, $arrayvalue);
         }
-
-        dd($mytripdetailed);
-
-
-
+        // dd($mytripdetailed);
         return $mytripdetailed;
-
-
     }
 
     public function findrecommendations(Request $request){
-        // $title = $request->title;
+        $title = $request->title;
         $origin = $request->origin;
         $destination = $request->destination;
         $budget = $request->budget;
         $pax = $request->pax;
+        $orderbyrate;
+        $sortedSuggestions;
 
         // return $origin;
 
@@ -394,10 +395,12 @@ class RecommenderController extends Controller {
         // dd($iterinaries);
 
         //get iterinaries that is sorted based on their avg ratings 5-1
-        $orderbyrate = $this->sortByRating($iterinaries);
+        if (count($orderbyrate = $this->sortByRating($iterinaries))==0) {
+            $orderbyrate = $iterinaries;
+        } else {
+            $orderbyrate = $this->sortByRating($iterinaries);
+        }
         // dd($orderbyrate);
-
-        //
         $acceptedBudget = $budget+($budget*.5);
         // dd($acceptedBudget);
 
@@ -405,14 +408,18 @@ class RecommenderController extends Controller {
         $iterinaries_accepted = Iterinary::whereIn("id", $orderbyrate)->where("price","<=",$acceptedBudget)->lists("id");
         // dd($iterinaries_accepted);
 
-
-        $sortedSuggestions = $this->sortByRating($iterinaries_accepted);
-
+        if(count($sortedSuggestions = $this->sortByRating($iterinaries_accepted))==0){
+            $sortedSuggestions = $iterinaries_accepted;
+        }else{
+            $sortedSuggestions = $this->sortByRating($iterinaries_accepted);
+        }
         // return $sortedSuggestions[0];
 
         $finalrecommendations = [];
         for($i = 0; $i<count($sortedSuggestions); $i++){
+            $listactivity = [];
             $data = Iterinary::where("id", $sortedSuggestions[$i])->get();
+
             $creator = User::where("id", $data[0]->creator_id)->lists("name");
             $rate = Rating::where("ratingable_type", "Iterinary")->where("ratingable_id", $sortedSuggestions[$i])->selectRaw("avg(value)")->lists("avg(value)");
             // return round($rate[0],2);
@@ -431,6 +438,7 @@ class RecommenderController extends Controller {
                 "updated_at" 	=> $data[0]->updated_at,
                 "rating"		=> round($rate[0],2),
                 "creator"		=> $creator[0]
+                // "activities"	=> $listactivity
             ];
             // return $arrayvalue;
             array_push($finalrecommendations, $arrayvalue);
@@ -443,7 +451,6 @@ class RecommenderController extends Controller {
         $data = Rating::where("ratingable_type", "Iterinary")->whereIn("ratingable_id", $iterinaries)->selectRaw("ratingable_id, avg(value)")->groupBy("ratingable_id")->orderBy("avg(value)", "DESC")->lists("ratingable_id");
         return $data;
     }
-
     //testing get avg rating for each iterinary
     public function getEachAvgRating(){
         return  Rating::where("ratingable_type", "Iterinary")->selectRaw("ratingable_id, avg(value)")->groupBy("ratingable_id")->orderBy("avg(value)", "DESC")->get();

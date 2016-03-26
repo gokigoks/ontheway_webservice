@@ -305,7 +305,7 @@ class GeolocationHelper
     {
         $origin = self::parseLongLat($segment->origin_pos);
         $destination = self::parseLongLat($segment->destination_pos);
-
+//        dd($origin,$destination,$segment->toArray());
         return self::distance($origin[0], $origin[1], $destination[0], $destination[1]);
         //sreturn $duration;
     }
@@ -320,7 +320,6 @@ class GeolocationHelper
      */
     public static function distance($lat1, $lon1, $lat2, $lon2, $unit = "k")
     {
-
         $theta = $lon1 - $lon2;
         $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
         $dist = acos($dist);
@@ -336,8 +335,8 @@ class GeolocationHelper
         } else {
 
         }
-
-        return round($distance, 0);
+        $distance = $distance*1000; // convert to meters
+        return round($distance,0);
     }
 
     public static function getPlaceName($ll = null)

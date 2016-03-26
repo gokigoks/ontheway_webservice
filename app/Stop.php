@@ -21,7 +21,7 @@ class Stop extends Model {
 	 *  
 	 * @var Array
 	 */
-	protected $fillable = ['name','tips','lng','lat'];
+	protected $fillable = ['place_name','details','lng','lat','price'];
 
 	public function segment()
 	{

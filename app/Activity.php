@@ -58,6 +58,11 @@ class Activity extends Model {
 		return $this->morphTo();
 	}
 
+	public function scopeHotel($query)
+    {
+        return $query->where('typable_type','App\\Hotel');
+    }
+
     /*
      *  BelongTo Iterinary Model
      */
@@ -68,6 +73,10 @@ class Activity extends Model {
     public function scopeCurrent($query)
     {
         return $query->where('end_time','=','')->orWhereNull('end_time');
+    }
+
+	public function scopeDay($query,$day){
+		return $query->where('day',$day);
     }
 
     public function scopeSpot($query)

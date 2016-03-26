@@ -7,6 +7,9 @@ use App\Classes\UserSessionHandler;
 use App\Iterinary;
 use Illuminate\Http\Request;
 use App\Segment;
+use App\Hotel;
+use Carbon\Carbon;
+use App\Stop;
 use Input;
 
 
@@ -103,10 +106,10 @@ class ActivityController extends Controller
         }
         if ($type == 'hotel') {
             //todo
-            $hotel = $request['hotel'];
+            $hotel = $request['hote'];
             $transpo = $request['transpo'];
 
-
+            dd($request);
             return UserSessionHandler::addHotel($token, $hotel, $transpo);
         }
         if ($type == 'stop') {
@@ -241,10 +244,123 @@ class ActivityController extends Controller
     public function getAll()
     {
         //add a compiled polyline of all activities
-        $iterinary_id = Input::get('iterinary_id');
-        $iterinary = Iterinary::find($iterinary_id);
-        $activities = $iterinary->activities()->with('typable')->get();
-        return response()->json($activities, 200);
+        $iterinary_id = Input::get('iterinary');
+//        return response()->json($iterinary_id);
+        $token = Input::get('token');
+        if (isset($iterinary_id) || $iterinary_id) {
 
+            $iterinary = Iterinary::find($iterinary_id);
+            if (!isset($iterinary) || $iterinary == null) {
+
+                $message = [
+                    'err' => '404',
+                    'message' => ' iterinary not found'
+                ];
+                return response()->json($message);
+            }
+            $activities = $iterinary->activities()->with('typable')->get();
+            return response()->json($activities, 200);
+        } else {
+
+            $iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+            if ($iterinary['err'] == 'err') return response()->json($iterinary, 403);
+            if (!isset($iterinary) || $iterinary == null) {
+
+                $message = [
+                    'err' => '403',
+                    'message' => 'no current iterinary'
+                ];
+                return response()->json($message);
+            }
+
+            $activities = $iterinary->activities()->with('typable')->get();
+            return response()->json($activities, 200);
+        }
+
+    }
+
+    public function checkIn(Request $request)
+    {
+        $hotel_data = $request->input('hotel');
+        $transpo_data = $request->input('transpo');
+        $token = $request->input('token');
+//        $inputs = $request->all();
+//        return response()->json($inputs);
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+
+        $response = UserSessionHandler::resolveNewSegmentFromActivity($token, $transpo_data, $hotel_data);
+
+        $day = UserSessionHandler::getDiffInDays($token, $current_iterinary->id);
+        $activity = new Activity();
+        $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+
+        $hotel = new Hotel();
+        $hotel->place_name = $hotel_data['place_name'];
+        $hotel->lng = $hotel_data['lng'];
+        $hotel->lat = $hotel_data['lat'];
+        if (isset($hotel['foursquare_id'])) {
+            $hotel->foursquare_id = $hotel_data['foursquare_id'];
+        }
+        $hotel->save();
+        $hotel->activity()->save($activity);
+
+        return response()->json($hotel);
+    }
+
+    public function checkOutFromHotel(Request $request)
+    {
+        $token = $request->input('token');
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+        $hotel = $current_iterinary->activities()->hotel()->first();
+        $hotel = Hotel::find($hotel->typable_id);
+
+        $request = $request->all();
+
+        $hotel->price = $request['price'];
+        $hotel->tips = $request['review'];
+        $now = Carbon::now();
+        $day = $now->diffInDays($hotel->created_at);
+
+        $hotel->days_stayed = ($day == 0) ? 1 : $day;
+
+        $hotel->update();
+        $hotel->touch();
+
+        UserSessionHandler::updateIterinary($token);
+
+        return response()->json($hotel);
+    }
+
+    public function addStop(Request $request)
+    {
+        $stop_data = $request->input('stop');
+        $transpo_data = $request->input('transpo');
+        $token = $request->input('token');
+        $stop = new Stop;
+        $stop->place_name = $stop_data['place_name'];
+        $stop->details = $stop_data['stop_details'];
+        $stop->price = $stop_data['price'];
+        $stop->lat = $stop_data['lat'];
+        $stop->lng = $stop_data['lng'];
+
+        UserSessionHandler::resolveNewSegmentFromActivity($token, $transpo_data, $stop);
+        $current_iterinary = UserSessionHandler::getUserCurrentIterinary($token);
+//        return $current_iterinary;s
+        if ($current_iterinary['err'] == 'err') {
+            return response()->json($current_iterinary, 403);
+        }
+
+        $day = UserSessionHandler::getDiffInDays($token, $current_iterinary->id);
+        $activity = new Activity();
+        $activity->start_time = Carbon::now()->toTimeString();
+        $activity->iterinary_id = $current_iterinary->id;
+        $activity->day = $day;
+
+        $stop->save();
+        $stop->activity()->save($activity);
+
+        return response()->json($stop);
     }
 }
