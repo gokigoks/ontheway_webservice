@@ -909,6 +909,7 @@ class UserSessionHandler
 
         $iterinary->distance = $distance;
         $iterinary->duration = $duration;
+
         $iterinary->price = $price;
         $iterinary->save();
     }

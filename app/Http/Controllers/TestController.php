@@ -377,4 +377,32 @@ class TestController extends Controller
         $request = $request->all();
         return response()->json($request);
     }
+
+
+    //TODO freelance
+    public function testGeoLocationPhp(Request $request)
+    {
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+
+//        $location = file_get_contents('http://freegeoip.net/json/'.$_SERVER['REMOTE_ADDR']);
+        dd($ip,$details);
+    }
+    public function testGeoLocation(Request $request)
+    {
+        $latitude = $request->get('latitude');
+        $longitude = $request->get('longitude');
+        $ll = $latitude.','.$longitude;
+        $keyword = $request->get('keyword');
+//        $ip = $_SERVER['REMOTE_ADDR'];
+
+        $data = Foursquare::call($keyword, $ll);
+        $data = $data->response->venues;
+
+        return view('results',compact('data'));
+//        $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+        dd($data);
+//        $location = file_get_contents('http://freegeoip.net/json/'.$_SERVER['REMOTE_ADDR']);
+//        dd($ip,$details);
+    }
 }

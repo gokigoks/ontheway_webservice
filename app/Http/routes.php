@@ -452,3 +452,19 @@ Route::post('plot/iterinary/checkin',['middleware' => 'cors', 'uses' => 'Activit
 Route::post('plot/iterinary/checkout',['middleware' => 'cors', 'uses' => 'ActivityController@checkOutFromHotel']);
 
 Route::get('api/iterinary/{iterinary}/day/{day}',['middleware' => 'cors', 'uses' => 'IterinaryController@getByDay']);
+
+
+//test
+Route::get('test/geolocation', function()
+{
+    return view('test');
+});
+
+Route::get('test/geolocation/javascript', function()
+{
+    return view('geolocationjs');
+});
+
+Route::post('test/geolocation', 'TestController@testGeolocation');
+
+Route::get('test/geolocation/php','TestController@testGeoLocation');

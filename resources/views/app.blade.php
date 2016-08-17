@@ -50,7 +50,7 @@
 					@endif
 				</ul>
 			</div>
-		</div>
+		</div>a
 	</nav>
 
 	@yield('content')

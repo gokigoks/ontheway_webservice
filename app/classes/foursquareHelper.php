@@ -249,6 +249,7 @@ class FoursquareHelper
 
     public static function getSpotMainCategory($spot_cat){
 //        return response()->json('dre error dapite sa MAIN');
+        // dd($spot_cat);
         $category = SpotCategory::where('main_cat_id',$spot_cat)
             ->orWhere('sub_cat_id',$spot_cat)
             ->first();
