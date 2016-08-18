@@ -383,6 +383,7 @@ class TestController extends Controller
     public function testGeoLocationPhp(Input $input)
     {
         $ip = $_SERVER['REMOTE_ADDR'];
+
         //freegeoip.net/json
         $data = json_decode(file_get_contents("http://freegeoip.net/json/{$ip}"));
 //        $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
@@ -393,7 +394,7 @@ class TestController extends Controller
 //            dd($data);
           return redirect()->to('test/geolocation')->with(['message' => 'we cant determine your location.']);
         }
-
+        dd($ip,$data);
         $ll = $data->latitude.','.$data->longitude;
 //        dd($ll);
         $keyword = $input->get('keyword');
