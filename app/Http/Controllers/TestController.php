@@ -379,14 +379,38 @@ class TestController extends Controller
     }
 
 
+    public function getUserIP()
+    {
+        $client  = @$_SERVER['HTTP_CLIENT_IP'];
+        $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+        $remote  = $_SERVER['REMOTE_ADDR'];
+
+        if(filter_var($client, FILTER_VALIDATE_IP))
+        {
+            $ip = $client;
+        }
+        elseif(filter_var($forward, FILTER_VALIDATE_IP))
+        {
+            $ip = $forward;
+        }
+        else
+        {
+            $ip = $remote;
+        }
+
+        return $ip;
+    }
+
+
+
     //TODO
     public function testGeoLocationPhp(Input $input)
     {
-        $ip = $_SERVER['REMOTE_ADDR'];
-
+//        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        $user_ip = $this->getUserIP();
         //freegeoip.net/json
 //        $data = json_decode(file_get_contents("http://freegeoip.net/json/{$ip}"));
-        $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+        $data = json_decode(file_get_contents("http://ipinfo.io/{$user_ip}/json"));
 //        $loc = json_decode(file_get_contents("http://ipinfo.io/{$ip}/loc"));
 //        dd($ip,$data);
         if(!isset($data->loc) )
