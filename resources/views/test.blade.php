@@ -51,7 +51,8 @@
                             @if(Session::has('message'))
                                 <div class="panel panel-warning">
                                     <div class="panel-body">
-                                        <h2>{{ Session::get('message') }}</h2>
+                                        <p>{{ Session::get('message') }}</p>
+                                        <p> {{ Session::get('data') }} </p>
                                     </div>
                                 </div>
                             @endif
