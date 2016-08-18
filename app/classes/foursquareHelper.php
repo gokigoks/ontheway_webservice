@@ -88,7 +88,7 @@ class FoursquareHelper
                 // the request did not complete as expected. common errors are 4xx
                 // (not found, bad request, etc.) and 5xx (usually concerning
                 // errors/exceptions in the remote script execution)
-                die('Request failed: HTTP status code: ' . $resultStatus);
+                die('Request failed: HTTP status code: ' . $resultStatus.'| url:'.$url.' | '.$ll);
             }
         }
         //dd($result,$ch);

@@ -389,11 +389,11 @@ class TestController extends Controller
         $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
 //        $loc = json_decode(file_get_contents("http://ipinfo.io/{$ip}/loc"));
 //        dd($ip,$data);
-        if(!isset($data->latitude) || !isset($data->longitude) )
+        if(!isset($data->loc) )
         {
           return redirect()->to('test/geolocation')->with(['message' => 'we cant determine your location.']);
         }
-        $ll = $data->latitude.','.$data->longitude;
+        $ll = $data->loc;
         $keyword = $input->get('keyword');
         $data = Foursquare::call($keyword, $ll);
         $data = $data->response->venues;

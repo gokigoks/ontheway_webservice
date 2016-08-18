@@ -48,10 +48,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">We'll find what your looking for</div>
                         <div class="panel-body">
-                            @if(isset($message))
+                            @if(Session::has('message'))
                                 <div class="panel panel-warning">
                                     <div class="panel-body">
-                                        <h2>{{ $message }}</h2>
+                                        <h2>{{ Session::get('message') }}</h2>
                                     </div>
                                 </div>
                             @endif
