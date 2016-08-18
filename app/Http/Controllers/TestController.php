@@ -383,9 +383,11 @@ class TestController extends Controller
     public function testGeoLocationPhp(Input $input)
     {
         $ip = $_SERVER['REMOTE_ADDR'];
-        $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-        $loc = json_decode(file_get_contents("http://ipinfo.io/{$ip}/loc"));
-        dd($data,$loc);
+        //freegeoip.net/json
+        $data = json_decode(file_get_contents("http://freegeoip.net/json/{$ip}"));
+//        $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+//        $loc = json_decode(file_get_contents("http://ipinfo.io/{$ip}/loc"));
+        dd($ip,$data);
         if(!isset($data->loc) || !$data->loc )
         {
             dd($data);
