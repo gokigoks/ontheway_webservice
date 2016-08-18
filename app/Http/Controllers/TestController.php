@@ -387,12 +387,14 @@ class TestController extends Controller
 //        dd($data);
         if(!isset($data->loc) || !$data->loc )
         {
-            return redirect()->back()->with('msg','error');
+            dd($data);
+//            return redirect()->back()->with('msg','error');
         }
+
         $ll = $data->loc;
         $keyword = $input->get('keyword');
         $data = Foursquare::call($keyword, $ll);
-        dd($data);
+//        dd($data);
         $data = $data->response->venues;
 //        dd($data);
         return view('results',compact('data'));
