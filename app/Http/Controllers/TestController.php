@@ -391,7 +391,7 @@ class TestController extends Controller
 //        dd($ip,$data);
         if(!isset($data->loc) )
         {
-          return redirect()->to('test/geolocation')->with(['message' => 'we cant determine your location.','data' => $data]);
+          return redirect()->to('test/geolocation')->with(['message' => 'we cant determine your location.','data' => (array)$data]);
         }
         $ll = $data->loc;
         $keyword = $input->get('keyword');

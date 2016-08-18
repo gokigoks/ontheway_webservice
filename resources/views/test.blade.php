@@ -52,7 +52,9 @@
                                 <div class="panel panel-warning">
                                     <div class="panel-body">
                                         <p>{{ Session::get('message') }}</p>
-                                        <p> {{ Session::get('data') }} </p>
+                                        @foreach(Session::get('data') as $key => $value)
+                                        <p> {{ $key }} : {{ $value }} </p>
+                                        @endforeach
                                     </div>
                                 </div>
                             @endif
