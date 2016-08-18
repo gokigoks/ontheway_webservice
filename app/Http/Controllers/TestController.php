@@ -387,14 +387,15 @@ class TestController extends Controller
         $data = json_decode(file_get_contents("http://freegeoip.net/json/{$ip}"));
 //        $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
 //        $loc = json_decode(file_get_contents("http://ipinfo.io/{$ip}/loc"));
-        dd($ip,$data);
-        if(!isset($data->loc) || !$data->loc )
+//        dd($ip,$data);
+        if(!isset($data->latitude) || !isset($data->longitude) )
         {
-            dd($data);
-//            return redirect()->back()->with('msg','error');
+//            dd($data);
+          return redirect()->to('test/geolocation')->with(['message' => 'we cant determine your location.']);
         }
 
-        $ll = $data->loc;
+        $ll = $data->latitude.','.$data->longitude;
+//        dd($ll);
         $keyword = $input->get('keyword');
         $data = Foursquare::call($keyword, $ll);
 //        dd($data);
