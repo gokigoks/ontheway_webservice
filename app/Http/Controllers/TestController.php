@@ -380,20 +380,32 @@ class TestController extends Controller
 
 
     //TODO freelance
-    public function testGeoLocationPhp(Request $request)
+    public function testGeoLocationPhp(Input $input)
     {
         $ip = $_SERVER['REMOTE_ADDR'];
-        $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+        $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+//        dd($data);
+        if(!isset($data->loc) || !$data->loc )
+        {
+            return redirect()->back()->with('msg','error');
+        }
+        $ll = $data->loc;
+        $keyword = $input->get('keyword');
+        $data = Foursquare::call($keyword, $ll);
+//        dd($data);
+        $data = $data->response->venues;
 
+        return view('results',compact('data'));
+        dd($ll);
 //        $location = file_get_contents('http://freegeoip.net/json/'.$_SERVER['REMOTE_ADDR']);
-        dd($ip,$details);
+        dd($ip,$data);
     }
-    public function testGeoLocation(Request $request)
+    public function testGeoLocation(Input $input)
     {
-        $latitude = $request->get('latitude');
-        $longitude = $request->get('longitude');
+        $latitude = $input->get('latitude');
+        $longitude = $input->get('longitude');
         $ll = $latitude.','.$longitude;
-        $keyword = $request->get('keyword');
+        $keyword = $input->get('keyword');
 //        $ip = $_SERVER['REMOTE_ADDR'];
 
         $data = Foursquare::call($keyword, $ll);
@@ -405,4 +417,6 @@ class TestController extends Controller
 //        $location = file_get_contents('http://freegeoip.net/json/'.$_SERVER['REMOTE_ADDR']);
 //        dd($ip,$details);
     }
+
+
 }
