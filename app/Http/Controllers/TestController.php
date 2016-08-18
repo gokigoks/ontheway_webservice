@@ -384,7 +384,7 @@ class TestController extends Controller
     {
         $ip = $_SERVER['REMOTE_ADDR'];
         $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-        dd($data);
+//        dd($data);
         if(!isset($data->loc) || !$data->loc )
         {
             return redirect()->back()->with('msg','error');
@@ -392,9 +392,9 @@ class TestController extends Controller
         $ll = $data->loc;
         $keyword = $input->get('keyword');
         $data = Foursquare::call($keyword, $ll);
-//        dd($data);
+        dd($data);
         $data = $data->response->venues;
-
+//        dd($data);
         return view('results',compact('data'));
         dd($ll);
 //        $location = file_get_contents('http://freegeoip.net/json/'.$_SERVER['REMOTE_ADDR']);
