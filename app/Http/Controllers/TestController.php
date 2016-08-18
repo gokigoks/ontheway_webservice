@@ -379,7 +379,7 @@ class TestController extends Controller
     }
 
 
-    //TODO freelance
+    //TODO
     public function testGeoLocationPhp(Input $input)
     {
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -394,7 +394,7 @@ class TestController extends Controller
 //            dd($data);
           return redirect()->to('test/geolocation')->with(['message' => 'we cant determine your location.']);
         }
-        dd($ip,$data);
+//        dd($ip,$data);
         $ll = $data->latitude.','.$data->longitude;
 //        dd($ll);
         $keyword = $input->get('keyword');
