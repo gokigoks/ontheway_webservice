@@ -384,7 +384,8 @@ class TestController extends Controller
     {
         $ip = $_SERVER['REMOTE_ADDR'];
         $data = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-//        dd($data);
+        $loc = json_decode(file_get_contents("http://ipinfo.io/{$ip}/loc"));
+        dd($data,$loc);
         if(!isset($data->loc) || !$data->loc )
         {
             dd($data);
