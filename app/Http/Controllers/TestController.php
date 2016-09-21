@@ -401,8 +401,6 @@ class TestController extends Controller
         return $ip;
     }
 
-
-
     //TODO
     public function testGeoLocationPhp(Input $input)
     {
@@ -411,8 +409,6 @@ class TestController extends Controller
         //freegeoip.net/json
 //        $data = json_decode(file_get_contents("http://freegeoip.net/json/{$ip}"));
         $data = json_decode(file_get_contents("http://ipinfo.io/{$user_ip}/json"));
-//        $loc = json_decode(file_get_contents("http://ipinfo.io/{$ip}/loc"));
-//        dd($ip,$data);
         if(!isset($data->loc) )
         {
           return redirect()->to('test/geolocation')->with(['message' => 'we cant determine your location.','data' => (array)$data]);
@@ -422,9 +418,7 @@ class TestController extends Controller
         $data = Foursquare::call($keyword, $ll);
         $data = $data->response->venues;
         return view('results',compact('data'));
-        dd($ll);
-//        $location = file_get_contents('http://freegeoip.net/json/'.$_SERVER['REMOTE_ADDR']);
-        dd($ip,$data);
+
     }
     public function testGeoLocation(Input $input)
     {
