@@ -46,7 +46,11 @@ class CreateActivitiesTable extends Migration
 
         Schema::create('transpo_activity', function (Blueprint $table) {
             $table->increments('id');
+<<<<<<< HEAD
             $table->integer('user_id')->unsigned();
+=======
+             $table->integer('user_id')->unsigned();
+>>>>>>> 54fbacfe0e10eec7b2bc496e98c84f1e124d79b1
             $table->integer('hotel_id')->unsigned();
             $table->integer('price');
             $table->enum('rating',array(1,2,3,4,5));

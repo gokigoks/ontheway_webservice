@@ -468,5 +468,3 @@ Route::get('test/geolocation/javascript', function()
 Route::post('test/geolocation', 'TestController@testGeolocation');
 
 Route::get('test/geolocation/php','TestController@testGeoLocationPhp');
-
-//end tests

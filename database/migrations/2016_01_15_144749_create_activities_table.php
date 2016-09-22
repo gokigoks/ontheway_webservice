@@ -22,7 +22,7 @@ class CreateActivitiesTable extends Migration {
 
 			/**
 			 * required for morph to many
-			 * 
+			 * typable refers to spot,eat,and transport
 			 * */
 			$table->string('typable_type');
 			$table->integer('typable_id')->unsigned();
